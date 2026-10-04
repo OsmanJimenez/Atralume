@@ -1,1 +1,1 @@
-export { AtralumeButton } from "./lib/button";
+export { AtralumeButton } from "./lib/button.component";

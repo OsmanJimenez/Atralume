@@ -1,0 +1,10 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Tokens from "./foundations.stories";
+
+<Meta title="Foundations/Overview" />
+
+# Foundations overview
+
+The DTCG source is authoritative. Style Dictionary generates stable `--atr-ref-*`, `--atr-sys-*`, and `--atr-comp-*` variables. Applications consume public styles, never token build paths. Generated values are shown below.
+
+<Canvas of={Tokens.System} />

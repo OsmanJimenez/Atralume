@@ -1,0 +1,19 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Atralume/Theming" />
+
+# Theming
+
+The cascade is Reference → System → Component → Consumer override. Use `data-atr-theme` globally or on any nested section. `system` follows `prefers-color-scheme` without JavaScript.
+
+```css
+.my-brand {
+  --atr-sys-color-primary: #2457d6;
+  --atr-sys-color-on-primary: #fff;
+}
+.my-special-action {
+  --atr-comp-button-container-color: var(--atr-sys-color-tertiary);
+}
+```
+
+Overrides are responsible for preserving contrast. Prefer system tokens for semantic themes and component tokens for targeted customization.

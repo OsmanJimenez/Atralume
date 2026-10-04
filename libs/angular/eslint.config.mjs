@@ -45,4 +45,10 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  {
+    files: ["**/button.component.ts"],
+    rules: {
+      "@angular-eslint/component-selector": "off",
+    },
+  },
 ];

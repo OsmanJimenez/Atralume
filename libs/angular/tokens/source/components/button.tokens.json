@@ -1,0 +1,53 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "comp": {
+      "button": {
+        "container": {
+          "color": { "$type": "color", "$value": "{atr.sys.color.primary}" },
+          "radius": { "$type": "dimension", "$value": "{atr.sys.shape.full}" },
+          "height": {
+            "$type": "dimension",
+            "$value": "{atr.sys.touch-target.minimum}"
+          },
+          "padding-inline": {
+            "$type": "dimension",
+            "$value": "{atr.sys.spacing.lg}"
+          }
+        },
+        "label": {
+          "color": { "$type": "color", "$value": "{atr.sys.color.on-primary}" },
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.14}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        },
+        "state-layer": {
+          "color": { "$type": "color", "$value": "{atr.sys.color.on-primary}" }
+        },
+        "disabled": {
+          "container-opacity": {
+            "$type": "number",
+            "$value": "{atr.sys.state.disabled-opacity}"
+          },
+          "content-opacity": {
+            "$type": "number",
+            "$value": "{atr.sys.state.disabled-content-opacity}"
+          }
+        }
+      }
+    }
+  }
+}

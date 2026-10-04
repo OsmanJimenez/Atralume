@@ -15,7 +15,13 @@
     "test:unit": "nx run-many -t test --all --watch=false",
     "check:package": "node tools/check-package.mjs",
     "check:storybook": "node tools/check-storybook.mjs",
-    "verify": "npm run format:check && npm run lint && npm run check:architecture && npm run test:unit && npm run build && npm run build:playground && npm run build:storybook && npm run check:package && npm run check:storybook"
+    "tokens:build": "node tools/tokens.mjs build",
+    "tokens:clean": "node tools/tokens.mjs clean",
+    "tokens:check": "node tools/tokens.mjs check",
+    "tokens:inspect": "node tools/tokens.mjs inspect",
+    "lint:styles": "stylelint \"{apps,libs}/**/*.{css,scss}\"",
+    "test:themes": "node tools/check-themes.mjs",
+    "verify": "npm run format:check && npm run lint && npm run lint:styles && npm run check:architecture && npm run tokens:check && npm run tokens:build && npm run test:unit && npm run build && npm run build:playground && npm run build:storybook && npm run test:themes && npm run check:package && npm run check:storybook"
   },
   "dependencies": {},
   "devDependencies": {
@@ -63,6 +69,9 @@
     "playwright": "1.63.0",
     "prettier": "3.9.9",
     "storybook": "10.6.1",
+    "style-dictionary": "5.6.0",
+    "stylelint": "17.16.0",
+    "stylelint-config-standard-scss": "17.0.0",
     "ts-node": "10.9.1",
     "tslib": "2.8.1",
     "typescript": "6.0.3",

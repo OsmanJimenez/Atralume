@@ -43,3 +43,40 @@ export const Themes: Story = {
       </div>`,
   }),
 };
+
+export const System: Story = {
+  render: () => ({
+    template:
+      '<section data-atr-theme="system" data-atr-surface="standard" style="padding:2rem"><button atrButton type="button">System theme</button></section>',
+  }),
+};
+
+export const NestedThemes: Story = {
+  render: () => ({
+    template:
+      '<section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><button atrButton type="button">Light</button><section data-atr-theme="dark" data-atr-surface="standard" style="margin-top:1rem;padding:2rem"><button atrButton type="button">Nested dark</button></section></section>',
+  }),
+};
+
+export const OnGlass: Story = {
+  render: () => ({
+    template:
+      '<div style="padding:4rem;background:radial-gradient(circle,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-surface="glass" style="padding:2rem;border-radius:var(--atr-sys-shape-large)"><button atrButton type="button">Glass action</button></section></div>',
+  }),
+};
+
+export const FocusVisible: Story = {
+  play: async ({ canvasElement }) => {
+    (canvasElement.querySelector("button") as HTMLButtonElement).focus();
+  },
+  render: () => ({
+    template: '<button atrButton type="button">Keyboard focus</button>',
+  }),
+};
+
+export const ConsumerOverride: Story = {
+  render: () => ({
+    template:
+      '<button atrButton type="button" style="--atr-comp-button-container-color:var(--atr-sys-color-tertiary);--atr-comp-button-label-color:var(--atr-sys-color-on-tertiary)">Overridden</button>',
+  }),
+};

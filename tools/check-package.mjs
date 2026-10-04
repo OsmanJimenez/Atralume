@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
@@ -13,14 +12,41 @@ function run(command, args, options = {}) {
 
 run("npx", ["nx", "build", "angular"]);
 const packageRoot = path.resolve("dist/libs/angular");
+const temporaryRoot = path.resolve(".cache/package-check");
+fs.mkdirSync(temporaryRoot, { recursive: true });
 const pack = spawnSync("npm", ["pack", "--json"], {
   cwd: packageRoot,
   encoding: "utf8",
 });
 if (pack.status !== 0) throw new Error(pack.stderr || "npm pack failed.");
-const archiveName = JSON.parse(pack.stdout)[0].filename;
+const packResult = JSON.parse(pack.stdout)[0];
+const packagedFiles = new Set(packResult.files.map((file) => file.path));
+for (const required of [
+  "styles/theme.css",
+  "styles/index.scss",
+  "styles/generated/token-manifest.json",
+  "fesm2022/atralume-angular-button.mjs",
+]) {
+  if (!packagedFiles.has(required))
+    throw new Error(`Tarball is missing ${required}.`);
+}
+const themeCss = fs.readFileSync(
+  path.join(packageRoot, "styles/theme.css"),
+  "utf8",
+);
+for (const contract of [
+  "--atr-sys-color-primary",
+  "--atr-comp-button-container-color",
+  '[data-atr-theme="dark"]',
+  '[data-atr-theme="system"]',
+  "prefers-color-scheme: dark",
+]) {
+  if (!themeCss.includes(contract))
+    throw new Error(`Public theme stylesheet is missing ${contract}.`);
+}
+const archiveName = packResult.filename;
 const archive = path.join(packageRoot, archiveName);
-const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "atralume-package-"));
+const temporary = fs.mkdtempSync(path.join(temporaryRoot, "consumer-"));
 
 try {
   fs.mkdirSync(path.join(temporary, "src"));

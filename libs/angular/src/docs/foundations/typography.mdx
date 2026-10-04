@@ -1,0 +1,9 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Tokens from "./foundations.stories";
+
+<Meta title="Foundations/Typography" />
+# Typography A system-font stack avoids remote or proprietary assets. Reference
+tokens define family, weight, size, line height and tracking. Semantic roles may
+evolve before 1.0; components should consume component aliases rather than
+hard-coded font values.
+<Canvas of={Tokens.Reference} />

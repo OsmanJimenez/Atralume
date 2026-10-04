@@ -1,0 +1,24 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "../lib/atoms/button/button.stories";
+
+<Meta title="Atralume/Introduction" />
+
+# Atralume
+
+Atralume is a customizable Angular design system inspired by Material Design 3, built with accessible primitives and an optional glass surface language.
+
+> Pre-stable API: public tokens and components may evolve before 1.0.
+
+## Principles
+
+- Accessible by default
+- Composable and token driven
+- Themeable with native CSS
+- Native semantics
+- Documented through executable examples
+
+Light, dark, system, nested themes and glass all use the same generated token contract. Start with **Getting Started**, then explore **Theming** and **Foundations**. Source: [GitHub](https://github.com/OsmanJimenez/Atralume).
+
+<Canvas of={ButtonStories.Themes} />
+
+<Canvas of={ButtonStories.OnGlass} />

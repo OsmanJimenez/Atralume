@@ -1,0 +1,75 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "sys": {
+      "spacing": {
+        "$type": "dimension",
+        "0": { "$value": "{atr.ref.spacing.0}" },
+        "xs": { "$value": "{atr.ref.spacing.1}" },
+        "sm": { "$value": "{atr.ref.spacing.2}" },
+        "md": { "$value": "{atr.ref.spacing.4}" },
+        "lg": { "$value": "{atr.ref.spacing.6}" },
+        "xl": { "$value": "{atr.ref.spacing.8}" },
+        "2xl": { "$value": "{atr.ref.spacing.12}" }
+      },
+      "shape": {
+        "$type": "dimension",
+        "none": { "$value": "{atr.ref.radius.0}" },
+        "extra-small": { "$value": "{atr.ref.radius.4}" },
+        "small": { "$value": "{atr.ref.radius.8}" },
+        "medium": { "$value": "{atr.ref.radius.12}" },
+        "large": { "$value": "{atr.ref.radius.16}" },
+        "extra-large": { "$value": "{atr.ref.radius.28}" },
+        "full": { "$value": "{atr.ref.radius.full}" }
+      },
+      "motion": {
+        "duration": {
+          "$type": "duration",
+          "instant": { "$value": "{atr.ref.duration.instant}" },
+          "short": { "$value": "{atr.ref.duration.short}" },
+          "medium": { "$value": "{atr.ref.duration.medium}" },
+          "long": { "$value": "{atr.ref.duration.long}" }
+        },
+        "easing": {
+          "$type": "cubicBezier",
+          "standard": { "$value": "{atr.ref.easing.standard}" },
+          "emphasized": { "$value": "{atr.ref.easing.emphasized}" },
+          "decelerate": { "$value": "{atr.ref.easing.decelerate}" },
+          "accelerate": { "$value": "{atr.ref.easing.accelerate}" }
+        }
+      },
+      "state": {
+        "$type": "number",
+        "hover-opacity": { "$value": "{atr.ref.opacity.hover}" },
+        "focus-opacity": { "$value": "{atr.ref.opacity.focus}" },
+        "pressed-opacity": { "$value": "{atr.ref.opacity.pressed}" },
+        "dragged-opacity": { "$value": "{atr.ref.opacity.dragged}" },
+        "disabled-opacity": { "$value": "{atr.ref.opacity.disabled}" },
+        "disabled-content-opacity": {
+          "$value": "{atr.ref.opacity.disabled-content}"
+        }
+      },
+      "focus-ring": {
+        "width": {
+          "$type": "dimension",
+          "$value": "{atr.ref.border-width.strong}"
+        },
+        "offset": { "$type": "dimension", "$value": "{atr.ref.spacing.1}" },
+        "style": { "$type": "string", "$value": "solid" }
+      },
+      "touch-target": {
+        "$type": "dimension",
+        "minimum": { "$value": "{atr.ref.touch-target.minimum}" }
+      },
+      "elevation": {
+        "$type": "shadow",
+        "level-0": { "$value": "{atr.ref.shadow.level-0}" },
+        "level-1": { "$value": "{atr.ref.shadow.level-1}" },
+        "level-2": { "$value": "{atr.ref.shadow.level-2}" },
+        "level-3": { "$value": "{atr.ref.shadow.level-3}" },
+        "level-4": { "$value": "{atr.ref.shadow.level-4}" },
+        "level-5": { "$value": "{atr.ref.shadow.level-5}" }
+      }
+    }
+  }
+}

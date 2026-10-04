@@ -13,10 +13,23 @@
   },
   "tags": [],
   "targets": {
+    "tokens-build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/libs/angular/src/styles/generated"],
+      "options": {
+        "command": "node tools/tokens.mjs build"
+      },
+      "inputs": [
+        "{workspaceRoot}/libs/angular/tokens/source/**/*.tokens.json",
+        "{workspaceRoot}/libs/angular/tokens/config/**/*.mjs",
+        "{workspaceRoot}/tools/tokens.mjs"
+      ]
+    },
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "defaultConfiguration": "production",
+      "dependsOn": ["tokens-build"],
       "options": {
         "project": "libs/angular/ng-package.json",
         "tsConfig": "libs/angular/tsconfig.lib.json"
@@ -49,7 +62,7 @@
         "configDir": "libs/angular/.storybook",
         "browserTarget": "angular:build-storybook",
         "compodoc": false,
-        "styles": ["libs/angular/src/lib/foundations/styles/theme.css"]
+        "styles": ["libs/angular/src/styles/generated/foundations.css"]
       },
       "configurations": {
         "ci": {
@@ -60,12 +73,13 @@
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
+      "dependsOn": ["tokens-build"],
       "options": {
         "outputDir": "dist/storybook/angular",
         "configDir": "libs/angular/.storybook",
         "browserTarget": "angular:build-storybook",
         "compodoc": false,
-        "styles": ["libs/angular/src/lib/foundations/styles/theme.css"]
+        "styles": ["libs/angular/src/styles/generated/foundations.css"]
       },
       "configurations": {
         "ci": {
