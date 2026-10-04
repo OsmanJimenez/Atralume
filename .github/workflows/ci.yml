@@ -1,0 +1,46 @@
+name: Atralume CI
+
+on:
+  pull_request:
+    branches: [develop, release, master]
+  push:
+    branches: [develop, release, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: "true"
+  NX_DAEMON: "false"
+  NX_NO_CLOUD: "true"
+
+jobs:
+  quality:
+    name: Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Pin npm
+        run: npm install --global npm@11.9.0
+      - name: Install
+        run: npm ci
+      - name: Check PR promotion policy
+        if: github.event_name == 'pull_request'
+        run: node tools/check-pr-policy.mjs
+      - name: Install Chromium
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Verify
+        run: npm run verify
