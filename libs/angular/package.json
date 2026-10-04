@@ -1,0 +1,16 @@
+{
+  "name": "@atralume/angular",
+  "version": "0.0.0",
+  "peerDependencies": {
+    "@angular/core": "^22.2.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./styles/theme.css": {
+      "style": "./styles/theme.css",
+      "default": "./styles/theme.css"
+    }
+  }
+}
