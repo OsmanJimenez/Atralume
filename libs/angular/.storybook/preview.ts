@@ -3,7 +3,16 @@ const preview: Preview = {
   parameters: {
     controls: { expanded: true },
     docs: { toc: true },
-    options: { storySort: { order: ["Foundations", "Atoms"] } },
+    options: {
+      storySort: {
+        order: [
+          "Atralume",
+          ["Introduction", "Getting Started", "Theming", "Accessibility"],
+          "Foundations",
+          "Atoms",
+        ],
+      },
+    },
     a11y: { test: "error" },
   },
   globalTypes: {
@@ -15,12 +24,14 @@ const preview: Preview = {
         items: [
           { value: "light", title: "Light" },
           { value: "dark", title: "Dark" },
+          { value: "system", title: "System" },
         ],
       },
     },
   },
   decorators: [
     (story, context) => {
+      delete document.documentElement.dataset["atrTheme"];
       document.documentElement.dataset["atrTheme"] = context.globals[
         "theme"
       ] as string;

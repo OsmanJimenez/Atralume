@@ -1,0 +1,31 @@
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-atr-theme] {
+    --atr-sys-motion-duration-short: 0ms;
+    --atr-sys-motion-duration-medium: 0ms;
+    --atr-sys-motion-duration-long: 0ms;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  [data-atr-surface="glass"] {
+    background: var(--atr-sys-glass-fallback-background);
+    backdrop-filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  [data-atr-surface] {
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+
+  [data-atr-surface="glass"] {
+    background: Canvas;
+    backdrop-filter: none;
+  }
+
+  .atr-button:focus-visible {
+    outline-color: Highlight;
+  }
+}

@@ -1,0 +1,18 @@
+.token-table {
+  border: var(--atr-ref-border-width-thin) solid
+    var(--atr-sys-color-outline-variant);
+  border-radius: var(--atr-sys-shape-medium);
+  overflow: hidden;
+}
+
+.token-row {
+  display: grid;
+  gap: var(--atr-sys-spacing-md);
+  grid-template-columns: minmax(16rem, 1fr) minmax(8rem, 1fr);
+  padding: var(--atr-sys-spacing-sm) var(--atr-sys-spacing-md);
+}
+
+.token-row + .token-row {
+  border-block-start: var(--atr-ref-border-width-thin) solid
+    var(--atr-sys-color-outline-variant);
+}

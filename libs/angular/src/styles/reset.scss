@@ -1,0 +1,10 @@
+/* Optional, deliberately minimal reset. Import this file explicitly. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}

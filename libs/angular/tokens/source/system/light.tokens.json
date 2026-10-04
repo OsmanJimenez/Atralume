@@ -1,0 +1,45 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "sys": {
+      "color": {
+        "$type": "color",
+        "primary": { "$value": "{atr.ref.color.primary.40}" },
+        "on-primary": { "$value": "{atr.ref.color.primary.100}" },
+        "primary-container": { "$value": "{atr.ref.color.primary.90}" },
+        "on-primary-container": { "$value": "{atr.ref.color.primary.10}" },
+        "secondary": { "$value": "{atr.ref.color.secondary.40}" },
+        "on-secondary": { "$value": "{atr.ref.color.secondary.100}" },
+        "secondary-container": { "$value": "{atr.ref.color.secondary.90}" },
+        "on-secondary-container": { "$value": "{atr.ref.color.secondary.10}" },
+        "tertiary": { "$value": "{atr.ref.color.tertiary.40}" },
+        "on-tertiary": { "$value": "{atr.ref.color.tertiary.100}" },
+        "tertiary-container": { "$value": "{atr.ref.color.tertiary.90}" },
+        "on-tertiary-container": { "$value": "{atr.ref.color.tertiary.10}" },
+        "error": { "$value": "{atr.ref.color.error.40}" },
+        "on-error": { "$value": "{atr.ref.color.error.100}" },
+        "error-container": { "$value": "{atr.ref.color.error.90}" },
+        "on-error-container": { "$value": "{atr.ref.color.error.10}" },
+        "surface": { "$value": "{atr.ref.color.neutral.98}" },
+        "on-surface": { "$value": "{atr.ref.color.neutral.10}" },
+        "surface-variant": { "$value": "{atr.ref.color.neutral-variant.90}" },
+        "on-surface-variant": {
+          "$value": "{atr.ref.color.neutral-variant.30}"
+        },
+        "surface-container-lowest": { "$value": "{atr.ref.color.neutral.100}" },
+        "surface-container-low": { "$value": "{atr.ref.color.neutral.96}" },
+        "surface-container": { "$value": "{atr.ref.color.neutral.94}" },
+        "surface-container-high": { "$value": "{atr.ref.color.neutral.90}" },
+        "surface-container-highest": { "$value": "{atr.ref.color.neutral.80}" },
+        "outline": { "$value": "{atr.ref.color.neutral-variant.50}" },
+        "outline-variant": { "$value": "{atr.ref.color.neutral-variant.80}" },
+        "inverse-surface": { "$value": "{atr.ref.color.neutral.20}" },
+        "inverse-on-surface": { "$value": "{atr.ref.color.neutral.96}" },
+        "inverse-primary": { "$value": "{atr.ref.color.primary.80}" },
+        "scrim": { "$value": "{atr.ref.color.neutral.0}" },
+        "shadow": { "$value": "{atr.ref.color.neutral.0}" },
+        "focus": { "$value": "{atr.ref.color.primary.40}" }
+      }
+    }
+  }
+}

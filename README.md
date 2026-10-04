@@ -1,10 +1,10 @@
 # Atralume
 
-Atralume is an Angular design-system foundation built with Nx, Storybook, CSS custom properties, and an internal Atomic Design architecture. Phase 0 proves the full path from source code to a consumable package and public Storybook.
+Atralume is an Angular design-system foundation built with Nx, Storybook, DTCG design tokens, CSS custom properties, and an internal Atomic Design architecture.
 
 ## Status
 
-Phase 0 contains one pilot component: a semantic, standalone Button. A broader component catalogue is intentionally deferred.
+Phase 1 provides generated reference, system, and Button tokens with light, dark, and system themes. The semantic Button remains the only pilot component; a broader catalogue is intentionally deferred.
 
 ## Requirements
 
@@ -43,6 +43,8 @@ Load the public theme stylesheet and select a theme independently from the surfa
 </html>
 ```
 
+Use `data-atr-theme="system"` to follow the operating-system preference without JavaScript. Generated token metadata is available through `@atralume/angular/styles/tokens.json`.
+
 ## Commands
 
 | Command                      | Purpose                                             |
@@ -58,6 +60,11 @@ Load the public theme stylesheet and select a theme independently from the surfa
 | `npm run test:unit`          | Run unit tests once                                 |
 | `npm run check:package`      | Install the tarball in an isolated Angular consumer |
 | `npm run check:storybook`    | Browser smoke test at `/Atralume/`                  |
+| `npm run tokens:build`       | Generate CSS variables and token manifest           |
+| `npm run tokens:check`       | Validate DTCG, parity, contrast, and determinism    |
+| `npm run tokens:inspect`     | Print token counts and resolution status            |
+| `npm run lint:styles`        | Lint styles and reject public visual literals       |
+| `npm run test:themes`        | Check computed themes in a real browser             |
 | `npm run verify`             | Run the complete local/CI gate                      |
 
 ## Structure
@@ -66,11 +73,12 @@ Load the public theme stylesheet and select a theme independently from the surfa
 apps/playground        Real consumer application
 libs/angular           Publishable package
   button               Secondary entry point
-  src/lib/foundations  Tokens and themes
+  tokens/source        Authoritative DTCG token source
+  src/styles           Public themes and generated artifacts
   src/lib/atoms        Button implementation
   .storybook           Living documentation
 tools                  Architecture, package, PR, and browser checks
 docs                   Technical and delivery documentation
 ```
 
-See [architecture](docs/architecture.md), [branching](docs/branching.md), [deployment](docs/deployment.md), and [roadmap](docs/roadmap.md).
+See [architecture](docs/architecture.md), [theming](docs/theming.md), [branching](docs/branching.md), [deployment](docs/deployment.md), and [roadmap](docs/roadmap.md).

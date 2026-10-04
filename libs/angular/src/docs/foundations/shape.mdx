@@ -1,0 +1,8 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Tokens from "./foundations.stories";
+
+<Meta title="Foundations/Shape" />
+# Shape Reference radii map to semantic shapes from none through full. The
+Button resolves its component radius through `--atr-sys-shape-full`, so
+consumers can customize either semantic or component scope.
+<Canvas of={Tokens.Button} />

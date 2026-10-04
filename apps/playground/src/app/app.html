@@ -1,16 +1,63 @@
-<main [attr.data-atr-theme]="theme()" data-atr-surface="standard">
-  <section class="hero" data-atr-surface="glass">
-    <p class="eyebrow">Atralume · Phase 0</p>
-    <h1>A luminous foundation for Angular interfaces.</h1>
+<main
+  class="atr-scope"
+  [attr.data-atr-theme]="theme()"
+  data-atr-surface="standard"
+>
+  <header class="hero" data-atr-surface="glass">
+    <p class="eyebrow">Atralume · Design foundations</p>
+    <h1>One semantic language. Every luminous surface.</h1>
     <p class="lede">
-      This playground consumes the public secondary entry point, exactly as an
-      external application would.
+      A live consumer of the public Button and generated theme contract.
     </p>
-    <div class="actions">
-      <button atrButton type="button" (click)="toggleTheme()">
-        Use {{ theme() === 'light' ? 'dark' : 'light' }} theme
-      </button>
-      <button atrButton type="button" disabled>Disabled</button>
+    <button atrButton type="button" (click)="toggleTheme()">
+      Use {{ theme() === 'light' ? 'dark' : 'light' }} theme
+    </button>
+  </header>
+  <section class="section">
+    <h2>Semantic color</h2>
+    <div class="swatches">
+      <div class="swatch primary">Primary</div>
+      <div class="swatch secondary">Secondary</div>
+      <div class="swatch tertiary">Tertiary</div>
+      <div class="swatch error">Error</div>
+    </div>
+  </section>
+  <section class="section theme-grid">
+    <article data-atr-theme="light" data-atr-surface="elevated">
+      <h2>Light</h2>
+      <button atrButton type="button">Continue</button>
+    </article>
+    <article data-atr-theme="dark" data-atr-surface="elevated">
+      <h2>Dark</h2>
+      <button atrButton type="button">Continue</button>
+    </article>
+    <article data-atr-theme="system" data-atr-surface="elevated">
+      <h2>System</h2>
+      <button atrButton type="button">Continue</button>
+    </article>
+  </section>
+  <section class="section glass-stage">
+    <article data-atr-surface="glass">
+      <p class="eyebrow">Glass surface</p>
+      <h2>Readable over a varied backdrop.</h2>
+      <button atrButton type="button">Glass action</button>
+    </article>
+  </section>
+  <section class="section samples">
+    <div>
+      <h2>Typography</h2>
+      <p class="display">Display</p>
+      <p>Body text remains comfortably readable and system-native.</p>
+    </div>
+    <div>
+      <h2>Shape & elevation</h2>
+      <div class="shape" data-atr-surface="elevated">
+        Medium shape · level 2
+      </div>
+    </div>
+    <div>
+      <h2>Local override</h2>
+      <button class="override" atrButton type="button">Tertiary action</button>
     </div>
   </section>
 </main>

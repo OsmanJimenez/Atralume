@@ -1,0 +1,64 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "ref": {
+      "shadow": {
+        "$type": "shadow",
+        "level-0": {
+          "$value": {
+            "color": "#00000000",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 0, "unit": "px" },
+            "blur": { "value": 0, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        },
+        "level-1": {
+          "$value": {
+            "color": "#00000033",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 1, "unit": "px" },
+            "blur": { "value": 3, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        },
+        "level-2": {
+          "$value": {
+            "color": "#00000033",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 2, "unit": "px" },
+            "blur": { "value": 6, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        },
+        "level-3": {
+          "$value": {
+            "color": "#0000003d",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 4, "unit": "px" },
+            "blur": { "value": 10, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        },
+        "level-4": {
+          "$value": {
+            "color": "#0000003d",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 6, "unit": "px" },
+            "blur": { "value": 14, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        },
+        "level-5": {
+          "$value": {
+            "color": "#00000042",
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 8, "unit": "px" },
+            "blur": { "value": 20, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "sys": {
+      "typography": {
+        "display-large": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.57}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.tight}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.tight}"
+          }
+        },
+        "display-medium": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.45}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.tight}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.tight}"
+          }
+        },
+        "display-small": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.36}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "headline-large": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.32}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "headline-medium": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.28}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "headline-small": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.brand}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.24}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "title-large": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.22}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "title-medium": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.16}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        },
+        "title-small": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.14}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        },
+        "body-large": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.16}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.body}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "body-medium": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.14}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.body}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "body-small": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.12}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.body}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.regular}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.normal}"
+          }
+        },
+        "label-large": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.14}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        },
+        "label-medium": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.12}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        },
+        "label-small": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{atr.ref.font.family.plain}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.size.11}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{atr.ref.font.line-height.title}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{atr.ref.font.weight.medium}"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "{atr.ref.font.tracking.wide}"
+          }
+        }
+      }
+    }
+  }
+}

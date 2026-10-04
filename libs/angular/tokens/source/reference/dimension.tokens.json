@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "ref": {
+      "spacing": {
+        "$type": "dimension",
+        "0": { "$value": { "value": 0, "unit": "rem" } },
+        "1": { "$value": { "value": 0.25, "unit": "rem" } },
+        "2": { "$value": { "value": 0.5, "unit": "rem" } },
+        "3": { "$value": { "value": 0.75, "unit": "rem" } },
+        "4": { "$value": { "value": 1, "unit": "rem" } },
+        "5": { "$value": { "value": 1.25, "unit": "rem" } },
+        "6": { "$value": { "value": 1.5, "unit": "rem" } },
+        "8": { "$value": { "value": 2, "unit": "rem" } },
+        "10": { "$value": { "value": 2.5, "unit": "rem" } },
+        "12": { "$value": { "value": 3, "unit": "rem" } },
+        "16": { "$value": { "value": 4, "unit": "rem" } }
+      },
+      "radius": {
+        "$type": "dimension",
+        "0": { "$value": { "value": 0, "unit": "rem" } },
+        "4": { "$value": { "value": 0.25, "unit": "rem" } },
+        "8": { "$value": { "value": 0.5, "unit": "rem" } },
+        "12": { "$value": { "value": 0.75, "unit": "rem" } },
+        "16": { "$value": { "value": 1, "unit": "rem" } },
+        "28": { "$value": { "value": 1.75, "unit": "rem" } },
+        "full": { "$value": { "value": 9999, "unit": "px" } }
+      },
+      "border-width": {
+        "$type": "dimension",
+        "thin": { "$value": { "value": 1, "unit": "px" } },
+        "strong": { "$value": { "value": 2, "unit": "px" } }
+      },
+      "touch-target": {
+        "$type": "dimension",
+        "minimum": { "$value": { "value": 3, "unit": "rem" } }
+      },
+      "blur": {
+        "$type": "dimension",
+        "glass": { "$value": { "value": 1, "unit": "rem" } }
+      }
+    }
+  }
+}

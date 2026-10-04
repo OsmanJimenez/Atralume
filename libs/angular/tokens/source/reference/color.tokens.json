@@ -1,0 +1,63 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "ref": {
+      "color": {
+        "$type": "color",
+        "primary": {
+          "10": { "$value": "#21005d" },
+          "20": { "$value": "#381e72" },
+          "40": { "$value": "#6750a4" },
+          "80": { "$value": "#d0bcff" },
+          "90": { "$value": "#eaddff" },
+          "100": { "$value": "#ffffff" }
+        },
+        "secondary": {
+          "10": { "$value": "#1d192b" },
+          "20": { "$value": "#332d41" },
+          "40": { "$value": "#625b71" },
+          "80": { "$value": "#ccc2dc" },
+          "90": { "$value": "#e8def8" },
+          "100": { "$value": "#ffffff" }
+        },
+        "tertiary": {
+          "10": { "$value": "#31111d" },
+          "20": { "$value": "#492532" },
+          "40": { "$value": "#7d5260" },
+          "80": { "$value": "#efb8c8" },
+          "90": { "$value": "#ffd8e4" },
+          "100": { "$value": "#ffffff" }
+        },
+        "error": {
+          "10": { "$value": "#410e0b" },
+          "20": { "$value": "#601410" },
+          "40": { "$value": "#b3261e" },
+          "80": { "$value": "#f2b8b5" },
+          "90": { "$value": "#f9dedc" },
+          "100": { "$value": "#ffffff" }
+        },
+        "neutral": {
+          "0": { "$value": "#000000" },
+          "10": { "$value": "#1d1b20" },
+          "20": { "$value": "#322f35" },
+          "24": { "$value": "#3b383e" },
+          "30": { "$value": "#48464c" },
+          "80": { "$value": "#cac5cd" },
+          "90": { "$value": "#e6e0e9" },
+          "94": { "$value": "#f3edf7" },
+          "96": { "$value": "#f7f2fa" },
+          "98": { "$value": "#fef7ff" },
+          "100": { "$value": "#ffffff" }
+        },
+        "neutral-variant": {
+          "30": { "$value": "#49454f" },
+          "50": { "$value": "#79747e" },
+          "60": { "$value": "#938f99" },
+          "80": { "$value": "#cac4d0" },
+          "90": { "$value": "#e7e0ec" }
+        },
+        "transparent": { "$value": "#00000000" }
+      }
+    }
+  }
+}

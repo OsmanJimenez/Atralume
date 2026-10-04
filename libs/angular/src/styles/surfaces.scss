@@ -1,0 +1,31 @@
+[data-atr-surface="standard"] {
+  background: var(--atr-sys-color-surface);
+  color: var(--atr-sys-color-on-surface);
+}
+
+[data-atr-surface="elevated"] {
+  background: var(--atr-sys-color-surface-container-high);
+  box-shadow: var(--atr-sys-elevation-level-2);
+  color: var(--atr-sys-color-on-surface);
+}
+
+[data-atr-surface="transparent"] {
+  background: transparent;
+  color: var(--atr-sys-color-on-surface);
+}
+
+[data-atr-surface="glass"] {
+  background: var(--atr-sys-glass-fallback-background);
+  border: var(--atr-sys-glass-border-width) solid
+    var(--atr-sys-glass-border-color);
+  box-shadow: var(--atr-sys-glass-shadow);
+  color: var(--atr-sys-color-on-surface);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  [data-atr-surface="glass"] {
+    background: var(--atr-sys-glass-background);
+    backdrop-filter: blur(var(--atr-sys-glass-blur))
+      saturate(var(--atr-sys-glass-saturation));
+  }
+}

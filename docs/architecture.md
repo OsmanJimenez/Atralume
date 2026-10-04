@@ -14,3 +14,5 @@ Internally, responsibilities flow downward:
 A layer may depend on itself or a preceding layer, but cycles are forbidden. `tools/check-architecture.mjs` resolves relative imports and TypeScript aliases, ignores stories/tests as runtime edges, validates representative policy fixtures, and reports violations with source and target paths.
 
 Components are standalone, strict, zoneless-compatible, and use OnPush change detection. CSS custom properties prefixed `--atr-` are the public styling contract. Theme (`data-atr-theme`) and surface treatment (`data-atr-surface`) are deliberately orthogonal. Angular Aria/CDK are available for future behavior but do not supply Atralume's visual styling.
+
+Design tokens use three layers: DTCG reference scales, semantic system roles, and minimal component aliases. Style Dictionary generates cached CSS and manifests before the library and Storybook builds. See [theming](theming.md) for the public contract and maintenance workflow.

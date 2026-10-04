@@ -22,7 +22,7 @@
           }
         ],
         "styles": [
-          "libs/angular/src/lib/foundations/styles/theme.css",
+          "libs/angular/src/styles/generated/foundations.css",
           "apps/playground/src/styles.scss"
         ]
       },

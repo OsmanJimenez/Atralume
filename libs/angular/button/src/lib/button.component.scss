@@ -1,0 +1,53 @@
+.atr-button {
+  align-items: center;
+  appearance: none;
+  background: var(--atr-comp-button-container-color);
+  border: 0;
+  border-radius: var(--atr-comp-button-container-radius);
+  color: var(--atr-comp-button-label-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--atr-comp-button-label-font-family);
+  font-size: var(--atr-comp-button-label-font-size);
+  font-weight: var(--atr-comp-button-label-font-weight);
+  justify-content: center;
+  letter-spacing: var(--atr-comp-button-label-letter-spacing);
+  min-block-size: var(--atr-comp-button-container-height);
+  padding-inline: var(--atr-comp-button-container-padding-inline);
+  position: relative;
+  transition:
+    filter var(--atr-sys-motion-duration-short)
+      var(--atr-sys-motion-easing-standard),
+    transform var(--atr-sys-motion-duration-short)
+      var(--atr-sys-motion-easing-standard);
+}
+
+.atr-button:hover:not(:disabled) {
+  filter: brightness(calc(1 + var(--atr-sys-state-hover-opacity)));
+}
+
+.atr-button:active:not(:disabled) {
+  filter: brightness(calc(1 - var(--atr-sys-state-pressed-opacity)));
+}
+
+.atr-button:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) var(--atr-sys-focus-ring-style)
+    var(--atr-sys-color-focus);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+.atr-button:disabled {
+  background: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface)
+      calc(var(--atr-comp-button-disabled-container-opacity) * 100%),
+    transparent
+  );
+  color: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface)
+      calc(var(--atr-comp-button-disabled-content-opacity) * 100%),
+    transparent
+  );
+  cursor: not-allowed;
+}

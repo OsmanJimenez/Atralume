@@ -1,0 +1,8 @@
+<div class="token-table" role="table" aria-label="Generated design tokens">
+  @for (token of visibleTokens(); track token.name) {
+    <div class="token-row" role="row">
+      <code role="cell">--{{ token.name }}</code>
+      <span role="cell">{{ token.value }}</span>
+    </div>
+  }
+</div>

@@ -8,9 +8,17 @@
     "**/*.css"
   ],
   "exports": {
+    "./styles": {
+      "sass": "./styles/index.scss",
+      "style": "./styles/theme.css",
+      "default": "./styles/index.scss"
+    },
     "./styles/theme.css": {
       "style": "./styles/theme.css",
       "default": "./styles/theme.css"
+    },
+    "./styles/tokens.json": {
+      "default": "./styles/generated/token-manifest.json"
     }
   }
 }

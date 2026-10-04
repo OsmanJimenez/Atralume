@@ -1,0 +1,9 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Tokens from "./foundations.stories";
+
+<Meta title="Foundations/Glass" />
+# Glass Glass centralizes translucent background, opaque fallback, border, blur,
+saturation, shadow, highlight and noise opacity. It should sit above visually
+varied content. Unsupported backdrop filtering, reduced transparency and forced
+colors all retain an opaque readable fallback.
+<Canvas of={Tokens.System} />
