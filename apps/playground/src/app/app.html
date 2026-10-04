@@ -1,0 +1,16 @@
+<main [attr.data-atr-theme]="theme()" data-atr-surface="standard">
+  <section class="hero" data-atr-surface="glass">
+    <p class="eyebrow">Atralume · Phase 0</p>
+    <h1>A luminous foundation for Angular interfaces.</h1>
+    <p class="lede">
+      This playground consumes the public secondary entry point, exactly as an
+      external application would.
+    </p>
+    <div class="actions">
+      <button atrButton type="button" (click)="toggleTheme()">
+        Use {{ theme() === 'light' ? 'dark' : 'light' }} theme
+      </button>
+      <button atrButton type="button" disabled>Disabled</button>
+    </div>
+  </section>
+</main>
