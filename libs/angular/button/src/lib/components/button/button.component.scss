@@ -1,0 +1,169 @@
+.atr-button {
+  --atr-button-background: var(--atr-comp-button-container-color);
+
+  align-items: center;
+  appearance: none;
+  background: var(--atr-button-background);
+  border: 0;
+  border-radius: var(--atr-comp-button-container-radius);
+  color: var(--atr-comp-button-label-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--atr-comp-button-label-font-family);
+  font-size: var(--atr-comp-button-label-font-size);
+  font-weight: var(--atr-comp-button-label-font-weight);
+  justify-content: center;
+  letter-spacing: var(--atr-comp-button-label-letter-spacing);
+  min-block-size: var(--atr-comp-button-container-height);
+  padding-inline: var(--atr-comp-button-container-padding-inline);
+  position: relative;
+  transition:
+    filter var(--atr-comp-button-motion-duration)
+      var(--atr-comp-button-motion-easing),
+    transform var(--atr-comp-button-motion-duration)
+      var(--atr-comp-button-motion-easing);
+}
+
+.atr-button:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(
+    --atr-comp-button-container-hover-color,
+    var(--atr-button-background)
+  );
+  filter: brightness(calc(1 + var(--atr-comp-button-hover-opacity)));
+}
+
+.atr-button:active:not(:disabled, [aria-disabled="true"]) {
+  background: var(
+    --atr-comp-button-container-pressed-color,
+    var(--atr-button-background)
+  );
+  filter: brightness(calc(1 - var(--atr-comp-button-pressed-opacity)));
+}
+
+.atr-button:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) var(--atr-sys-focus-ring-style)
+    var(--atr-sys-color-focus);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+.atr-button {
+  box-sizing: border-box;
+  gap: var(--atr-comp-button-gap);
+  text-decoration: none;
+  border: var(--atr-ref-border-width-thin) solid transparent;
+}
+
+.atr-button__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+}
+
+.atr-button[data-appearance="tonal"] {
+  --atr-button-background: var(
+    --atr-comp-button-tonal-container-color,
+    var(--atr-sys-color-secondary-container)
+  );
+
+  color: var(
+    --atr-comp-button-tonal-label-color,
+    var(--atr-sys-color-on-secondary-container)
+  );
+}
+
+.atr-button[data-appearance="outlined"],
+.atr-button[data-appearance="text"] {
+  --atr-button-background: var(
+    --atr-comp-button-text-container-color,
+    transparent
+  );
+
+  color: var(--atr-comp-button-text-label-color, var(--atr-sys-color-primary));
+}
+
+.atr-button[data-appearance="outlined"] {
+  border-color: var(--atr-comp-button-outline-color);
+}
+
+.atr-button[data-size="small"] {
+  min-block-size: var(--atr-comp-button-height-small);
+  padding-inline: var(--atr-sys-spacing-md);
+}
+
+.atr-button[data-size="large"] {
+  min-block-size: var(--atr-comp-button-height-large);
+}
+
+.atr-button--full {
+  display: flex;
+  inline-size: 100%;
+}
+
+.atr-button--loading .atr-button__content {
+  opacity: 0;
+}
+
+.atr-button__spinner {
+  position: absolute;
+
+  --atr-comp-progress-size-small: var(--atr-ref-spacing-5);
+  --atr-comp-progress-indicator-color: currentcolor;
+  --atr-comp-progress-track-color: transparent;
+  --atr-comp-progress-spinner-duration: var(--atr-comp-button-spinner-duration);
+  --atr-comp-progress-reduced-motion-duration: var(
+    --atr-comp-button-reduced-motion-duration
+  );
+  --atr-comp-progress-motion-easing: var(--atr-comp-button-motion-easing);
+}
+
+.atr-button:focus-visible {
+  outline-color: var(--atr-comp-button-focus-ring-color);
+  outline-width: var(--atr-comp-button-focus-ring-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atr-button {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .atr-button {
+    border-color: ButtonText;
+  }
+
+  .atr-button:disabled {
+    color: GrayText;
+    background: Canvas;
+  }
+}
+
+.atr-button[aria-disabled="true"] {
+  background: var(
+    --atr-comp-button-disabled-container-color,
+    color-mix(
+      in srgb,
+      var(--atr-sys-color-on-surface)
+        calc(var(--atr-comp-button-disabled-container-opacity) * 100%),
+      transparent
+    )
+  );
+  color: var(
+    --atr-comp-button-disabled-label-color,
+    color-mix(
+      in srgb,
+      var(--atr-sys-color-on-surface)
+        calc(var(--atr-comp-button-disabled-content-opacity) * 100%),
+      transparent
+    )
+  );
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .atr-button[aria-disabled="true"] {
+    color: GrayText;
+    background: Canvas;
+  }
+}

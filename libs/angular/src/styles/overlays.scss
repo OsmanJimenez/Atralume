@@ -1,0 +1,150 @@
+.atr-overlay-context {
+  font-family: var(--atr-ref-font-family-plain);
+}
+
+.atr-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background: var(--atr-comp-overlay-backdrop-color);
+  opacity: var(--atr-comp-overlay-backdrop-opacity);
+}
+
+.atr-modal-panel {
+  box-sizing: border-box;
+  background: var(--atr-comp-dialog-container-color);
+  color: var(--atr-comp-dialog-label-color);
+  border-radius: var(--atr-comp-dialog-shape);
+  box-shadow: var(--atr-comp-dialog-elevation);
+  max-inline-size: min(var(--atr-comp-dialog-max-width), calc(100vw - 2rem));
+  overflow: auto;
+}
+
+.atr-bottom-sheet-panel {
+  inline-size: min(var(--atr-comp-bottom-sheet-max-width), 100vw);
+  background: var(--atr-comp-bottom-sheet-container-color);
+  color: var(--atr-comp-bottom-sheet-label-color);
+  border-radius: var(--atr-comp-bottom-sheet-shape)
+    var(--atr-comp-bottom-sheet-shape) 0 0;
+  padding-block-end: env(safe-area-inset-bottom);
+  max-block-size: calc(100dvh - env(safe-area-inset-top) - 1rem);
+  overflow: auto;
+}
+
+.atr-dialog-title,
+.atr-dialog-content,
+.atr-dialog-actions,
+.atr-bottom-sheet-title,
+.atr-bottom-sheet-content,
+.atr-bottom-sheet-actions {
+  display: block;
+  padding: var(--atr-comp-dialog-padding);
+  margin: 0;
+}
+
+.atr-dialog-actions,
+.atr-bottom-sheet-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--atr-comp-dialog-gap);
+}
+
+.atr-menu {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: var(--atr-ref-spacing-16);
+  max-inline-size: calc(100vw - 2rem);
+  max-block-size: calc(100dvh - 2rem);
+  overflow: auto;
+  background: var(--atr-comp-menu-container-color);
+  color: var(--atr-comp-menu-label-color);
+  padding: var(--atr-comp-menu-gap);
+  border-radius: var(--atr-comp-menu-shape);
+  box-shadow: var(--atr-comp-menu-elevation);
+  font-family: var(--atr-comp-menu-font-family);
+}
+
+.atr-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--atr-comp-menu-gap);
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: var(--atr-comp-menu-padding);
+  border: 0;
+  border-radius: var(--atr-comp-menu-shape);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.atr-menu-item:focus-visible,
+.atr-menu-item:hover {
+  background: var(--atr-sys-color-primary-container);
+  color: var(--atr-sys-color-on-primary-container);
+  outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
+  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+}
+
+.atr-menu-item[aria-disabled="true"] {
+  opacity: var(--atr-sys-state-disabled-content-opacity);
+  cursor: not-allowed;
+}
+
+.atr-menu-item[aria-checked="true"]::before {
+  content: "✓";
+}
+
+.atr-menu-separator {
+  border: 0;
+  border-block-start: var(--atr-ref-border-width-thin) solid
+    var(--atr-comp-menu-border-color);
+  margin-block: var(--atr-comp-menu-gap);
+}
+
+@media (forced-colors: active) {
+  .atr-menu,
+  .atr-modal-panel,
+  .atr-bottom-sheet-panel {
+    border: var(--atr-ref-border-width-thin) solid CanvasText;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atr-overlay-context {
+    animation: none;
+    transition: none;
+  }
+}
+
+.atr-menu[data-atr-surface="glass"],
+.atr-modal-panel[data-atr-surface="glass"],
+.atr-bottom-sheet-panel[data-atr-surface="glass"] {
+  background: var(--atr-sys-glass-fallback-background);
+  color: var(--atr-sys-color-on-surface);
+  border: var(--atr-sys-glass-border-width) solid
+    var(--atr-sys-glass-border-color);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .atr-menu[data-atr-surface="glass"],
+  .atr-modal-panel[data-atr-surface="glass"],
+  .atr-bottom-sheet-panel[data-atr-surface="glass"] {
+    background: var(--atr-sys-glass-background);
+    backdrop-filter: blur(var(--atr-sys-glass-blur))
+      saturate(var(--atr-sys-glass-saturation));
+  }
+}
+
+@media (forced-colors: active) {
+  .atr-menu[data-atr-surface="glass"],
+  .atr-modal-panel[data-atr-surface="glass"],
+  .atr-bottom-sheet-panel[data-atr-surface="glass"] {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+}

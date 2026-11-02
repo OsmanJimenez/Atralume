@@ -1,0 +1,9 @@
+.atr-command-palette-content {
+  padding: var(--atr-comp-command-palette-padding);
+  inline-size: min(34rem, calc(100vw - 4rem));
+}
+
+kbd {
+  margin-inline-start: auto;
+  font: inherit;
+}

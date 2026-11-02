@@ -1,0 +1,27 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--atr-comp-speed-dial-gap);
+  max-inline-size: 100%;
+  font-family: var(--atr-comp-speed-dial-font-family);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-comp-speed-dial-gap);
+  max-inline-size: calc(100vw - 2rem);
+  max-block-size: calc(100dvh - 8rem);
+  overflow: auto;
+}
+
+.actions[hidden] {
+  display: none;
+}
+
+:host([data-orientation="horizontal"]),
+:host([data-orientation="horizontal"]) .actions {
+  flex-direction: row;
+  align-items: center;
+}

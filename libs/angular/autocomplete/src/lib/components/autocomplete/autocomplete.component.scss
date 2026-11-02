@@ -1,0 +1,11 @@
+:host {
+  --atr-comp-combobox-container-color: var(
+    --atr-comp-autocomplete-container-color
+  );
+  --atr-comp-combobox-label-color: var(--atr-comp-autocomplete-label-color);
+  --atr-comp-combobox-border-color: var(--atr-comp-autocomplete-border-color);
+  --atr-comp-combobox-shape: var(--atr-comp-autocomplete-shape);
+
+  display: block;
+  min-inline-size: 0;
+}

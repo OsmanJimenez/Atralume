@@ -1,0 +1,14 @@
+@if (hasImage()) {
+  <img
+    [src]="src()"
+    alt=""
+    [loading]="loading()"
+    width="64"
+    height="64"
+    (error)="imageFailed()"
+  />
+} @else if (displayInitials()) {
+  <span aria-hidden="true">{{ displayInitials() }}</span>
+} @else {
+  <atr-icon name="user" />
+}

@@ -1,0 +1,10 @@
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--atr-sys-spacing-md);
+}
+
+:host {
+  display: block;
+  font-family: var(--atr-ref-font-family-plain);
+}

@@ -1,0 +1,8 @@
+# Defence in depth: package.json `files` is the primary publication allow-list.
+**/*.map
+**/*.stories.ts
+**/*.spec.ts
+**/*.mdx
+src/
+testing/
+tools/

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
-import { chromium } from "playwright";
+import { launchBrowser } from "./browser.mjs";
 
 const root = path.resolve("dist/storybook/angular");
 if (!fs.existsSync(path.join(root, "index.html")))
@@ -30,7 +30,7 @@ const server = http.createServer((request, response) => {
 });
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const { port } = server.address();
-const browser = await chromium.launch({ headless: true });
+const browser = await launchBrowser();
 
 async function computed(story, media = {}, index = 0) {
   const page = await browser.newPage();
@@ -84,16 +84,20 @@ try {
     { colorScheme: "dark" },
     1,
   );
-  const systemLight = await computed("atoms-button--system", {
-    colorScheme: "light",
-  });
-  const systemDark = await computed("atoms-button--system", {
-    colorScheme: "dark",
-  });
+  const systemLight = await computed(
+    "atoms-button--themes",
+    { colorScheme: "light" },
+    2,
+  );
+  const systemDark = await computed(
+    "atoms-button--themes",
+    { colorScheme: "dark" },
+    2,
+  );
   const overridden = await computed("atoms-button--consumer-override");
   const nestedLight = await computed("atoms-button--nested-themes", {}, 0);
   const nestedDark = await computed("atoms-button--nested-themes", {}, 1);
-  const reduced = await computed("atoms-button--default", {
+  const reduced = await computed("atoms-button--playground&args=loading:true", {
     reducedMotion: "reduce",
   });
   const glass = await glassComputed();

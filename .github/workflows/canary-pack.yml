@@ -1,0 +1,39 @@
+name: Atralume Canary Package
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atralume-canary-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: git fetch origin develop --depth=1
+      - run: npm run release:status
+      - run: npm run verify
+      - run: npm run release:dry-run
+      - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+        with:
+          name: atralume-canary-${{ github.sha }}
+          path: |
+            dist/libs/angular/*.tgz
+            dist/release/
+          if-no-files-found: error
+          retention-days: 14

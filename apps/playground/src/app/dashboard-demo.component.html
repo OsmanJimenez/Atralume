@@ -1,0 +1,221 @@
+<header class="dashboard-heading" id="dashboard-overview">
+  <div>
+    <p class="eyebrow">Application foundations</p>
+    <h2>A workspace, composed.</h2>
+    <p>One catalog for identity, content and everyday actions.</p>
+  </div>
+  <button
+    atrIconButton
+    type="button"
+    [atrMenuTriggerFor]="commands"
+    aria-label="Workspace commands"
+    atrTooltip="Open workspace commands"
+    tooltipId="dashboard-menu-help"
+  >
+    <atr-icon name="menu" />
+  </button>
+</header>
+<nav atrNavigationBar label="Dashboard navigation">
+  <a atrNavigationItem active href="#dashboard-overview"
+    ><atr-icon name="user" /><span>Overview</span></a
+  ><a atrNavigationItem href="#dashboard-projects"
+    ><atr-icon name="check" /><span>Projects</span></a
+  ><a atrNavigationItem href="#dashboard-forms"
+    ><span aria-hidden="true">◇</span><span>Forms</span></a
+  >
+</nav>
+<div class="dashboard-grid">
+  <atr-card appearance="elevated"
+    ><header atrCardHeader>
+      <atr-avatar [name]="name()" alt="" />
+      <div>
+        <h3>{{ name() }}</h3>
+        <atr-badge tone="success"
+          ><atr-icon name="check" size="small" />Active</atr-badge
+        >
+      </div>
+    </header>
+    <div atrCardContent>
+      <p>Personal workspace</p>
+      <atr-chip-set
+        label="Project filters"
+        (selectionChange)="filters.set($event)"
+        ><atr-chip kind="filter" value="design" label="Design" /><atr-chip
+          kind="filter"
+          value="development"
+          label="Development"
+      /></atr-chip-set>
+      <p class="supporting">{{ filters().length }} filters selected</p>
+    </div>
+    <footer atrCardActions>
+      <button
+        #profileOrigin
+        atrButton
+        type="button"
+        (click)="openProfile(profile, $event)"
+      >
+        Edit profile</button
+      ><button atrButton type="button" appearance="text" disabled>
+        Invite pending
+      </button>
+    </footer></atr-card
+  >
+  <atr-card appearance="glass" class="custom-card" id="dashboard-projects"
+    ><header atrCardHeader>
+      <h3>Projects</h3>
+      <button
+        atrButton
+        type="button"
+        appearance="text"
+        (click)="toggleLoading()"
+      >
+        {{ loading() ? "Show records" : "Preview loading" }}
+      </button>
+    </header>
+    <div atrCardContent [attr.aria-busy]="loading()">
+      <atr-tabs label="Project views"
+        ><div atrTabList>
+          <button
+            atrTab
+            id="dashboard-current-tab"
+            panel="dashboard-current-panel"
+            type="button"
+          >
+            Current</button
+          ><button
+            atrTab
+            id="dashboard-activity-tab"
+            panel="dashboard-activity-panel"
+            type="button"
+          >
+            Activity
+          </button>
+        </div>
+        <section
+          atrTabPanel
+          id="dashboard-current-panel"
+          labelledBy="dashboard-current-tab"
+        >
+          @if (loading()) {
+            <atr-skeleton /><atr-skeleton /><atr-skeleton />
+          } @else {
+            <ul atrList>
+              <li atrListItem>
+                <span
+                  ><span atrListHeadline>Design tokens</span
+                  ><span atrListSupporting
+                    >Shared decisions across every theme</span
+                  ></span
+                >
+              </li>
+              <li atrListItem>
+                <span
+                  ><span atrListHeadline>Application shell</span
+                  ><span atrListSupporting
+                    >Composition, focus and navigation</span
+                  ></span
+                >
+              </li>
+            </ul>
+          }
+          <p class="supporting">Page {{ page() }} of 12</p>
+          <atr-pagination
+            [pageCount]="12"
+            [loading]="loading()"
+            [(page)]="page"
+          />
+        </section>
+        <section
+          atrTabPanel
+          id="dashboard-activity-panel"
+          labelledBy="dashboard-activity-tab"
+        >
+          <p>Every action has an accessible result.</p>
+          <button
+            #notificationOrigin
+            atrButton
+            type="button"
+            (click)="notify('Workspace synchronized', $event)"
+          >
+            Show feedback
+          </button>
+          <p aria-live="polite">Last result: {{ result() }}</p>
+        </section></atr-tabs
+      >
+    </div></atr-card
+  >
+</div>
+<section
+  class="dashboard-help"
+  data-atr-theme="dark"
+  data-atr-surface="standard"
+>
+  <h3>A nested theme</h3>
+  <atr-accordion
+    ><atr-accordion-item id="dashboard-help"
+      ><span atrAccordionHeader>How is this customized?</span>
+      <p>
+        Functional variants are inputs. Theme, surface and brand details are CSS
+        tokens.
+      </p></atr-accordion-item
+    ></atr-accordion
+  >
+  <div class="dashboard-actions">
+    <button
+      #createOrigin
+      atrFab
+      type="button"
+      extended
+      (click)="openProfile(profile, $event)"
+    >
+      + Create project</button
+    ><atr-speed-dial id="dashboard-quick-actions" label="Quick create"
+      ><button
+        atrSpeedDialAction
+        type="button"
+        (click)="notify('Document created')"
+      >
+        Document</button
+      ><button
+        atrSpeedDialAction
+        type="button"
+        (click)="notify('Project created')"
+      >
+        Project
+      </button></atr-speed-dial
+    >
+  </div>
+</section>
+<section id="dashboard-forms">
+  <h3>Forms — existing controls</h3>
+  <atr-forms-demo />
+</section>
+<ng-template #commands
+  ><div atrMenu aria-label="Workspace commands">
+    <button atrMenuItem (invoked)="notify('Workspace synchronized')">
+      Synchronize</button
+    ><button atrMenuItem [disabled]="true">Transfer workspace</button>
+  </div></ng-template
+>
+<ng-template #profile
+  ><h2 atrDialogTitle id="dashboard-profile-title">Edit profile</h2>
+  <div atrDialogContent>
+    <atr-form-field label="Display name"
+      ><input atrInput [formControl]="displayName" /></atr-form-field
+    ><button
+      atrButton
+      appearance="text"
+      type="button"
+      [atrMenuTriggerFor]="commands"
+    >
+      Profile commands
+    </button>
+  </div>
+  <footer atrDialogActions>
+    <button atrButton type="button" appearance="text" atrDialogClose>
+      Cancel</button
+    ><button atrButton type="button" [atrDialogClose]="'saved'">
+      Save profile
+    </button>
+  </footer></ng-template
+>

@@ -1,0 +1,53 @@
+<div hidden><ng-content /></div>
+<nav [attr.aria-label]="label() + ' steps'">
+  <ol>
+    @for (step of steps(); track step.stepId(); let index = $index) {
+      <li>
+        <button
+          #header
+          atrButton
+          data-step-header
+          type="button"
+          [appearance]="activeIndex() === index ? 'tonal' : 'text'"
+          [id]="step.stepId() + '-header'"
+          [attr.aria-controls]="
+            activeIndex() === index ? step.stepId() + '-panel' : null
+          "
+          [attr.aria-current]="activeIndex() === index ? 'step' : null"
+          [disabled]="!canActivate(index)"
+          [attr.tabindex]="
+            (focusedHeader() ?? activeIndex()) === index ? 0 : -1
+          "
+          (click)="activate(index)"
+          (focus)="focusHeader(index)"
+        >
+          <span>{{ index + 1 }}. {{ step.label() }}</span>
+          @if (step.isComplete()) {
+            <atr-icon name="check" /><span>Completed</span>
+          }
+          @if (step.optional()) {
+            <span>Optional</span>
+          }
+          @if (step.hasError()) {
+            <atr-icon name="warning" /><span>{{
+              step.error() || "Error"
+            }}</span>
+          }
+        </button>
+      </li>
+    }
+  </ol>
+</nav>
+@if (activeStep(); as step) {
+  <section
+    class="atr-step-content"
+    role="region"
+    [id]="step.stepId() + '-panel'"
+    [attr.aria-labelledby]="step.stepId() + '-header'"
+    tabindex="-1"
+  >
+    @if (step.content(); as content) {
+      <ng-container [ngTemplateOutlet]="content" />
+    }
+  </section>
+}

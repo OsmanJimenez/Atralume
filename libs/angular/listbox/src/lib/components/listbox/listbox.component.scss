@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  min-block-size: var(--atr-comp-selection-option-height);
+  padding: var(--atr-comp-listbox-gap);
+  border-radius: var(--atr-comp-selection-panel-shape);
+  color: var(--atr-comp-listbox-label-color);
+  background: var(--atr-comp-listbox-container-color);
+  font-family: var(--atr-ref-font-family-plain);
+}
+
+:host(:focus-visible) {
+  outline: var(--atr-sys-focus-ring-width) solid
+    var(--atr-comp-listbox-focus-color);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+.atr-option-group-label {
+  padding: var(--atr-comp-listbox-padding);
+  font-weight: 600;
+}
+
+:host([aria-orientation="horizontal"]) {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (forced-colors: active) {
+  :host {
+    border: 1px solid CanvasText;
+  }
+}

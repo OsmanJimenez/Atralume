@@ -1,0 +1,62 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/pagination.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Pagination
+
+Use for a known number of pages. pageCount must be a positive integer. page is a model (1-based); siblingCount controls adjacent numbered pages. First/Previous/Next/Last boundaries and loading disable activation. Ellipses are noninteractive. The default uses buttons for local state; supply href(page) for real anchors and browser navigation. The library does not route programmatically. Out-of-range current page is clamped visually.
+
+## Import, API and minimum composition
+
+```ts
+import { AtralumePagination } from "@atralume/angular/pagination";
+```
+
+```html
+<atr-pagination [pageCount]="50" [page]="3" />
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Use for a known number of pages. pageCount must be a positive integer. page is a model (1-based); siblingCount controls adjacent numbered pages. First/Previous/Next/Last boundaries and loading disable activation. Ellipses are noninteractive. The default uses buttons for local state; supply href(page) for real anchors and browser navigation. The library does not route programmatically. Out-of-range current page is clamped visually.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-pagination-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-pagination-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                | Member         | Kind    | Type                                 | Default        |
+| -------------------- | -------------- | ------- | ------------------------------------ | -------------- |
+| `AtralumePagination` | `label`        | `Input` | `string`                             | `"Pagination"` |
+| `AtralumePagination` | `page`         | `Model` | `number`                             | `1`            |
+| `AtralumePagination` | `pageCount`    | `Input` | `number`                             | `1`            |
+| `AtralumePagination` | `siblingCount` | `Input` | `number`                             | `1`            |
+| `AtralumePagination` | `loading`      | `Input` | `boolean`                            | `false`        |
+| `AtralumePagination` | `disabled`     | `Input` | `boolean`                            | `false`        |
+| `AtralumePagination` | `href`         | `Input` | `((page: number) => string) \| null` | `null`         |
+
+{/* public-api:end */}

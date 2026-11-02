@@ -1,0 +1,25 @@
+:host {
+  display: grid;
+  gap: var(--atr-sys-spacing-sm);
+}
+
+.atr-form-field__label {
+  color: var(--atr-comp-form-field-label-color);
+  font-size: var(--atr-comp-form-field-label-font-size);
+  font-weight: var(--atr-comp-form-field-label-font-weight);
+}
+
+.atr-form-field__hint,
+.atr-form-field__error {
+  margin: 0;
+  font-size: var(--atr-sys-typography-body-small-font-size);
+}
+
+.atr-form-field__hint,
+.atr-form-field__optional {
+  color: var(--atr-comp-form-field-hint-color);
+}
+
+.atr-form-field__error {
+  color: var(--atr-comp-form-field-error-color);
+}

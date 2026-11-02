@@ -1,0 +1,101 @@
+@switch (family()) {
+  @case ("listbox") {
+    <atr-listbox
+      label="Available options"
+      [options]="options()"
+      [(value)]="selected"
+      [disabled]="disabled()"
+      [selectionMode]="multiple() ? 'multiple' : 'single'"
+    />
+    <output>Selected: {{ selected().join(", ") }}</output>
+  }
+  @case ("combobox") {
+    <atr-combobox
+      label="Choose a tool"
+      [options]="options()"
+      [formControl]="control"
+      [opened]="loading() || empty() || error() || large()"
+      [displayWith]="display"
+      [(query)]="query"
+      [multiple]="multiple()"
+      [disabled]="disabled()"
+      [loading]="loading()"
+      [loadError]="error() ? 'Options could not be loaded' : null"
+      clearable
+    />
+  }
+  @case ("select") {
+    <atr-select
+      label="Choose a tool"
+      [options]="options()"
+      [formControl]="control"
+      [opened]="loading() || empty() || error() || large()"
+      [displayWith]="display"
+      [multiple]="multiple()"
+      display="chips"
+      [disabled]="disabled()"
+      [loading]="loading()"
+      [loadError]="error() ? 'Options could not be loaded' : null"
+      clearable
+    />
+  }
+  @case ("autocomplete") {
+    <atr-autocomplete
+      label="Search tools"
+      [options]="options()"
+      [formControl]="control"
+      [opened]="loading() || empty() || error() || large()"
+      [displayWith]="display"
+      [(query)]="query"
+      [disabled]="disabled()"
+      [loading]="loading()"
+      [loadError]="error() ? 'Options could not be loaded' : null"
+      clearable
+    />
+  }
+  @case ("popover") {
+    <button
+      atrButton
+      type="button"
+      [disabled]="disabled()"
+      [attr.aria-expanded]="opened()"
+      (click)="openPopover($event)"
+    >
+      Open details
+    </button>
+    @if (origin(); as source) {
+      <atr-popover
+        [origin]="source"
+        [(opened)]="opened"
+        panelRole="dialog"
+        label="Edit details"
+        focus="first"
+        ><atr-form-field label="Name"
+          ><input atrInput value="Alex" /></atr-form-field
+        ><button atrButton type="button" (click)="opened.set(false)">
+          Save details
+        </button></atr-popover
+      >
+    }
+  }
+  @case ("command-palette") {
+    <button
+      atrButton
+      type="button"
+      [disabled]="disabled()"
+      (click)="palette.open($any($event.currentTarget))"
+    >
+      Open commands</button
+    ><atr-command-palette
+      #palette
+      [commands]="empty() ? [] : commands"
+      [loading]="loading()"
+      [loadError]="error() ? 'Commands could not be loaded' : null"
+      [opened]="loading() || empty() || error()"
+      (invoked)="result.set($event.label)"
+    />
+  }
+}
+@if (family() !== "listbox") {
+  <output>Value: {{ result() }}</output>
+}

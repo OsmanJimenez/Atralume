@@ -1,0 +1,9 @@
+:host {
+  --atr-comp-combobox-container-color: var(--atr-comp-select-container-color);
+  --atr-comp-combobox-label-color: var(--atr-comp-select-label-color);
+  --atr-comp-combobox-border-color: var(--atr-comp-select-border-color);
+  --atr-comp-combobox-shape: var(--atr-comp-select-shape);
+
+  display: block;
+  min-inline-size: 0;
+}

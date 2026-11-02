@@ -1,0 +1,38 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "ref": {
+      "overlay": {
+        "z-index": {
+          "$type": "number",
+          "tooltip": {
+            "$value": 1000
+          },
+          "menu": {
+            "$value": 1100
+          },
+          "snackbar": {
+            "$value": 1200
+          },
+          "bottom-sheet": {
+            "$value": 1300
+          },
+          "dialog": {
+            "$value": 1400
+          },
+          "critical": {
+            "$value": 1500
+          }
+        },
+        "stack-step": {
+          "$type": "number",
+          "$value": 1000
+        },
+        "position-gap": {
+          "$type": "number",
+          "$value": 8
+        }
+      }
+    }
+  }
+}

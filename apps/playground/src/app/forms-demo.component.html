@@ -1,0 +1,111 @@
+<section [attr.data-atr-surface]="glass() ? 'glass' : 'standard'">
+  <div class="atr-forms-demo">
+    <h2>Profile preferences</h2>
+    <div class="demo-actions">
+      <button atrButton type="button" (click)="toggleDisabled()">
+        Toggle disabled
+      </button>
+      <button atrButton type="button" (click)="readonly.set(!readonly())">
+        Toggle readonly
+      </button>
+      <button atrButton type="button" (click)="glass.set(!glass())">
+        Toggle glass
+      </button>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <atr-form-field
+        label="Email"
+        hint="Your email stays in this demo."
+        [required]="true"
+        [error]="error('email')"
+      >
+        <input
+          #emailInput
+          atrInput
+          type="email"
+          autocomplete="email"
+          required
+          [readonly]="readonly()"
+          formControlName="email"
+          [attr.aria-invalid]="error('email') ? 'true' : null"
+        />
+      </atr-form-field>
+      <atr-form-field
+        label="Password"
+        hint="Use at least 8 characters."
+        required
+        [error]="error('password')"
+      >
+        <input
+          atrInput
+          type="password"
+          autocomplete="new-password"
+          required
+          [readonly]="readonly()"
+          formControlName="password"
+          [attr.aria-invalid]="error('password') ? 'true' : null"
+        />
+      </atr-form-field>
+      <atr-form-field label="About you" optional>
+        <textarea
+          atrTextarea
+          rows="3"
+          maxlength="500"
+          [readonly]="readonly()"
+          formControlName="notes"
+        ></textarea>
+      </atr-form-field>
+      <label atrControlLabel
+        ><input
+          atrCheckbox
+          type="checkbox"
+          required
+          formControlName="terms"
+          [attr.aria-describedby]="emailInput.id + '-terms-error'"
+        /><span>Accept terms and conditions</span></label
+      >
+      <p [id]="emailInput.id + '-terms-error'">
+        @if (
+          form.controls.terms.invalid &&
+          (form.controls.terms.touched || submitted())
+        ) {
+          Accept the terms to continue.
+        }
+      </p>
+      <fieldset>
+        <legend>Plan</legend>
+        <label atrControlLabel
+          ><input
+            atrRadio
+            type="radio"
+            name="plan"
+            value="personal"
+            formControlName="plan"
+          /><span>Personal</span></label
+        >
+        <label atrControlLabel
+          ><input
+            atrRadio
+            type="radio"
+            name="plan"
+            value="business"
+            formControlName="plan"
+          /><span>Business</span></label
+        >
+      </fieldset>
+      <label atrControlLabel
+        ><input
+          atrSwitch
+          type="checkbox"
+          formControlName="notifications"
+        /><span>Enable notifications</span></label
+      >
+      <button atrButton type="submit" [disabled]="form.disabled">
+        Save preferences
+      </button>
+      <p aria-live="polite">
+        {{ saved() ? "Saved locally for this demo." : "" }}
+      </p>
+    </form>
+  </div>
+</section>

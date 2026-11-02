@@ -1,0 +1,21 @@
+<button
+  #trigger
+  atrFab
+  type="button"
+  [disabled]="disabled()"
+  [attr.aria-label]="label()"
+  [attr.aria-expanded]="visible()"
+  [attr.aria-controls]="id() + '-actions'"
+  (click)="toggle()"
+>
+  {{ visible() ? "×" : "+" }}
+</button>
+<div
+  [id]="id() + '-actions'"
+  role="group"
+  [attr.aria-label]="label() + ' actions'"
+  [hidden]="!visible()"
+  class="actions"
+>
+  <ng-content select="[atrSpeedDialAction]" />
+</div>

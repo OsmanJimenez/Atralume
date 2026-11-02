@@ -32,6 +32,13 @@ documentation.json
 storybook-static/
 playwright-report/
 test-results/
+blob-report/
+*.tgz
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
 
 # Generated design-token artifacts (recreated by npm run tokens:build)
 /libs/angular/src/styles/generated/

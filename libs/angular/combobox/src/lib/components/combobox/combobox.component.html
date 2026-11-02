@@ -1,0 +1,125 @@
+<atr-form-field
+  [label]="label()"
+  [hint]="hint()"
+  [error]="error() || loadError()"
+  [required]="required()"
+>
+  <div class="atr-input-group">
+    @if (editable()) {
+      <input
+        atrComboboxInput
+        data-atr-value-control
+        type="text"
+        [id]="controlId()"
+        [value]="query()"
+        [placeholder]="placeholder()"
+        [disabled]="blocked()"
+        [readOnly]="readonly()"
+        [attr.aria-label]="label()"
+        [attr.aria-required]="required()"
+        [attr.aria-invalid]="displayInvalid()"
+        [opened]="opened() && !blocked()"
+        [popupId]="popupId()"
+        [activeId]="activeId()"
+        [attr.aria-describedby]="descriptions().join(' ') || null"
+        (input)="typed($event)"
+        (keydown)="key($event)"
+        (compositionstart)="composing.set(true)"
+        (compositionend)="compositionEnd($event)"
+      />
+    } @else {
+      <button
+        atrButton
+        appearance="outlined"
+        atrComboboxTrigger
+        data-atr-value-control
+        type="button"
+        [controlId]="controlId()"
+        [popupId]="popupId()"
+        [opened]="opened() && !blocked()"
+        [activeId]="activeId()"
+        [disabled]="blocked()"
+        [readonly]="readonly()"
+        [invalid]="displayInvalid()"
+        [attr.aria-required]="required()"
+        [attr.aria-label]="label()"
+        (click)="toggle()"
+        (keydown)="key($event)"
+      >
+        @if (triggerTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template"
+            [ngTemplateOutletContext]="{ $implicit: selectedValues() }"
+          />
+        } @else if (display() === "count" && selectedValues().length) {
+          {{ selectedValues().length }} selected
+        } @else {
+          {{ displayValue() || placeholder() }}
+        }
+        <atr-icon name="chevron-down" />
+      </button>
+    }
+    @if (clearable() && selectedValues().length) {
+      <button
+        atrIconButton
+        type="button"
+        [attr.aria-label]="'Clear ' + label()"
+        [disabled]="blocked() || readonly()"
+        (click)="clear()"
+      >
+        <atr-icon name="close" />
+      </button>
+    }
+  </div>
+</atr-form-field>
+@if (multiple() && display() === "chips") {
+  <div
+    class="selection"
+    role="group"
+    [attr.aria-label]="label() + ' selections'"
+  >
+    @for (value of selectedValues(); track $index) {
+      <atr-chip
+        [label]="displayLabel(value)"
+        kind="input"
+        removable
+        [disabled]="blocked() || readonly()"
+        (removed)="remove(value)"
+      />
+    }
+  </div>
+}
+@if (inline() && opened() && !blocked()) {
+  <ng-container [ngTemplateOutlet]="popup" />
+}
+<ng-template #popup>
+  <div atrComboboxPopup>
+    @if (loading()) {
+      <div atrComboboxLoading>
+        <atr-progress-spinner [label]="loadingText()" size="small" />
+        {{ loadingText() }}
+      </div>
+    }
+    @if (loadError()) {
+      <p role="status">{{ loadError() }}</p>
+    }
+    <atr-listbox
+      [id]="popupId()"
+      [label]="label() + ' options'"
+      [options]="loading() ? [] : filteredOptions()"
+      [value]="selectedValues()"
+      (valueChange)="choose($event)"
+      (chosen)="chosen()"
+      [selectionMode]="multiple() ? 'multiple' : 'single'"
+      focusMode="activedescendant"
+      [tabIndex]="-1"
+      [readonly]="readonly()"
+      [compareWith]="compareWith()"
+      [optionTemplate]="optionTemplate()"
+      (activeIdChange)="activeId.set($event)"
+    />
+    @if (!loading() && !loadError() && !filteredOptions().length) {
+      <p atrComboboxEmpty>{{ emptyText() }}</p>
+    }
+  </div>
+</ng-template>

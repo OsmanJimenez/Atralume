@@ -1,0 +1,66 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/snackbar.service.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Snackbar
+
+Snackbar unifies short-lived Toast feedback. Do not use it as the only location for a critical or persistent error. The service supports queue, replace and ignore policies. Default duration is 5000ms; duration=0 stays until action/dismiss. Message is a polite live region; action and dismissal use native buttons. Hover and focus independently pause remaining timeout. Use descriptive action text and sufficient reading time. afterClosed reports action, dismiss, timeout or replaced.
+
+## Import and API
+
+Import public components, directives, services and types from `@atralume/angular/snackbar`. See the exported TypeScript interfaces for all configuration options. No CDK type is required in consuming templates or service calls. The executable demo source shows component/template composition and typed results.
+
+## Accessibility, keyboard and focus
+
+Snackbar unifies short-lived Toast feedback. Do not use it as the only location for a critical or persistent error. The service supports queue, replace and ignore policies. Default duration is 5000ms; duration=0 stays until action/dismiss. Message is a polite live region; action and dismissal use native buttons. Hover and focus independently pause remaining timeout. Use descriptive action text and sufficient reading time. afterClosed reports action, dismiss, timeout or replaced.
+
+Escape dismisses the top overlay before lower overlays. Focus must return to a connected origin when configured. Keep visible names and labels independent of overlays. Check Tab and Shift+Tab through modal content and preserve a clear dismissal action.
+
+## Context propagation and personalization
+
+The shared infrastructure captures the nearest theme, surface and density attributes, direction and only `--atr-sys-*`, `--atr-comp-*`, `--atr-ref-*` custom properties. It does not copy all computed styles. Explicit contextClasses support consumer theme classes. System color preference refreshes modal contexts. Open a new panel or refresh consumer composition after changing arbitrary runtime brand overrides.
+
+Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay CSS. Component tokens use `--atr-comp-snackbar-*`. Consumers control brand through tokens, functional choices through typed configuration. Glass belongs to the originating context and has an opaque fallback. Z-index roles and stack offsets are shared system tokens.
+
+```css
+.custom {
+  --atr-comp-snackbar-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Keyboard} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical positioning and viewport collision fallback support RTL and small viewports. Dynamic viewport limits and safe areas avoid covering all content. Reduced motion has no nonessential panel animation; forced colors preserves boundaries. Do not nest interactive content in tooltips, use menus for route navigation, or remove modal labels. Do not create a second Modal or Toast service. Server calls return closed references and do not attach browser overlays; trigger-created overlays clean up with their owner.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+Configuration and native host behavior are described above; the family has no extra visual inputs.
+
+```ts
+export type SnackbarTone = "neutral" | "success" | "info" | "warning" | "error";
+
+export type SnackbarResult = "action" | "dismiss" | "timeout" | "replaced";
+
+export interface SnackbarConfig {
+  message: string;
+  action?: string;
+  dismissLabel?: string;
+  duration?: number;
+  tone?: SnackbarTone;
+  position?: "top" | "bottom";
+  policy?: "queue" | "replace" | "ignore";
+  origin?: HTMLElement;
+  owner?: DestroyRef;
+}
+```
+
+{/* public-api:end */}

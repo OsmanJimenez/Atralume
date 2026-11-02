@@ -4,41 +4,187 @@
     "sys": {
       "color": {
         "$type": "color",
-        "primary": { "$value": "{atr.ref.color.primary.80}" },
-        "on-primary": { "$value": "{atr.ref.color.primary.20}" },
-        "primary-container": { "$value": "{atr.ref.color.primary.40}" },
-        "on-primary-container": { "$value": "{atr.ref.color.primary.90}" },
-        "secondary": { "$value": "{atr.ref.color.secondary.80}" },
-        "on-secondary": { "$value": "{atr.ref.color.secondary.20}" },
-        "secondary-container": { "$value": "{atr.ref.color.secondary.40}" },
-        "on-secondary-container": { "$value": "{atr.ref.color.secondary.90}" },
-        "tertiary": { "$value": "{atr.ref.color.tertiary.80}" },
-        "on-tertiary": { "$value": "{atr.ref.color.tertiary.20}" },
-        "tertiary-container": { "$value": "{atr.ref.color.tertiary.40}" },
-        "on-tertiary-container": { "$value": "{atr.ref.color.tertiary.90}" },
-        "error": { "$value": "{atr.ref.color.error.80}" },
-        "on-error": { "$value": "{atr.ref.color.error.20}" },
-        "error-container": { "$value": "{atr.ref.color.error.40}" },
-        "on-error-container": { "$value": "{atr.ref.color.error.90}" },
-        "surface": { "$value": "{atr.ref.color.neutral.10}" },
-        "on-surface": { "$value": "{atr.ref.color.neutral.90}" },
-        "surface-variant": { "$value": "{atr.ref.color.neutral-variant.30}" },
+        "primary": {
+          "$value": "{atr.ref.color.primary.80}"
+        },
+        "on-primary": {
+          "$value": "{atr.ref.color.primary.20}"
+        },
+        "primary-container": {
+          "$value": "{atr.ref.color.primary.40}"
+        },
+        "on-primary-container": {
+          "$value": "{atr.ref.color.primary.90}"
+        },
+        "secondary": {
+          "$value": "{atr.ref.color.secondary.80}"
+        },
+        "on-secondary": {
+          "$value": "{atr.ref.color.secondary.20}"
+        },
+        "secondary-container": {
+          "$value": "{atr.ref.color.secondary.40}"
+        },
+        "on-secondary-container": {
+          "$value": "{atr.ref.color.secondary.90}"
+        },
+        "tertiary": {
+          "$value": "{atr.ref.color.tertiary.80}"
+        },
+        "on-tertiary": {
+          "$value": "{atr.ref.color.tertiary.20}"
+        },
+        "tertiary-container": {
+          "$value": "{atr.ref.color.tertiary.40}"
+        },
+        "on-tertiary-container": {
+          "$value": "{atr.ref.color.tertiary.90}"
+        },
+        "error": {
+          "$value": "{atr.ref.color.error.80}"
+        },
+        "on-error": {
+          "$value": "{atr.ref.color.error.20}"
+        },
+        "error-container": {
+          "$value": "{atr.ref.color.error.40}"
+        },
+        "on-error-container": {
+          "$value": "{atr.ref.color.error.90}"
+        },
+        "surface": {
+          "$value": "{atr.ref.color.neutral.10}"
+        },
+        "on-surface": {
+          "$value": "{atr.ref.color.neutral.90}"
+        },
+        "surface-variant": {
+          "$value": "{atr.ref.color.neutral-variant.30}"
+        },
         "on-surface-variant": {
           "$value": "{atr.ref.color.neutral-variant.80}"
         },
-        "surface-container-lowest": { "$value": "{atr.ref.color.neutral.0}" },
-        "surface-container-low": { "$value": "{atr.ref.color.neutral.10}" },
-        "surface-container": { "$value": "{atr.ref.color.neutral.20}" },
-        "surface-container-high": { "$value": "{atr.ref.color.neutral.24}" },
-        "surface-container-highest": { "$value": "{atr.ref.color.neutral.30}" },
-        "outline": { "$value": "{atr.ref.color.neutral-variant.60}" },
-        "outline-variant": { "$value": "{atr.ref.color.neutral-variant.30}" },
-        "inverse-surface": { "$value": "{atr.ref.color.neutral.90}" },
-        "inverse-on-surface": { "$value": "{atr.ref.color.neutral.20}" },
-        "inverse-primary": { "$value": "{atr.ref.color.primary.40}" },
-        "scrim": { "$value": "{atr.ref.color.neutral.0}" },
-        "shadow": { "$value": "{atr.ref.color.neutral.0}" },
-        "focus": { "$value": "{atr.ref.color.primary.80}" }
+        "surface-container-lowest": {
+          "$value": "{atr.ref.color.neutral.0}"
+        },
+        "surface-container-low": {
+          "$value": "{atr.ref.color.neutral.10}"
+        },
+        "surface-container": {
+          "$value": "{atr.ref.color.neutral.20}"
+        },
+        "surface-container-high": {
+          "$value": "{atr.ref.color.neutral.24}"
+        },
+        "surface-container-highest": {
+          "$value": "{atr.ref.color.neutral.30}"
+        },
+        "outline": {
+          "$value": "{atr.ref.color.neutral-variant.60}"
+        },
+        "outline-variant": {
+          "$value": "{atr.ref.color.neutral-variant.30}"
+        },
+        "inverse-surface": {
+          "$value": "{atr.ref.color.neutral.90}"
+        },
+        "inverse-on-surface": {
+          "$value": "{atr.ref.color.neutral.20}"
+        },
+        "inverse-primary": {
+          "$value": "{atr.ref.color.primary.40}"
+        },
+        "scrim": {
+          "$value": "{atr.ref.color.neutral.0}"
+        },
+        "shadow": {
+          "$value": "{atr.ref.color.neutral.0}"
+        },
+        "focus": {
+          "$value": "{atr.ref.color.primary.80}"
+        },
+        "success": {
+          "$value": "{atr.ref.color.success.80}"
+        },
+        "on-success": {
+          "$value": "{atr.ref.color.success.20}"
+        },
+        "success-container": {
+          "$value": "{atr.ref.color.success.40}"
+        },
+        "on-success-container": {
+          "$value": "{atr.ref.color.success.90}"
+        },
+        "warning": {
+          "$value": "{atr.ref.color.warning.80}"
+        },
+        "on-warning": {
+          "$value": "{atr.ref.color.warning.20}"
+        },
+        "warning-container": {
+          "$value": "{atr.ref.color.warning.40}"
+        },
+        "on-warning-container": {
+          "$value": "{atr.ref.color.warning.90}"
+        },
+        "info": {
+          "$value": "{atr.ref.color.info.80}"
+        },
+        "on-info": {
+          "$value": "{atr.ref.color.info.20}"
+        },
+        "info-container": {
+          "$value": "{atr.ref.color.info.40}"
+        },
+        "on-info-container": {
+          "$value": "{atr.ref.color.info.90}"
+        }
+      },
+      "navigation": {
+        "item": {
+          "active-container-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.primary-container}"
+          },
+          "active-label-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.on-primary-container}"
+          },
+          "focus-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.focus}"
+          }
+        }
+      },
+      "feedback": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.inverse-surface}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.inverse-on-surface}"
+        }
+      },
+      "disclosure": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        }
+      },
+      "overlay": {
+        "backdrop-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.scrim}"
+        }
       }
     }
   }

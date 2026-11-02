@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  min-inline-size: 0;
+  color: var(--atr-comp-file-upload-label-color);
+  font-family: var(--atr-ref-font-family-plain);
+}
+
+.drop-zone {
+  padding: var(--atr-comp-file-upload-padding);
+  border-radius: var(--atr-comp-file-upload-shape);
+  background: var(--atr-comp-file-upload-container-color);
+}
+
+.drop-zone--enabled {
+  border: 1px dashed var(--atr-comp-file-upload-border-color);
+}
+
+:host(.atr-file-upload--dragging) .drop-zone {
+  outline: var(--atr-sys-focus-ring-width) solid
+    var(--atr-comp-file-upload-focus-color);
+}
+
+.native-file {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.file-details {
+  flex: 1;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+img {
+  inline-size: var(--atr-ref-spacing-12);
+  block-size: var(--atr-ref-spacing-12);
+  object-fit: cover;
+}
+
+.errors {
+  color: var(--atr-sys-color-error);
+}
+
+@media (forced-colors: active) {
+  .drop-zone--enabled {
+    border-color: CanvasText;
+  }
+}

@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  block-size: var(--atr-comp-progress-height);
+  border-radius: var(--atr-comp-progress-shape);
+  background: var(--atr-comp-progress-track-color);
+}
+
+.indicator {
+  display: block;
+  block-size: 100%;
+  background: var(--atr-comp-progress-indicator-color);
+  transition: inline-size var(--atr-comp-progress-motion-duration)
+    var(--atr-comp-progress-motion-easing);
+}
+
+:host(.atr-progress--indeterminate) .indicator {
+  inline-size: 35%;
+  animation: atr-bar-travel var(--atr-comp-progress-bar-duration)
+    var(--atr-comp-progress-motion-easing) infinite alternate;
+}
+
+@keyframes atr-bar-travel {
+  from {
+    margin-inline-start: 0;
+  }
+
+  to {
+    margin-inline-start: 65%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
+
+  :host(.atr-progress--indeterminate) .indicator {
+    inline-size: 100%;
+    animation: atr-bar-pulse var(--atr-comp-progress-reduced-motion-duration)
+      var(--atr-comp-progress-motion-easing) infinite alternate;
+  }
+}
+
+@keyframes atr-bar-pulse {
+  to {
+    opacity: var(--atr-sys-state-disabled-content-opacity);
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    background: Canvas;
+    border: var(--atr-ref-border-width-thin) solid CanvasText;
+  }
+
+  .indicator {
+    background: Highlight;
+  }
+}

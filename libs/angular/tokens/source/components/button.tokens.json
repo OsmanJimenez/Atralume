@@ -4,8 +4,14 @@
     "comp": {
       "button": {
         "container": {
-          "color": { "$type": "color", "$value": "{atr.sys.color.primary}" },
-          "radius": { "$type": "dimension", "$value": "{atr.sys.shape.full}" },
+          "color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.primary}"
+          },
+          "radius": {
+            "$type": "dimension",
+            "$value": "{atr.sys.shape.full}"
+          },
           "height": {
             "$type": "dimension",
             "$value": "{atr.sys.touch-target.minimum}"
@@ -16,7 +22,10 @@
           }
         },
         "label": {
-          "color": { "$type": "color", "$value": "{atr.sys.color.on-primary}" },
+          "color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.on-primary}"
+          },
           "font-family": {
             "$type": "fontFamily",
             "$value": "{atr.ref.font.family.plain}"
@@ -35,7 +44,10 @@
           }
         },
         "state-layer": {
-          "color": { "$type": "color", "$value": "{atr.sys.color.on-primary}" }
+          "color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.on-primary}"
+          }
         },
         "disabled": {
           "container-opacity": {
@@ -46,6 +58,54 @@
             "$type": "number",
             "$value": "{atr.sys.state.disabled-content-opacity}"
           }
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "outline-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.sys.motion.duration.short}"
+        },
+        "motion-easing": {
+          "$type": "cubicBezier",
+          "$value": "{atr.sys.motion.easing.standard}"
+        },
+        "height-small": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "height-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.16}"
+        },
+        "spinner-duration": {
+          "$type": "duration",
+          "$value": "{atr.ref.duration.activity}"
+        },
+        "reduced-motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.ref.duration.activity-reduced}"
+        },
+        "hover-opacity": {
+          "$type": "number",
+          "$value": "{atr.sys.state.hover-opacity}"
+        },
+        "pressed-opacity": {
+          "$type": "number",
+          "$value": "{atr.sys.state.pressed-opacity}"
         }
       }
     }

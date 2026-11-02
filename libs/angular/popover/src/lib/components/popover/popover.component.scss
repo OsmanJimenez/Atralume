@@ -1,0 +1,30 @@
+.atr-popover-content {
+  box-sizing: border-box;
+  max-inline-size: calc(100vw - 2rem);
+  max-block-size: calc(100dvh - 2rem);
+  overflow: auto;
+  background: var(--atr-comp-popover-container-color);
+  color: var(--atr-comp-popover-label-color);
+  padding: var(--atr-comp-popover-padding);
+  border: 1px solid var(--atr-comp-popover-border-color);
+  border-radius: var(--atr-comp-popover-shape);
+  box-shadow: var(--atr-comp-selection-panel-elevation);
+}
+
+.atr-popover-content--arrow::before {
+  content: "";
+  display: block;
+  inline-size: var(--atr-sys-spacing-sm);
+  block-size: var(--atr-sys-spacing-sm);
+  border-inline-start: 1px solid currentcolor;
+  border-block-start: 1px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+@media (forced-colors: active) {
+  .atr-popover-content {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+}

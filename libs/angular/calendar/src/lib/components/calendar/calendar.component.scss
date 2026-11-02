@@ -1,0 +1,107 @@
+:host {
+  --atr-comp-button-text-label-color: var(--atr-comp-calendar-label-color);
+  --atr-comp-button-tonal-container-color: var(
+    --atr-comp-calendar-selected-container-color
+  );
+  --atr-comp-button-tonal-label-color: var(
+    --atr-comp-calendar-selected-label-color
+  );
+
+  display: block;
+  max-inline-size: 100%;
+  background: var(--atr-comp-calendar-container-color);
+  color: var(--atr-comp-calendar-label-color);
+  border-radius: var(--atr-comp-calendar-shape);
+  padding: var(--atr-comp-calendar-padding);
+  font-family: var(--atr-ref-font-family-plain);
+}
+
+header,
+.period {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--atr-comp-calendar-gap);
+}
+
+.period {
+  flex-wrap: wrap;
+  margin-block: var(--atr-comp-calendar-gap);
+}
+
+.period label {
+  display: flex;
+  align-items: center;
+  gap: var(--atr-comp-calendar-gap);
+}
+
+select {
+  font: inherit;
+  max-inline-size: 12rem;
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  background: var(--atr-comp-calendar-container-color);
+  color: inherit;
+  border: 1px solid var(--atr-comp-calendar-border-color);
+}
+
+table {
+  border-collapse: collapse;
+  inline-size: 100%;
+}
+
+th {
+  font-weight: 500;
+}
+
+td {
+  padding: 0;
+  text-align: center;
+}
+
+td button {
+  padding-inline: 0;
+  min-inline-size: var(--atr-sys-touch-target-minimum);
+  inline-size: 100%;
+}
+
+.previous {
+  transform: rotate(180deg);
+}
+
+:host(:dir(rtl)) header atr-icon {
+  transform: rotate(180deg);
+}
+
+:host(:dir(rtl)) header .previous {
+  transform: none;
+}
+
+.adjacent {
+  text-decoration: underline dotted;
+}
+
+[aria-current="date"] {
+  border-color: var(--atr-comp-calendar-focus-color);
+}
+
+@media (width <= 420px) {
+  :host {
+    padding: var(--atr-sys-spacing-xs);
+  }
+
+  td button {
+    min-inline-size: var(--atr-ref-spacing-8);
+  }
+}
+
+@media (forced-colors: active) {
+  [aria-selected="true"] {
+    outline: 1px solid Highlight;
+  }
+}
+
+.month-label {
+  min-inline-size: 0;
+  text-align: center;
+  overflow-wrap: anywhere;
+}

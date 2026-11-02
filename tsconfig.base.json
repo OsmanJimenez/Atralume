@@ -22,7 +22,81 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@atralume/angular": ["./libs/angular/src/index.ts"],
-      "@atralume/angular/button": ["./libs/angular/button/src/index.ts"]
+      "@atralume/angular/button": ["./libs/angular/button/src/index.ts"],
+      "@atralume/angular/form-field": [
+        "./libs/angular/form-field/src/index.ts"
+      ],
+      "@atralume/angular/input": ["./libs/angular/input/src/index.ts"],
+      "@atralume/angular/textarea": ["./libs/angular/textarea/src/index.ts"],
+      "@atralume/angular/checkbox": ["./libs/angular/checkbox/src/index.ts"],
+      "@atralume/angular/radio": ["./libs/angular/radio/src/index.ts"],
+      "@atralume/angular/switch": ["./libs/angular/switch/src/index.ts"],
+      "@atralume/angular/icon": ["./libs/angular/icon/src/index.ts"],
+      "@atralume/angular/icon-button": [
+        "./libs/angular/icon-button/src/index.ts"
+      ],
+      "@atralume/angular/link": ["./libs/angular/link/src/index.ts"],
+      "@atralume/angular/badge": ["./libs/angular/badge/src/index.ts"],
+      "@atralume/angular/avatar": ["./libs/angular/avatar/src/index.ts"],
+      "@atralume/angular/divider": ["./libs/angular/divider/src/index.ts"],
+      "@atralume/angular/progress": ["./libs/angular/progress/src/index.ts"],
+      "@atralume/angular/card": ["./libs/angular/card/src/index.ts"],
+      "@atralume/angular/chip": ["./libs/angular/chip/src/index.ts"],
+      "@atralume/angular/list": ["./libs/angular/list/src/index.ts"],
+      "@atralume/angular/accordion": ["./libs/angular/accordion/src/index.ts"],
+      "@atralume/angular/skeleton": ["./libs/angular/skeleton/src/index.ts"],
+      "@atralume/angular/tooltip": ["./libs/angular/tooltip/src/index.ts"],
+      "@atralume/angular/menu": ["./libs/angular/menu/src/index.ts"],
+      "@atralume/angular/dialog": ["./libs/angular/dialog/src/index.ts"],
+      "@atralume/angular/bottom-sheet": [
+        "./libs/angular/bottom-sheet/src/index.ts"
+      ],
+      "@atralume/angular/snackbar": ["./libs/angular/snackbar/src/index.ts"],
+      "@atralume/angular/tabs": ["./libs/angular/tabs/src/index.ts"],
+      "@atralume/angular/breadcrumbs": [
+        "./libs/angular/breadcrumbs/src/index.ts"
+      ],
+      "@atralume/angular/pagination": [
+        "./libs/angular/pagination/src/index.ts"
+      ],
+      "@atralume/angular/navigation-bar": [
+        "./libs/angular/navigation-bar/src/index.ts"
+      ],
+      "@atralume/angular/side-navigation": [
+        "./libs/angular/side-navigation/src/index.ts"
+      ],
+      "@atralume/angular/fab": ["./libs/angular/fab/src/index.ts"],
+      "@atralume/angular/speed-dial": [
+        "./libs/angular/speed-dial/src/index.ts"
+      ],
+      "@atralume/angular/listbox": ["libs/angular/listbox/src/index.ts"],
+      "@atralume/angular/combobox": ["libs/angular/combobox/src/index.ts"],
+      "@atralume/angular/select": ["libs/angular/select/src/index.ts"],
+      "@atralume/angular/autocomplete": [
+        "libs/angular/autocomplete/src/index.ts"
+      ],
+      "@atralume/angular/popover": ["libs/angular/popover/src/index.ts"],
+      "@atralume/angular/command-palette": [
+        "libs/angular/command-palette/src/index.ts"
+      ],
+      "@atralume/angular/calendar": ["libs/angular/calendar/src/index.ts"],
+      "@atralume/angular/date-picker": [
+        "libs/angular/date-picker/src/index.ts"
+      ],
+      "@atralume/angular/time-picker": [
+        "libs/angular/time-picker/src/index.ts"
+      ],
+      "@atralume/angular/slider": ["libs/angular/slider/src/index.ts"],
+      "@atralume/angular/file-upload": [
+        "libs/angular/file-upload/src/index.ts"
+      ],
+      "@atralume/angular/stepper": ["libs/angular/stepper/src/index.ts"],
+      "@atralume/angular/table": ["libs/angular/table/src/index.ts"],
+      "@atralume/angular/tree": ["libs/angular/tree/src/index.ts"],
+      "@atralume/angular/carousel": ["libs/angular/carousel/src/index.ts"],
+      "@atralume/angular/internal/forms": [
+        "libs/angular/internal/forms/src/index.ts"
+      ]
     }
   }
 }

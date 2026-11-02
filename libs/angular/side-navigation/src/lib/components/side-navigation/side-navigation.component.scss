@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  flex: none;
+  inline-size: var(--atr-comp-side-navigation-width);
+  background: var(--atr-comp-side-navigation-container-color);
+  color: var(--atr-comp-side-navigation-label-color);
+  font-family: var(--atr-comp-side-navigation-font-family);
+}
+
+:host([data-opened="false"]) {
+  display: none;
+}
+
+:host([data-mode="over"]) {
+  display: contents;
+}
+
+:host([data-collapsed="true"]:not([data-mode="over"])) {
+  inline-size: var(--atr-comp-side-navigation-rail-width);
+}
+
+.atr-side-navigation-panel {
+  box-sizing: border-box;
+  max-block-size: 100dvh;
+  overflow: auto;
+  padding: var(--atr-comp-side-navigation-padding);
+}

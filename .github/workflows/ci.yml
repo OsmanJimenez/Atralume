@@ -44,3 +44,9 @@ jobs:
         run: npx --no-install playwright install --with-deps chromium
       - name: Verify
         run: npm run verify
+      - name: Audit catalogue coverage
+        run: npm run catalog:audit
+      - name: Check public API contract
+        run: npm run api:check
+      - name: Check bundle budgets
+        run: npm run bundle:check

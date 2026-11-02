@@ -1,0 +1,15 @@
+/* Shared panel context: the existing overlay infrastructure copies only public tokens. */
+.atr-overlay-context[data-atr-surface="glass"] .atr-combobox-popup,
+.atr-overlay-context[data-atr-surface="glass"] .atr-popover-content {
+  background: var(--atr-sys-glass-background);
+  backdrop-filter: var(--atr-sys-glass-backdrop-filter, blur(16px));
+}
+
+@media (forced-colors: active) {
+  .atr-overlay-context[data-atr-surface="glass"] .atr-combobox-popup,
+  .atr-overlay-context[data-atr-surface="glass"] .atr-popover-content {
+    background: Canvas;
+    color: CanvasText;
+    backdrop-filter: none;
+  }
+}

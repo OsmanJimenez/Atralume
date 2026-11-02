@@ -1,0 +1,62 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/radio.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Radio
+
+Use for mutually exclusive choices. Group related options in a native
+`fieldset` with a descriptive `legend`, and give every radio in that group the
+same `name` and a distinct `value`. Use a checkbox when choices are independent.
+
+## Import and example
+
+```ts
+import { AtralumeRadio, AtralumeRadioHarness } from "@atralume/angular/radio";
+import { AtralumeControlLabel } from "@atralume/angular/form-field";
+```
+
+```html
+<fieldset>
+  <legend>Plan</legend>
+  <label atrControlLabel>
+    <input atrRadio type="radio" name="plan" value="personal" />
+    <span>Personal</span>
+  </label>
+</fieldset>
+```
+
+## API
+
+{/* public-api:start */}
+
+Native properties, attributes and events remain the public control API.
+
+{/* public-api:end */}
+
+The directive adds styling while native checked state, grouping, form value,
+disabled behavior, and browser validation remain authoritative. No custom group
+manager or value accessor is installed.
+
+## States and keyboard
+
+Native radio groups provide arrow-key navigation and selection. Ensure focus
+remains visible and associate any group-level error with the fieldset and its
+controls. Labels should make every option understandable without relying on
+color.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Interaction} />
+
+## Themes and customization
+
+The public theme stylesheet provides light, dark, system, nested-theme, glass,
+forced-colors, and reduced-motion behavior. Radio uses the shared
+`--atr-comp-form-field-*` token family; override those public CSS custom
+properties locally rather than editing package styles.
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />

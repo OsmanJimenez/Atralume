@@ -1,8 +1,45 @@
 {
   "name": "@atralume/angular",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Accessible Angular 22 design-system components and design tokens.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsmanJimenez/Atralume.git"
+  },
+  "homepage": "https://osmanjimenez.github.io/Atralume/",
+  "bugs": {
+    "url": "https://github.com/OsmanJimenez/Atralume/issues"
+  },
+  "keywords": [
+    "angular",
+    "design-system",
+    "accessibility",
+    "wcag"
+  ],
+  "engines": {
+    "node": ">=24.19.0",
+    "npm": ">=11.9.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "files": [
+    "fesm2022/*.mjs",
+    "types/*.d.ts",
+    "styles/**",
+    "*/package.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "peerDependencies": {
-    "@angular/core": "^22.2.0"
+    "@angular/core": "^22.2.0",
+    "@angular/cdk": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/common": "^22.2.0",
+    "rxjs": "^7.8.0"
   },
   "sideEffects": [
     "**/*.css"
@@ -19,6 +56,11 @@
     },
     "./styles/tokens.json": {
       "default": "./styles/generated/token-manifest.json"
+    }
+  },
+  "peerDependenciesMeta": {
+    "@angular/forms": {
+      "optional": true
     }
   }
 }

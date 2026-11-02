@@ -1,0 +1,68 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/skeleton.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Skeleton
+
+Skeletons are decorative placeholders, not progress indicators or live announcements. Mark the loading region aria-busy and provide explanatory text. Dimensions use CSS custom properties. Pulse and shimmer are optional; reduced motion is static.
+
+## Import and composition
+
+```ts
+import { AtralumeSkeleton } from "@atralume/angular/skeleton";
+```
+
+```html
+<section aria-busy="true" aria-label="Loading profile">
+  <atr-skeleton appearance="circle" /><atr-skeleton /><atr-skeleton
+    appearance="rounded"
+    style="--atr-comp-skeleton-height:4rem;margin-top:1rem"
+  />
+</section>
+```
+
+## API, variants and states
+
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+
+## Accessibility, keyboard and focus
+
+Skeletons are decorative placeholders, not progress indicators or live announcements. Mark the loading region aria-busy and provide explanatory text. Dimensions use CSS custom properties. Pulse and shimmer are optional; reduced motion is static.
+
+Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
+
+## Tokens, themes and glass
+
+Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-skeleton-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+
+```css
+.custom {
+  --atr-comp-skeleton-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL and motion
+
+Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
+
+## Common mistakes
+
+Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner              | Member       | Kind    | Type                                             | Default   |
+| ------------------ | ------------ | ------- | ------------------------------------------------ | --------- |
+| `AtralumeSkeleton` | `appearance` | `Input` | `"text" \| "circle" \| "rectangle" \| "rounded"` | `"text"`  |
+| `AtralumeSkeleton` | `animation`  | `Input` | `"pulse" \| "shimmer" \| "none"`                 | `"pulse"` |
+
+{/* public-api:end */}

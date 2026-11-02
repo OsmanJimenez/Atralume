@@ -1,0 +1,24 @@
+<button
+  atrButton
+  appearance="text"
+  #action
+  class="action"
+  type="button"
+  [disabled]="blocked()"
+  [attr.aria-pressed]="kind() === 'filter' ? selected() : null"
+  (click)="activate()"
+>
+  <ng-content select="[atrChipLeading]" />{{ label() }}<ng-content />
+</button>
+@if (removable()) {
+  <button
+    atrIconButton
+    class="remove"
+    type="button"
+    [disabled]="blocked()"
+    [attr.aria-label]="'Remove ' + label()"
+    (click)="remove()"
+  >
+    <atr-icon name="close" size="small" />
+  </button>
+}

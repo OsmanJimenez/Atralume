@@ -1,0 +1,177 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "comp": {
+      "form-field": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface}"
+        },
+        "container-border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "hint-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        },
+        "error-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error}"
+        },
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "text-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "placeholder-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        },
+        "caret-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "background-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "hover-border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "focus-border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "invalid-border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "readonly-background": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container-low}"
+        },
+        "selection-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary-container}"
+        },
+        "selected-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "unselected-border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "checkmark-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary}"
+        },
+        "hover-state-layer": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container-high}"
+        },
+        "pressed-state-layer": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container-highest}"
+        },
+        "disabled-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        },
+        "invalid-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error}"
+        },
+        "container-radius": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.extra-small}"
+        },
+        "container-height": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "compact-height": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.xl}"
+        },
+        "horizontal-padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "control-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.lg}"
+        },
+        "touch-target": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "switch-track-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "switch-track-height": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.lg}"
+        },
+        "switch-thumb-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "switch-thumb-offset": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.xs}"
+        },
+        "label-font-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.typography.label-large.font-size}"
+        },
+        "label-font-family": {
+          "$type": "fontFamily",
+          "$value": "{atr.sys.typography.label-large.font-family}"
+        },
+        "container-border-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "label-font-weight": {
+          "$type": "fontWeight",
+          "$value": "{atr.sys.typography.label-large.font-weight}"
+        },
+        "disabled-opacity": {
+          "$type": "number",
+          "$value": "{atr.sys.state.disabled-content-opacity}"
+        },
+        "motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.sys.motion.duration.short}"
+        },
+        "motion-easing": {
+          "$type": "cubicBezier",
+          "$value": "{atr.sys.motion.easing.standard}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/button.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Button
+
+Use native buttons for actions and anchors with atrButton for navigation. Keep the native type, form attributes and click events. Loading disables activation, sets aria-busy, preserves the label and keeps width stable. Set type="button" inside forms unless submission is intended. Leading and trailing icons are projected content.
+
+## Import and minimum example
+
+```ts
+import {
+  AtralumeButton,
+  AtralumeButtonHarness,
+} from "@atralume/angular/button";
+```
+
+```html
+<button atrButton type="button">Continue</button>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input        | Type                       | Default    |
+| ------------ | -------------------------- | ---------- |
+| `appearance` | `ButtonAppearance`         | `"filled"` |
+| `size`       | `ButtonSize`               | `"medium"` |
+| `disabled`   | `boolean`                  | `false`    |
+| `loading`    | `boolean`                  | `false`    |
+| `fullWidth`  | `boolean`                  | `false`    |
+| `tabindex`   | `string \| number \| null` | `null`     |
+
+```ts
+type ButtonAppearance = "filled" | "tonal" | "outlined" | "text";
+type ButtonSize = "small" | "medium" | "large";
+```
+
+{/* public-api:end */}
+
+Use the Playground controls to explore appearances, sizes, disabled and loading
+states, and full-width layout.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+
+## Accessibility
+
+Use native buttons for actions and anchors with atrButton for navigation. Keep the native type, form attributes and click events. Loading disables activation, sets aria-busy, preserves the label and keeps width stable. Set type="button" inside forms unless submission is intended. Leading and trailing icons are projected content.
+
+Keep names meaningful, preserve visible keyboard focus, and check your application at 200% zoom and in forced colors. Automated axe checks run at error level; review assistive technology and real backgrounds manually as well.
+
+## Customization and component tokens
+
+Functional variants are stable inputs; component tokens control visual details. A theme supplies semantic color decisions, a surface supplies the background context, and an instance override changes one composition. Import `@atralume/angular/styles/theme.css` once, including for directive styles. Do not create CSS-valued inputs.
+
+The public token manifest at `@atralume/angular/styles/tokens.json` lists every token. This atom uses the `--atr-comp-button-*` namespace, including color, size or spacing, shape and motion where applicable.
+
+```css
+.my-example {
+  --atr-comp-button-container-radius: 1rem;
+}
+```
+
+Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
+
+## Themes and surfaces
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
+
+## Common mistakes
+
+Avoid replacing native semantics, encoding information by color alone, removing accessible names, or relying on a tooltip for a label. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.
+
+Optional state overrides are `--atr-comp-button-container-hover-color`, `--atr-comp-button-container-pressed-color`, `--atr-comp-button-disabled-container-color` and `--atr-comp-button-disabled-label-color`. Without an override, states use the selected appearance and semantic disabled opacities. `--atr-comp-button-hover-opacity` and `--atr-comp-button-pressed-opacity` control the state filter; motion uses the component duration and easing tokens.

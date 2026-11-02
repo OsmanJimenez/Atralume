@@ -1,0 +1,16 @@
+<section role="region" [attr.aria-label]="label()" aria-roledescription="carousel">
+  <div class="atr-carousel__viewport" aria-live="off">
+    @for (slide of slides(); track slide.id; let index = $index) {
+      <article class="atr-carousel__slide" role="group" aria-roledescription="slide" [attr.aria-label]="(index + 1) + ' of ' + slides().length + ': ' + slide.label" [attr.aria-hidden]="index !== safeIndex()" [hidden]="index !== safeIndex()">
+        <h3>{{ slide.label }}</h3>
+        @if (slide.description) { <p>{{ slide.description }}</p> }
+      </article>
+    }
+  </div>
+  <div class="atr-carousel__controls">
+    <button type="button" aria-label="Previous slide" [disabled]="!canPrevious()" (click)="previous()">Previous</button>
+    <button type="button" aria-label="Next slide" [disabled]="!canNext()" (click)="next()">Next</button>
+    @if (autoplay()) { <button type="button" [attr.aria-label]="paused() ? 'Resume automatic slides' : 'Pause automatic slides'" (click)="paused() ? resume() : pause()">{{ paused() ? 'Play' : 'Pause' }}</button> }
+  </div>
+  @if (showIndicators()) { <div class="atr-carousel__indicators" role="tablist" aria-label="Choose slide">@for (slide of slides(); track slide.id; let index = $index) { <button type="button" role="tab" [attr.aria-selected]="index === safeIndex()" [attr.aria-label]="'Go to slide ' + (index + 1)" (click)="goTo(index)">{{ index + 1 }}</button> }</div> }
+</section>

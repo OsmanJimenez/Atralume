@@ -1,0 +1,83 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/avatar.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Avatar
+
+Use an image, explicit initials, a name, or a generic fallback for identity. Image errors fall back once per source; changing src permits a new attempt. Initials use the first Unicode code point of the first and last whitespace-separated name segments, at most two, or the first two code points of explicit initials. Combining marks and complex grapheme clusters may need explicit initials. Supply alt when this is the only identifier; use alt="" when an adjacent name provides the same information. The host owns the accessible name and the internal image is decorative. Fixed CSS dimensions and object-fit prevent layout shift; loading defaults to lazy.
+
+## Import and minimum example
+
+```ts
+import {
+  AtralumeAvatar,
+  AtralumeAvatarHarness,
+} from "@atralume/angular/avatar";
+```
+
+```html
+<atr-avatar
+  src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%236b4aa0%22/%3E%3Ccircle cx=%2232%22 cy=%2226%22 r=%2212%22 fill=%22%23fff%22/%3E%3Cpath d=%22M12 64a20 24 0 0 1 40 0%22 fill=%22%23fff%22/%3E%3C/svg%3E"
+  alt="Profile illustration"
+/>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input      | Type                | Default    |
+| ---------- | ------------------- | ---------- |
+| `src`      | `string \| null`    | `null`     |
+| `alt`      | `string`            | `""`       |
+| `name`     | `string \| null`    | `null`     |
+| `initials` | `string \| null`    | `null`     |
+| `size`     | `AvatarSize`        | `"medium"` |
+| `shape`    | `AvatarShape`       | `"circle"` |
+| `loading`  | `"lazy" \| "eager"` | `"lazy"`   |
+
+```ts
+type AvatarSize = "small" | "medium" | "large" | "x-large";
+type AvatarShape = "circle" | "rounded";
+```
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+
+## Accessibility
+
+Use an image, explicit initials, a name, or a generic fallback for identity. Image errors fall back once per source; changing src permits a new attempt. Initials use the first Unicode code point of the first and last whitespace-separated name segments, at most two, or the first two code points of explicit initials. Combining marks and complex grapheme clusters may need explicit initials. Supply alt when this is the only identifier; use alt="" when an adjacent name provides the same information. The host owns the accessible name and the internal image is decorative. Fixed CSS dimensions and object-fit prevent layout shift; loading defaults to lazy.
+
+Keep names meaningful, preserve visible keyboard focus, and check your application at 200% zoom and in forced colors. Automated axe checks run at error level; review assistive technology and real backgrounds manually as well.
+
+## Customization and component tokens
+
+Functional variants are stable inputs; component tokens control visual details. A theme supplies semantic color decisions, a surface supplies the background context, and an instance override changes one composition. Import `@atralume/angular/styles/theme.css` once, including for directive styles. Do not create CSS-valued inputs.
+
+The public token manifest at `@atralume/angular/styles/tokens.json` lists every token. This atom uses the `--atr-comp-avatar-*` namespace, including color, size or spacing, shape and motion where applicable.
+
+```css
+.my-example {
+  --atr-comp-avatar-rounded-shape: 1rem;
+}
+```
+
+Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
+
+## Themes and surfaces
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
+
+## Common mistakes
+
+Avoid replacing native semantics, encoding information by color alone, removing accessible names, or relying on a tooltip for a label. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

@@ -1,0 +1,6 @@
+@if (!dot()) {
+  <ng-content />
+  @if (count() !== null) {
+    <span aria-hidden="true">{{ displayCount() }}</span>
+  }
+}

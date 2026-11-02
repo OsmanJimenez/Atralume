@@ -1,0 +1,12 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/tree.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Tree
+
+`AtralumeTree` is for hierarchical disclosure and selection, not an accordion or treegrid. Import it from `@atralume/angular/tree`. Nodes are immutable consumer data; expanded and selected values are controlled separately and no state is written onto them.
+
+Arrow keys navigate visible nodes, expand or collapse branches, and respect RTL. Home, End, Enter, Space and first-character typeahead are supported. Tree items expose level, position, set size, expanded, selected and disabled semantics. Lazy child loading is represented by a consumer-provided loading node; the component does not request data. Large trees may use CDK virtualization only after validating active-descendant and recycled-row behavior.
+
+<Canvas of={Stories.Default} />

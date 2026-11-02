@@ -1,0 +1,83 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/chip.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Chip
+
+Chips represent actions, filters, suggestions or removable input. Badges represent noninteractive status. Filter chips expose aria-pressed; assist/suggestion/input chips do not pretend to be checkboxes. Removal is a sibling native button with its own name. Chip Set manages single/multiple selection and arrow/Home/End focus; selected is a model signal. Use selectionChange to consume values; no partial CVA is registered.
+
+## Import and composition
+
+```ts
+import { AtralumeChip, AtralumeChipSet } from "@atralume/angular/chip";
+```
+
+```html
+<atr-chip-set label="Technologies" selection="single"
+  ><atr-chip kind="filter" value="angular" label="Angular" /><atr-chip
+    kind="filter"
+    value="css"
+    label="CSS" /><atr-chip kind="input" value="token" label="Tokens" removable
+/></atr-chip-set>
+```
+
+## API, variants and states
+
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+
+## Accessibility, keyboard and focus
+
+Chips represent actions, filters, suggestions or removable input. Badges represent noninteractive status. Filter chips expose aria-pressed; assist/suggestion/input chips do not pretend to be checkboxes. Removal is a sibling native button with its own name. Chip Set manages single/multiple selection and arrow/Home/End focus; selected is a model signal. Use selectionChange to consume values; no partial CVA is registered.
+
+Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
+
+## Tokens, themes and glass
+
+Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-chip-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+
+```css
+.custom {
+  --atr-comp-chip-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL and motion
+
+Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
+
+## Common mistakes
+
+Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner             | Member            | Kind     | Type                         | Default        |
+| ----------------- | ----------------- | -------- | ---------------------------- | -------------- |
+| `AtralumeChip`    | `kind`            | `Input`  | `ChipKind`                   | `"assist"`     |
+| `AtralumeChip`    | `value`           | `Input`  | `string`                     | `""`           |
+| `AtralumeChip`    | `label`           | `Input`  | `string`                     | `Required`     |
+| `AtralumeChip`    | `selected`        | `Model`  | `boolean`                    | `false`        |
+| `AtralumeChip`    | `disabled`        | `Input`  | `boolean`                    | `false`        |
+| `AtralumeChip`    | `removable`       | `Input`  | `boolean`                    | `false`        |
+| `AtralumeChip`    | `removed`         | `Output` | `string`                     | `Event`        |
+| `AtralumeChip`    | `invoked`         | `Output` | `string`                     | `Event`        |
+| `AtralumeChipSet` | `label`           | `Input`  | `string`                     | `Required`     |
+| `AtralumeChipSet` | `selection`       | `Input`  | `"single" \| "multiple"`     | `"multiple"`   |
+| `AtralumeChipSet` | `orientation`     | `Input`  | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `AtralumeChipSet` | `disabled`        | `Input`  | `boolean`                    | `false`        |
+| `AtralumeChipSet` | `selectionChange` | `Output` | `readonly string[]`          | `Event`        |
+
+```ts
+export type ChipKind = "assist" | "filter" | "input" | "suggestion";
+```
+
+{/* public-api:end */}

@@ -1,0 +1,80 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/time-picker.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Time Picker
+
+Time Picker represents `{hours, minutes, seconds?}`, not a Date with an arbitrary day. Values use a 24-hour civil clock. 12h changes the visual selector, and the native time input follows platform presentation. step is an integer number of seconds, anchored to min or midnight. Sub-minute precision exposes seconds. Bounds are same-day inclusive intervals; overnight wrapping is not implemented. Visual selection composes Select controls inside Popover. Save confirms a draft; Cancel/Escape leaves the value intact.
+
+## Import, composition and values
+
+Import from `@atralume/angular/time-picker`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+
+## Forms, validation and null
+
+Date Picker, Time Picker, Slider, Range Slider and File Upload implement CVA and the public Signal Forms value-control contract. Use Reactive Forms, ngModel or formField per instance. Required, disabled, touched, dirty, reset and null are covered in unit tests for each control. Signal Forms owns reserved metadata bindings such as min/max: configure numeric validation in its schema instead of binding those names simultaneously. Range Slider uses minimum/maximum for its numeric interval because the form value is an object. Calendar and Stepper do not add an unrelated CVA.
+
+Null is an empty value. A null slider previews its minimum; a null range previews the full available interval without committing a value. External invalid numeric values remain invalid while their preview is clamped. File values are not serialized automatically.
+
+## Keyboard and accessibility
+
+Keep visible labels and names for each interactive control. Native controls retain their editing semantics. Date/time overlays use labelled dialog patterns and restore focus through the shared infrastructure. Calendar uses a labelled grid with one active date. Stepper uses labelled regions and current-step state rather than pretending to be a tab list. Completion/error states have text as well as visual treatment. Test the final application with assistive technology.
+
+## Loading, empty, error and async
+
+The consumer owns remote data, upload transport, progress and business validation. Date/time constraints and step validation are synchronous control configuration; async workflows can pass disabled/loading state through the surrounding composition. Error messages use the existing Form Field or explicit status content. Do not invent HTTP behavior inside these controls.
+
+## Themes, glass and tokens
+
+Import `@atralume/angular/styles/theme.css` once. Customize `--atr-comp-time-picker-*` tokens and existing atoms through public CSS tokens. Overlays inherit the trigger theme, surface, density, direction and overrides. Light, Dark, Glass, NestedTheme, RTL, ConsumerOverride and Responsive preserve the same API. Forced colors keeps boundaries and native control semantics; no nonessential animation is required.
+
+## SSR, responsive and limitations
+
+Browser-only selection, previews and overlays are guarded. SSR starts with an empty file selection and no browser overlay. Use a stable initial civil date for server/client rendering; parse serialized civil strings with the same adapter. Native file dialogs and File objects cannot be restored by serializing JSON. No custom virtual scroll is introduced. Calendar shrinks its day targets on small viewports while retaining WCAG minimum target sizes; consumers should verify text zoom and translated labels.
+
+## Common mistakes
+
+Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Keyboard} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.Glass} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                  | Member      | Kind     | Type                        | Default                               |
+| ---------------------- | ----------- | -------- | --------------------------- | ------------------------------------- |
+| `AtralumeTimePicker`   | `opened`    | `Model`  | `boolean`                   | `false`                               |
+| `AtralumeTimePicker`   | `format`    | `Input`  | `AtralumeTimeFormat`        | `"24h"`                               |
+| `AtralumeTimePicker`   | `locale`    | `Input`  | `string`                    | `"en-US"`                             |
+| `AtralumeTimePicker`   | `seconds`   | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeTimePicker`   | `step`      | `Input`  | `number`                    | `60`                                  |
+| `AtralumeTimePicker`   | `min`       | `Input`  | `AtralumeTimeValue \| null` | `null`                                |
+| `AtralumeTimePicker`   | `max`       | `Input`  | `AtralumeTimeValue \| null` | `null`                                |
+| `AtralumeTimePicker`   | `clearable` | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeValueControl` | `value`     | `Model`  | `T \| null`                 | `null`                                |
+| `AtralumeValueControl` | `label`     | `Input`  | `string`                    | `Required`                            |
+| `AtralumeValueControl` | `controlId` | `Input`  | `string`                    | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled`  | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeValueControl` | `readonly`  | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeValueControl` | `required`  | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeValueControl` | `invalid`   | `Input`  | `boolean`                   | `false`                               |
+| `AtralumeValueControl` | `hint`      | `Input`  | `string \| null`            | `null`                                |
+| `AtralumeValueControl` | `error`     | `Input`  | `string \| null`            | `null`                                |
+| `AtralumeValueControl` | `touch`     | `Output` | `void`                      | `Event`                               |
+
+```ts
+export interface AtralumeTimeValue {
+  readonly hours: number;
+  readonly minutes: number;
+  readonly seconds?: number;
+}
+
+export type AtralumeTimeFormat = "12h" | "24h";
+```
+
+{/* public-api:end */}

@@ -1,0 +1,68 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/navigation-bar.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Navigation Bar
+
+Use a labelled native nav with three to five primary destinations. Items are anchors, not tabs or menu commands. Icons and badges are projected beside visible labels. active exposes aria-current=page. The layout is not fixed automatically; consumers choose placement. Safe-area padding supports mobile bottom navigation.
+
+## Import, API and minimum composition
+
+```ts
+import {
+  AtralumeNavigationBar,
+  AtralumeNavigationItem,
+} from "@atralume/angular/navigation-bar";
+```
+
+```html
+<nav atrNavigationBar>
+  <a atrNavigationItem href="#home" active
+    ><span aria-hidden="true">⌂</span><span>Home</span></a
+  ><a atrNavigationItem href="#projects"
+    ><span aria-hidden="true">◇</span><span>Projects</span></a
+  ><a atrNavigationItem href="#profile"
+    ><span aria-hidden="true">○</span><span>Profile</span></a
+  >
+</nav>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Use a labelled native nav with three to five primary destinations. Items are anchors, not tabs or menu commands. Icons and badges are projected beside visible labels. active exposes aria-current=page. The layout is not fixed automatically; consumers choose placement. Safe-area padding supports mobile bottom navigation.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-navigation-bar-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-navigation-bar-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                    | Member   | Kind    | Type      | Default                |
+| ------------------------ | -------- | ------- | --------- | ---------------------- |
+| `AtralumeNavigationBar`  | `label`  | `Input` | `string`  | `"Primary navigation"` |
+| `AtralumeNavigationItem` | `active` | `Input` | `boolean` | `false`                |
+
+{/* public-api:end */}

@@ -1,4 +1,10 @@
 @use "./generated/foundations.css";
+@use "./atoms";
+@use "./forms";
+@use "./composition";
+@use "./navigation";
+@use "./overlays";
+@use "./advanced";
 @forward "./themes";
 @forward "./base";
 @forward "./surfaces";

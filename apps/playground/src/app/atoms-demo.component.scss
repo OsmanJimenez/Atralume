@@ -1,0 +1,40 @@
+.atoms-grid {
+  display: grid;
+  gap: var(--atr-sys-spacing-lg);
+}
+
+article {
+  padding: var(--atr-sys-spacing-lg);
+  border-radius: var(--atr-sys-shape-medium);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--atr-sys-spacing-md);
+  margin-block: var(--atr-sys-spacing-md);
+}
+
+.glass-stage {
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      var(--atr-sys-color-primary),
+      transparent
+    ),
+    linear-gradient(
+      120deg,
+      var(--atr-sys-color-tertiary-container),
+      var(--atr-sys-color-secondary-container)
+    );
+  padding: var(--atr-sys-spacing-lg);
+}
+
+.custom {
+  --atr-comp-button-container-color: var(--atr-sys-color-tertiary);
+  --atr-comp-button-label-color: var(--atr-sys-color-on-tertiary);
+  --atr-comp-button-container-radius: var(--atr-sys-shape-medium);
+
+  margin-block-start: var(--atr-sys-spacing-md);
+}

@@ -1,0 +1,23 @@
+<span role="status" aria-live="polite" aria-atomic="true">{{
+  session.config.message
+}}</span>
+@if (session.config.action) {
+  <button
+    atrButton
+    appearance="text"
+    type="button"
+    (click)="session.ref.action()"
+  >
+    {{ session.config.action }}
+  </button>
+}
+@if (session.config.dismissLabel) {
+  <button
+    atrIconButton
+    type="button"
+    [attr.aria-label]="session.config.dismissLabel"
+    (click)="session.ref.dismiss()"
+  >
+    <atr-icon name="close" />
+  </button>
+}

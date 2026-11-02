@@ -1,0 +1,66 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/textarea.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Textarea
+
+Use for multiline plain text. Native `rows`, `cols`, `maxlength`, readonly,
+disabled, and form behavior remain available. Resize can be `none`, `vertical`
+(the default), `horizontal`, or `both`; this control does not auto-resize or
+provide rich-text editing.
+
+## Import and example
+
+```ts
+import {
+  AtralumeTextarea,
+  AtralumeTextareaHarness,
+} from "@atralume/angular/textarea";
+import { AtralumeFormField } from "@atralume/angular/form-field";
+```
+
+```html
+<atr-form-field label="Message" hint="Plain text only.">
+  <textarea atrTextarea rows="4"></textarea>
+</atr-form-field>
+```
+
+## API
+
+{/* public-api:start */}
+
+| Input    | Type                     | Default      |
+| -------- | ------------------------ | ------------ |
+| `resize` | `AtralumeTextareaResize` | `"vertical"` |
+
+```ts
+type AtralumeTextareaResize = "none" | "vertical" | "horizontal" | "both";
+```
+
+{/* public-api:end */}
+
+The native textarea owns its value, events, constraints, and disabled/readonly
+states. `atr-form-field` connects the visible label, hint, and error. Use a
+visible label and preserve native multiline editing.
+
+## States and keyboard
+
+Textareas retain native editing, selection, and keyboard behavior. Keep the
+focus ring visible and provide validation instructions in text. Choose a resize
+mode that does not make the surrounding layout unusable.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+
+## Themes and customization
+
+The public theme stylesheet provides light, dark, system, nested-theme, glass,
+forced-colors, and reduced-motion behavior. Textarea uses the shared
+`--atr-comp-form-field-*` token family; override those public CSS custom
+properties locally rather than editing package styles.
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />

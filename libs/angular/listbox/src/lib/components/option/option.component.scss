@@ -1,0 +1,39 @@
+:host {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-block-size: var(--atr-comp-selection-option-height);
+  padding: var(--atr-comp-listbox-padding);
+  border-radius: var(--atr-comp-listbox-shape);
+  background: var(--atr-comp-selection-option-container-color);
+  color: var(--atr-comp-selection-option-label-color);
+  cursor: pointer;
+  font: inherit;
+}
+
+:host([aria-selected="true"]) {
+  background: var(--atr-comp-listbox-selected-container-color);
+  color: var(--atr-comp-listbox-selected-label-color);
+}
+
+:host(.atr-option--active),
+:host(:focus-visible) {
+  outline: var(--atr-sys-focus-ring-width) solid
+    var(--atr-comp-listbox-focus-color);
+  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+}
+
+:host([aria-disabled="true"]) {
+  opacity: var(--atr-sys-state-disabled-content-opacity);
+  cursor: default;
+}
+
+@media (forced-colors: active) {
+  :host([aria-selected="true"]) {
+    border: 1px solid Highlight;
+  }
+
+  :host(.atr-option--active) {
+    outline-color: Highlight;
+  }
+}

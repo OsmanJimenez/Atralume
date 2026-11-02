@@ -1,0 +1,14 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Forms/Control Label" name="Docs" />
+
+# Control Label Import AtralumeControlLabel
+
+from @atralume/angular/form-field and apply atrControlLabel to a native label
+wrapping a checkbox, radio or switch. Alternatively use for with a unique input
+id. The label provides a minimum touch target, spacing and typography. Native
+disabled controls retain their visual disabled state without requiring :has().
+
+Stable CSS helpers: atr-control-label**text and atr-control-label**description provide primary and secondary text. Associate a description id with aria-describedby when needed. Do not nest interactive links in the label; place terms links alongside it.
+
+Use the same native markup with Reactive, Template-driven or Signal Forms. No values or events are added by this directive. System spacing and --atr-comp-form-field-label-color / hint-color customize it in light, dark and glass contexts. See Checkbox/With Description and Switch/With Description. Use Form Field for text entry; use fieldset and legend around related radio labels.

@@ -9,7 +9,7 @@ Style Dictionary 5.6.0 transforms the source. `npm run tokens:check` validates s
 ## Public contract
 
 - `@atralume/angular/styles` — Sass entry.
-- `@atralume/angular/styles/theme.css` — complete CSS contract without reset.
+- `@atralume/angular/styles/theme.css` — generated theme tokens without component styles or reset.
 - `@atralume/angular/styles/tokens.json` — generated documentation/design-tool manifest.
 - `@atralume/angular/styles/reset.scss` — optional minimal reset.
 

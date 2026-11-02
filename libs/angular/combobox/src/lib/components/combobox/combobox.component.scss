@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  position: relative;
+  min-inline-size: 0;
+}
+
+.atr-combobox-trigger {
+  inline-size: 100%;
+  justify-content: space-between;
+}
+
+.selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--atr-comp-combobox-gap);
+  margin-block-start: var(--atr-comp-combobox-gap);
+}
+
+.atr-combobox-popup {
+  max-inline-size: calc(100vw - 2rem);
+  border: 1px solid var(--atr-comp-combobox-border-color);
+  border-radius: var(--atr-comp-combobox-shape);
+  background: var(--atr-comp-combobox-container-color);
+  color: var(--atr-comp-combobox-label-color);
+  box-shadow: var(--atr-comp-selection-panel-elevation);
+}
+
+.atr-combobox-popup atr-listbox {
+  max-block-size: min(20rem, 50dvh);
+  overflow: auto;
+}
+
+.atr-combobox-popup p {
+  padding: var(--atr-comp-combobox-padding);
+}
+
+@media (forced-colors: active) {
+  .atr-combobox-popup {
+    border-color: CanvasText;
+  }
+}

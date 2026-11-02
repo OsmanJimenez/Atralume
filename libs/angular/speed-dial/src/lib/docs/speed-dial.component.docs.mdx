@@ -1,0 +1,69 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/speed-dial.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Speed Dial
+
+Speed Dial composes a primary native FAB with native action buttons. It exposes opened as a model, orientation and disabled. The main action announces aria-expanded and a stable actions id. Arrow keys, Home/End and Escape manage action focus; disabled actions are skipped. Action or Escape closes and restores focus to the trigger; outside pointer or leaving the group closes without stealing focus from the new target. The group uses constrained in-flow positioning so it remains usable within the consumer viewport layout.
+
+## Import, API and minimum composition
+
+```ts
+import {
+  AtralumeSpeedDial,
+  AtralumeSpeedDialAction,
+} from "@atralume/angular/speed-dial";
+```
+
+```html
+<atr-speed-dial id="create-dial" label="Create"
+  ><button atrSpeedDialAction type="button">Document</button
+  ><button atrSpeedDialAction type="button">Project</button
+  ><button atrSpeedDialAction type="button" disabled>
+    Unavailable
+  </button></atr-speed-dial
+>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Speed Dial composes a primary native FAB with native action buttons. It exposes opened as a model, orientation and disabled. The main action announces aria-expanded and a stable actions id. Arrow keys, Home/End and Escape manage action focus; disabled actions are skipped. Action or Escape closes and restores focus to the trigger; outside pointer or leaving the group closes without stealing focus from the new target. The group uses constrained in-flow positioning so it remains usable within the consumer viewport layout.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-speed-dial-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-speed-dial-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner               | Member        | Kind    | Type                         | Default      |
+| ------------------- | ------------- | ------- | ---------------------------- | ------------ |
+| `AtralumeSpeedDial` | `id`          | `Input` | `string`                     | `Required`   |
+| `AtralumeSpeedDial` | `label`       | `Input` | `string`                     | `Required`   |
+| `AtralumeSpeedDial` | `opened`      | `Model` | `boolean`                    | `false`      |
+| `AtralumeSpeedDial` | `disabled`    | `Input` | `boolean`                    | `false`      |
+| `AtralumeSpeedDial` | `orientation` | `Input` | `"vertical" \| "horizontal"` | `"vertical"` |
+
+{/* public-api:end */}

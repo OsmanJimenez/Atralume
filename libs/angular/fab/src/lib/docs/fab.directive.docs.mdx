@@ -1,0 +1,58 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/fab.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Floating Action Button
+
+FAB is a native button for a primary contextual action. Unlike a normal Button, it has a prominent container/elevation and can be icon-only or extended with a label. Supply a name for icon-only buttons. Native disabled is preserved. The consumer owns fixed positioning. Use an existing Button/Progress composition when loading behavior is needed rather than inventing a second busy contract.
+
+## Import, API and minimum composition
+
+```ts
+import { AtralumeFab } from "@atralume/angular/fab";
+```
+
+```html
+<button atrFab type="button" aria-label="Create project">+</button>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+FAB is a native button for a primary contextual action. Unlike a normal Button, it has a prominent container/elevation and can be icon-only or extended with a label. Supply a name for icon-only buttons. Native disabled is preserved. The consumer owns fixed positioning. Use an existing Button/Progress composition when loading behavior is needed rather than inventing a second busy contract.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-fab-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-fab-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner         | Member       | Kind    | Type                                                  | Default     |
+| ------------- | ------------ | ------- | ----------------------------------------------------- | ----------- |
+| `AtralumeFab` | `size`       | `Input` | `"small" \| "medium" \| "large"`                      | `"medium"`  |
+| `AtralumeFab` | `appearance` | `Input` | `"primary" \| "secondary" \| "tertiary" \| "surface"` | `"primary"` |
+| `AtralumeFab` | `extended`   | `Input` | `boolean`                                             | `false`     |
+
+{/* public-api:end */}

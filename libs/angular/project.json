@@ -49,7 +49,8 @@
     "test": {
       "executor": "@nx/angular:unit-test",
       "options": {
-        "watch": false
+        "watch": false,
+        "include": ["**/*.spec.ts", "../*/src/**/*.spec.ts"]
       }
     },
     "lint": {
@@ -57,12 +58,16 @@
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
+      "dependsOn": ["tokens-build"],
       "options": {
         "port": 4400,
         "configDir": "libs/angular/.storybook",
         "browserTarget": "angular:build-storybook",
         "compodoc": false,
-        "styles": ["libs/angular/src/styles/generated/foundations.css"]
+        "styles": [
+          "libs/angular/src/styles/index.scss",
+          "libs/angular/.storybook/preview.scss"
+        ]
       },
       "configurations": {
         "ci": {
@@ -79,7 +84,10 @@
         "configDir": "libs/angular/.storybook",
         "browserTarget": "angular:build-storybook",
         "compodoc": false,
-        "styles": ["libs/angular/src/styles/generated/foundations.css"]
+        "styles": [
+          "libs/angular/src/styles/index.scss",
+          "libs/angular/.storybook/preview.scss"
+        ]
       },
       "configurations": {
         "ci": {

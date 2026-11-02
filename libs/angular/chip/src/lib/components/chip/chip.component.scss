@@ -1,0 +1,31 @@
+:host {
+  --atr-comp-button-container-radius: var(--atr-comp-chip-shape);
+  --atr-comp-button-container-padding-inline: var(--atr-comp-chip-padding);
+  --atr-comp-button-text-label-color: currentcolor;
+  --atr-comp-icon-button-icon-color: currentcolor;
+
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: var(--atr-ref-border-width-thin) solid
+    var(--atr-comp-chip-border-color);
+  border-radius: var(--atr-comp-chip-shape);
+  background: var(--atr-comp-chip-container-color);
+  color: var(--atr-comp-chip-label-color);
+  overflow: hidden;
+}
+
+:host([data-selected="true"]) {
+  background: var(--atr-comp-chip-selected-container-color);
+  color: var(--atr-comp-chip-selected-label-color);
+}
+
+@media (forced-colors: active) {
+  :host {
+    border-color: ButtonText;
+  }
+
+  :host([data-selected="true"]) {
+    border-color: Highlight;
+  }
+}

@@ -102,3 +102,350 @@
     --atr-sys-color-focus: var(--atr-ref-color-primary-80);
   }
 }
+
+[data-atr-theme="system"] {
+  --atr-sys-color-success: var(--atr-ref-color-success-40);
+  --atr-sys-color-on-success: var(--atr-ref-color-success-100);
+  --atr-sys-color-success-container: var(--atr-ref-color-success-90);
+  --atr-sys-color-on-success-container: var(--atr-ref-color-success-10);
+  --atr-sys-color-warning: var(--atr-ref-color-warning-40);
+  --atr-sys-color-on-warning: var(--atr-ref-color-warning-100);
+  --atr-sys-color-warning-container: var(--atr-ref-color-warning-90);
+  --atr-sys-color-on-warning-container: var(--atr-ref-color-warning-10);
+  --atr-sys-color-info: var(--atr-ref-color-info-40);
+  --atr-sys-color-on-info: var(--atr-ref-color-info-100);
+  --atr-sys-color-info-container: var(--atr-ref-color-info-90);
+  --atr-sys-color-on-info-container: var(--atr-ref-color-info-10);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-atr-theme="system"] {
+    --atr-sys-color-success: var(--atr-ref-color-success-80);
+    --atr-sys-color-on-success: var(--atr-ref-color-success-20);
+    --atr-sys-color-success-container: var(--atr-ref-color-success-40);
+    --atr-sys-color-on-success-container: var(--atr-ref-color-success-90);
+    --atr-sys-color-warning: var(--atr-ref-color-warning-80);
+    --atr-sys-color-on-warning: var(--atr-ref-color-warning-20);
+    --atr-sys-color-warning-container: var(--atr-ref-color-warning-40);
+    --atr-sys-color-on-warning-container: var(--atr-ref-color-warning-90);
+    --atr-sys-color-info: var(--atr-ref-color-info-80);
+    --atr-sys-color-on-info: var(--atr-ref-color-info-20);
+    --atr-sys-color-info-container: var(--atr-ref-color-info-40);
+    --atr-sys-color-on-info-container: var(--atr-ref-color-info-90);
+  }
+}
+
+[data-atr-theme="system"] {
+  --atr-comp-icon-size-small: var(--atr-ref-spacing-4);
+  --atr-comp-icon-size-medium: var(--atr-ref-spacing-6);
+  --atr-comp-icon-size-large: var(--atr-ref-spacing-8);
+  --atr-comp-icon-optical-alignment: var(--atr-sys-spacing-0);
+  --atr-comp-icon-disabled-color: var(--atr-sys-color-on-surface-variant);
+  --atr-comp-icon-button-focus-ring-color: var(--atr-sys-color-focus);
+  --atr-comp-icon-button-focus-ring-width: var(--atr-sys-focus-ring-width);
+  --atr-comp-icon-button-shape: var(--atr-sys-shape-full);
+  --atr-comp-icon-button-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-icon-button-container-size: var(--atr-sys-touch-target-minimum);
+  --atr-comp-icon-button-touch-target-size: var(--atr-sys-touch-target-minimum);
+  --atr-comp-icon-button-icon-size: var(--atr-ref-spacing-6);
+  --atr-comp-icon-button-icon-color: var(--atr-sys-color-primary);
+  --atr-comp-icon-button-container-color: var(--atr-sys-color-surface);
+  --atr-comp-icon-button-outline-color: var(--atr-sys-color-outline);
+  --atr-comp-icon-button-hover-opacity: var(--atr-sys-state-hover-opacity);
+  --atr-comp-icon-button-pressed-opacity: var(--atr-sys-state-pressed-opacity);
+  --atr-comp-icon-button-disabled-color: var(
+    --atr-sys-color-on-surface-variant
+  );
+  --atr-comp-icon-button-icon-size-small: var(--atr-ref-spacing-4);
+  --atr-comp-icon-button-icon-size-large: var(--atr-ref-spacing-8);
+  --atr-comp-link-focus-ring-color: var(--atr-sys-color-focus);
+  --atr-comp-link-focus-ring-width: var(--atr-sys-focus-ring-width);
+  --atr-comp-link-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-link-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-link-font-size: var(--atr-ref-font-size-14);
+  --atr-comp-link-text-color: var(--atr-sys-color-primary);
+  --atr-comp-link-visited-color: var(--atr-sys-color-tertiary);
+  --atr-comp-link-hover-color: var(--atr-sys-color-on-primary-container);
+  --atr-comp-link-active-color: var(--atr-sys-color-primary);
+  --atr-comp-link-underline-thickness: var(--atr-ref-border-width-thin);
+  --atr-comp-link-underline-offset: var(--atr-sys-spacing-xs);
+  --atr-comp-badge-focus-ring-color: var(--atr-sys-color-focus);
+  --atr-comp-badge-focus-ring-width: var(--atr-sys-focus-ring-width);
+  --atr-comp-badge-shape: var(--atr-sys-shape-full);
+  --atr-comp-badge-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-badge-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-badge-font-size: var(--atr-ref-font-size-14);
+  --atr-comp-badge-motion-duration: var(--atr-sys-motion-duration-medium);
+  --atr-comp-badge-motion-easing: var(--atr-sys-motion-easing-standard);
+  --atr-comp-badge-outline-color: var(--atr-sys-color-outline);
+  --atr-comp-badge-indicator-color: var(--atr-sys-color-primary);
+  --atr-comp-badge-track-color: var(--atr-sys-color-surface-container-highest);
+  --atr-comp-badge-height: var(--atr-ref-spacing-6);
+  --atr-comp-badge-height-small: var(--atr-ref-spacing-5);
+  --atr-comp-badge-padding: var(--atr-sys-spacing-sm);
+  --atr-comp-badge-dot-size: var(--atr-sys-spacing-sm);
+  --atr-comp-badge-neutral-filled-container: var(--atr-sys-color-surface);
+  --atr-comp-badge-neutral-filled-label: var(--atr-sys-color-on-surface);
+  --atr-comp-badge-neutral-soft-container: var(
+    --atr-sys-color-surface-container
+  );
+  --atr-comp-badge-neutral-soft-label: var(--atr-sys-color-on-surface);
+  --atr-comp-badge-primary-filled-container: var(--atr-sys-color-primary);
+  --atr-comp-badge-primary-filled-label: var(--atr-sys-color-on-primary);
+  --atr-comp-badge-primary-soft-container: var(
+    --atr-sys-color-primary-container
+  );
+  --atr-comp-badge-primary-soft-label: var(
+    --atr-sys-color-on-primary-container
+  );
+  --atr-comp-badge-success-filled-container: var(--atr-sys-color-success);
+  --atr-comp-badge-success-filled-label: var(--atr-sys-color-on-success);
+  --atr-comp-badge-success-soft-container: var(
+    --atr-sys-color-success-container
+  );
+  --atr-comp-badge-success-soft-label: var(
+    --atr-sys-color-on-success-container
+  );
+  --atr-comp-badge-warning-filled-container: var(--atr-sys-color-warning);
+  --atr-comp-badge-warning-filled-label: var(--atr-sys-color-on-warning);
+  --atr-comp-badge-warning-soft-container: var(
+    --atr-sys-color-warning-container
+  );
+  --atr-comp-badge-warning-soft-label: var(
+    --atr-sys-color-on-warning-container
+  );
+  --atr-comp-badge-error-filled-container: var(--atr-sys-color-error);
+  --atr-comp-badge-error-filled-label: var(--atr-sys-color-on-error);
+  --atr-comp-badge-error-soft-container: var(--atr-sys-color-error-container);
+  --atr-comp-badge-error-soft-label: var(--atr-sys-color-on-error-container);
+  --atr-comp-badge-info-filled-container: var(--atr-sys-color-info);
+  --atr-comp-badge-info-filled-label: var(--atr-sys-color-on-info);
+  --atr-comp-badge-info-soft-container: var(--atr-sys-color-info-container);
+  --atr-comp-badge-info-soft-label: var(--atr-sys-color-on-info-container);
+  --atr-comp-avatar-shape: var(--atr-sys-shape-full);
+  --atr-comp-avatar-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-avatar-font-size: var(--atr-ref-font-size-14);
+  --atr-comp-avatar-size-small: var(--atr-ref-spacing-8);
+  --atr-comp-avatar-size-medium: var(--atr-ref-spacing-10);
+  --atr-comp-avatar-size-large: var(--atr-ref-spacing-12);
+  --atr-comp-avatar-size-x-large: var(--atr-ref-spacing-16);
+  --atr-comp-avatar-container-color: var(--atr-sys-color-primary-container);
+  --atr-comp-avatar-label-color: var(--atr-sys-color-on-primary-container);
+  --atr-comp-avatar-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-avatar-border-width: var(--atr-ref-border-width-thin);
+  --atr-comp-avatar-rounded-shape: var(--atr-sys-shape-medium);
+  --atr-comp-avatar-fallback-icon-color: var(
+    --atr-sys-color-on-primary-container
+  );
+  --atr-comp-divider-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-divider-thickness: var(--atr-ref-border-width-thin);
+  --atr-comp-divider-inset: var(--atr-sys-spacing-md);
+  --atr-comp-divider-vertical-minimum-size: var(--atr-ref-spacing-6);
+  --atr-comp-progress-shape: var(--atr-sys-shape-full);
+  --atr-comp-progress-motion-duration: var(--atr-sys-motion-duration-medium);
+  --atr-comp-progress-motion-easing: var(--atr-sys-motion-easing-standard);
+  --atr-comp-progress-size-small: var(--atr-ref-spacing-8);
+  --atr-comp-progress-size-medium: var(--atr-ref-spacing-10);
+  --atr-comp-progress-size-large: var(--atr-ref-spacing-12);
+  --atr-comp-progress-indicator-color: var(--atr-sys-color-primary);
+  --atr-comp-progress-track-color: var(
+    --atr-sys-color-surface-container-highest
+  );
+  --atr-comp-progress-height: var(--atr-sys-spacing-sm);
+  --atr-comp-progress-stroke-width: var(--atr-ref-border-width-strong);
+  --atr-comp-progress-spinner-duration: var(--atr-ref-duration-activity);
+  --atr-comp-progress-bar-duration: var(--atr-ref-duration-activity-bar);
+  --atr-comp-progress-reduced-motion-duration: var(
+    --atr-ref-duration-activity-reduced
+  );
+}
+
+[data-atr-theme="system"] {
+  --atr-comp-card-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-card-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-card-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-card-border-width: var(--atr-ref-border-width-thin);
+  --atr-comp-card-shape: var(--atr-sys-shape-medium);
+  --atr-comp-card-padding: var(--atr-sys-spacing-md);
+  --atr-comp-card-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-card-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-card-elevation: var(--atr-sys-elevation-level-1);
+  --atr-comp-chip-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-chip-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-chip-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-chip-border-width: var(--atr-ref-border-width-thin);
+  --atr-comp-chip-shape: var(--atr-sys-shape-medium);
+  --atr-comp-chip-padding: var(--atr-sys-spacing-md);
+  --atr-comp-chip-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-chip-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-chip-elevation: var(--atr-sys-elevation-level-1);
+  --atr-comp-chip-selected-container-color: var(
+    --atr-sys-color-primary-container
+  );
+  --atr-comp-chip-selected-label-color: var(
+    --atr-sys-color-on-primary-container
+  );
+  --atr-comp-list-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-list-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-list-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-list-border-width: var(--atr-ref-border-width-thin);
+  --atr-comp-list-shape: var(--atr-sys-shape-medium);
+  --atr-comp-list-padding: var(--atr-sys-spacing-md);
+  --atr-comp-list-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-list-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-list-elevation: var(--atr-sys-elevation-level-1);
+  --atr-comp-accordion-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-accordion-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-accordion-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-accordion-border-width: var(--atr-ref-border-width-thin);
+  --atr-comp-accordion-shape: var(--atr-sys-shape-medium);
+  --atr-comp-accordion-padding: var(--atr-sys-spacing-md);
+  --atr-comp-accordion-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-accordion-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-accordion-elevation: var(--atr-sys-elevation-level-1);
+  --atr-comp-skeleton-container-color: var(
+    --atr-sys-color-surface-container-highest
+  );
+  --atr-comp-skeleton-shape: var(--atr-sys-shape-extra-small);
+}
+
+[data-atr-theme="system"] {
+  --atr-comp-tooltip-container-color: var(--atr-sys-color-inverse-surface);
+  --atr-comp-tooltip-label-color: var(--atr-sys-color-inverse-on-surface);
+  --atr-comp-tooltip-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-tooltip-shape: var(--atr-sys-shape-medium);
+  --atr-comp-tooltip-padding: var(--atr-sys-spacing-md);
+  --atr-comp-tooltip-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-tooltip-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-tooltip-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-tooltip-max-width: var(--atr-ref-overlay-width-tooltip);
+  --atr-comp-menu-container-color: var(--atr-sys-color-surface-container-high);
+  --atr-comp-menu-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-menu-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-menu-shape: var(--atr-sys-shape-medium);
+  --atr-comp-menu-padding: var(--atr-sys-spacing-md);
+  --atr-comp-menu-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-menu-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-menu-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-dialog-container-color: var(
+    --atr-sys-color-surface-container-high
+  );
+  --atr-comp-dialog-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-dialog-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-dialog-shape: var(--atr-sys-shape-medium);
+  --atr-comp-dialog-padding: var(--atr-sys-spacing-md);
+  --atr-comp-dialog-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-dialog-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-dialog-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-dialog-max-width: var(--atr-ref-overlay-width-dialog);
+  --atr-comp-bottom-sheet-container-color: var(
+    --atr-sys-color-surface-container-high
+  );
+  --atr-comp-bottom-sheet-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-bottom-sheet-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-bottom-sheet-shape: var(--atr-sys-shape-medium);
+  --atr-comp-bottom-sheet-padding: var(--atr-sys-spacing-md);
+  --atr-comp-bottom-sheet-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-bottom-sheet-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-bottom-sheet-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-bottom-sheet-max-width: var(--atr-ref-overlay-width-bottom-sheet);
+  --atr-comp-snackbar-container-color: var(--atr-sys-color-inverse-surface);
+  --atr-comp-snackbar-label-color: var(--atr-sys-color-inverse-on-surface);
+  --atr-comp-snackbar-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-snackbar-shape: var(--atr-sys-shape-medium);
+  --atr-comp-snackbar-padding: var(--atr-sys-spacing-md);
+  --atr-comp-snackbar-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-snackbar-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-snackbar-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-snackbar-max-width: var(--atr-ref-overlay-width-snackbar);
+  --atr-comp-overlay-backdrop-color: var(--atr-sys-color-scrim);
+  --atr-comp-overlay-backdrop-opacity: var(--atr-ref-opacity-disabled-content);
+}
+
+[data-atr-theme="system"] {
+  --atr-comp-tabs-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-tabs-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-tabs-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-tabs-shape: var(--atr-sys-shape-large);
+  --atr-comp-tabs-padding: var(--atr-sys-spacing-md);
+  --atr-comp-tabs-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-tabs-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-tabs-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-breadcrumbs-container-color: var(
+    --atr-sys-color-surface-container
+  );
+  --atr-comp-breadcrumbs-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-breadcrumbs-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-breadcrumbs-shape: var(--atr-sys-shape-large);
+  --atr-comp-breadcrumbs-padding: var(--atr-sys-spacing-md);
+  --atr-comp-breadcrumbs-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-breadcrumbs-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-breadcrumbs-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-pagination-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-pagination-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-pagination-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-pagination-shape: var(--atr-sys-shape-large);
+  --atr-comp-pagination-padding: var(--atr-sys-spacing-md);
+  --atr-comp-pagination-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-pagination-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-pagination-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-navigation-bar-container-color: var(
+    --atr-sys-color-surface-container
+  );
+  --atr-comp-navigation-bar-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-navigation-bar-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-navigation-bar-shape: var(--atr-sys-shape-large);
+  --atr-comp-navigation-bar-padding: var(--atr-sys-spacing-md);
+  --atr-comp-navigation-bar-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-navigation-bar-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-navigation-bar-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-side-navigation-container-color: var(
+    --atr-sys-color-surface-container
+  );
+  --atr-comp-side-navigation-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-side-navigation-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-side-navigation-shape: var(--atr-sys-shape-large);
+  --atr-comp-side-navigation-padding: var(--atr-sys-spacing-md);
+  --atr-comp-side-navigation-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-side-navigation-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-side-navigation-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-side-navigation-width: var(
+    --atr-ref-overlay-dimension-navigation-width
+  );
+  --atr-comp-side-navigation-rail-width: var(--atr-ref-spacing-16);
+  --atr-comp-fab-container-color: var(--atr-sys-color-primary-container);
+  --atr-comp-fab-label-color: var(--atr-sys-color-on-primary-container);
+  --atr-comp-fab-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-fab-shape: var(--atr-sys-shape-large);
+  --atr-comp-fab-padding: var(--atr-sys-spacing-md);
+  --atr-comp-fab-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-fab-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-fab-elevation: var(--atr-sys-elevation-level-3);
+  --atr-comp-fab-size-small: var(--atr-ref-spacing-12);
+  --atr-comp-fab-size-medium: var(--atr-ref-spacing-16);
+  --atr-comp-fab-size-large: var(--atr-ref-overlay-dimension-fab-large);
+  --atr-comp-speed-dial-container-color: var(--atr-sys-color-surface-container);
+  --atr-comp-speed-dial-label-color: var(--atr-sys-color-on-surface);
+  --atr-comp-speed-dial-border-color: var(--atr-sys-color-outline-variant);
+  --atr-comp-speed-dial-shape: var(--atr-sys-shape-large);
+  --atr-comp-speed-dial-padding: var(--atr-sys-spacing-md);
+  --atr-comp-speed-dial-gap: var(--atr-sys-spacing-sm);
+  --atr-comp-speed-dial-font-family: var(--atr-ref-font-family-plain);
+  --atr-comp-speed-dial-elevation: var(--atr-sys-elevation-level-3);
+}
+
+[data-atr-theme="system"] {
+  --atr-sys-navigation-item-active-container-color: var(
+    --atr-sys-color-primary-container
+  );
+  --atr-sys-navigation-item-active-label-color: var(
+    --atr-sys-color-on-primary-container
+  );
+  --atr-sys-navigation-item-focus-color: var(--atr-sys-color-focus);
+  --atr-sys-feedback-container-color: var(--atr-sys-color-inverse-surface);
+  --atr-sys-feedback-label-color: var(--atr-sys-color-inverse-on-surface);
+  --atr-sys-disclosure-container-color: var(--atr-sys-color-surface-container);
+  --atr-sys-disclosure-label-color: var(--atr-sys-color-on-surface);
+  --atr-sys-disclosure-border-color: var(--atr-sys-color-outline-variant);
+  --atr-sys-overlay-backdrop-color: var(--atr-sys-color-scrim);
+}

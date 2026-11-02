@@ -1,0 +1,74 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/breadcrumbs.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Breadcrumbs
+
+Use a labelled nav and ordered list to show the location in a hierarchy. The current item exposes aria-current=page. Separators are decorative. Native details/summary with atrBreadcrumbOverflow provides accessible disclosure when consumers collapse intermediate items; never hide required navigation without a way to reveal it. Labels wrap instead of being silently removed.
+
+## Import, API and minimum composition
+
+```ts
+import {
+  AtralumeBreadcrumbs,
+  AtralumeBreadcrumbItem,
+  AtralumeBreadcrumbSeparator,
+  AtralumeBreadcrumbOverflow,
+} from "@atralume/angular/breadcrumbs";
+```
+
+```html
+<nav atrBreadcrumbs>
+  <ol>
+    <li>
+      <a atrBreadcrumbItem href="#home">Home</a
+      ><span atrBreadcrumbSeparator>/</span>
+    </li>
+    <li>
+      <a atrBreadcrumbItem href="#projects">Projects</a
+      ><span atrBreadcrumbSeparator>/</span>
+    </li>
+    <li><span atrBreadcrumbItem current>Atralume</span></li>
+  </ol>
+</nav>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Use a labelled nav and ordered list to show the location in a hierarchy. The current item exposes aria-current=page. Separators are decorative. Native details/summary with atrBreadcrumbOverflow provides accessible disclosure when consumers collapse intermediate items; never hide required navigation without a way to reveal it. Labels wrap instead of being silently removed.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-breadcrumbs-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-breadcrumbs-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                    | Member    | Kind    | Type      | Default        |
+| ------------------------ | --------- | ------- | --------- | -------------- |
+| `AtralumeBreadcrumbItem` | `current` | `Input` | `boolean` | `false`        |
+| `AtralumeBreadcrumbs`    | `label`   | `Input` | `string`  | `"Breadcrumb"` |
+
+{/* public-api:end */}

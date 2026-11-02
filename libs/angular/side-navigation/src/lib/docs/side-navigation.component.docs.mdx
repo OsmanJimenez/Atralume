@@ -1,0 +1,103 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/side-navigation.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Side Navigation
+
+Side Navigation composes a container, navigation panel, header, groups, native anchor items and main content. side resizes adjacent content; push preserves content width and pushes it within the clipped container; over uses the shared modal infrastructure with backdrop, focus trap, Escape and restoration. panelId must be stable and unique. opened is a model; collapsed retains accessible label text in a rail. Consumers choose mode at responsive breakpoints and decide whether to preserve open state. Pass origin for focus restoration to the trigger. No focus trap runs in side/push modes.
+
+## Import, API and minimum composition
+
+```ts
+import {
+  AtralumeSideNavigationContainer,
+  AtralumeSideNavigation,
+  AtralumeSideNavigationHeader,
+  AtralumeSideNavigationContent,
+  AtralumeSideNavigationItem,
+  AtralumeSideNavigationGroup,
+  AtralumeSideNavigationLabel,
+} from "@atralume/angular/side-navigation";
+```
+
+```html
+<button
+  #origin
+  type="button"
+  (click)="opened=!opened"
+  [attr.aria-expanded]="opened"
+  aria-controls="workspace-nav"
+>
+  Toggle navigation</button
+><atr-side-navigation-container
+  ><atr-side-navigation
+    panelId="workspace-nav"
+    label="Workspace"
+    [mode]="mode"
+    [(opened)]="opened"
+    [origin]="origin"
+    ><header atrSideNavigationHeader><h2>Workspace</h2></header>
+    <section atrSideNavigationGroup>
+      <a atrSideNavigationItem href="#overview" active
+        ><span aria-hidden="true">⌂</span
+        ><span atrSideNavigationLabel>Overview</span></a
+      ><a atrSideNavigationItem href="#settings"
+        ><span aria-hidden="true">⚙</span
+        ><span atrSideNavigationLabel>Settings</span></a
+      >
+    </section></atr-side-navigation
+  >
+  <main atrSideNavigationContent>
+    Application content remains usable in side and push modes.
+  </main></atr-side-navigation-container
+>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Side Navigation composes a container, navigation panel, header, groups, native anchor items and main content. side resizes adjacent content; push preserves content width and pushes it within the clipped container; over uses the shared modal infrastructure with backdrop, focus trap, Escape and restoration. panelId must be stable and unique. opened is a model; collapsed retains accessible label text in a rail. Consumers choose mode at responsive breakpoints and decide whether to preserve open state. Pass origin for focus restoration to the trigger. No focus trap runs in side/push modes.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-side-navigation-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-side-navigation-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                        | Member      | Kind    | Type                  | Default    |
+| ---------------------------- | ----------- | ------- | --------------------- | ---------- |
+| `AtralumeSideNavigation`     | `panelId`   | `Input` | `string`              | `Required` |
+| `AtralumeSideNavigation`     | `label`     | `Input` | `string`              | `Required` |
+| `AtralumeSideNavigation`     | `mode`      | `Input` | `SideNavigationMode`  | `"side"`   |
+| `AtralumeSideNavigation`     | `opened`    | `Model` | `boolean`             | `true`     |
+| `AtralumeSideNavigation`     | `collapsed` | `Input` | `boolean`             | `false`    |
+| `AtralumeSideNavigation`     | `origin`    | `Input` | `HTMLElement \| null` | `null`     |
+| `AtralumeSideNavigationItem` | `active`    | `Input` | `boolean`             | `false`    |
+
+```ts
+export type SideNavigationMode = "side" | "over" | "push";
+```
+
+{/* public-api:end */}

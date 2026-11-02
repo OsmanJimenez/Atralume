@@ -1,0 +1,627 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "comp": {
+      "listbox": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "combobox": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "select": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "autocomplete": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "popover": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "command-palette": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "calendar": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "date-picker": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "time-picker": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "slider": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "active-track-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "track-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "thumb-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "tick-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary}"
+        },
+        "invalid-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error}"
+        }
+      },
+      "file-upload": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "stepper": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "table": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "tree": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "carousel": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "selected-container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.secondary-container}"
+        },
+        "selected-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-secondary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "focus-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        }
+      },
+      "selection": {
+        "option": {
+          "container-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.surface-container}"
+          },
+          "selected-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.secondary-container}"
+          },
+          "label-color": {
+            "$type": "color",
+            "$value": "{atr.sys.color.on-surface}"
+          },
+          "height": {
+            "$type": "dimension",
+            "$value": "{atr.sys.touch-target.minimum}"
+          }
+        },
+        "panel": {
+          "shape": {
+            "$type": "dimension",
+            "$value": "{atr.sys.shape.medium}"
+          },
+          "elevation": {
+            "$type": "shadow",
+            "$value": "{atr.sys.elevation.level-2}"
+          }
+        }
+      }
+    }
+  }
+}

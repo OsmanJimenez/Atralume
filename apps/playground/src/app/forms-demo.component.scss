@@ -1,0 +1,15 @@
+form {
+  display: grid;
+  gap: var(--atr-sys-spacing-md);
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--atr-sys-spacing-sm);
+}
+
+fieldset {
+  border: 1px solid var(--atr-sys-color-outline);
+  border-radius: var(--atr-sys-shape-small);
+}

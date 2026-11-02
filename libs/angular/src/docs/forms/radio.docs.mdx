@@ -1,0 +1,32 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./radio.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# AtralumeRadio Wrap mutually exclusive options in fieldset
+
+with a descriptive legend. Use the same name and distinct values. Associate
+group errors using aria-describedby on the group and controls. Preserve native
+arrow-key navigation; there is no custom Radio Group value manager.
+
+## Import and API
+
+`import { AtralumeRadio, AtralumeRadioHarness } from '@atralume/angular/radio';`
+
+The directive adds its stable host class. Native properties, attributes and events remain the public control API.
+
+## Forms and validation
+
+Reactive Forms use formControl or formControlName. Template-driven Forms use ngModel and name. Signal Forms use FormField from @angular/forms/signals on the same native control. No custom CVA is registered. The library does not import Signal Forms internally. Set aria-invalid for consumer validation; Angular ng-invalid is styled after touched or dirty. Disabled and readonly remain native properties.
+
+<Canvas of={Stories.ReactiveForms} />
+<Canvas of={Stories.TemplateDrivenForms} />
+<Canvas of={Stories.SignalForms} />
+
+## Accessibility and theming
+
+Keep labels visible, retain focus outlines, and provide persistent instructions. Test keyboard, zoom and screen-reader behavior in your consuming application. Controls support light/dark tokens, standard/glass surfaces, forced colors and reduced motion. Import `@atralume/angular/styles` once for component styles and theme tokens. Override component CSS variables beginning with --atr-comp-form-field- locally; all defaults reference system tokens. The generated token manifest lists the complete contract. No backdrop filtering is applied inside controls.
+
+## States and testing
+
+Explore the sibling stories for default, disabled, checked/readonly, invalid and interaction states. Harnesses use stable native properties, not visual descendants. Use disabled through the form API for reactive controls. Do not duplicate native values or events with custom state.

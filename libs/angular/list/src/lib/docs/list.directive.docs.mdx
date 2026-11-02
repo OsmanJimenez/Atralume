@@ -1,0 +1,79 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/list.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# List
+
+Use native lists for information and nav with anchors for destinations. List does not add menu or listbox roles. Use Menu for application commands and Navigation for routes. Put anchors or buttons within li; never nest one native control inside another. Leading/headline/supporting/trailing/metadata slots provide one-, two- or three-line compositions.
+
+## Import and composition
+
+```ts
+import {
+  AtralumeList,
+  AtralumeListItem,
+  AtralumeListHeadline,
+  AtralumeListSupporting,
+  AtralumeListTrailing,
+} from "@atralume/angular/list";
+```
+
+```html
+<ul atrList>
+  <li>
+    <a atrListItem href="#account"
+      ><span
+        ><span atrListHeadline>Account</span
+        ><span atrListSupporting>Manage profile</span></span
+      ><span atrListTrailing>→</span></a
+    >
+  </li>
+  <li atrListItem>Static information</li>
+</ul>
+```
+
+## API, variants and states
+
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+
+## Accessibility, keyboard and focus
+
+Use native lists for information and nav with anchors for destinations. List does not add menu or listbox roles. Use Menu for application commands and Navigation for routes. Put anchors or buttons within li; never nest one native control inside another. Leading/headline/supporting/trailing/metadata slots provide one-, two- or three-line compositions.
+
+Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
+
+## Tokens, themes and glass
+
+Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-list-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+
+```css
+.custom {
+  --atr-comp-list-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL and motion
+
+Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
+
+## Common mistakes
+
+Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner              | Member     | Kind    | Type                         | Default         |
+| ------------------ | ---------- | ------- | ---------------------------- | --------------- |
+| `AtralumeListItem` | `selected` | `Input` | `boolean`                    | `false`         |
+| `AtralumeList`     | `density`  | `Input` | `"comfortable" \| "compact"` | `"comfortable"` |
+
+{/* public-api:end */}

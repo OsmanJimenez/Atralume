@@ -1,0 +1,78 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/accordion.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Accordion
+
+Use for optional disclosure sections. Each item requires a consumer-supplied stable, unique id, including under SSR. expanded is a model signal. Headers contain native buttons with aria-expanded and aria-controls. Panels use aria-labelledby. Multi defaults to false; opening another item closes its sibling. ArrowUp/Down and Home/End move header focus; Enter/Space use native activation.
+
+## Import and composition
+
+```ts
+import {
+  AtralumeAccordion,
+  AtralumeAccordionItem,
+  AtralumeAccordionHeader,
+  AtralumeAccordionPanel,
+} from "@atralume/angular/accordion";
+```
+
+```html
+<atr-accordion
+  ><atr-accordion-item id="profile"
+    ><span atrAccordionHeader>Profile</span>
+    <p atrAccordionPanel>Profile details</p></atr-accordion-item
+  ><atr-accordion-item id="security"
+    ><span atrAccordionHeader>Security</span>
+    <p atrAccordionPanel>Security details</p></atr-accordion-item
+  ></atr-accordion
+>
+```
+
+## API, variants and states
+
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+
+## Accessibility, keyboard and focus
+
+Use for optional disclosure sections. Each item requires a consumer-supplied stable, unique id, including under SSR. expanded is a model signal. Headers contain native buttons with aria-expanded and aria-controls. Panels use aria-labelledby. Multi defaults to false; opening another item closes its sibling. ArrowUp/Down and Home/End move header focus; Enter/Space use native activation.
+
+Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
+
+## Tokens, themes and glass
+
+Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-accordion-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+
+```css
+.custom {
+  --atr-comp-accordion-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL and motion
+
+Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
+
+## Common mistakes
+
+Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                   | Member     | Kind    | Type      | Default    |
+| ----------------------- | ---------- | ------- | --------- | ---------- |
+| `AtralumeAccordion`     | `multi`    | `Input` | `boolean` | `false`    |
+| `AtralumeAccordionItem` | `id`       | `Input` | `string`  | `Required` |
+| `AtralumeAccordionItem` | `expanded` | `Model` | `boolean` | `false`    |
+| `AtralumeAccordionItem` | `disabled` | `Input` | `boolean` | `false`    |
+
+{/* public-api:end */}

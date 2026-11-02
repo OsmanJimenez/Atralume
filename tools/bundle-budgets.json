@@ -1,0 +1,10 @@
+{
+  "default": { "gzip": 60000 },
+  "entries": {
+    "atralume-angular-button.mjs": { "gzip": 20000 },
+    "atralume-angular-icon.mjs": { "gzip": 30000 },
+    "atralume-angular-table.mjs": { "gzip": 30000 },
+    "atralume-angular-tree.mjs": { "gzip": 30000 },
+    "atralume-angular-carousel.mjs": { "gzip": 30000 }
+  }
+}

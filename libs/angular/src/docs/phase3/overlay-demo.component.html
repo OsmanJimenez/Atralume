@@ -1,0 +1,100 @@
+<div class="actions">
+  @if (family() === "all" || family() === "tooltip") {
+    <button
+      atrButton
+      type="button"
+      atrTooltip="Save changes to your profile"
+      tooltipId="demo-help-tooltip"
+      [showDelay]="0"
+    >
+      Save help
+    </button>
+  }
+  @if (family() === "all" || family() === "menu") {
+    <button atrButton type="button" [atrMenuTriggerFor]="commands">
+      Commands
+    </button>
+  }
+  @if (family() === "all" || family() === "dialog") {
+    <button
+      #dialogOrigin
+      atrButton
+      type="button"
+      (click)="openDialog(dialogContent, $event)"
+    >
+      Open dialog
+    </button>
+  }
+  @if (family() === "all" || family() === "bottom-sheet") {
+    <button
+      #sheetOrigin
+      atrButton
+      type="button"
+      (click)="openSheet(sheetContent, $event)"
+    >
+      Open bottom sheet</button
+    ><button
+      #standardOrigin
+      atrButton
+      type="button"
+      (click)="openSheet(sheetContent, $event, true)"
+    >
+      Open standard sheet
+    </button>
+  }
+  @if (family() === "all" || family() === "snackbar") {
+    <button #snackbarOrigin atrButton type="button" (click)="notify($event)">
+      Show notification
+    </button>
+  }
+</div>
+<p>Result: {{ result() }}</p>
+<ng-template #commands
+  ><div atrMenu aria-label="Profile commands">
+    <button atrMenuItem (invoked)="result.set('Archive')">Archive</button
+    ><button atrMenuItem [disabled]="true">Unavailable</button
+    ><button
+      atrMenuCheckboxItem
+      [checked]="notifications()"
+      (invoked)="toggleNotifications()"
+    >
+      Notifications
+    </button>
+    <hr atrMenuSeparator />
+    <button atrMenuItem [atrMenuTriggerFor]="moreCommands">More actions</button>
+    <div atrMenuGroup aria-label="View">
+      <button atrMenuRadioItem [checked]="true">Comfortable</button
+      ><button atrMenuRadioItem>Compact</button>
+    </div>
+  </div></ng-template
+>
+<ng-template #moreCommands
+  ><div atrMenu aria-label="More actions">
+    <button atrMenuItem (invoked)="result.set('Export')">Export</button
+    ><button atrMenuItem (invoked)="result.set('Print')">Print</button>
+  </div></ng-template
+>
+<ng-template #dialogContent
+  ><h2 atrDialogTitle id="demo-dialog-title">Edit profile</h2>
+  <div atrDialogContent>
+    <label>Display name <input value="Alex Morgan" /></label>
+    <p>Dialog and modal use the same service.</p>
+  </div>
+  <footer atrDialogActions>
+    <button atrButton type="button" atrDialogClose>Cancel</button
+    ><button atrButton type="button" [atrDialogClose]="'Saved profile'">
+      Save profile
+    </button>
+  </footer></ng-template
+>
+<ng-template #sheetContent
+  ><h2 atrBottomSheetTitle>Share profile</h2>
+  <div atrBottomSheetContent>
+    <p>Choose a destination. No drag gestures are required.</p>
+  </div>
+  <footer atrBottomSheetActions>
+    <button atrButton type="button" [atrBottomSheetClose]="'Shared profile'">
+      Share
+    </button>
+  </footer></ng-template
+>

@@ -1,0 +1,62 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/switch.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Switch
+
+Use for a setting that takes effect immediately, such as enabling
+notifications. The host remains a native checkbox and exposes its checked state
+with the switch role. Do not set a separate `aria-checked` value. Use a
+checkbox for consent or a choice that is not an immediate setting.
+
+## Import and example
+
+```ts
+import {
+  AtralumeSwitch,
+  AtralumeSwitchHarness,
+} from "@atralume/angular/switch";
+import { AtralumeControlLabel } from "@atralume/angular/form-field";
+```
+
+```html
+<label atrControlLabel>
+  <input atrSwitch type="checkbox" />
+  <span>Enable notifications</span>
+</label>
+```
+
+## API
+
+{/* public-api:start */}
+
+Native properties, attributes and events remain the public control API.
+
+{/* public-api:end */}
+
+Native checked, disabled, form, and keyboard behavior remain authoritative.
+There is no duplicate state or custom value accessor. Use a concise label that
+describes the setting, not an ambiguous “yes/no” prompt.
+
+## States and keyboard
+
+Space toggles the focused switch. Always retain a visible label and focus
+indicator. The checked state is available to assistive technology through the
+native checkbox state and switch role.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Interaction} />
+
+## Themes and customization
+
+The public theme stylesheet provides light, dark, system, nested-theme, glass,
+forced-colors, and reduced-motion behavior. Switch uses the shared
+`--atr-comp-form-field-*` token family; override those public CSS custom
+properties locally rather than editing package styles.
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />

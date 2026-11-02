@@ -1,0 +1,29 @@
+<label [for]="controlId()">{{ label() }}</label>
+<input
+  data-atr-value-control
+  type="range"
+  [id]="controlId()"
+  [min]="min()"
+  [max]="max()"
+  [step]="continuous() ? 'any' : step()"
+  [value]="displayed()"
+  [disabled]="blocked()"
+  [attr.aria-valuemin]="min()"
+  [attr.aria-valuemax]="max()"
+  [attr.aria-valuenow]="displayed()"
+  [attr.aria-valuetext]="displayWith()(displayed())"
+  [attr.aria-orientation]="orientation()"
+  [attr.aria-invalid]="displayInvalid()"
+  [attr.aria-readonly]="readonly()"
+  [style.--atr-slider-fill]="fill() + '%'"
+  (input)="input($event)"
+  (keydown)="key($event)"
+  (pointerdown)="guard($event)"
+/>
+<output [attr.for]="controlId()">{{ displayWith()(displayed()) }}</output>
+@if (hint()) {
+  <p>{{ hint() }}</p>
+}
+@if (error()) {
+  <p role="status">{{ error() }}</p>
+}

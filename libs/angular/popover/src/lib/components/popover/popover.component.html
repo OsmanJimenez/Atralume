@@ -1,0 +1,10 @@
+<ng-template #panel
+  ><div
+    class="atr-popover-content"
+    [class.atr-popover-content--arrow]="arrow()"
+    [id]="panelId()"
+    [attr.role]="panelRole()"
+    [attr.aria-label]="label()"
+  >
+    <ng-content /></div
+></ng-template>

@@ -35,7 +35,10 @@ const darkSources = [
 ];
 
 function sourcePaths(patterns) {
-  return patterns.map((pattern) => path.join(tokenRoot, pattern));
+  // Glob patterns must use forward slashes, including on Windows.
+  return patterns.map((pattern) =>
+    path.join(tokenRoot, pattern).split(path.sep).join("/"),
+  );
 }
 
 function sourceFiles() {
@@ -115,6 +118,10 @@ function assertContrast() {
     ["error", "on-error"],
     ["error-container", "on-error-container"],
     ["surface", "on-surface"],
+    ...["success", "warning", "info"].flatMap((name) => [
+      [name, "on-" + name],
+      [name + "-container", "on-" + name + "-container"],
+    ]),
     ["surface-container", "on-surface"],
     ["inverse-surface", "inverse-on-surface"],
   ];
@@ -198,6 +205,12 @@ async function buildInto(directory) {
     "base.scss",
     "surfaces.scss",
     "accessibility.scss",
+    "forms.scss",
+    "atoms.scss",
+    "composition.scss",
+    "overlays.scss",
+    "navigation.scss",
+    "advanced.scss",
   ]
     .map((file) =>
       fs.readFileSync(path.join(root, "libs/angular/src/styles", file), "utf8"),
@@ -205,7 +218,7 @@ async function buildInto(directory) {
     .join("\n");
   fs.writeFileSync(
     path.join(directory, "foundations.css"),
-    `${reference}\n${common}\n${systemLight}\n${systemDark}\n${authoredStyles}`,
+    `${reference}\n${common}\n${systemLight}\n${systemDark}\n${fs.readFileSync(path.join(root, "node_modules/@angular/cdk/overlay-prebuilt.css"), "utf8")}\n${authoredStyles}`,
   );
 
   const dictionary = new StyleDictionary(

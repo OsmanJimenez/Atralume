@@ -1,0 +1,9 @@
+<span class="atr-button__content"><ng-content /></span>
+@if (loading()) {
+  <atr-progress-spinner
+    class="atr-button__spinner"
+    label="Loading"
+    size="small"
+    aria-hidden="true"
+  />
+}

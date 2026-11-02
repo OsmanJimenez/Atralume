@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/badge.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Badge
+
+Use short text for categories or status, never color alone. Badges are noninteractive; compose in a button or link for actions. Use count with max (99 by default) to abbreviate large values; the accessible label retains the exact count. Set a descriptive label such as "125 unread messages". Dot badges require a label. There is no dismiss button; removable content belongs in a future Chip.
+
+## Import and minimum example
+
+```ts
+import { AtralumeBadge, AtralumeBadgeHarness } from "@atralume/angular/badge";
+```
+
+```html
+<atr-badge appearance="filled">filled</atr-badge>
+<atr-badge appearance="soft">soft</atr-badge>
+<atr-badge appearance="outlined">outlined</atr-badge>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input        | Type              | Default     |
+| ------------ | ----------------- | ----------- |
+| `tone`       | `BadgeTone`       | `"neutral"` |
+| `appearance` | `BadgeAppearance` | `"soft"`    |
+| `size`       | `BadgeSize`       | `"medium"`  |
+| `count`      | `number \| null`  | `null`      |
+| `max`        | `number`          | `99`        |
+| `dot`        | `boolean`         | `false`     |
+| `label`      | `string \| null`  | `null`      |
+
+```ts
+type BadgeTone =
+  "neutral" | "primary" | "success" | "warning" | "error" | "info";
+type BadgeAppearance = "filled" | "soft" | "outlined";
+type BadgeSize = "small" | "medium";
+```
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.WithIcon} />
+
+## Accessibility
+
+Use short text for categories or status, never color alone. Badges are noninteractive; compose in a button or link for actions. Use count with max (99 by default) to abbreviate large values; the accessible label retains the exact count. Set a descriptive label such as "125 unread messages". Dot badges require a label. There is no dismiss button; removable content belongs in a future Chip.
+
+Keep names meaningful, preserve visible keyboard focus, and check your application at 200% zoom and in forced colors. Automated axe checks run at error level; review assistive technology and real backgrounds manually as well.
+
+## Customization and component tokens
+
+Functional variants are stable inputs; component tokens control visual details. A theme supplies semantic color decisions, a surface supplies the background context, and an instance override changes one composition. Import `@atralume/angular/styles/theme.css` once, including for directive styles. Do not create CSS-valued inputs.
+
+The public token manifest at `@atralume/angular/styles/tokens.json` lists every token. This atom uses the `--atr-comp-badge-*` namespace, including color, size or spacing, shape and motion where applicable.
+
+```css
+.my-example {
+  --atr-comp-badge-shape: 1rem;
+}
+```
+
+Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
+
+## Themes and surfaces
+
+<Canvas of={Stories.Themes} />
+<Canvas of={Stories.NestedThemes} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
+
+## Common mistakes
+
+Avoid replacing native semantics, encoding information by color alone, removing accessible names, or relying on a tooltip for a label. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

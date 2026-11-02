@@ -1,0 +1,80 @@
+<atr-form-field
+  [label]="label()"
+  [hint]="hint()"
+  [error]="message()"
+  [required]="required()"
+>
+  <div class="atr-input-group">
+    <input
+      atrInput
+      data-atr-value-control
+      type="text"
+      [id]="controlId()"
+      [value]="rawValue()"
+      [disabled]="blocked()"
+      [readOnly]="readonly() || readonlyInput()"
+      [attr.aria-invalid]="
+        displayInvalid() || rawValue.parseErrors().length > 0
+      "
+      [attr.aria-required]="required()"
+      (input)="typed($event)"
+    />
+    <div class="actions">
+      <button
+        #calendarToggle
+        atrIconButton
+        type="button"
+        [attr.aria-label]="'Open ' + label() + ' calendar'"
+        aria-haspopup="dialog"
+        [attr.aria-expanded]="opened()"
+        [disabled]="blocked() || readonly()"
+        (click)="toggle()"
+      >
+        <atr-icon name="chevron-down" />
+      </button>
+      @if (clearable() && value()) {
+        <button
+          atrIconButton
+          type="button"
+          [attr.aria-label]="'Clear ' + label()"
+          [disabled]="blocked() || readonly()"
+          (click)="clear()"
+        >
+          <atr-icon name="close" />
+        </button>
+      }
+    </div>
+  </div>
+</atr-form-field>
+@if (presentation() === "popover") {
+  @if (toggleElement(); as origin) {
+    <atr-popover
+      [origin]="origin.nativeElement"
+      [(opened)]="opened"
+      panelRole="dialog"
+      [label]="label() + ' calendar'"
+      focus="first"
+      ><ng-container [ngTemplateOutlet]="calendarContent"
+    /></atr-popover>
+  }
+}
+<ng-template #calendarContent>
+  <atr-calendar
+    [label]="label()"
+    [selectionMode]="selectionMode()"
+    [value]="singleValue()"
+    (valueChange)="pick($event)"
+    [rangeValue]="rangeValue()"
+    (rangeValueChange)="pickRange($event)"
+    [(visibleDate)]="visibleDate"
+    [min]="min()"
+    [max]="max()"
+    [dateFilter]="dateFilter()"
+    [locale]="locale()"
+    [disabled]="blocked()"
+    [readonly]="readonly()"
+  />
+  <button atrButton appearance="text" type="button" (click)="close()">
+    Close calendar
+  </button>
+</ng-template>

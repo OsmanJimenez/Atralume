@@ -1,0 +1,130 @@
+@switch (family()) {
+  @case ("calendar") {
+    <atr-calendar
+      label="Choose date"
+      [today]="baseDate"
+      [visibleDate]="baseDate"
+      [selectionMode]="range() ? 'range' : 'single'"
+      [disabled]="disabled()"
+      [readonly]="readOnly()"
+      (valueChange)="calendarChanged($event)"
+      (rangeValueChange)="rangeChanged($event)"
+    />
+  }
+  @case ("date-picker") {
+    <atr-date-picker
+      label="Appointment"
+      [formControl]="dateControl"
+      [visibleDate]="baseDate"
+      [selectionMode]="range() ? 'range' : 'single'"
+      [disabled]="disabled()"
+      [readonly]="readOnly()"
+      [error]="error() ? 'Choose a date within your booking policy' : null"
+      [presentation]="dialog() ? 'dialog' : 'popover'"
+      clearable
+    />
+  }
+  @case ("time-picker") {
+    <atr-time-picker
+      label="Start time"
+      [formControl]="timeControl"
+      [format]="twelveHour() ? '12h' : '24h'"
+      [seconds]="seconds()"
+      [step]="seconds() ? 1 : 60"
+      [disabled]="disabled()"
+      [readonly]="readOnly()"
+      [error]="error() ? 'Choose a time within your booking policy' : null"
+      clearable
+    />
+  }
+  @case ("slider") {
+    @if (range()) {
+      <atr-range-slider
+        label="Budget"
+        [formControl]="rangeControl"
+        [disabled]="disabled()"
+        [readonly]="readOnly()"
+        [orientation]="vertical() ? 'vertical' : 'horizontal'"
+        [error]="error() ? 'Choose an allowed range' : null"
+      />
+    } @else {
+      <atr-slider
+        label="Budget"
+        [formControl]="sliderControl"
+        [disabled]="disabled()"
+        [readonly]="readOnly()"
+        [orientation]="vertical() ? 'vertical' : 'horizontal'"
+        [error]="error() ? 'Choose an allowed amount' : null"
+        showTicks
+        [step]="1"
+      />
+    }
+  }
+  @case ("file-upload") {
+    <atr-file-upload
+      label="Attachments"
+      [formControl]="fileControl"
+      multiple
+      [disabled]="disabled()"
+      [readonly]="readOnly()"
+      [accept]="error() ? '.txt' : ''"
+      [states]="fileStates()"
+      [imagePreviews]="previews()"
+      (cancelRequested)="result.set('Cancellation requested')"
+    />
+    @if (uploading()) {
+      <button atrButton type="button" (click)="advance()">
+        Advance simulated progress
+      </button>
+    }
+  }
+  @case ("stepper") {
+    <atr-stepper
+      #stepper
+      label="Account setup"
+      linear
+      [disabled]="disabled()"
+      [orientation]="vertical() ? 'vertical' : 'horizontal'"
+      (stepChange)="result.set('step ' + ($event.current + 1))"
+    >
+      <atr-step label="Profile" [control]="profile"
+        ><atr-form-field label="Profile name" required
+          ><input atrInput [formControl]="profile" /></atr-form-field
+        ><button
+          atrButton
+          atrStepperNext
+          type="button"
+          [disabled]="!stepper.canNext()"
+        >
+          Next
+        </button></atr-step
+      >
+      <atr-step label="Review" [completed]="true"
+        ><p>Review your details.</p>
+        <button
+          atrButton
+          atrStepperPrevious
+          appearance="text"
+          type="button"
+          [disabled]="!stepper.canPrevious()"
+        >
+          Previous</button
+        ><button
+          atrButton
+          atrStepperNext
+          type="button"
+          [disabled]="!stepper.canNext()"
+        >
+          Next
+        </button></atr-step
+      >
+      <atr-step label="Finish" [completed]="true"
+        ><p>Setup complete.</p>
+        <button atrButton type="button" (click)="stepper.reset()">
+          Reset workflow
+        </button></atr-step
+      >
+    </atr-stepper>
+  }
+}
+<output>Value: {{ result() }}</output>

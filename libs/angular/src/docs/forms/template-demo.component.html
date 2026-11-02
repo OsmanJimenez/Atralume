@@ -1,0 +1,42 @@
+<form class="atr-forms-demo">
+  <atr-form-field label="Template email"
+    ><input atrInput type="email" name="email" required [(ngModel)]="email"
+  /></atr-form-field>
+  <label atrControlLabel
+    ><input
+      atrCheckbox
+      type="checkbox"
+      name="accepted"
+      required
+      [(ngModel)]="accepted"
+    /><span>Accept terms</span></label
+  >
+  <fieldset>
+    <legend>Template plan</legend>
+    <label atrControlLabel
+      ><input
+        atrRadio
+        type="radio"
+        name="plan"
+        value="personal"
+        [(ngModel)]="plan"
+      /><span>Personal</span></label
+    ><label atrControlLabel
+      ><input
+        atrRadio
+        type="radio"
+        name="plan"
+        value="business"
+        [(ngModel)]="plan"
+      /><span>Business</span></label
+    >
+  </fieldset>
+  <label atrControlLabel
+    ><input
+      atrSwitch
+      type="checkbox"
+      name="notifications"
+      [(ngModel)]="notifications"
+    /><span>Notifications</span></label
+  >
+</form>

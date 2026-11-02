@@ -1,0 +1,21 @@
+name: Feature request
+description: Propose an improvement with its accessibility and API implications.
+title: "feature: "
+labels: [enhancement, needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or interaction
+    validations:
+      required: true
+  - type: textarea
+    id: a11y
+    attributes:
+      label: Accessibility considerations

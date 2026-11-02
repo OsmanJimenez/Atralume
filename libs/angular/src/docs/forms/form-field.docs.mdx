@@ -1,0 +1,37 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./form-field.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# AtralumeFormField Form Field connects its visible label
+
+to the projected control ID. Hint and error IDs are merged into aria-describedby
+without replacing consumer IDs. Stale IDs are removed when messages change.
+Supply explicit, unique IDs for conditional SSR content; generated IDs are
+scoped to the Angular application and deterministic for an identical
+server/client tree. Required wins over optional. Also apply native required to
+the control: the indicator does not define validation. Consumers decide when to
+display errors, usually after touched or submit. Error text uses polite
+announcements. Project one atrInput or atrTextarea per field.
+
+## Import and API
+
+`import { AtralumeFormField, AtralumeFormFieldHarness } from '@atralume/angular/form-field';`
+
+Signal inputs: label (required), hint, error, required, optional, optionalText (Optional), appearance (outline or filled), density (comfortable or compact). AtralumeControlLabel is also exported here.
+
+## Forms and validation
+
+Reactive Forms use formControl or formControlName. Template-driven Forms use ngModel and name. Signal Forms use FormField from @angular/forms/signals on the same native control. No custom CVA is registered. The library does not import Signal Forms internally. Set aria-invalid for consumer validation; Angular ng-invalid is styled after touched or dirty. Disabled and readonly remain native properties.
+
+<Canvas of={Stories.ReactiveForms} />
+<Canvas of={Stories.TemplateDrivenForms} />
+<Canvas of={Stories.SignalForms} />
+
+## Accessibility and theming
+
+Keep labels visible, retain focus outlines, and provide persistent instructions. Test keyboard, zoom and screen-reader behavior in your consuming application. Controls support light/dark tokens, standard/glass surfaces, forced colors and reduced motion. Import `@atralume/angular/styles` once for component styles and theme tokens. Override component CSS variables beginning with --atr-comp-form-field- locally; all defaults reference system tokens. The generated token manifest lists the complete contract. No backdrop filtering is applied inside controls.
+
+## States and testing
+
+Explore the sibling stories for default, disabled, checked/readonly, invalid and interaction states. Harnesses use stable native properties, not visual descendants. Use disabled through the form API for reactive controls. Do not duplicate native values or events with custom state.

@@ -1,0 +1,96 @@
+.atr-card-header,
+.atr-card-content,
+.atr-card-actions {
+  padding: var(--atr-comp-card-padding);
+}
+
+.atr-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--atr-comp-card-gap);
+}
+
+.atr-card-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--atr-comp-card-gap);
+}
+
+.atr-card-media {
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+}
+
+.atr-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--atr-comp-list-gap);
+  background: var(--atr-comp-list-container-color);
+  color: var(--atr-comp-list-label-color);
+  font-family: var(--atr-comp-list-font-family);
+  border-radius: var(--atr-comp-list-shape);
+}
+
+.atr-list-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--atr-comp-list-gap);
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding: var(--atr-comp-list-padding);
+  border: 0;
+  border-radius: var(--atr-comp-list-shape);
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  text-align: start;
+}
+
+.atr-list-item:is(a, button) {
+  inline-size: 100%;
+  cursor: pointer;
+}
+
+.atr-list-item[data-selected="true"] {
+  background: var(--atr-sys-color-primary-container);
+  color: var(--atr-sys-color-on-primary-container);
+}
+
+.atr-list[data-density="compact"] .atr-list-item {
+  padding-block: var(--atr-sys-spacing-xs);
+}
+
+.atr-list-headline {
+  display: block;
+  font-weight: var(--atr-ref-font-weight-medium);
+}
+
+.atr-list-supporting,
+.atr-list-metadata {
+  display: block;
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: var(--atr-ref-font-size-14);
+}
+
+.atr-list-trailing {
+  margin-inline-start: auto;
+}
+
+.atr-list-item:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
+  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+}
+
+.atr-list-item:disabled {
+  opacity: var(--atr-sys-state-disabled-content-opacity);
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .atr-list-item[data-selected="true"] {
+    outline: var(--atr-sys-focus-ring-width) solid Highlight;
+  }
+}

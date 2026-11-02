@@ -3,6 +3,16 @@
   "dest": "../../dist/libs/angular",
   "assets": [
     {
+      "input": ".",
+      "glob": "LICENSE",
+      "output": "."
+    },
+    {
+      "input": ".",
+      "glob": "CHANGELOG.md",
+      "output": "."
+    },
+    {
       "input": "src/styles",
       "glob": "**/*",
       "output": "styles"

@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  max-inline-size: 40rem;
+  min-inline-size: 0;
+}
+
+output {
+  display: block;
+  margin-block-start: var(--atr-sys-spacing-md);
+  overflow-wrap: anywhere;
+}

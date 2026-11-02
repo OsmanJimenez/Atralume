@@ -1,0 +1,421 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "comp": {
+      "icon": {
+        "size-small": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.4}"
+        },
+        "size-medium": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.6}"
+        },
+        "size-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.8}"
+        },
+        "optical-alignment": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.0}"
+        },
+        "disabled-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        }
+      },
+      "icon-button": {
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.full}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "container-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "touch-target-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.touch-target.minimum}"
+        },
+        "icon-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.6}"
+        },
+        "icon-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface}"
+        },
+        "outline-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "hover-opacity": {
+          "$type": "number",
+          "$value": "{atr.sys.state.hover-opacity}"
+        },
+        "pressed-opacity": {
+          "$type": "number",
+          "$value": "{atr.sys.state.pressed-opacity}"
+        },
+        "disabled-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        },
+        "icon-size-small": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.4}"
+        },
+        "icon-size-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.8}"
+        }
+      },
+      "link": {
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "font-family": {
+          "$type": "fontFamily",
+          "$value": "{atr.ref.font.family.plain}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.font.size.14}"
+        },
+        "text-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "visited-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.tertiary}"
+        },
+        "hover-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary-container}"
+        },
+        "active-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "underline-thickness": {
+          "$type": "dimension",
+          "$value": "{atr.ref.border-width.thin}"
+        },
+        "underline-offset": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.xs}"
+        }
+      },
+      "badge": {
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.full}"
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "font-family": {
+          "$type": "fontFamily",
+          "$value": "{atr.ref.font.family.plain}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.font.size.14}"
+        },
+        "motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.sys.motion.duration.medium}"
+        },
+        "motion-easing": {
+          "$type": "cubicBezier",
+          "$value": "{atr.sys.motion.easing.standard}"
+        },
+        "outline-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        },
+        "indicator-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "track-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container-highest}"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.6}"
+        },
+        "height-small": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.5}"
+        },
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "dot-size": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "neutral-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface}"
+        },
+        "neutral-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "neutral-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "neutral-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "primary-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "primary-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary}"
+        },
+        "primary-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary-container}"
+        },
+        "primary-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary-container}"
+        },
+        "success-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.success}"
+        },
+        "success-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-success}"
+        },
+        "success-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.success-container}"
+        },
+        "success-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-success-container}"
+        },
+        "warning-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.warning}"
+        },
+        "warning-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-warning}"
+        },
+        "warning-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.warning-container}"
+        },
+        "warning-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-warning-container}"
+        },
+        "error-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error}"
+        },
+        "error-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-error}"
+        },
+        "error-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error-container}"
+        },
+        "error-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-error-container}"
+        },
+        "info-filled-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.info}"
+        },
+        "info-filled-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-info}"
+        },
+        "info-soft-container": {
+          "$type": "color",
+          "$value": "{atr.sys.color.info-container}"
+        },
+        "info-soft-label": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-info-container}"
+        }
+      },
+      "avatar": {
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.full}"
+        },
+        "font-family": {
+          "$type": "fontFamily",
+          "$value": "{atr.ref.font.family.plain}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.font.size.14}"
+        },
+        "size-small": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.8}"
+        },
+        "size-medium": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.10}"
+        },
+        "size-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.12}"
+        },
+        "size-x-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.16}"
+        },
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary-container}"
+        },
+        "border-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "border-width": {
+          "$type": "dimension",
+          "$value": "{atr.ref.border-width.thin}"
+        },
+        "rounded-shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.medium}"
+        },
+        "fallback-icon-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-primary-container}"
+        }
+      },
+      "divider": {
+        "color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline-variant}"
+        },
+        "thickness": {
+          "$type": "dimension",
+          "$value": "{atr.ref.border-width.thin}"
+        },
+        "inset": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        },
+        "vertical-minimum-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.6}"
+        }
+      },
+      "progress": {
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.full}"
+        },
+        "motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.sys.motion.duration.medium}"
+        },
+        "motion-easing": {
+          "$type": "cubicBezier",
+          "$value": "{atr.sys.motion.easing.standard}"
+        },
+        "size-small": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.8}"
+        },
+        "size-medium": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.10}"
+        },
+        "size-large": {
+          "$type": "dimension",
+          "$value": "{atr.ref.spacing.12}"
+        },
+        "indicator-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.primary}"
+        },
+        "track-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container-highest}"
+        },
+        "height": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.sm}"
+        },
+        "stroke-width": {
+          "$type": "dimension",
+          "$value": "{atr.ref.border-width.strong}"
+        },
+        "spinner-duration": {
+          "$type": "duration",
+          "$value": "{atr.ref.duration.activity}"
+        },
+        "bar-duration": {
+          "$type": "duration",
+          "$value": "{atr.ref.duration.activity-bar}"
+        },
+        "reduced-motion-duration": {
+          "$type": "duration",
+          "$value": "{atr.ref.duration.activity-reduced}"
+        }
+      }
+    }
+  }
+}

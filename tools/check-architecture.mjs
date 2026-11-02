@@ -28,8 +28,36 @@ function walk(directory) {
 }
 
 function layerOf(file) {
+  if (file.replaceAll("\\", "/").includes("/internal/forms/src/"))
+    return "foundations";
   const normalized = file.split(path.sep).join("/");
-  if (normalized.includes("/button/src/lib/")) return "atoms";
+  if (
+    /\/(button|icon|icon-button|link|badge|avatar|divider|progress)\/src\/lib\//.test(
+      normalized,
+    )
+  )
+    return "atoms";
+  if (/\/(chip|skeleton|fab)\/src\//.test(normalized)) return "atoms";
+  if (/\/(listbox|combobox|popover|calendar|slider)\/src\//.test(normalized))
+    return "molecules";
+  if (
+    /\/(select|autocomplete|command-palette|date-picker|time-picker|file-upload|stepper|table|tree|carousel)\/src\//.test(
+      normalized,
+    )
+  )
+    return "organisms";
+  if (
+    /\/(card|list|accordion|tooltip|menu|snackbar|tabs|breadcrumbs|pagination)\/src\//.test(
+      normalized,
+    )
+  )
+    return "molecules";
+  if (
+    /\/(dialog|bottom-sheet|navigation-bar|side-navigation|speed-dial)\/src\//.test(
+      normalized,
+    )
+  )
+    return "organisms";
   return layers.find((layer) => normalized.includes(`/src/lib/${layer}/`));
 }
 
@@ -46,7 +74,12 @@ const config = ts.parseJsonConfigFileContent(
 );
 const host = ts.createCompilerHost(config.options);
 const files = walk(path.join(libraryRoot, "src/lib"));
-files.push(...walk(path.join(libraryRoot, "button/src/lib")));
+files.push(path.join(libraryRoot, "src/index.ts"));
+for (const entry of fs.readdirSync(libraryRoot, { withFileTypes: true })) {
+  if (entry.isDirectory() && entry.name !== "src")
+    files.push(...walk(path.join(libraryRoot, entry.name, "src")));
+}
+files.push(...walk(path.join(libraryRoot, "internal/forms/src")));
 const fileSet = new Set(files.map((file) => path.normalize(file)));
 const graph = new Map(files.map((file) => [path.normalize(file), []]));
 const errors = [];

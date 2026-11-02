@@ -1,0 +1,69 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/dialog.service.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Dialog
+
+Dialog includes the modal pattern; there is no separate Modal API. open accepts a component or TemplateRef with typed Data and Result, returns an AtralumeDialogRef and exposes afterClosed. Inject ATR_DIALOG_DATA and AtralumeDialogRef in component content. Supply label or labelledBy, optionally describedBy, and an owner DestroyRef or viewContainerRef for lifetime cleanup. CDK handles focus trap, initial focus, restoration, backdrop, scroll blocking and Escape. disableClose is for justified critical operations; explain an available way out.
+
+## Import and API
+
+Import public components, directives, services and types from `@atralume/angular/dialog`. See the exported TypeScript interfaces for all configuration options. No CDK type is required in consuming templates or service calls. The executable demo source shows component/template composition and typed results.
+
+## Accessibility, keyboard and focus
+
+Dialog includes the modal pattern; there is no separate Modal API. open accepts a component or TemplateRef with typed Data and Result, returns an AtralumeDialogRef and exposes afterClosed. Inject ATR_DIALOG_DATA and AtralumeDialogRef in component content. Supply label or labelledBy, optionally describedBy, and an owner DestroyRef or viewContainerRef for lifetime cleanup. CDK handles focus trap, initial focus, restoration, backdrop, scroll blocking and Escape. disableClose is for justified critical operations; explain an available way out.
+
+Escape dismisses the top overlay before lower overlays. Focus must return to a connected origin when configured. Keep visible names and labels independent of overlays. Check Tab and Shift+Tab through modal content and preserve a clear dismissal action.
+
+## Context propagation and personalization
+
+The shared infrastructure captures the nearest theme, surface and density attributes, direction and only `--atr-sys-*`, `--atr-comp-*`, `--atr-ref-*` custom properties. It does not copy all computed styles. Explicit contextClasses support consumer theme classes. System color preference refreshes modal contexts. Open a new panel or refresh consumer composition after changing arbitrary runtime brand overrides.
+
+Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay CSS. Component tokens use `--atr-comp-dialog-*`. Consumers control brand through tokens, functional choices through typed configuration. Glass belongs to the originating context and has an opaque fallback. Z-index roles and stack offsets are shared system tokens.
+
+```css
+.custom {
+  --atr-comp-dialog-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Keyboard} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical positioning and viewport collision fallback support RTL and small viewports. Dynamic viewport limits and safe areas avoid covering all content. Reduced motion has no nonessential panel animation; forced colors preserves boundaries. Do not nest interactive content in tooltips, use menus for route navigation, or remove modal labels. Do not create a second Modal or Toast service. Server calls return closed references and do not attach browser overlays; trigger-created overlays clean up with their owner.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                 | Member           | Kind    | Type | Default     |
+| --------------------- | ---------------- | ------- | ---- | ----------- |
+| `AtralumeDialogClose` | `atrDialogClose` | `Input` | `R`  | `undefined` |
+
+```ts
+export interface AtralumeDialogConfig<D> {
+  data?: D;
+  origin?: HTMLElement;
+  label?: string;
+  labelledBy?: string;
+  describedBy?: string;
+  role?: "dialog" | "alertdialog";
+  disableClose?: boolean;
+  autoFocus?: "dialog" | "first-tabbable" | "first-heading";
+  restoreFocus?: boolean;
+  owner?: DestroyRef;
+  injector?: Injector;
+  viewContainerRef?: ViewContainerRef;
+  contextClasses?: readonly string[];
+  closeOnNavigation?: boolean;
+}
+```
+
+{/* public-api:end */}

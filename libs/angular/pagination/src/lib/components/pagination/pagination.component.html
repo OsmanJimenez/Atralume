@@ -1,0 +1,46 @@
+<nav [attr.aria-label]="label()" [attr.aria-busy]="loading() ? 'true' : null">
+  <ol>
+    @for (control of controls(); track control.key) {
+      <li>
+        @if (control.page === null) {
+          <span aria-hidden="true">…</span>
+        } @else if (href(); as url) {
+          <a
+            atrButton
+            class="atr-pagination-control"
+            [appearance]="
+              control.key === 'page-' + current() ? 'tonal' : 'text'
+            "
+            [disabled]="blocked(control.boundary)"
+            [attr.href]="blocked(control.boundary) ? null : url(control.page)"
+            [attr.aria-label]="control.label"
+            [attr.aria-current]="
+              control.key === 'page-' + current() ? 'page' : null
+            "
+            [attr.aria-disabled]="blocked(control.boundary) ? 'true' : null"
+            [attr.tabindex]="blocked(control.boundary) ? -1 : null"
+            (click)="select(control.page, control.boundary, $event)"
+            >{{ control.text }}</a
+          >
+        } @else {
+          <button
+            atrButton
+            class="atr-pagination-control"
+            [appearance]="
+              control.key === 'page-' + current() ? 'tonal' : 'text'
+            "
+            type="button"
+            [disabled]="blocked(control.boundary)"
+            [attr.aria-label]="control.label"
+            [attr.aria-current]="
+              control.key === 'page-' + current() ? 'page' : null
+            "
+            (click)="select(control.page, control.boundary, $event)"
+          >
+            {{ control.text }}
+          </button>
+        }
+      </li>
+    }
+  </ol>
+</nav>

@@ -1,0 +1,11 @@
+<ng-template #panel
+  ><nav
+    [id]="panelId()"
+    [attr.aria-label]="label()"
+    class="atr-side-navigation-panel"
+  >
+    <ng-content /></nav
+></ng-template>
+@if (mode() !== "over" && opened()) {
+  <ng-container [ngTemplateOutlet]="panel" />
+}

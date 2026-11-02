@@ -1,0 +1,333 @@
+/* Public directive classes and label helper classes are stable CSS API. */
+.atr-input,
+.atr-textarea {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: var(--atr-comp-form-field-container-height, 3rem);
+  padding: var(--atr-sys-spacing-sm, 0.5rem)
+    var(--atr-comp-form-field-horizontal-padding, 1rem);
+  border: var(--atr-comp-form-field-container-border-width, 2px) solid
+    var(--atr-comp-form-field-border-color, currentColor);
+  border-radius: var(--atr-comp-form-field-container-radius, 0.25rem);
+  background: var(--atr-comp-form-field-background-color, Canvas);
+  color: var(--atr-comp-form-field-text-color, CanvasText);
+  caret-color: var(--atr-comp-form-field-caret-color, currentColor);
+  font: inherit;
+}
+
+.atr-input-group {
+  display: flex;
+  align-items: stretch;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: var(--atr-comp-form-field-container-height, 3rem);
+  overflow: hidden;
+  border: var(--atr-comp-form-field-container-border-width, 2px) solid
+    var(--atr-comp-form-field-border-color, currentColor);
+  border-radius: var(--atr-comp-form-field-container-radius, 0.25rem);
+  background: var(--atr-comp-form-field-background-color, Canvas);
+  color: var(--atr-comp-form-field-text-color, CanvasText);
+}
+
+.atr-input-group:focus-within {
+  border-color: var(--atr-comp-form-field-focus-border-color, Highlight);
+  outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
+    var(--atr-comp-form-field-focus-ring-color, Highlight);
+  outline-offset: var(--atr-sys-focus-ring-offset, 4px);
+}
+
+.atr-form-field--invalid .atr-input-group {
+  border-color: var(--atr-comp-form-field-invalid-border-color, Mark);
+  border-style: dashed;
+}
+
+.atr-form-field--disabled .atr-input-group {
+  background: var(--atr-comp-form-field-disabled-background, Canvas);
+  color: var(--atr-comp-form-field-disabled-color, GrayText);
+  cursor: not-allowed;
+}
+
+.atr-form-field[data-appearance="filled"] .atr-input-group {
+  background: var(--atr-comp-form-field-readonly-background, Canvas);
+  border-block-start-color: transparent;
+  border-inline-color: transparent;
+}
+
+.atr-input-group .actions {
+  display: flex;
+  flex: none;
+}
+
+.atr-input-group > .atr-input {
+  flex: 1;
+  inline-size: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.atr-input-group > .atr-input:focus-visible {
+  outline: 0;
+}
+
+.atr-input-group > .atr-combobox-trigger {
+  flex: 1;
+  inline-size: auto;
+  min-inline-size: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.atr-input-group > .atr-icon-button,
+.atr-input-group .actions > .atr-icon-button {
+  flex: none;
+  min-inline-size: var(--atr-comp-form-field-container-height, 3rem);
+  inline-size: var(--atr-comp-form-field-container-height, 3rem);
+  block-size: auto;
+  border-radius: 0;
+}
+
+.atr-input-group > .atr-combobox-trigger:focus-visible,
+.atr-input-group > .atr-icon-button:focus-visible,
+.atr-input-group .actions > .atr-icon-button:focus-visible {
+  outline: 0;
+}
+
+.atr-textarea {
+  resize: vertical;
+}
+
+.atr-input::placeholder,
+.atr-textarea::placeholder {
+  color: var(--atr-comp-form-field-placeholder-color, GrayText);
+  opacity: 1;
+}
+
+.atr-input::selection,
+.atr-textarea::selection {
+  background: var(--atr-comp-form-field-selection-color, Highlight);
+}
+
+.atr-input:hover:not(:disabled),
+.atr-textarea:hover:not(:disabled) {
+  border-color: var(--atr-comp-form-field-hover-border-color, currentColor);
+}
+
+.atr-input:focus,
+.atr-textarea:focus {
+  border-color: var(--atr-comp-form-field-focus-border-color, Highlight);
+}
+
+.atr-input:disabled,
+.atr-textarea:disabled {
+  background: var(--atr-comp-form-field-disabled-background, Canvas);
+  color: var(--atr-comp-form-field-disabled-color, GrayText);
+  cursor: not-allowed;
+}
+
+.atr-input:read-only,
+.atr-textarea:read-only {
+  background: var(--atr-comp-form-field-readonly-background, Canvas);
+}
+
+.atr-input:autofill {
+  background: var(--atr-comp-form-field-background-color, Canvas);
+}
+
+.atr-input[aria-invalid="true"],
+.atr-textarea[aria-invalid="true"],
+.atr-input.ng-invalid.ng-touched,
+.atr-input.ng-invalid.ng-dirty,
+.atr-textarea.ng-invalid.ng-touched,
+.atr-textarea.ng-invalid.ng-dirty,
+.atr-form-field--invalid .atr-input,
+.atr-form-field--invalid .atr-textarea {
+  border-color: var(--atr-comp-form-field-invalid-border-color, Mark);
+  border-style: dashed;
+}
+
+.atr-form-field[data-appearance="filled"] .atr-input,
+.atr-form-field[data-appearance="filled"] .atr-textarea {
+  background: var(--atr-comp-form-field-readonly-background, Canvas);
+  border-block-start-color: transparent;
+  border-inline-color: transparent;
+}
+
+.atr-form-field[data-density="compact"] .atr-input,
+.atr-form-field[data-density="compact"] .atr-textarea {
+  min-block-size: var(--atr-comp-form-field-compact-height, 2rem);
+  padding-block: var(--atr-sys-spacing-xs, 0.25rem);
+}
+
+.atr-checkbox,
+.atr-radio,
+.atr-switch {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  inline-size: var(--atr-comp-form-field-control-size, 1.5rem);
+  block-size: var(--atr-comp-form-field-control-size, 1.5rem);
+  margin: 0;
+  accent-color: var(--atr-comp-form-field-selected-color, Highlight);
+  cursor: pointer;
+}
+
+.atr-checkbox:hover,
+.atr-radio:hover,
+.atr-switch:hover {
+  outline: var(--atr-sys-spacing-xs, 0.25rem) solid
+    var(--atr-comp-form-field-hover-state-layer, Canvas);
+}
+
+.atr-checkbox:active,
+.atr-radio:active,
+.atr-switch:active {
+  outline: var(--atr-sys-spacing-xs, 0.25rem) solid
+    var(--atr-comp-form-field-pressed-state-layer, Canvas);
+}
+
+.atr-checkbox:disabled,
+.atr-radio:disabled,
+.atr-switch:disabled {
+  cursor: not-allowed;
+  opacity: var(--atr-comp-form-field-disabled-opacity, 0.6);
+}
+
+.atr-checkbox[aria-invalid="true"],
+.atr-radio[aria-invalid="true"],
+.atr-switch[aria-invalid="true"],
+.atr-checkbox.ng-invalid.ng-touched,
+.atr-radio.ng-invalid.ng-touched,
+.atr-switch.ng-invalid.ng-touched {
+  outline: 2px dashed var(--atr-comp-form-field-invalid-color, Mark);
+  outline-offset: 2px;
+}
+
+.atr-switch {
+  appearance: none;
+  inline-size: var(--atr-comp-form-field-switch-track-width, 3rem);
+  block-size: var(--atr-comp-form-field-switch-track-height, 1.5rem);
+  border: 2px solid
+    var(--atr-comp-form-field-unselected-border-color, currentColor);
+  border-radius: var(--atr-sys-shape-full, 9999px);
+  background: var(--atr-comp-form-field-readonly-background, Canvas);
+  position: relative;
+}
+
+.atr-switch::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--atr-comp-form-field-switch-thumb-offset, 0.25rem);
+  transform: translateY(-50%);
+  inline-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
+  block-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
+  border-radius: var(--atr-sys-shape-full, 9999px);
+  background: var(--atr-comp-form-field-unselected-border-color, currentColor);
+  transition: inset-inline-start
+    var(--atr-comp-form-field-motion-duration, 100ms);
+}
+
+.atr-switch:checked {
+  background: var(--atr-comp-form-field-selected-color, Highlight);
+  border-color: var(--atr-comp-form-field-selected-color, Highlight);
+}
+
+.atr-switch:checked::before {
+  inset-inline-start: calc(
+    100% - var(--atr-comp-form-field-switch-thumb-size, 1rem) - var(
+        --atr-comp-form-field-switch-thumb-offset,
+        0.25rem
+      )
+  );
+  background: var(--atr-comp-form-field-checkmark-color, HighlightText);
+}
+
+.atr-input:focus-visible,
+.atr-textarea:focus-visible,
+.atr-checkbox:focus-visible,
+.atr-radio:focus-visible,
+.atr-switch:focus-visible {
+  outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
+    var(--atr-comp-form-field-focus-ring-color, Highlight);
+  outline-offset: var(--atr-sys-focus-ring-offset, 4px);
+}
+
+.atr-control-label {
+  display: flex;
+  align-items: center;
+  gap: var(--atr-sys-spacing-sm, 0.5rem);
+  min-block-size: var(--atr-comp-form-field-touch-target, 3rem);
+  cursor: pointer;
+  color: var(--atr-comp-form-field-label-color, CanvasText);
+  font: inherit;
+}
+
+.atr-control-label__text,
+.atr-control-label__description {
+  display: block;
+}
+
+.atr-control-label__description {
+  color: var(--atr-comp-form-field-hint-color, GrayText);
+  font-size: var(--atr-sys-typography-body-small-font-size, 0.75rem);
+}
+
+.atr-control-label:has(:disabled) {
+  cursor: not-allowed;
+  color: var(--atr-comp-form-field-disabled-color, GrayText);
+}
+
+.atr-forms-demo {
+  display: grid;
+  gap: var(--atr-sys-spacing-md, 1rem);
+  max-inline-size: 36rem;
+  padding: var(--atr-sys-spacing-lg, 1.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atr-switch::before {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .atr-input,
+  .atr-textarea,
+  .atr-switch {
+    border-color: ButtonText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .atr-input:disabled,
+  .atr-textarea:disabled,
+  .atr-switch:disabled {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  .atr-switch:checked {
+    background: Highlight;
+    border-color: Highlight;
+    forced-color-adjust: none;
+  }
+
+  .atr-switch::before {
+    background: ButtonText;
+  }
+
+  .atr-switch:checked::before {
+    background: HighlightText;
+  }
+
+  .atr-input:focus-visible,
+  .atr-textarea:focus-visible,
+  .atr-checkbox:focus-visible,
+  .atr-radio:focus-visible,
+  .atr-switch:focus-visible {
+    outline-color: Highlight;
+  }
+}

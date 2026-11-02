@@ -1,0 +1,81 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/slider.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Slider
+
+Slider and Range Slider preserve native range inputs for keyboard, pointer and touch. Range values are `{start,end}`; thumbs have separate labels and do not cross. Discrete values use integer-scaled rounding to avoid visible floating-point artifacts. continuous allows arbitrary values. Range bounds are minimum/maximum, while single-value bounds are min/max: this avoids conflicting with object-valued Signal Forms metadata. Each thumb exposes orientation, value, text and its available interval. Native arrows/Home/End and Page Up/Down are supported. Tick and active-track visuals use component tokens.
+
+## Import, composition and values
+
+Import from `@atralume/angular/slider`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+
+## Forms, validation and null
+
+Date Picker, Time Picker, Slider, Range Slider and File Upload implement CVA and the public Signal Forms value-control contract. Use Reactive Forms, ngModel or formField per instance. Required, disabled, touched, dirty, reset and null are covered in unit tests for each control. Signal Forms owns reserved metadata bindings such as min/max: configure numeric validation in its schema instead of binding those names simultaneously. Range Slider uses minimum/maximum for its numeric interval because the form value is an object. Calendar and Stepper do not add an unrelated CVA.
+
+Null is an empty value. A null slider previews its minimum; a null range previews the full available interval without committing a value. External invalid numeric values remain invalid while their preview is clamped. File values are not serialized automatically.
+
+## Keyboard and accessibility
+
+Keep visible labels and names for each interactive control. Native controls retain their editing semantics. Date/time overlays use labelled dialog patterns and restore focus through the shared infrastructure. Calendar uses a labelled grid with one active date. Stepper uses labelled regions and current-step state rather than pretending to be a tab list. Completion/error states have text as well as visual treatment. Test the final application with assistive technology.
+
+## Loading, empty, error and async
+
+The consumer owns remote data, upload transport, progress and business validation. Date/time constraints and step validation are synchronous control configuration; async workflows can pass disabled/loading state through the surrounding composition. Error messages use the existing Form Field or explicit status content. Do not invent HTTP behavior inside these controls.
+
+## Themes, glass and tokens
+
+Import `@atralume/angular/styles/theme.css` once. Customize `--atr-comp-slider-*` tokens and existing atoms through public CSS tokens. Overlays inherit the trigger theme, surface, density, direction and overrides. Light, Dark, Glass, NestedTheme, RTL, ConsumerOverride and Responsive preserve the same API. Forced colors keeps boundaries and native control semantics; no nonessential animation is required.
+
+## SSR, responsive and limitations
+
+Browser-only selection, previews and overlays are guarded. SSR starts with an empty file selection and no browser overlay. Use a stable initial civil date for server/client rendering; parse serialized civil strings with the same adapter. Native file dialogs and File objects cannot be restored by serializing JSON. No custom virtual scroll is introduced. Calendar shrinks its day targets on small viewports while retaining WCAG minimum target sizes; consumers should verify text zoom and translated labels.
+
+## Common mistakes
+
+Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Keyboard} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.Glass} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                  | Member        | Kind     | Type                         | Default                               |
+| ---------------------- | ------------- | -------- | ---------------------------- | ------------------------------------- |
+| `AtralumeRangeSlider`  | `minimum`     | `Input`  | `number`                     | `0`                                   |
+| `AtralumeRangeSlider`  | `maximum`     | `Input`  | `number`                     | `100`                                 |
+| `AtralumeRangeSlider`  | `startLabel`  | `Input`  | `string \| null`             | `null`                                |
+| `AtralumeRangeSlider`  | `endLabel`    | `Input`  | `string \| null`             | `null`                                |
+| `AtralumeSlider`       | `min`         | `Input`  | `number`                     | `0`                                   |
+| `AtralumeSlider`       | `max`         | `Input`  | `number`                     | `100`                                 |
+| `AtralumeSliderBase`   | `step`        | `Input`  | `number`                     | `1`                                   |
+| `AtralumeSliderBase`   | `continuous`  | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeSliderBase`   | `orientation` | `Input`  | `"horizontal" \| "vertical"` | `"horizontal"`                        |
+| `AtralumeSliderBase`   | `inverted`    | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeSliderBase`   | `showTicks`   | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeSliderBase`   | `displayWith` | `Input`  | `(value: number) => string`  | `String`                              |
+| `AtralumeValueControl` | `value`       | `Model`  | `T \| null`                  | `null`                                |
+| `AtralumeValueControl` | `label`       | `Input`  | `string`                     | `Required`                            |
+| `AtralumeValueControl` | `controlId`   | `Input`  | `string`                     | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled`    | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeValueControl` | `readonly`    | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeValueControl` | `required`    | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeValueControl` | `invalid`     | `Input`  | `boolean`                    | `false`                               |
+| `AtralumeValueControl` | `hint`        | `Input`  | `string \| null`             | `null`                                |
+| `AtralumeValueControl` | `error`       | `Input`  | `string \| null`             | `null`                                |
+| `AtralumeValueControl` | `touch`       | `Output` | `void`                       | `Event`                               |
+
+```ts
+export interface AtralumeSliderRange {
+  readonly start: number;
+  readonly end: number;
+}
+```
+
+{/* public-api:end */}

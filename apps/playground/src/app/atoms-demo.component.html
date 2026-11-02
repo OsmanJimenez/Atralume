@@ -1,0 +1,59 @@
+<section class="atoms-grid">
+  <article data-atr-surface="elevated">
+    <h3>Actions and identity</h3>
+    <div class="row">
+      <atr-avatar name="Osman Jiménez" alt="" /><span>Osman Jiménez</span
+      ><atr-badge tone="success"
+        ><atr-icon name="check" size="small" />Active</atr-badge
+      >
+    </div>
+    <hr atrDivider />
+    <div class="row">
+      <button atrButton type="button">
+        <atr-icon name="check" />Save profile</button
+      ><button atrIconButton type="button" aria-label="Close preview">
+        <atr-icon name="close" /></button
+      ><a atrLink href="#atoms" appearance="standalone"
+        >Documentation<atr-icon name="arrow-right"
+      /></a>
+    </div>
+  </article>
+  <article data-atr-theme="dark" data-atr-surface="standard">
+    <h3>Nested dark theme</h3>
+    <atr-badge>Dark scope</atr-badge>
+    <section data-atr-theme="light" data-atr-surface="standard">
+      <p>Nested light</p>
+      <button atrButton type="button" appearance="outlined">Continue</button>
+    </section>
+  </article>
+  <div class="glass-stage">
+    <article data-atr-surface="glass">
+      <h3>Activity on glass</h3>
+      <p>Advance the simulated upload in 25% steps.</p>
+      <div class="row">
+        <button atrButton type="button" (click)="advance()">
+          {{
+            progress() === null
+              ? "Start upload"
+              : progress() === 100
+                ? "Reset upload"
+                : "Advance upload"
+          }}</button
+        ><atr-progress-spinner
+          label="Profile upload"
+          [value]="progress()"
+          size="small"
+        /><span aria-live="polite">{{
+          progress() === null ? "Waiting" : progress() + "%"
+        }}</span>
+      </div>
+      <atr-progress-bar label="Profile upload" [value]="progress()" /><button
+        atrButton
+        type="button"
+        class="custom"
+      >
+        Consumer override
+      </button>
+    </article>
+  </div>
+</section>

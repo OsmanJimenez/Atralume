@@ -1,0 +1,77 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/card.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Card
+
+Use for related content. Use native anchors and buttons inside the card for actions; do not nest interactive controls inside a clickable card. Header, media, content and actions are explicit directive slots. Glass is a surface appearance, not an action variant.
+
+Card projects its action area. Import Button and Avatar for the composed examples; action styling and behavior come from those public atoms.
+
+## Import and composition
+
+```ts
+import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeAvatar } from "@atralume/angular/avatar";
+import {
+  AtralumeCard,
+  AtralumeCardHeader,
+  AtralumeCardContent,
+  AtralumeCardActions,
+} from "@atralume/angular/card";
+```
+
+```html
+<atr-card appearance="elevated"
+  ><header atrCardHeader><h2>Account</h2></header>
+  <div atrCardContent>Manage your profile.</div>
+  <footer atrCardActions>
+    <button atrButton type="button">Continue</button>
+  </footer></atr-card
+>
+```
+
+## API, variants and states
+
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+
+## Accessibility, keyboard and focus
+
+Use for related content. Use native anchors and buttons inside the card for actions; do not nest interactive controls inside a clickable card. Header, media, content and actions are explicit directive slots. Glass is a surface appearance, not an action variant.
+
+Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
+
+## Tokens, themes and glass
+
+Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-card-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+
+```css
+.custom {
+  --atr-comp-card-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL and motion
+
+Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
+
+## Common mistakes
+
+Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner          | Member       | Kind    | Type                                              | Default    |
+| -------------- | ------------ | ------- | ------------------------------------------------- | ---------- |
+| `AtralumeCard` | `appearance` | `Input` | `"filled" \| "elevated" \| "outlined" \| "glass"` | `"filled"` |
+
+{/* public-api:end */}

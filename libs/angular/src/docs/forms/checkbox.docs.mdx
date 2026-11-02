@@ -1,0 +1,32 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./checkbox.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# AtralumeCheckbox Use independent choices or terms
+
+confirmation. indeterminate changes the DOM visual state, not the boolean form
+value; browsers clear it on user activation. Keep a visible label. Use radios
+for mutually exclusive choices.
+
+## Import and API
+
+`import { AtralumeCheckbox, AtralumeCheckboxHarness } from '@atralume/angular/checkbox';`
+
+Signal input: indeterminate (false). Other state and events belong to the native input.
+
+## Forms and validation
+
+Reactive Forms use formControl or formControlName. Template-driven Forms use ngModel and name. Signal Forms use FormField from @angular/forms/signals on the same native control. No custom CVA is registered. The library does not import Signal Forms internally. Set aria-invalid for consumer validation; Angular ng-invalid is styled after touched or dirty. Disabled and readonly remain native properties.
+
+<Canvas of={Stories.ReactiveForms} />
+<Canvas of={Stories.TemplateDrivenForms} />
+<Canvas of={Stories.SignalForms} />
+
+## Accessibility and theming
+
+Keep labels visible, retain focus outlines, and provide persistent instructions. Test keyboard, zoom and screen-reader behavior in your consuming application. Controls support light/dark tokens, standard/glass surfaces, forced colors and reduced motion. Import `@atralume/angular/styles` once for component styles and theme tokens. Override component CSS variables beginning with --atr-comp-form-field- locally; all defaults reference system tokens. The generated token manifest lists the complete contract. No backdrop filtering is applied inside controls.
+
+## States and testing
+
+Explore the sibling stories for default, disabled, checked/readonly, invalid and interaction states. Harnesses use stable native properties, not visual descendants. Use disabled through the form API for reactive controls. Do not duplicate native values or events with custom state.

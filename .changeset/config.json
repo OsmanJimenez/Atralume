@@ -1,0 +1,15 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
+  "changelog": [
+    "@changesets/cli/changelog",
+    { "repo": "OsmanJimenez/Atralume" }
+  ],
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "develop",
+  "updateInternalDependencies": "patch",
+  "ignore": [],
+  "privatePackages": { "version": false, "tag": false }
+}

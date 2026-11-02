@@ -1,0 +1,52 @@
+import { TestBed } from "@angular/core/testing";
+import { AtralumeAvatar } from "../../index";
+describe("AtralumeAvatar", () => {
+  it("uses dimensions, loading, alt host and image fallback without retry loops", async () => {
+    const f = TestBed.createComponent(AtralumeAvatar);
+    f.componentRef.setInput("src", "/person.webp");
+    f.componentRef.setInput("name", "Osman José Jiménez");
+    f.componentRef.setInput("alt", "Osman Jiménez");
+    f.detectChanges();
+    await f.whenStable();
+    const e = f.nativeElement as HTMLElement;
+    const img = e.querySelector("img") as HTMLImageElement;
+    expect(img.width).toBe(64);
+    expect(img.height).toBe(64);
+    expect(img.alt).toBe("");
+    expect(img.loading).toBe("lazy");
+    expect(e.getAttribute("aria-label")).toBe("Osman Jiménez");
+    img.dispatchEvent(new Event("error"));
+    f.detectChanges();
+    await f.whenStable();
+    expect(e.querySelector("img")).toBeNull();
+    expect(e.textContent).toContain("OJ");
+    f.detectChanges();
+    expect(e.querySelector("img")).toBeNull();
+    f.componentRef.setInput("src", "/different.webp");
+    f.detectChanges();
+    await f.whenStable();
+    expect(e.querySelector("img")?.getAttribute("src")).toBe("/different.webp");
+  });
+  it("prefers explicit initials and supports unicode names, size and shape", async () => {
+    const f = TestBed.createComponent(AtralumeAvatar);
+    f.componentRef.setInput("name", "李 小龍");
+    f.componentRef.setInput("size", "x-large");
+    f.componentRef.setInput("shape", "rounded");
+    f.detectChanges();
+    await f.whenStable();
+    expect(f.nativeElement.textContent).toContain("李小");
+    expect(f.nativeElement.dataset["size"]).toBe("x-large");
+    expect(f.nativeElement.dataset["shape"]).toBe("rounded");
+    f.componentRef.setInput("initials", "ABCD");
+    f.detectChanges();
+    await f.whenStable();
+    expect(f.nativeElement.textContent).toContain("AB");
+  });
+  it("shows generic icon and hides decorative identity", async () => {
+    const f = TestBed.createComponent(AtralumeAvatar);
+    f.detectChanges();
+    await f.whenStable();
+    expect(f.nativeElement.querySelector("svg")).not.toBeNull();
+    expect(f.nativeElement.getAttribute("aria-hidden")).toBe("true");
+  });
+});

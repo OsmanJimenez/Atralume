@@ -1,0 +1,98 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/tabs.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Tabs
+
+Tabs switch related content within a view; they are not route navigation. Use Tab List, native Tab buttons and associated Tab Panels with stable unique IDs. selected is a model containing a tab id. Arrow navigation skips disabled tabs. Automatic activation selects on focus movement; manual activation waits for Enter or Space. Horizontal arrows follow RTL; vertical uses Up/Down; Home/End reach enabled boundaries. Panels remain in the DOM and use hidden, preserving native ARIA relationships. Eager content is intentional; no incomplete lazy loader is added.
+
+## Import, API and minimum composition
+
+```ts
+import {
+  AtralumeTabs,
+  AtralumeTabList,
+  AtralumeTab,
+  AtralumeTabPanel,
+} from "@atralume/angular/tabs";
+```
+
+```html
+<atr-tabs label="Profile sections"
+  ><div atrTabList>
+    <button atrTab id="overview-tab" panel="overview-panel" type="button">
+      Overview</button
+    ><button atrTab id="activity-tab" panel="activity-panel" type="button">
+      Activity</button
+    ><button
+      atrTab
+      id="disabled-tab"
+      panel="disabled-panel"
+      type="button"
+      disabled
+    >
+      Unavailable
+    </button>
+  </div>
+  <section atrTabPanel id="overview-panel" labelledBy="overview-tab">
+    Profile overview
+  </section>
+  <section atrTabPanel id="activity-panel" labelledBy="activity-tab">
+    Recent activity
+  </section>
+  <section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">
+    Unavailable panel
+  </section></atr-tabs
+>
+```
+
+The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+
+## Accessibility, keyboard and focus
+
+Tabs switch related content within a view; they are not route navigation. Use Tab List, native Tab buttons and associated Tab Panels with stable unique IDs. selected is a model containing a tab id. Arrow navigation skips disabled tabs. Automatic activation selects on focus movement; manual activation waits for Enter or Space. Horizontal arrows follow RTL; vertical uses Up/Down; Home/End reach enabled boundaries. Panels remain in the DOM and use hidden, preserving native ARIA relationships. Eager content is intentional; no incomplete lazy loader is added.
+
+Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
+
+## Themes, surfaces and personalization
+
+Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-tabs-*` and semantic system defaults. Variants are functional inputs; tokens control brand, shape, spacing and colors. Themes are scoped and surfaces provide context. Instance overrides can live on a consumer class.
+
+```css
+.custom {
+  --atr-comp-tabs-shape: 1.5rem;
+}
+```
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Dark} />
+<Canvas of={Stories.NestedTheme} />
+<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.ConsumerOverride} />
+
+## Responsive, RTL, motion and common mistakes
+
+Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner              | Member        | Kind    | Type                         | Default        |
+| ------------------ | ------------- | ------- | ---------------------------- | -------------- |
+| `AtralumeTabs`     | `label`       | `Input` | `string`                     | `Required`     |
+| `AtralumeTabs`     | `selected`    | `Model` | `string`                     | `""`           |
+| `AtralumeTabs`     | `activation`  | `Input` | `TabActivation`              | `"automatic"`  |
+| `AtralumeTabs`     | `orientation` | `Input` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `AtralumeTabPanel` | `id`          | `Input` | `string`                     | `Required`     |
+| `AtralumeTabPanel` | `labelledBy`  | `Input` | `string`                     | `Required`     |
+| `AtralumeTab`      | `id`          | `Input` | `string`                     | `Required`     |
+| `AtralumeTab`      | `panel`       | `Input` | `string`                     | `Required`     |
+| `AtralumeTab`      | `disabled`    | `Input` | `boolean`                    | `false`        |
+
+```ts
+export type TabActivation = "automatic" | "manual";
+```
+
+{/* public-api:end */}
