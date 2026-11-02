@@ -29,7 +29,7 @@ jobs:
       - run: npm run release:status
       - run: npm run verify
       - run: npm run release:dry-run
-      - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v4
         with:
           name: atralume-canary-${{ github.sha }}
           path: |
