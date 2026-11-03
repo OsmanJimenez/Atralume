@@ -1,11 +1,11 @@
-<ng-template #panel
-  ><nav
-    [id]="panelId()"
+@if (opened()) {
+  <aside
+    [tuiNavigationAside]="expanded()"
+    [attr.id]="panelId()"
     [attr.aria-label]="label()"
-    class="atr-side-navigation-panel"
   >
-    <ng-content /></nav
-></ng-template>
-@if (mode() !== "over" && opened()) {
-  <ng-container [ngTemplateOutlet]="panel" />
+    <ng-content select="header" />
+    <ng-content />
+    <ng-content select="footer" />
+  </aside>
 }

@@ -19,7 +19,7 @@ import {
 } from "@atralume/angular/command-palette";
 import { AtralumeButton } from "@atralume/angular/button";
 import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeFormField } from "@atralume/angular/form-field";
+import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
 @Component({
   selector: "atr-selection-demo",
   standalone: true,
@@ -34,6 +34,7 @@ import { AtralumeFormField } from "@atralume/angular/form-field";
     AtralumeButton,
     AtralumeInput,
     AtralumeFormField,
+    TuiTextfield,
   ],
   templateUrl: "./selection-demo.component.html",
   styleUrl: "./selection-demo.component.scss",
@@ -50,7 +51,6 @@ export class SelectionDemo {
   readonly selected = signal<readonly string[]>([]);
   readonly query = signal("");
   readonly opened = signal(false);
-  readonly origin = signal<HTMLElement | null>(null);
   readonly result = signal("No action");
   readonly options = computed(() =>
     this.empty()
@@ -73,10 +73,7 @@ export class SelectionDemo {
             },
           ],
   );
-  readonly control = new FormControl<string | readonly string[] | null>(
-    null,
-    Validators.required,
-  );
+  readonly control = new FormControl<string | null>(null, Validators.required);
   readonly display = (value: string) =>
     this.options().find((option) => option.value === value)?.label ?? value;
   readonly commands: readonly AtralumeCommand<string>[] = [
@@ -105,9 +102,5 @@ export class SelectionDemo {
       this.result.set(JSON.stringify(value)),
     );
     owner.onDestroy(() => subscription.unsubscribe());
-  }
-  openPopover(event: Event): void {
-    this.origin.set(event.currentTarget as HTMLElement);
-    this.opened.set(true);
   }
 }

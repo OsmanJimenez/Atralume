@@ -5,13 +5,18 @@ import {
   inject,
   ElementRef,
 } from "@angular/core";
+import { TuiTab } from "@taiga-ui/kit";
 import { TAB_CONTEXT } from "../models/tabs.types";
+
+/** Adapter over Taiga UI `TuiTab`; Atralume owns id/panel selection state. */
 @Directive({
   selector: "button[atrTab]",
   standalone: true,
+  hostDirectives: [TuiTab],
   host: {
     class: "atr-tab",
     role: "tab",
+    "[attr.tuiTab]": '""',
     "[attr.id]": "id()",
     "[attr.aria-controls]": "panel()",
     "[attr.aria-selected]": "owner.activeId() === id()",

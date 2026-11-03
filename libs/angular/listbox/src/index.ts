@@ -1,5 +1,5 @@
 export { AtralumeListbox } from "./lib/components/listbox/listbox.component";
-export { AtralumeOption } from "./lib/components/option/option.component";
+export { AtralumeOptionDirective } from "./lib/directives/option.directive";
 export {
   AtralumeOptionGroup,
   AtralumeOptionGroupLabel,

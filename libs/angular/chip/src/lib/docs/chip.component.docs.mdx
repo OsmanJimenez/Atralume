@@ -5,6 +5,10 @@ import * as Stories from "../stories/chip.component.stories";
 
 # Chip
 
+The adapter applies Taiga UI's public `TuiChip` directive. Atralume keeps kind, selection, removal, and chip-set composition. Consumers should not add `tuiChip` on the same host.
+
+Taiga UI reference: [Chip](https://taiga-ui.dev/components/chip).
+
 Chips represent actions, filters, suggestions or removable input. Badges represent noninteractive status. Filter chips expose aria-pressed; assist/suggestion/input chips do not pretend to be checkboxes. Removal is a sibling native button with its own name. Chip Set manages single/multiple selection and arrow/Home/End focus; selected is a model signal. Use selectionChange to consume values; no partial CVA is registered.
 
 ## Import and composition
@@ -24,7 +28,7 @@ import { AtralumeChip, AtralumeChipSet } from "@atralume/angular/chip";
 
 ## API, variants and states
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
 
 ## Accessibility, keyboard and focus
 
@@ -42,12 +46,7 @@ Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-co
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL and motion
 
 Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.

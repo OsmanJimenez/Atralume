@@ -1,0 +1,66 @@
+/* Brand modes: one attribute on a scope restyles every Taiga-backed control
+   via --atr-* → taiga-bridge → --tui-*. */
+
+/* --- Shape (radius / curve) --------------------------------------------- */
+
+[data-atr-shape="sharp"] {
+  --atr-sys-shape-none: 0;
+  --atr-sys-shape-extra-small: 0;
+  --atr-sys-shape-small: 0;
+  --atr-sys-shape-medium: 0;
+  --atr-sys-shape-large: 0;
+  --atr-sys-shape-extra-large: 0;
+  --atr-sys-shape-full: 0;
+}
+
+[data-atr-shape="rounded"] {
+  /* Default system shape tokens already apply; explicit for clarity. */
+  --atr-sys-shape-extra-small: var(--atr-ref-radius-4);
+  --atr-sys-shape-small: var(--atr-ref-radius-8);
+  --atr-sys-shape-medium: var(--atr-ref-radius-12);
+  --atr-sys-shape-large: var(--atr-ref-radius-16);
+  --atr-sys-shape-extra-large: var(--atr-ref-radius-28);
+  --atr-sys-shape-full: var(--atr-ref-radius-full);
+}
+
+[data-atr-shape="pill"] {
+  --atr-sys-shape-extra-small: var(--atr-ref-radius-8);
+  --atr-sys-shape-small: var(--atr-ref-radius-12);
+  --atr-sys-shape-medium: var(--atr-ref-radius-full);
+  --atr-sys-shape-large: var(--atr-ref-radius-full);
+  --atr-sys-shape-extra-large: var(--atr-ref-radius-full);
+  --atr-sys-shape-full: var(--atr-ref-radius-full);
+}
+
+/* --- Brand accent (example: green) -------------------------------------- */
+
+[data-atr-brand="green"] {
+  --atr-sys-color-primary: var(--atr-ref-color-success-40);
+  --atr-sys-color-on-primary: var(--atr-ref-color-success-100);
+  --atr-sys-color-primary-container: var(--atr-ref-color-success-90);
+  --atr-sys-color-on-primary-container: var(--atr-ref-color-success-10);
+  --atr-sys-color-focus: var(--atr-ref-color-success-40);
+  --atr-sys-color-inverse-primary: var(--atr-ref-color-success-80);
+}
+
+[data-atr-theme="dark"][data-atr-brand="green"],
+[data-atr-brand="green"][data-atr-theme="dark"] {
+  --atr-sys-color-primary: var(--atr-ref-color-success-80);
+  --atr-sys-color-on-primary: var(--atr-ref-color-success-20);
+  --atr-sys-color-primary-container: var(--atr-ref-color-success-40);
+  --atr-sys-color-on-primary-container: var(--atr-ref-color-success-90);
+  --atr-sys-color-focus: var(--atr-ref-color-success-80);
+  --atr-sys-color-inverse-primary: var(--atr-ref-color-success-40);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-atr-theme="system"][data-atr-brand="green"],
+  [data-atr-brand="green"][data-atr-theme="system"] {
+    --atr-sys-color-primary: var(--atr-ref-color-success-80);
+    --atr-sys-color-on-primary: var(--atr-ref-color-success-20);
+    --atr-sys-color-primary-container: var(--atr-ref-color-success-40);
+    --atr-sys-color-on-primary-container: var(--atr-ref-color-success-90);
+    --atr-sys-color-focus: var(--atr-ref-color-success-80);
+    --atr-sys-color-inverse-primary: var(--atr-ref-color-success-40);
+  }
+}

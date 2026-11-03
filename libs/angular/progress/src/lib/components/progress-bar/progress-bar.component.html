@@ -1,1 +1,7 @@
-<span class="indicator" [style.inline-size.%]="percentage()"></span>
+<progress
+  tuiProgressBar
+  class="atr-progress-bar__native"
+  [attr.aria-label]="label()"
+  [attr.value]="nativeValue() === null ? null : nativeValue()"
+  [max]="nativeMax()"
+></progress>

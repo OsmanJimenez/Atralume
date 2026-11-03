@@ -5,8 +5,12 @@ import * as Stories from "../stories/carousel.component.stories";
 
 # Carousel
 
+Exception relative to Taiga `TuiCarousel`: Atralume keeps a slides data model with autoplay and indicators; Taiga projects templates into `tui-carousel`.
+
+Taiga UI reference: [Carousel](https://taiga-ui.dev/components/carousel).
+
 Import `AtralumeCarousel` from `@atralume/angular/carousel` for a small, controlled sequence of related slides. It is not a replacement for an important linear page flow. `activeIndex` is controlled and `activeChange` reports navigation. Use stable slide IDs.
 
 Autoplay is off by default. When enabled, it has a visible pause/resume control, pauses during hover and focus, stops in a hidden document, and never starts under reduced motion. Arrow keys and labelled previous, next and indicator controls work without touch gestures. The active slide is exposed as a labelled region and inactive slide content is hidden without moving focus.
 
-<Canvas of={Stories.Default} />
+<Canvas of={Stories.Playground} />

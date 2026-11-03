@@ -1,7 +1,9 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
+import { expect, userEvent, within } from "storybook/test";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
+  TuiTextfield,
 } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
@@ -24,92 +26,82 @@ export default {
         AtralumeCheckbox,
         AtralumeRadio,
         AtralumeSwitch,
+        TuiTextfield,
         FormsDemo,
         SignalDemo,
         TemplateDemo,
       ],
     }),
   ],
+  tags: ["!autodocs"],
 } satisfies Meta;
+
 type Story = StoryObj;
-export const Default: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" ><input atrInput type="email"  /></atr-form-field></section>',
+
+/** Single controls playground covering appearance, hint, error, required, optional. */
+export const Playground: Story = {
+  args: {
+    label: "Email",
+    appearance: "outline",
+    hint: "Use your work email.",
+    error: "",
+    required: false,
+    optional: false,
+    disabled: false,
+    value: "",
+  },
+  argTypes: {
+    label: { control: "text" },
+    appearance: { control: "select", options: ["outline", "filled"] },
+    hint: { control: "text" },
+    error: { control: "text" },
+    required: { control: "boolean" },
+    optional: { control: "boolean" },
+    disabled: { control: "boolean" },
+    value: { control: "text" },
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <section class="atr-forms-demo">
+        <atr-form-field
+          [appearance]="appearance"
+          [hint]="hint || null"
+          [error]="error || null"
+        >
+          <tui-textfield [invalid]="!!error" tuiTextfieldSize="m">
+            <label tuiLabel>
+              {{ label }}
+              @if (required) { *}
+              @if (optional) { (optional)}
+            </label>
+            <input atrInput type="email" [disabled]="disabled" [value]="value" />
+          </tui-textfield>
+        </atr-form-field>
+      </section>
+    `,
   }),
 };
-export const FilledAppearance: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" appearance="filled"><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const OutlineAppearance: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" appearance="outline"><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const WithHint: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" hint="Use your work email."><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const Required: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" required><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const Optional: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" optional><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const Invalid: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" error="Enter a valid value."><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const Disabled: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" ><input atrInput type="email" disabled /></atr-form-field></section>',
-  }),
-};
-export const Readonly: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" ><input atrInput type="email" readonly /></atr-form-field></section>',
-  }),
-};
-export const Compact: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  ><atr-form-field label="Email" density="compact"><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const DarkTheme: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo" data-atr-theme="dark"  data-atr-surface="standard"><atr-form-field label="Email" ><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
-export const GlassSurface: Story = {
-  render: () => ({
-    template:
-      '<section class="atr-forms-demo"  data-atr-surface="glass"><atr-form-field label="Email" ><input atrInput type="email"  /></atr-form-field></section>',
-  }),
-};
+
 export const ReactiveForms: Story = {
   render: () => ({ template: "<atr-forms-demo />" }),
+  play: async ({ canvasElement }) => {
+    const c = within(canvasElement);
+    // Taiga floating `tuiLabel` is visual; wire plays to the native control.
+    const email = canvasElement.querySelector(
+      'input[type="email"]',
+    ) as HTMLInputElement;
+    await expect(email).toBeTruthy();
+    await userEvent.type(email, "invalid");
+    await userEvent.tab();
+    await expect(c.getByText("Enter a valid email address.")).toBeVisible();
+  },
 };
+
 export const TemplateDrivenForms: Story = {
   render: () => ({ template: "<atr-template-demo />" }),
 };
+
 export const SignalForms: Story = {
   render: () => ({ template: "<atr-signal-demo />" }),
 };

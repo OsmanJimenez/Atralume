@@ -1,22 +1,30 @@
-import { Directive, forwardRef, isDevMode } from "@angular/core";
-import {
-  ɵATR_FORM_FIELD_CONTROL,
-  ɵAtralumeNativeTextControl,
-} from "@atralume/angular";
+import { Directive, ElementRef, inject, isDevMode } from "@angular/core";
+import { TuiInputDirective } from "@taiga-ui/core";
+
+/**
+ * Thin adapter: `input[atrInput]` → Taiga `TuiInputDirective` (`tuiInput`).
+ *
+ * Must sit inside `atr-form-field` / `tui-textfield`. Brand look comes from
+ * Taiga + Atralume modes/bridge.
+ */
 @Directive({
   selector: "input[atrInput]",
   standalone: true,
-  host: { class: "atr-input" },
-  providers: [
+  hostDirectives: [
     {
-      provide: ɵATR_FORM_FIELD_CONTROL,
-      useExisting: forwardRef(() => AtralumeInput),
+      directive: TuiInputDirective,
+      inputs: ["readonly", "invalid", "focused", "state"],
     },
   ],
+  host: {
+    class: "atr-input",
+    "[attr.tuiInput]": '""',
+  },
 })
-export class AtralumeInput extends ɵAtralumeNativeTextControl {
+export class AtralumeInput {
   constructor() {
-    super();
+    const type = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement
+      .type;
     if (
       isDevMode() &&
       [
@@ -30,8 +38,9 @@ export class AtralumeInput extends ɵAtralumeNativeTextControl {
         "reset",
         "hidden",
         "image",
-      ].includes(this.element.type)
-    )
+      ].includes(type)
+    ) {
       throw new Error("atrInput requires a text-like native input.");
+    }
   }
 }

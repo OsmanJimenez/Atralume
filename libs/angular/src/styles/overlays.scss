@@ -2,32 +2,6 @@
   font-family: var(--atr-ref-font-family-plain);
 }
 
-.atr-overlay-backdrop.cdk-overlay-backdrop-showing {
-  background: var(--atr-comp-overlay-backdrop-color);
-  opacity: var(--atr-comp-overlay-backdrop-opacity);
-}
-
-.atr-modal-panel {
-  box-sizing: border-box;
-  background: var(--atr-comp-dialog-container-color);
-  color: var(--atr-comp-dialog-label-color);
-  border-radius: var(--atr-comp-dialog-shape);
-  box-shadow: var(--atr-comp-dialog-elevation);
-  max-inline-size: min(var(--atr-comp-dialog-max-width), calc(100vw - 2rem));
-  overflow: auto;
-}
-
-.atr-bottom-sheet-panel {
-  inline-size: min(var(--atr-comp-bottom-sheet-max-width), 100vw);
-  background: var(--atr-comp-bottom-sheet-container-color);
-  color: var(--atr-comp-bottom-sheet-label-color);
-  border-radius: var(--atr-comp-bottom-sheet-shape)
-    var(--atr-comp-bottom-sheet-shape) 0 0;
-  padding-block-end: env(safe-area-inset-bottom);
-  max-block-size: calc(100dvh - env(safe-area-inset-top) - 1rem);
-  overflow: auto;
-}
-
 .atr-dialog-title,
 .atr-dialog-content,
 .atr-dialog-actions,
@@ -46,6 +20,39 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: var(--atr-comp-dialog-gap);
+}
+
+tui-dialog[data-appearance="atr-bottom-sheet"] {
+  inline-size: min(var(--atr-comp-bottom-sheet-max-width), 100vw);
+  background: var(--atr-comp-bottom-sheet-container-color);
+  color: var(--atr-comp-bottom-sheet-label-color);
+  border-radius: var(--atr-comp-bottom-sheet-shape)
+    var(--atr-comp-bottom-sheet-shape) 0 0;
+  padding-block-end: env(safe-area-inset-bottom);
+  max-block-size: calc(100dvh - env(safe-area-inset-top) - 1rem);
+  overflow: auto;
+  margin: auto 0 0;
+  max-inline-size: 100vw;
+  align-self: flex-end;
+}
+
+tui-dropdown[data-appearance="atr-popover"] {
+  box-sizing: border-box;
+  max-inline-size: calc(100vw - 2rem);
+  max-block-size: calc(100dvh - 2rem);
+  overflow: auto;
+  background: var(--atr-comp-popover-container-color);
+  color: var(--atr-comp-popover-label-color);
+  padding: var(--atr-comp-popover-padding);
+  border: 1px solid var(--atr-comp-popover-border-color);
+  border-radius: var(--atr-comp-popover-shape);
+  box-shadow: var(--atr-comp-selection-panel-elevation);
+}
+
+.atr-popover-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-sys-spacing-sm);
 }
 
 .atr-menu {
@@ -104,10 +111,12 @@
 
 @media (forced-colors: active) {
   .atr-menu,
-  .atr-modal-panel,
-  .atr-bottom-sheet-panel {
+  tui-dialog[data-appearance="atr-bottom-sheet"],
+  tui-dropdown[data-appearance="atr-popover"] {
     border: var(--atr-ref-border-width-thin) solid CanvasText;
     box-shadow: none;
+    background: Canvas;
+    color: CanvasText;
   }
 }
 
@@ -119,8 +128,8 @@
 }
 
 .atr-menu[data-atr-surface="glass"],
-.atr-modal-panel[data-atr-surface="glass"],
-.atr-bottom-sheet-panel[data-atr-surface="glass"] {
+tui-dialog[data-appearance="atr-bottom-sheet"][data-atr-surface="glass"],
+tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
   background: var(--atr-sys-glass-fallback-background);
   color: var(--atr-sys-color-on-surface);
   border: var(--atr-sys-glass-border-width) solid
@@ -129,8 +138,8 @@
 
 @supports (backdrop-filter: blur(1px)) {
   .atr-menu[data-atr-surface="glass"],
-  .atr-modal-panel[data-atr-surface="glass"],
-  .atr-bottom-sheet-panel[data-atr-surface="glass"] {
+  tui-dialog[data-appearance="atr-bottom-sheet"][data-atr-surface="glass"],
+  tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
     background: var(--atr-sys-glass-background);
     backdrop-filter: blur(var(--atr-sys-glass-blur))
       saturate(var(--atr-sys-glass-saturation));
@@ -139,8 +148,8 @@
 
 @media (forced-colors: active) {
   .atr-menu[data-atr-surface="glass"],
-  .atr-modal-panel[data-atr-surface="glass"],
-  .atr-bottom-sheet-panel[data-atr-surface="glass"] {
+  tui-dialog[data-appearance="atr-bottom-sheet"][data-atr-surface="glass"],
+  tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
     background: Canvas;
     color: CanvasText;
     border-color: CanvasText;

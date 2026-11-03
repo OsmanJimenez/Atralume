@@ -126,6 +126,9 @@ for (const contract of [
   '[data-atr-theme="dark"]',
   '[data-atr-theme="system"]',
   "prefers-color-scheme: dark",
+  "[tuiButton]",
+  "[tuiLink]",
+  "--tui-background-base: var(--atr-sys-color-surface)",
 ]) {
   if (!themeCss.includes(contract))
     throw new Error(`Public theme stylesheet is missing ${contract}.`);
@@ -133,6 +136,8 @@ for (const contract of [
 const archiveName = packResult.filename;
 const archive = path.join(packageRoot, archiveName);
 const temporary = fs.mkdtempSync(path.join(temporaryRoot, "consumer-"));
+if (!path.resolve(temporary).startsWith(path.resolve(temporaryRoot) + path.sep))
+  throw new Error("Unsafe temporary consumer cleanup path.");
 
 try {
   fs.mkdirSync(path.join(temporary, "src"));
@@ -159,6 +164,7 @@ try {
       "@angular/forms@22.2.1",
       "@angular/cdk@22.2.1",
       "@angular/platform-browser@22.2.1",
+      "@angular/router@22.2.1",
       "@angular/platform-server@22.2.1",
       "rxjs@7.8.2",
       "tslib@2.8.1",
@@ -441,9 +447,7 @@ bootstrapApplication(ConsumerRoot);
       .waitFor();
     await page.keyboard.press("Enter");
     await page.waitForFunction(() => {
-      const field = document.querySelector(
-        'input[aria-label="Packed search"]',
-      );
+      const field = document.querySelector('input[aria-label="Packed search"]');
       return field instanceof HTMLInputElement && field.value === "Packed Beta";
     });
     assert.equal(await packedSearch.inputValue(), "Packed Beta");
@@ -562,10 +566,6 @@ console.log('Packed atoms and all phase 3 families SSR passed without browser gl
       "; all atom entrypoints, typings, CSS, registered icons, tree shaking and runtime checks.",
   );
 } finally {
-  if (
-    !path.resolve(temporary).startsWith(path.resolve(temporaryRoot) + path.sep)
-  )
-    throw new Error("Unsafe temporary consumer cleanup path.");
   fs.rmSync(temporary, { recursive: true, force: true });
   // Keep the validated archive available for review and manual installation.
 }

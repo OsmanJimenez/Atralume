@@ -1,21 +1,33 @@
-import { Directive, forwardRef, input } from "@angular/core";
-import {
-  ɵATR_FORM_FIELD_CONTROL,
-  ɵAtralumeNativeTextControl,
-} from "@atralume/angular";
+import { Directive, input } from "@angular/core";
+import { TuiTextareaComponent } from "@taiga-ui/kit";
+
 export type AtralumeTextareaResize =
-  "none" | "vertical" | "horizontal" | "both";
+  | "none"
+  | "vertical"
+  | "horizontal"
+  | "both";
+
+/**
+ * Thin adapter: `textarea[atrTextarea]` → Taiga `TuiTextareaComponent`.
+ *
+ * Must sit inside `atr-form-field` / `tui-textfield`. Optional `resize` remains
+ * an Atralume affordance on top of Taiga row behavior.
+ */
 @Directive({
   selector: "textarea[atrTextarea]",
   standalone: true,
-  host: { class: "atr-textarea", "[style.resize]": "resize()" },
-  providers: [
+  hostDirectives: [
     {
-      provide: ɵATR_FORM_FIELD_CONTROL,
-      useExisting: forwardRef(() => AtralumeTextarea),
+      directive: TuiTextareaComponent,
+      inputs: ["minRows", "maxRows", "content"],
     },
   ],
+  host: {
+    class: "atr-textarea",
+    "[attr.tuiTextarea]": '""',
+    "[style.resize]": "resize()",
+  },
 })
-export class AtralumeTextarea extends ɵAtralumeNativeTextControl {
+export class AtralumeTextarea {
   readonly resize = input<AtralumeTextareaResize>("vertical");
 }

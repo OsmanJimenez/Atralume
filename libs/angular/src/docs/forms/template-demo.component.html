@@ -1,7 +1,10 @@
 <form class="atr-forms-demo">
-  <atr-form-field label="Template email"
-    ><input atrInput type="email" name="email" required [(ngModel)]="email"
-  /></atr-form-field>
+  <atr-form-field>
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Template email</label>
+      <input atrInput type="email" name="email" required [(ngModel)]="email" />
+    </tui-textfield>
+  </atr-form-field>
   <label atrControlLabel
     ><input
       atrCheckbox

@@ -7,6 +7,10 @@ import * as Stories from "../stories/progress-spinner.component.stories";
 
 Use a spinner for a compact activity indicator. value=null is indeterminate; finite values are clamped to min/max for display with a development warning when outside the range. Invalid ranges and non-finite values throw. A non-empty label is required. Determinate progress exposes aria-valuenow; indeterminate omits it. Reduced motion uses a gentle opacity pulse instead of rotation. Pair long-running activity with visible explanatory text.
 
+Composition adapter: determinate values use Taiga UI `TuiProgressCircle`; indeterminate uses `TuiLoader`. The public `atr-progress-spinner` selector and size/label API stay Atralume-owned.
+
+Taiga UI references: [ProgressCircle](https://taiga-ui.dev/components/progress-circle), [Loader](https://taiga-ui.dev/components/loader).
+
 ## Import and minimum example
 
 ```ts
@@ -64,11 +68,6 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
 
 ## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
 
 Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
 

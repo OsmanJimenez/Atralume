@@ -3,4 +3,10 @@
   position: relative;
   overflow: hidden;
   min-block-size: var(--atr-ref-spacing-16);
+  align-items: stretch;
+}
+
+:host ::ng-deep main[tuiNavigationMain] {
+  flex: 1;
+  min-inline-size: 0;
 }

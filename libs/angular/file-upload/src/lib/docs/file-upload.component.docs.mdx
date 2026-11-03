@@ -7,9 +7,15 @@ import * as Stories from "../stories/file-upload.component.stories";
 
 File Upload selects and presents File[] values; it never uploads HTTP data. Native file input remains available through the keyboard-accessible Button and drop is optional. accept is a browser hint and a client validation rule, not a security boundary: repeat definitive validation on the server. Size, count, duplicate and custom validation produce rejected events. states controls progress, success, error and cancellation externally; cancelRequested is an intent. Object URLs are created only for enabled raster previews and revoked on removal or destruction. SVG previews are excluded.
 
+Taiga UI foundation: the hidden native input uses CDK `TuiNativeValidator` (same
+primitive as `TuiInputFilesDirective`). Full `TuiInputFiles` /
+`label[tuiInputFiles]` was evaluated; Atralume keeps drop-zone, previews,
+progress `states`, and `File[]` CVA ownership on `atr-file-upload`. Taiga
+reference: [InputFiles](https://taiga-ui.dev/components/input-files).
+
 ## Import, composition and values
 
-Import from `@atralume/angular/file-upload`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+Import from `@atralume/angular/file-upload`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Playground and Keyboard examples show complete composition.
 
 ## Forms, validation and null
 
@@ -37,11 +43,7 @@ Browser-only selection, previews and overlays are guarded. SSR starts with an em
 
 Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.Playground} />
 {/* public-api:start */}
 
 ## Public TypeScript contract

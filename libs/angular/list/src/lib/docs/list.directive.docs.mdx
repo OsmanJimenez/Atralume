@@ -5,6 +5,10 @@ import * as Stories from "../stories/list.directive.stories";
 
 # List
 
+The adapter applies Taiga UI's public `TuiList` directive from `@taiga-ui/layout`. Atralume keeps density tokens and leading/headline/supporting/trailing slots.
+
+Taiga UI reference: [List](https://taiga-ui.dev/components/list).
+
 Use native lists for information and nav with anchors for destinations. List does not add menu or listbox roles. Use Menu for application commands and Navigation for routes. Put anchors or buttons within li; never nest one native control inside another. Leading/headline/supporting/trailing/metadata slots provide one-, two- or three-line compositions.
 
 ## Import and composition
@@ -35,7 +39,7 @@ import {
 
 ## API, variants and states
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
 
 ## Accessibility, keyboard and focus
 
@@ -53,12 +57,7 @@ Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-co
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL and motion
 
 Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.

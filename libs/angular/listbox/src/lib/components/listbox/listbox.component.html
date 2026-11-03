@@ -1,42 +1,6 @@
-@for (group of groups(); track group.label) {
-  @if (group.label) {
-    <div atrOptionGroup [label]="group.label">
-      <div atrOptionGroupLabel>{{ group.label }}</div>
-      @for (option of group.options; track option.id) {
-        <ng-container
-          [ngTemplateOutlet]="item"
-          [ngTemplateOutletContext]="{ option: option }"
-        />
-      }
-    </div>
-  } @else {
-    @for (option of group.options; track option.id) {
-      <ng-container
-        [ngTemplateOutlet]="item"
-        [ngTemplateOutletContext]="{ option: option }"
-      />
-    }
-  }
-}
-<ng-content />
-<ng-template #item let-option="option">
-  <atr-option
-    [id]="option.id"
-    [value]="option.value"
-    [label]="option.label"
-    [disabled]="!!option.disabled"
-  >
-    @if (optionTemplate(); as template) {
-      <ng-container
-        [ngTemplateOutlet]="template"
-        [ngTemplateOutletContext]="{
-          $implicit: option.value,
-          option: option,
-          selected: selected(option.value),
-        }"
-      />
-    } @else {
-      {{ option.label }}
-    }
-  </atr-option>
-</ng-template>
+<tui-data-list-wrapper
+  [attr.aria-label]="label()"
+  [items]="items()"
+  [emptyContent]="emptyText()"
+  (itemClick)="pick($event)"
+/>

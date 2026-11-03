@@ -5,6 +5,10 @@ import * as Stories from "../stories/accordion.component.stories";
 
 # Accordion
 
+Exception relative to Taiga `TuiAccordion`: Atralume keeps item-id models, multi mode, and projected header/panel slots. Taiga uses `button[tuiAccordion]` with `tui-expand`.
+
+Taiga UI reference: [Accordion](https://taiga-ui.dev/components/accordion).
+
 Use for optional disclosure sections. Each item requires a consumer-supplied stable, unique id, including under SSR. expanded is a model signal. Headers contain native buttons with aria-expanded and aria-controls. Panels use aria-labelledby. Multi defaults to false; opening another item closes its sibling. ArrowUp/Down and Home/End move header focus; Enter/Space use native activation.
 
 ## Import and composition
@@ -32,7 +36,7 @@ import {
 
 ## API, variants and states
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
 
 ## Accessibility, keyboard and focus
 
@@ -50,12 +54,7 @@ Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-co
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL and motion
 
 Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.

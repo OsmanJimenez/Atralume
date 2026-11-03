@@ -5,7 +5,16 @@ const rows: Person[] = [{ name: "Ada Lovelace", role: "Engineer" }, { name: "Gra
 const columns: AtralumeTableColumn<Person>[] = [{ id: "name", header: "Name", cell: row => row.name, sortable: true }, { id: "role", header: "Role", cell: row => row.role }];
 const meta = { title: "Data/Table", component: AtralumeTable, decorators: [moduleMetadata({ imports: [AtralumeTable] })], args: { label: "People", rows, columns, selectionMode: "multiple", expandable: true, detail: (row: Person) => `${row.name} is a ${row.role}.` } } satisfies Meta<AtralumeTable<Person>>;
 export default meta; type Story = StoryObj<AtralumeTable<Person>>;
-export const Default: Story = {};
-export const Loading: Story = { args: { loading: true } };
-export const Empty: Story = { args: { rows: [] } };
-export const Error: Story = { args: { error: "People could not be loaded" } };
+export const Playground: Story = {
+  args: { loading: false, error: "", rows },
+  argTypes: {
+    label: { control: "text" },
+    loading: { control: "boolean" },
+    error: { control: "text" },
+    selectionMode: { control: "select", options: ["none", "single", "multiple"] },
+    expandable: { control: "boolean" },
+    rows: { control: false },
+    columns: { control: false },
+    detail: { control: false },
+  },
+};

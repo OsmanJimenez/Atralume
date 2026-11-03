@@ -5,6 +5,10 @@ import * as Stories from "../stories/breadcrumbs.directive.stories";
 
 # Breadcrumbs
 
+Exception relative to Taiga `TuiBreadcrumbs`: Atralume is a native `nav` directive set (item/separator/overflow). Taiga uses `tui-breadcrumbs` with template items and `itemsLimit` overflow.
+
+Taiga UI reference: [Breadcrumbs](https://taiga-ui.dev/navigation/breadcrumbs).
+
 Use a labelled nav and ordered list to show the location in a hierarchy. The current item exposes aria-current=page. Separators are decorative. Native details/summary with atrBreadcrumbOverflow provides accessible disclosure when consumers collapse intermediate items; never hide required navigation without a way to reveal it. Labels wrap instead of being silently removed.
 
 ## Import, API and minimum composition
@@ -52,12 +56,7 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-breadcrumbs-
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL, motion and common mistakes
 
 Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.

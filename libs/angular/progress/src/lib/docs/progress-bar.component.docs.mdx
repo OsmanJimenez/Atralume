@@ -7,6 +7,10 @@ import * as Stories from "../stories/progress-bar.component.stories";
 
 Use a bar for task completion or activity with a known region. value=null is indeterminate; min defaults to 0 and max to 100. Finite out-of-range values are clamped and warn in development. Invalid ranges throw. A non-empty label is required. aria-valuenow is omitted when indeterminate. Compose visible percentages externally. Reduced motion removes translation and uses a gentle full-track opacity pulse.
 
+Composition adapter over Taiga UI `TuiProgressBar` (`progress[tuiProgressBar]`) inside the stable `atr-progress-bar` host. Atralume min/max/value/label remain the public contract; native progress values are mapped into Taiga's 0..max space.
+
+Taiga UI reference: [ProgressBar](https://taiga-ui.dev/components/progress-bar).
+
 ## Import and minimum example
 
 ```ts
@@ -59,11 +63,6 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
 
 ## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
 
 Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
 

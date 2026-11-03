@@ -9,20 +9,27 @@ import {
   computed,
   input,
   signal,
+  ViewEncapsulation,
 } from "@angular/core";
+import { TuiAvatar } from "@taiga-ui/kit";
+
 export type AvatarSize = "small" | "medium" | "large" | "x-large";
 export type AvatarShape = "circle" | "rounded";
+
+/** Adapter over Taiga UI `TuiAvatar`; keeps Atralume initials/image API and tokens. */
 @Component({
   selector: "atr-avatar",
   standalone: true,
   imports: [AtralumeIcon],
   providers: [provideAtralumeIcons([userIcon])],
-
+  hostDirectives: [{ directive: TuiAvatar, inputs: ["size: tuiSize"] }],
   templateUrl: "./avatar.component.html",
   styleUrl: "./avatar.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: "atr-avatar",
+    "[attr.tuiAvatar]": '""',
     "[attr.data-name]": "name()",
     "[attr.data-initials]": "displayInitials()",
     "[attr.data-size]": "size()",

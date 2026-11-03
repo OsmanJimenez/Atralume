@@ -20,6 +20,7 @@ describe("AtralumeButton extended contract", () => {
     const b = f.nativeElement.querySelector("button") as HTMLButtonElement;
     expect(b.type).toBe("submit");
     expect(b.name).toBe("save");
+    expect(b.hasAttribute("tuiButton")).toBe(true);
     expect(b.dataset["appearance"]).toBe("tonal");
     expect(b.dataset["size"]).toBe("large");
     expect(b.classList.contains("atr-button--full")).toBe(true);

@@ -1,4 +1,7 @@
-export * from "./lib/components/icon/icon.component";
+export {
+  AtralumeIcon,
+  type AtralumeIconEngine,
+} from "./lib/components/icon/icon.component";
 export * from "./lib/testing/icon.harness";
 export * from "./lib/models/icon.types";
 export * from "./lib/icons/icons";

@@ -5,6 +5,10 @@ import * as Stories from "../stories/tabs.component.stories";
 
 # Tabs
 
+Tab triggers adapt Taiga UI's public `TuiTab` directive. The `atr-tabs` container keeps Atralume string-id selection, activation modes, and tab panels instead of Taiga's `activeItemIndex` model.
+
+Taiga UI reference: [Tabs](https://taiga-ui.dev/navigation/tabs).
+
 Tabs switch related content within a view; they are not route navigation. Use Tab List, native Tab buttons and associated Tab Panels with stable unique IDs. selected is a model containing a tab id. Arrow navigation skips disabled tabs. Automatic activation selects on focus movement; manual activation waits for Enter or Space. Horizontal arrows follow RTL; vertical uses Up/Down; Home/End reach enabled boundaries. Panels remain in the DOM and use hidden, preserving native ARIA relationships. Eager content is intentional; no incomplete lazy loader is added.
 
 ## Import, API and minimum composition
@@ -20,7 +24,7 @@ import {
 
 ```html
 <atr-tabs label="Profile sections"
-  ><div atrTabList>
+  ><tui-tabs atrTabList>
     <button atrTab id="overview-tab" panel="overview-panel" type="button">
       Overview</button
     ><button atrTab id="activity-tab" panel="activity-panel" type="button">
@@ -34,7 +38,7 @@ import {
     >
       Unavailable
     </button>
-  </div>
+  </tui-tabs>
   <section atrTabPanel id="overview-panel" labelledBy="overview-tab">
     Profile overview
   </section>
@@ -65,12 +69,7 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-tabs-*` and 
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL, motion and common mistakes
 
 Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.

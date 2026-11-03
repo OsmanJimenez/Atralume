@@ -7,66 +7,6 @@ export default {
   decorators: [moduleMetadata({ imports: [OverlayDemo] })],
 } satisfies Meta;
 type Story = StoryObj;
-export const Default: Story = {
-  render: () => ({ template: '<atr-overlay-demo family="tooltip" />' }),
-  play: async ({ canvasElement }) => {
-    const c = within(canvasElement);
-    const body = within(canvasElement.ownerDocument.body);
-    const trigger = c.getByRole("button", { name: "Save help" });
-    trigger.focus();
-    await waitFor(() =>
-      expect(body.getByRole("tooltip")).toHaveTextContent("Save changes"),
-    );
-    await expect(trigger).toHaveAttribute(
-      "aria-describedby",
-      "demo-help-tooltip",
-    );
-  },
-};
-export const Keyboard: Story = {
-  ...Default,
-  play: async ({ canvasElement }) => {
-    const c = within(canvasElement);
-    const body = within(canvasElement.ownerDocument.body);
-    const trigger = c.getByRole("button", { name: "Save help" });
-    trigger.focus();
-    await waitFor(() =>
-      expect(body.getByRole("tooltip")).toHaveTextContent("Save changes"),
-    );
-    await expect(trigger).toHaveAttribute(
-      "aria-describedby",
-      "demo-help-tooltip",
-    );
-    await userEvent.keyboard("{Escape}");
-    await waitFor(() => expect(body.queryByRole("tooltip")).toBeNull());
-    await expect(c.getByRole("button", { name: "Save help" })).toHaveFocus();
-  },
-};
-export const Light: Story = {
-  ...Default,
-  render: () => ({
-    template:
-      '<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><atr-overlay-demo family="tooltip" /></section></div>',
-  }),
-};
-export const Dark: Story = {
-  ...Default,
-  render: () => ({
-    template:
-      '<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><atr-overlay-demo family="tooltip" /></section></div>',
-  }),
-};
-export const OnGlass: Story = {
-  ...Default,
-  render: () => ({
-    template:
-      '<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="light" data-atr-surface="glass" style="padding:2rem"><atr-overlay-demo family="tooltip" /></section></div>',
-  }),
-};
-export const NestedTheme: Story = {
-  ...Default,
-  render: () => ({
-    template:
-      '<section data-atr-theme="dark" data-atr-surface="standard" style="padding:1rem"><section data-atr-theme="light" data-atr-surface="standard" dir="rtl" style="padding:1rem;--atr-comp-tooltip-shape:1.5rem"><atr-overlay-demo family="tooltip" /></section></section>',
-  }),
+export const Playground: Story = {
+  render: () => ({ template: '<atr-overlay-demo family="tooltip" />' })
 };

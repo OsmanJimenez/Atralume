@@ -1,4 +1,4 @@
-import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import * as Stories from "../stories/skeleton.component.stories";
 
 <Meta of={Stories} name="Docs" />
@@ -6,6 +6,10 @@ import * as Stories from "../stories/skeleton.component.stories";
 # Skeleton
 
 Skeletons are decorative placeholders, not progress indicators or live announcements. Mark the loading region aria-busy and provide explanatory text. Dimensions use CSS custom properties. Pulse and shimmer are optional; reduced motion is static.
+
+The adapter applies Taiga UI `TuiSkeleton` through `hostDirectives` while keeping `atr-skeleton` appearance/animation tokens.
+
+Taiga UI reference: [Skeleton](https://taiga-ui.dev/directives/skeleton).
 
 ## Import and composition
 
@@ -24,7 +28,7 @@ import { AtralumeSkeleton } from "@atralume/angular/skeleton";
 
 ## API, variants and states
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground and Composition stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
 
 ## Accessibility, keyboard and focus
 
@@ -42,11 +46,9 @@ Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-co
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Composition} />
 
 ## Responsive, RTL and motion
 

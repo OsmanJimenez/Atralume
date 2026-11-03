@@ -14,13 +14,9 @@
       label="Choose a tool"
       [options]="options()"
       [formControl]="control"
-      [opened]="loading() || empty() || error() || large()"
       [displayWith]="display"
       [(query)]="query"
-      [multiple]="multiple()"
       [disabled]="disabled()"
-      [loading]="loading()"
-      [loadError]="error() ? 'Options could not be loaded' : null"
       clearable
     />
   }
@@ -29,13 +25,8 @@
       label="Choose a tool"
       [options]="options()"
       [formControl]="control"
-      [opened]="loading() || empty() || error() || large()"
       [displayWith]="display"
-      [multiple]="multiple()"
-      display="chips"
       [disabled]="disabled()"
-      [loading]="loading()"
-      [loadError]="error() ? 'Options could not be loaded' : null"
       clearable
     />
   }
@@ -44,39 +35,38 @@
       label="Search tools"
       [options]="options()"
       [formControl]="control"
-      [opened]="loading() || empty() || error() || large()"
       [displayWith]="display"
       [(query)]="query"
       [disabled]="disabled()"
-      [loading]="loading()"
-      [loadError]="error() ? 'Options could not be loaded' : null"
       clearable
     />
   }
   @case ("popover") {
     <button
       atrButton
+      atrPopover
       type="button"
+      [atrPopover]="popoverPanel"
+      [(opened)]="opened"
+      panelRole="dialog"
+      label="Edit details"
       [disabled]="disabled()"
-      [attr.aria-expanded]="opened()"
-      (click)="openPopover($event)"
     >
       Open details
     </button>
-    @if (origin(); as source) {
-      <atr-popover
-        [origin]="source"
-        [(opened)]="opened"
-        panelRole="dialog"
-        label="Edit details"
-        focus="first"
-        ><atr-form-field label="Name"
-          ><input atrInput value="Alex" /></atr-form-field
-        ><button atrButton type="button" (click)="opened.set(false)">
+    <ng-template #popoverPanel>
+      <div class="atr-popover-content">
+        <atr-form-field>
+          <tui-textfield tuiTextfieldSize="m">
+            <label tuiLabel>Name</label>
+            <input atrInput value="Alex" />
+          </tui-textfield>
+        </atr-form-field>
+        <button atrButton type="button" (click)="opened.set(false)">
           Save details
-        </button></atr-popover
-      >
-    }
+        </button>
+      </div>
+    </ng-template>
   }
   @case ("command-palette") {
     <button

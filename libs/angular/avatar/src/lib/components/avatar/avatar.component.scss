@@ -1,4 +1,5 @@
-:host {
+/* Beat Taiga `[tuiAvatar]` background cascade. */
+[tuiAvatar].atr-avatar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -16,40 +17,40 @@
   font-size: var(--atr-comp-avatar-font-size);
 }
 
-:host([data-size="small"]) {
+[tuiAvatar].atr-avatar[data-size="small"] {
   inline-size: var(--atr-comp-avatar-size-small);
   block-size: var(--atr-comp-avatar-size-small);
 }
 
-:host([data-size="large"]) {
+[tuiAvatar].atr-avatar[data-size="large"] {
   inline-size: var(--atr-comp-avatar-size-large);
   block-size: var(--atr-comp-avatar-size-large);
 }
 
-:host([data-size="x-large"]) {
+[tuiAvatar].atr-avatar[data-size="x-large"] {
   inline-size: var(--atr-comp-avatar-size-x-large);
   block-size: var(--atr-comp-avatar-size-x-large);
 }
 
-:host([data-shape="rounded"]) {
+[tuiAvatar].atr-avatar[data-shape="rounded"] {
   border-radius: var(--atr-comp-avatar-rounded-shape);
 }
 
-img {
+[tuiAvatar].atr-avatar img {
   display: block;
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
 }
 
-atr-icon {
+[tuiAvatar].atr-avatar atr-icon {
   inline-size: 60%;
   block-size: 60%;
   color: var(--atr-comp-avatar-fallback-icon-color);
 }
 
 @media (forced-colors: active) {
-  :host {
+  [tuiAvatar].atr-avatar {
     border-color: CanvasText;
   }
 }

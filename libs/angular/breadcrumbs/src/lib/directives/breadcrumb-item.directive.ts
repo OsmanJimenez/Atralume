@@ -1,13 +1,14 @@
-import { Directive, input, booleanAttribute } from "@angular/core";
+import { Directive } from "@angular/core";
+import { TuiItem } from "@taiga-ui/cdk/directives/item";
 
+/**
+ * Item marker for `atr-breadcrumbs` / `tui-breadcrumbs`.
+ * Prefer `*tuiItem` in new templates; this keeps the `atrBreadcrumbItem` selector.
+ */
 @Directive({
-  selector: "a[atrBreadcrumbItem], span[atrBreadcrumbItem]",
+  selector: "[atrBreadcrumbItem]",
   standalone: true,
-  host: {
-    class: "atr-breadcrumb-item",
-    "[attr.aria-current]": 'current() ? "page" : null',
-  },
+  hostDirectives: [TuiItem],
+  host: { class: "atr-breadcrumb-item" },
 })
-export class AtralumeBreadcrumbItem {
-  readonly current = input(false, { transform: booleanAttribute });
-}
+export class AtralumeBreadcrumbItem {}

@@ -1,35 +1,29 @@
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
-import { FormControl, Validators } from "@angular/forms";
 import { AtralumeStepper, AtralumeStep } from "../../index";
+
 @Component({
   imports: [AtralumeStepper, AtralumeStep],
   template:
-    '<atr-stepper label="Setup" linear><atr-step label="Profile" [control]="control">First content</atr-step><atr-step label="Review">Lazy review content</atr-step></atr-stepper>',
+    '<atr-stepper label="Setup"><atr-step label="Profile">First content</atr-step><atr-step label="Review">Lazy review content</atr-step></atr-stepper>',
 })
-class Host {
-  readonly control = new FormControl("", {
-    nonNullable: true,
-    validators: [Validators.required],
-  });
-}
-describe("Linear Stepper", () => {
-  it("guards invalid steps, derives completion from validity and lazily renders content", async () => {
+class Host {}
+
+describe("Stepper", () => {
+  it("renders Taiga step headers and lazily shows the active panel", async () => {
     const f = TestBed.createComponent(Host);
     f.autoDetectChanges();
     await f.whenStable();
     const buttons = f.nativeElement.querySelectorAll(
-      "button",
+      "button[tuiStep]",
     ) as NodeListOf<HTMLButtonElement>;
-    expect(buttons[1].disabled).toBe(true);
+    expect(buttons.length).toBe(2);
+    expect(f.nativeElement.querySelector("tui-stepper")).not.toBeNull();
     const firstPanelId = buttons[0].getAttribute("aria-controls");
     expect(firstPanelId).not.toBeNull();
     expect(f.nativeElement.querySelector(`#${firstPanelId}`)).not.toBeNull();
     expect(buttons[1].getAttribute("aria-controls")).toBeNull();
     expect(f.nativeElement.textContent).not.toContain("Lazy review content");
-    f.componentInstance.control.setValue("Ready");
-    await f.whenStable();
-    expect(buttons[1].disabled).toBe(false);
     buttons[1].click();
     await f.whenStable();
     expect(f.nativeElement.textContent).toContain("Lazy review content");

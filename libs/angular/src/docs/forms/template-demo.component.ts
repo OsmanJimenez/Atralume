@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
+  TuiTextfield,
 } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
 
@@ -18,7 +19,7 @@ import { AtralumeSwitch } from "@atralume/angular/switch";
     AtralumeFormField,
     AtralumeControlLabel,
     AtralumeInput,
-
+    TuiTextfield,
     AtralumeCheckbox,
     AtralumeRadio,
     AtralumeSwitch,

@@ -1,9 +1,24 @@
-<div role="tree" [attr.aria-label]="label()" [attr.aria-multiselectable]="selectionMode() === 'multiple' ? 'true' : null">
-  @for (item of visible(); track nodeId(item); let index = $index) {
-    <div class="atr-tree__item" role="treeitem" [id]="nodeId(item)" [attr.aria-label]="item.node.label" [attr.aria-level]="item.level" [attr.aria-posinset]="item.position" [attr.aria-setsize]="item.setSize" [attr.aria-expanded]="hasChildren(item.node) ? isExpanded(item.node) : null" [attr.aria-selected]="isSelected(item.node)" [attr.aria-disabled]="item.node.disabled || null" [attr.tabindex]="index === 0 ? 0 : -1" [style.--atr-tree-level]="item.level" (click)="select(item)" (keydown)="key($event)">
-      @if (hasChildren(item.node)) { <button type="button" class="atr-tree__toggle" [attr.aria-label]="(isExpanded(item.node) ? 'Collapse ' : 'Expand ') + item.node.label" [disabled]="item.node.disabled" (click)="$event.stopPropagation(); toggle(item)">{{ isExpanded(item.node) ? '⌄' : '›' }}</button> }
-      <span>{{ item.node.label }}</span>
-      @if (item.node.loading) { <span role="status" aria-label="Loading children">…</span> }
-    </div>
-  }
+<div [attr.aria-label]="label()" role="presentation">
+  <tui-tree
+    [value]="nodes()"
+    [childrenHandler]="childrenOf"
+    [content]="content()"
+    [tuiTreeController]="expandAll()"
+  />
 </div>
+<ng-template #node let-item>
+  @if (isNode(item)) {
+    <button
+      type="button"
+      class="atr-tree__label"
+      [class.atr-tree__label--selected]="isSelected(item)"
+      [disabled]="item.disabled || null"
+      (click)="select(item, $event)"
+    >
+      {{ item.label }}
+      @if (item.loading) {
+        <span role="status" aria-label="Loading children">…</span>
+      }
+    </button>
+  }
+</ng-template>

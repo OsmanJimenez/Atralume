@@ -1,24 +1,18 @@
-<h3>
-  <button
-    #header
-    type="button"
-    [id]="id() + '-header'"
-    [disabled]="disabled()"
-    [attr.aria-expanded]="expanded()"
-    [attr.aria-controls]="id() + '-panel'"
-    (click)="toggle()"
-  >
-    <ng-content select="[atrAccordionHeader]" /><atr-icon
-      name="chevron-down"
-      [class.expanded]="expanded()"
-    />
-  </button>
-</h3>
-<div
-  role="region"
-  [id]="id() + '-panel'"
-  [attr.aria-labelledby]="id() + '-header'"
-  [hidden]="!expanded()"
+<button
+  tuiAccordion
+  type="button"
+  [id]="id() + '-header'"
+  [(tuiAccordion)]="expanded"
+  [disabled]="disabled()"
 >
-  <ng-content />
-</div>
+  <ng-content select="[atrAccordionHeader]" />
+</button>
+<tui-expand [expanded]="expanded()">
+  <div
+    role="region"
+    [id]="id() + '-panel'"
+    [attr.aria-labelledby]="id() + '-header'"
+  >
+    <ng-content />
+  </div>
+</tui-expand>

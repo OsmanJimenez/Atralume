@@ -9,6 +9,7 @@ import {
   ElementRef,
   contentChildren,
   viewChild,
+  PLATFORM_ID,
 } from "@angular/core";
 import {
   afterNextRender,
@@ -16,10 +17,13 @@ import {
   Renderer2,
   DestroyRef,
 } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { DOCUMENT, isPlatformBrowser } from "@angular/common";
 import { AtralumeFab } from "@atralume/angular/fab";
 import { AtralumeSpeedDialAction } from "../../directives/speed-dial-action.directive";
+
+/**
+ * Composition over Taiga-backed `AtralumeFab`. No Taiga speed-dial primitive.
+ */
 @Component({
   selector: "atr-speed-dial",
   standalone: true,
@@ -50,9 +54,8 @@ export class AtralumeSpeedDial {
   private readonly trigger =
     viewChild.required<ElementRef<HTMLButtonElement>>("trigger");
   private readonly injector = inject(Injector);
-  private readonly engine = inject(ɵAtralumeOverlayInfrastructure);
   constructor() {
-    if (this.engine.browser) {
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
       const unlisten = inject(Renderer2).listen(
         inject(DOCUMENT),
         "pointerdown",

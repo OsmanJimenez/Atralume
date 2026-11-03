@@ -33,7 +33,8 @@ export class AtralumeSliderHarness extends ComponentHarness {
 }
 export class AtralumeRangeSliderHarness extends ComponentHarness {
   static hostSelector = "atr-range-slider";
-  private readonly inputs = this.locatorForAll('input[type="range"]');
+  private readonly range = this.locatorFor("tui-range");
+  private readonly inputs = this.locatorForAll('tui-range input[type="range"]');
   async getValue(): Promise<AtralumeSliderRange> {
     const inputs = await this.inputs();
     return {
@@ -51,30 +52,21 @@ export class AtralumeRangeSliderHarness extends ComponentHarness {
   async increment(thumb: "start" | "end" = "start"): Promise<void> {
     const inputs = await this.inputs();
     const input = inputs[thumb === "start" ? 0 : 1];
-    await input.setInputValue(
-      String(
-        Number(await input.getProperty<string>("value")) +
-          (Number(await input.getProperty<string>("step")) || 1),
-      ),
-    );
-    await input.dispatchEvent("input");
+    await input.focus();
+    await input.dispatchEvent("keydown", { key: "ArrowRight" });
   }
   async decrement(thumb: "start" | "end" = "start"): Promise<void> {
     const inputs = await this.inputs();
     const input = inputs[thumb === "start" ? 0 : 1];
-    await input.setInputValue(
-      String(
-        Number(await input.getProperty<string>("value")) -
-          (Number(await input.getProperty<string>("step")) || 1),
-      ),
-    );
-    await input.dispatchEvent("input");
+    await input.focus();
+    await input.dispatchEvent("keydown", { key: "ArrowLeft" });
   }
   async getThumbLabels(): Promise<string[]> {
-    return Promise.all(
-      (await this.inputs()).map(
-        async (input) => (await input.getAttribute("aria-label")) ?? "",
-      ),
-    );
+    const host = await this.range();
+    const label = (await host.getAttribute("aria-label")) ?? "";
+    return [label + " start", label + " end"];
+  }
+  async isDisabled(): Promise<boolean> {
+    return (await this.range()).hasClass("_disabled");
   }
 }

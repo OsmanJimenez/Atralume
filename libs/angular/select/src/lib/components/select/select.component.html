@@ -1,31 +1,28 @@
-<atr-combobox
-  [label]="label()"
-  [controlId]="controlId()"
-  [hint]="hint()"
-  [error]="error()"
-  [required]="required()"
-  [invalid]="displayInvalid()"
-  [disabled]="blocked()"
-  [readonly]="readonly()"
-  [value]="value()"
-  (valueChange)="commit($event)"
-  [options]="options()"
-  [multiple]="multiple()"
-  [editable]="false"
-  [(opened)]="opened"
-  [(query)]="query"
-  [placeholder]="placeholder()"
-  [clearable]="clearable()"
-  [loading]="loading()"
-  [loadError]="loadError()"
-  [compareWith]="compareWith()"
-  [displayWith]="displayWith()"
-  [display]="display()"
-  [autocomplete]="mode()"
-  [minimumCharacters]="minimumCharacters()"
-  [filterOptions]="filterOptions()"
-  [textToValue]="textToValue()"
-  [optionTemplate]="optionTemplate()"
-  [triggerTemplate]="triggerTemplate()"
-  [emptyText]="emptyText()"
-/>
+<atr-form-field [hint]="hint()" [error]="error()">
+  <tui-textfield
+    tuiChevron
+    [invalid]="displayInvalid()"
+    [stringify]="stringify()"
+    [identityMatcher]="identityMatcher()"
+    [disabledItemHandler]="disabledItemHandler()"
+    [tuiTextfieldCleaner]="clearable()"
+    tuiTextfieldSize="m"
+  >
+    <label tuiLabel>
+      {{ label() }}@if (required()) { *}
+    </label>
+    <input
+      atrSelect
+      [id]="controlId()"
+      [placeholder]="placeholder()"
+      [readOnly]="readonly()"
+      [formControl]="inner"
+    />
+    <ng-template tuiDropdown>
+      <tui-data-list-wrapper
+        [items]="items()"
+        [emptyContent]="emptyText()"
+      />
+    </ng-template>
+  </tui-textfield>
+</atr-form-field>

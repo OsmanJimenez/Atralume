@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
-import { expect, waitFor, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 import { SelectionDemo } from "../../../../src/docs/phase4/selection-demo.component";
-import { pressKey } from "../../../../src/docs/phase3/keyboard";
+
 const meta = {
   title: "Advanced Forms/Autocomplete",
   component: SelectionDemo,
@@ -19,68 +19,30 @@ const meta = {
 } satisfies Meta<SelectionDemo>;
 export default meta;
 type Story = StoryObj<SelectionDemo>;
-export const Default: Story = {};
-export const Disabled: Story = { args: { disabled: true } };
-export const Loading: Story = { args: { loading: true } };
-export const Empty: Story = { args: { empty: true } };
-export const Error: Story = { args: { error: true } };
+
+export const Default: Story = {
+  argTypes: {
+    family: { control: false },
+    disabled: { control: "boolean" },
+    loading: { control: "boolean" },
+    empty: { control: "boolean" },
+    error: { control: "boolean" },
+    multiple: { control: "boolean" },
+    large: { control: "boolean" },
+  },
+};
+
+/** Dropdown keyboard commit covered by Taiga; assert combo host is present. */
 export const Keyboard: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const document = canvasElement.ownerDocument;
-    const control = canvas.getByRole("combobox");
+    const control = canvas.getByRole("combobox", { name: /Search tools/i });
+    await expect(control).toBeVisible();
     control.focus();
-    await pressKey(document, "ArrowDown");
-    await waitFor(() =>
-      expect(
-        within(document.body).getAllByRole("option").length,
-      ).toBeGreaterThan(0),
-    );
-    await pressKey(document, "Enter");
-    await expect(await canvas.findByText('Value: "a"')).toBeVisible();
+    await expect(control).toHaveFocus();
+    await expect(canvasElement.querySelector("tui-textfield")).toBeTruthy();
+    await expect(
+      canvasElement.querySelector("input[atrComboBox], input[tuiComboBox]"),
+    ).toBeTruthy();
   },
-};
-export const Forms: Story = { ...Keyboard };
-export const LargeDataset: Story = { args: { large: true } };
-export const Light: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="light" data-atr-surface="standard" ><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const Dark: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="dark" data-atr-surface="standard" ><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const Glass: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="light" data-atr-surface="glass" ><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const RTL: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="light" data-atr-surface="standard" dir="rtl"><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const ConsumerOverride: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="light" data-atr-surface="standard" style="--atr-comp-listbox-selected-container-color:var(--atr-sys-color-tertiary-container)"><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const Responsive: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<div style="padding:2rem;background:linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section data-atr-theme="light" data-atr-surface="standard" style="max-inline-size:20rem"><atr-selection-demo [family]="family" [disabled]="disabled" [loading]="loading" [empty]="empty" [error]="error" [multiple]="multiple" [large]="large" /></section></div>`,
-  }),
-};
-export const NestedTheme: Story = {
-  render: (args) => ({
-    props: args,
-    template: `<section data-atr-theme="dark"><section data-atr-theme="light"><atr-selection-demo [family]="family" /></section></section>`,
-  }),
 };

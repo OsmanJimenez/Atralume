@@ -1,4 +1,5 @@
-:host {
+/* Beat Taiga `[tuiChip] { background: none }` cascade. */
+[tuiChip].atr-chip {
   --atr-comp-button-container-radius: var(--atr-comp-chip-shape);
   --atr-comp-button-container-padding-inline: var(--atr-comp-chip-padding);
   --atr-comp-button-text-label-color: currentcolor;
@@ -15,17 +16,17 @@
   overflow: hidden;
 }
 
-:host([data-selected="true"]) {
+[tuiChip].atr-chip[data-selected="true"] {
   background: var(--atr-comp-chip-selected-container-color);
   color: var(--atr-comp-chip-selected-label-color);
 }
 
 @media (forced-colors: active) {
-  :host {
+  [tuiChip].atr-chip {
     border-color: ButtonText;
   }
 
-  :host([data-selected="true"]) {
+  [tuiChip].atr-chip[data-selected="true"] {
     border-color: Highlight;
   }
 }

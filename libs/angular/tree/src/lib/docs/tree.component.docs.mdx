@@ -5,8 +5,10 @@ import * as Stories from "../stories/tree.component.stories";
 
 # Tree
 
-`AtralumeTree` is for hierarchical disclosure and selection, not an accordion or treegrid. Import it from `@atralume/angular/tree`. Nodes are immutable consumer data; expanded and selected values are controlled separately and no state is written onto them.
+Composed over Taiga `tui-tree` (`TuiTree`). Blockers for full parity: Taiga expansion is controller/map-based (not `value[]` models); multi-select a11y and the old flat keyboard engine are deferred.
 
-Arrow keys navigate visible nodes, expand or collapse branches, and respect RTL. Home, End, Enter, Space and first-character typeahead are supported. Tree items expose level, position, set size, expanded, selected and disabled semantics. Lazy child loading is represented by a consumer-provided loading node; the component does not request data. Large trees may use CDK virtualization only after validating active-descendant and recycled-row behavior.
+Taiga UI reference: [Tree](https://taiga-ui.dev/components/tree).
 
-<Canvas of={Stories.Default} />
+`AtralumeTree` maps `AtralumeTreeNode` via `childrenHandler` and shows `tui-tree` in the DOM. Nodes remain immutable consumer data; `selected` / `expanded` models stay Atralume-owned this pass. Use `expandAll` for the Taiga item controller fallback.
+
+<Canvas of={Stories.Playground} />

@@ -1,4 +1,5 @@
-:host {
+/* Beat Taiga `[tuiBadge] { background: #959595; color: var(--tui-background-base) }`. */
+[tuiBadge].atr-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,17 +18,17 @@
   color: var(--atr-comp-badge-label-color, var(--atr-badge-foreground));
 }
 
-:host([data-size="small"]) {
+[tuiBadge].atr-badge[data-size="small"] {
   min-block-size: var(--atr-comp-badge-height-small);
 }
 
-:host([data-appearance="outlined"]) {
+[tuiBadge].atr-badge[data-appearance="outlined"] {
   background: transparent;
   border-color: var(--atr-comp-badge-outline-color);
   color: var(--atr-badge-foreground);
 }
 
-:host(.atr-badge--dot) {
+[tuiBadge].atr-badge.atr-badge--dot {
   min-block-size: 0;
   inline-size: var(--atr-comp-badge-dot-size);
   block-size: var(--atr-comp-badge-dot-size);
@@ -35,67 +36,67 @@
 }
 
 @media (forced-colors: active) {
-  :host {
+  [tuiBadge].atr-badge {
     border-color: CanvasText;
   }
 }
 
-:host([data-tone="neutral"]) {
+[tuiBadge].atr-badge[data-tone="neutral"] {
   --atr-badge-background: var(--atr-comp-badge-neutral-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-neutral-soft-label);
 }
 
-:host([data-tone="neutral"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="neutral"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-neutral-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-neutral-filled-label);
 }
 
-:host([data-tone="primary"]) {
+[tuiBadge].atr-badge[data-tone="primary"] {
   --atr-badge-background: var(--atr-comp-badge-primary-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-primary-soft-label);
 }
 
-:host([data-tone="primary"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="primary"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-primary-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-primary-filled-label);
 }
 
-:host([data-tone="success"]) {
+[tuiBadge].atr-badge[data-tone="success"] {
   --atr-badge-background: var(--atr-comp-badge-success-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-success-soft-label);
 }
 
-:host([data-tone="success"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="success"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-success-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-success-filled-label);
 }
 
-:host([data-tone="warning"]) {
+[tuiBadge].atr-badge[data-tone="warning"] {
   --atr-badge-background: var(--atr-comp-badge-warning-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-warning-soft-label);
 }
 
-:host([data-tone="warning"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="warning"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-warning-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-warning-filled-label);
 }
 
-:host([data-tone="error"]) {
+[tuiBadge].atr-badge[data-tone="error"] {
   --atr-badge-background: var(--atr-comp-badge-error-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-error-soft-label);
 }
 
-:host([data-tone="error"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="error"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-error-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-error-filled-label);
 }
 
-:host([data-tone="info"]) {
+[tuiBadge].atr-badge[data-tone="info"] {
   --atr-badge-background: var(--atr-comp-badge-info-soft-container);
   --atr-badge-foreground: var(--atr-comp-badge-info-soft-label);
 }
 
-:host([data-tone="info"][data-appearance="filled"]) {
+[tuiBadge].atr-badge[data-tone="info"][data-appearance="filled"] {
   --atr-badge-background: var(--atr-comp-badge-info-filled-container);
   --atr-badge-foreground: var(--atr-comp-badge-info-filled-label);
 }

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  TemplateRef,
   booleanAttribute,
   forwardRef,
   input,
@@ -9,15 +8,12 @@ import {
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import {
-  AtralumeCombobox,
-  type AutocompleteStrategy,
-  type SelectionDisplay,
-} from "@atralume/angular/combobox";
-import type {
-  AtralumeOptionData,
-  AtralumeOptionTemplateContext,
-} from "@atralume/angular/listbox";
+import { AtralumeCombobox } from "@atralume/angular/combobox";
+import type { AtralumeOptionData } from "@atralume/angular/listbox";
+
+/**
+ * Thin Autocomplete over `atr-combobox` / Taiga `tuiComboBox` (filter on).
+ */
 @Component({
   selector: "atr-autocomplete",
   standalone: true,
@@ -35,28 +31,14 @@ import type {
   host: { class: "atr-autocomplete" },
 })
 export class AtralumeAutocomplete<T> extends ɵAtralumeValueControl<
-  T | readonly T[]
+  T | string | null
 > {
   readonly options = input<readonly AtralumeOptionData<T>[]>([]);
-  readonly multiple = input(false, { transform: booleanAttribute });
-  readonly opened = model(false);
   readonly query = model("");
   readonly placeholder = input("Search");
   readonly clearable = input(false, { transform: booleanAttribute });
-  readonly loading = input(false, { transform: booleanAttribute });
-  readonly loadError = input<string | null>(null);
   readonly compareWith = input<(a: T, b: T) => boolean>(Object.is);
   readonly displayWith = input<((value: T) => string) | null>(null);
-  readonly display = input<SelectionDisplay>("text");
-  readonly mode = input<AutocompleteStrategy>("manual");
-  readonly minimumCharacters = input(0);
-  readonly filterOptions = input(true, { transform: booleanAttribute });
-  readonly textToValue = input<((text: string) => T) | null>(null);
-  readonly optionTemplate = input<TemplateRef<
-    AtralumeOptionTemplateContext<T>
-  > | null>(null);
-  readonly triggerTemplate = input<TemplateRef<{
-    $implicit: readonly T[];
-  }> | null>(null);
+  readonly strict = input(false, { transform: booleanAttribute });
   readonly emptyText = input("No results");
 }

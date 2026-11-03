@@ -16,19 +16,25 @@ import {
   inject,
   ElementRef,
   viewChild,
+  ViewEncapsulation,
 } from "@angular/core";
+import { TuiChip } from "@taiga-ui/kit";
 import { CHIP_SET, type ChipKind } from "../../models/chip.types";
+
+/** Extension over Taiga UI `TuiChip` with Atralume chip-set selection and remove API. */
 @Component({
   selector: "atr-chip",
   standalone: true,
   imports: [AtralumeButton, AtralumeIconButton, AtralumeIcon],
   providers: [provideAtralumeIcons([closeIcon])],
-
+  hostDirectives: [{ directive: TuiChip, inputs: ["size: tuiSize"] }],
   templateUrl: "./chip.component.html",
   styleUrl: "./chip.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: "atr-chip",
+    "[attr.tuiChip]": '""',
     "[attr.data-selected]": "selected()",
     "[attr.data-value]": "value()",
   },

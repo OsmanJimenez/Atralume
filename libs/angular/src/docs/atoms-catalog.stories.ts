@@ -1,3 +1,4 @@
+import { FormsModule } from "@angular/forms";
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 
 import { AtralumeButton } from "@atralume/angular/button";
@@ -22,12 +23,18 @@ import { AtralumeInput } from "@atralume/angular/input";
 import { AtralumeRadio } from "@atralume/angular/radio";
 import { AtralumeSwitch } from "@atralume/angular/switch";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
-import { AtralumeFormField } from "@atralume/angular/form-field";
+import {
+  AtralumeFormField,
+  AtralumeControlLabel,
+  TuiTextfield,
+} from "@atralume/angular/form-field";
+
 export default {
   title: "Atralume/Atoms",
   decorators: [
     moduleMetadata({
       imports: [
+        FormsModule,
         AtralumeButton,
         AtralumeIcon,
         AtralumeIconButton,
@@ -43,72 +50,74 @@ export default {
         AtralumeSwitch,
         AtralumeTextarea,
         AtralumeFormField,
+        AtralumeControlLabel,
+        TuiTextfield,
       ],
       providers: [provideAtralumeIcons([checkIcon, closeIcon, arrowRightIcon])],
     }),
   ],
   tags: ["!autodocs"],
 } satisfies Meta;
+
 type Story = StoryObj;
-export const Light: Story = {
+
+/** Single catalog overview; use the theme toolbar for light/dark/system. */
+export const Overview: Story = {
   render: () => ({
-    template:
-      '<div style="padding:2rem;background:radial-gradient(circle at 15% 25%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="light" data-atr-surface="standard" style="padding:2rem;border-radius:var(--atr-sys-shape-large);max-width:48rem;margin:auto"><p style="margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Atralume / Atoms</p><h2 style="margin:.5rem 0 1.5rem">Small pieces. A shared language.</h2><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><atr-avatar name="Alex Morgan" alt="" /><div><strong>Alex Morgan</strong><div style="margin-top:.35rem"><atr-badge tone="success"><atr-icon name="check" size="small" />Active</atr-badge> <atr-badge appearance="outlined" tone="primary">Team member</atr-badge></div></div></div><hr atrDivider /><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><button atrButton type="button"><atr-icon name="check" />Save changes</button><button atrIconButton type="button" appearance="outlined" aria-label="Close preview"><atr-icon name="close" /></button><a atrLink appearance="standalone" href="#documentation">Documentation<atr-icon name="arrow-right" /></a></div><div style="margin-top:2rem"><div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem"><atr-progress-spinner size="small" label="Saving profile" /><span>Saving your profile\u2026</span></div><atr-progress-bar label="Profile completion" [value]="65" /></div><p style="margin:1.5rem 0 0;font-size:.875rem">One token contract across themes, surfaces and local overrides.</p></section></div>',
-  }),
-};
-export const Dark: Story = {
-  render: () => ({
-    template:
-      '<div style="padding:2rem;background:radial-gradient(circle at 15% 25%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem;border-radius:var(--atr-sys-shape-large);max-width:48rem;margin:auto"><p style="margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Atralume / Atoms</p><h2 style="margin:.5rem 0 1.5rem">Small pieces. A shared language.</h2><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><atr-avatar name="Alex Morgan" alt="" /><div><strong>Alex Morgan</strong><div style="margin-top:.35rem"><atr-badge tone="success"><atr-icon name="check" size="small" />Active</atr-badge> <atr-badge appearance="outlined" tone="primary">Team member</atr-badge></div></div></div><hr atrDivider /><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><button atrButton type="button"><atr-icon name="check" />Save changes</button><button atrIconButton type="button" appearance="outlined" aria-label="Close preview"><atr-icon name="close" /></button><a atrLink appearance="standalone" href="#documentation">Documentation<atr-icon name="arrow-right" /></a></div><div style="margin-top:2rem"><div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem"><atr-progress-spinner size="small" label="Saving profile" /><span>Saving your profile\u2026</span></div><atr-progress-bar label="Profile completion" [value]="65" /></div><p style="margin:1.5rem 0 0;font-size:.875rem">One token contract across themes, surfaces and local overrides.</p></section></div>',
-  }),
-};
-export const Glass: Story = {
-  render: () => ({
-    template:
-      '<div style="padding:2rem;background:radial-gradient(circle at 15% 25%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-primary-container),var(--atr-sys-color-tertiary-container))"><section class="atr-scope" data-atr-theme="light" data-atr-surface="glass" style="padding:2rem;border-radius:var(--atr-sys-shape-large);max-width:48rem;margin:auto"><p style="margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Atralume / Atoms</p><h2 style="margin:.5rem 0 1.5rem">Small pieces. A shared language.</h2><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><atr-avatar name="Alex Morgan" alt="" /><div><strong>Alex Morgan</strong><div style="margin-top:.35rem"><atr-badge tone="success"><atr-icon name="check" size="small" />Active</atr-badge> <atr-badge appearance="outlined" tone="primary">Team member</atr-badge></div></div></div><hr atrDivider /><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><button atrButton type="button"><atr-icon name="check" />Save changes</button><button atrIconButton type="button" appearance="outlined" aria-label="Close preview"><atr-icon name="close" /></button><a atrLink appearance="standalone" href="#documentation">Documentation<atr-icon name="arrow-right" /></a></div><div style="margin-top:2rem"><div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem"><atr-progress-spinner size="small" label="Saving profile" /><span>Saving your profile\u2026</span></div><atr-progress-bar label="Profile completion" [value]="65" /></div><p style="margin:1.5rem 0 0;font-size:.875rem">One token contract across themes, surfaces and local overrides.</p></section></div>',
-  }),
-};
-export const FormControls: Story = {
-  render: () => ({
+    props: {
+      email: "alex@example.com",
+      message: "Hello, Atralume.",
+      terms: true,
+      plan: "personal",
+      notify: true,
+    },
     template: `
-      <div style="display:grid;gap:1rem;padding:2rem">
-        <section data-atr-theme="light" data-atr-surface="standard" style="display:grid;gap:1rem;padding:1.5rem">
-          <h2>Light</h2>
-          <atr-form-field label="Email"><input atrInput type="email" value="alex@example.com" /></atr-form-field>
-          <atr-form-field label="Message"><textarea atrTextarea rows="2">Hello, Atralume.</textarea></atr-form-field>
-          <label><input atrCheckbox type="checkbox" checked /> Accept terms</label>
-          <fieldset>
-            <legend>Plan</legend>
-            <label><input atrRadio type="radio" name="light-plan" value="personal" checked /> Personal</label>
-            <label><input atrRadio type="radio" name="light-plan" value="business" /> Business</label>
-          </fieldset>
-          <label><input atrSwitch type="checkbox" checked /> Enable notifications</label>
-        </section>
-        <section data-atr-theme="dark" data-atr-surface="standard" style="display:grid;gap:1rem;padding:1.5rem">
-          <h2>Dark</h2>
-          <atr-form-field label="Email"><input atrInput type="email" value="alex@example.com" /></atr-form-field>
-          <atr-form-field label="Message"><textarea atrTextarea rows="2">Hello, Atralume.</textarea></atr-form-field>
-          <label><input atrCheckbox type="checkbox" checked /> Accept terms</label>
-          <fieldset>
-            <legend>Plan</legend>
-            <label><input atrRadio type="radio" name="dark-plan" value="personal" checked /> Personal</label>
-            <label><input atrRadio type="radio" name="dark-plan" value="business" /> Business</label>
-          </fieldset>
-          <label><input atrSwitch type="checkbox" checked /> Enable notifications</label>
-        </section>
-        <section data-atr-theme="light" data-atr-surface="glass" style="display:grid;gap:1rem;padding:1.5rem">
-          <h2>Glass</h2>
-          <atr-form-field label="Email"><input atrInput type="email" value="alex@example.com" /></atr-form-field>
-          <atr-form-field label="Message"><textarea atrTextarea rows="2">Hello, Atralume.</textarea></atr-form-field>
-          <label><input atrCheckbox type="checkbox" checked /> Accept terms</label>
-          <fieldset>
-            <legend>Plan</legend>
-            <label><input atrRadio type="radio" name="glass-plan" value="personal" checked /> Personal</label>
-            <label><input atrRadio type="radio" name="glass-plan" value="business" /> Business</label>
-          </fieldset>
-          <label><input atrSwitch type="checkbox" checked /> Enable notifications</label>
-        </section>
-      </div>
+      <section class="atr-scope" data-atr-surface="standard" style="padding:2rem;max-width:48rem;margin:auto;display:grid;gap:1.5rem">
+        <div>
+          <p style="margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Atralume / Atoms</p>
+          <h2 style="margin:.5rem 0 0">Shared language</h2>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+          <atr-avatar name="Alex Morgan" alt="" />
+          <div>
+            <strong>Alex Morgan</strong>
+            <div style="margin-top:.35rem">
+              <atr-badge tone="success"><atr-icon name="check" size="small" />Active</atr-badge>
+              <atr-badge appearance="outlined" tone="primary">Team member</atr-badge>
+            </div>
+          </div>
+        </div>
+        <hr atrDivider />
+        <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+          <button atrButton type="button"><atr-icon name="check" />Save changes</button>
+          <button atrIconButton type="button" appearance="outlined" aria-label="Close preview"><atr-icon name="close" /></button>
+          <a atrLink appearance="standalone" href="#documentation">Documentation<atr-icon name="arrow-right" /></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <atr-progress-spinner size="small" label="Saving profile" />
+          <atr-progress-bar label="Profile completion" [value]="65" style="flex:1" />
+        </div>
+        <atr-form-field>
+          <tui-textfield tuiTextfieldSize="m">
+            <label tuiLabel>Email</label>
+            <input atrInput type="email" [(ngModel)]="email" name="email" />
+          </tui-textfield>
+        </atr-form-field>
+        <atr-form-field>
+          <tui-textfield tuiTextfieldSize="m">
+            <label tuiLabel>Message</label>
+            <textarea atrTextarea rows="2" [(ngModel)]="message" name="message"></textarea>
+          </tui-textfield>
+        </atr-form-field>
+
+        <label atrControlLabel><input atrCheckbox type="checkbox" [(ngModel)]="terms" name="terms" /><span>Accept terms</span></label>
+        <fieldset>
+          <legend>Plan</legend>
+          <label atrControlLabel><input atrRadio type="radio" name="plan" value="personal" [(ngModel)]="plan" /><span>Personal</span></label>
+          <label atrControlLabel><input atrRadio type="radio" name="plan" value="business" [(ngModel)]="plan" /><span>Business</span></label>
+        </fieldset>
+        <label atrControlLabel><input atrSwitch type="checkbox" [(ngModel)]="notify" name="notify" /><span>Enable notifications</span></label>
+      </section>
     `,
   }),
 };

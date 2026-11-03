@@ -5,6 +5,8 @@ import * as Stories from "../stories/speed-dial.component.stories";
 
 # Speed Dial
 
+Composition over Taiga-backed `AtralumeFab`. No Taiga speed-dial primitive exists.
+
 Speed Dial composes a primary native FAB with native action buttons. It exposes opened as a model, orientation and disabled. The main action announces aria-expanded and a stable actions id. Arrow keys, Home/End and Escape manage action focus; disabled actions are skipped. Action or Escape closes and restores focus to the trigger; outside pointer or leaving the group closes without stealing focus from the new target. The group uses constrained in-flow positioning so it remains usable within the consumer viewport layout.
 
 ## Import, API and minimum composition
@@ -44,12 +46,7 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-speed-dial-*
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL, motion and common mistakes
 
 Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.

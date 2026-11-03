@@ -16,6 +16,7 @@ describe("AtralumeLink", () => {
     expect(a.getAttribute("href")).toBe("#docs");
     expect(a.hasAttribute("target")).toBe(false);
     expect(a.getAttribute("role")).toBeNull();
+    expect(a.hasAttribute("tuiLink")).toBe(true);
     expect(a.dataset["appearance"]).toBe("standalone");
     expect(a.dataset["underline"]).toBe("hover");
     expect(a.querySelector("span")).not.toBeNull();

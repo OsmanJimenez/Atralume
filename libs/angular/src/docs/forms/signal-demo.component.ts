@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
+  TuiTextfield,
 } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
@@ -21,6 +22,7 @@ import { form, FormField } from "@angular/forms/signals";
     AtralumeCheckbox,
     AtralumeRadio,
     AtralumeSwitch,
+    TuiTextfield,
   ],
   templateUrl: "./signal-demo.component.html",
   styleUrl: "./signal-demo.component.scss",

@@ -5,6 +5,10 @@ import * as Stories from "../stories/pagination.component.stories";
 
 # Pagination
 
+Exception relative to Taiga `TuiPagination`: Atralume retains 1-based `page`, First/Last controls, `href(page)` link mode, and sibling ellipsis on Taiga-backed buttons. Wrapping `tui-pagination` would drop that contract.
+
+Taiga UI reference: [Pagination](https://taiga-ui.dev/components/pagination).
+
 Use for a known number of pages. pageCount must be a positive integer. page is a model (1-based); siblingCount controls adjacent numbered pages. First/Previous/Next/Last boundaries and loading disable activation. Ellipses are noninteractive. The default uses buttons for local state; supply href(page) for real anchors and browser navigation. The library does not route programmatically. Out-of-range current page is clamped visually.
 
 ## Import, API and minimum composition
@@ -35,12 +39,7 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-pagination-*
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL, motion and common mistakes
 
 Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.

@@ -8,24 +8,13 @@
     <atr-combobox
       [label]="label()"
       [options]="options()"
-      [inline]="true"
-      [opened]="true"
       [(query)]="query"
-      [loading]="loading()"
-      [loadError]="loadError()"
       [displayWith]="displayCommand"
       [value]="null"
       (valueChange)="choose($event)"
-      [optionTemplate]="commandOption"
+      [strict]="true"
+      [filterOptions]="true"
+      emptyText="No commands"
     />
-    <ng-template #commandOption let-command>
-      <span>{{ command.label }}</span>
-      @if (command.shortcut) {
-        <kbd>{{ command.shortcut }}</kbd>
-      }
-      @if (command.children) {
-        <atr-icon name="arrow-right" />
-      }
-    </ng-template>
   </section>
 </ng-template>

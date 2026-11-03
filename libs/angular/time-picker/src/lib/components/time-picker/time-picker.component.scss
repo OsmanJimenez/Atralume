@@ -1,26 +1,4 @@
 :host {
   display: block;
   min-inline-size: 0;
-
-  --atr-comp-popover-container-color: var(
-    --atr-comp-time-picker-container-color
-  );
-  --atr-comp-popover-shape: var(--atr-comp-time-picker-shape);
-}
-
-.actions,
-.time-fields {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--atr-comp-time-picker-gap);
-}
-
-.time-fields {
-  margin-block-end: var(--atr-comp-time-picker-padding);
-  max-inline-size: calc(100vw - 4rem);
-}
-
-.time-fields atr-select {
-  min-inline-size: 7rem;
-  flex: 1;
 }

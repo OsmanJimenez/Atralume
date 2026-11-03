@@ -75,46 +75,11 @@ export const Gallery: Story = {
       '<atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> ',
   }),
 };
-export const Colors: Story = {
-  render: () => ({
-    template:
-      '<atr-icon name="check" style="color:var(--atr-sys-color-tertiary)" />',
-  }),
-};
-export const RTL: Story = {
-  render: () => ({
-    template:
-      '<div dir="rtl"><atr-icon name="arrow-right" [decorative]="false" label="Next" /><atr-icon name="check" /></div>',
-  }),
-};
-export const Themes: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><p>light</p><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section><section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><p>dark</p><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section><section data-atr-theme="system" data-atr-surface="standard" style="padding:2rem"><p>system</p><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section>',
-  }),
-};
 
-export const NestedThemes: Story = {
+export const TaigaBridge: Story = {
+  name: "Taiga bridge",
   render: () => ({
     template:
-      '<section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> <section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section></section>',
-  }),
-};
-export const OnGlass: Story = {
-  render: () => ({
-    template:
-      '<div style="padding:3rem;background:radial-gradient(circle at 20% 30%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-tertiary-container),var(--atr-sys-color-secondary-container))"><section data-atr-surface="glass" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section></div>',
-  }),
-};
-export const Surfaces: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-surface="standard" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section><section data-atr-surface="elevated" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section><section data-atr-surface="transparent" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section><section data-atr-surface="glass" style="padding:2rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </section>',
-  }),
-};
-export const ConsumerOverride: Story = {
-  render: () => ({
-    template:
-      '<div style="--atr-comp-icon-size-medium:1rem"><atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> </div>',
+      '<atr-icon engine="tui" name="@tui.check" [decorative]="false" label="Taiga check" /> <atr-icon engine="tui" name="@tui.heart" [decorative]="false" label="Taiga heart" />',
   }),
 };

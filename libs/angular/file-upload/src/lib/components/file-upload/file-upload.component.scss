@@ -20,12 +20,22 @@
     var(--atr-comp-file-upload-focus-color);
 }
 
-.native-file {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
+.atr-file-upload__input-files {
+  inline-size: 100%;
+  margin-block-start: var(--atr-ref-spacing-2, 0.5rem);
+  background: var(--atr-comp-file-upload-container-color);
+  border-color: var(--atr-comp-file-upload-border-color);
+  color: var(--atr-comp-file-upload-label-color);
+}
+
+.atr-file-upload__hint {
+  display: block;
+  margin-block-start: var(--atr-ref-spacing-1, 0.25rem);
+  opacity: 0.8;
+}
+
+.atr-file-upload__label {
+  display: block;
 }
 
 .file-details {

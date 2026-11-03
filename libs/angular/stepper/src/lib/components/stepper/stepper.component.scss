@@ -5,20 +5,8 @@
   font-family: var(--atr-ref-font-family-plain);
 }
 
-ol {
-  display: flex;
-  gap: var(--atr-comp-stepper-gap);
-  list-style: none;
-  padding: 0;
-  overflow: auto;
-}
-
-li {
-  flex: 1;
-}
-
-li button {
-  inline-size: 100%;
+nav {
+  min-inline-size: 0;
 }
 
 .atr-step-content {
@@ -26,19 +14,10 @@ li button {
   border: 1px solid var(--atr-comp-stepper-border-color);
   border-radius: var(--atr-comp-stepper-shape);
   background: var(--atr-comp-stepper-container-color);
+  margin-block-start: var(--atr-comp-stepper-gap);
 }
 
 .atr-step-content:focus-visible {
   outline: var(--atr-sys-focus-ring-width) solid
     var(--atr-comp-stepper-focus-color);
-}
-
-:host([data-orientation="vertical"]) ol {
-  flex-direction: column;
-}
-
-@media (width <= 480px) {
-  ol {
-    flex-direction: column;
-  }
 }

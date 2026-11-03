@@ -11,6 +11,12 @@ ControlValueAccessor. Supported types include text, email, password, search,
 tel, url, and number. Do not use it for checkbox, radio, file, range, color, or
 button inputs.
 
+Taiga UI foundation: uses public CDK `TuiNativeValidator` and `TuiId` (the same
+host directives that power `TuiInputDirective`). Full `input[tuiInput]` requires
+a `tui-textfield` ancestor and conflicts with Atralume's `atr-input-group`
+composites, so the stable `atrInput` selector and native value ownership remain.
+Taiga reference: [Input](https://taiga-ui.dev/components/input/).
+
 ## Import and example
 
 ```ts
@@ -53,7 +59,3 @@ forced-colors, and reduced-motion behavior. Input uses the shared
 `--atr-comp-form-field-*` token family; override those public CSS custom
 properties locally rather than editing package styles.
 
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />

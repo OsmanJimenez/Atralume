@@ -38,11 +38,18 @@ import {
   AtralumeListSupporting,
 } from "@atralume/angular/list";
 import { AtralumeProgressBar } from "@atralume/angular/progress";
+import { TuiInputFiles } from "@taiga-ui/kit";
 import { AtralumeFileInput } from "../../directives/file-input.directive";
 import type {
   AtralumeUploadFileState,
   AtralumeFileRejection,
 } from "../../models/file-upload.types";
+
+/**
+ * File upload composed over Taiga `label[tuiInputFiles]` chrome.
+ * Value stays on this CVA — native input uses `atrFileInput` (attr + appearance)
+ * without hosting `TuiInputFilesDirective` (also a CVA).
+ */
 @Component({
   selector: "atr-file-upload",
   standalone: true,
@@ -57,6 +64,7 @@ import type {
     AtralumeListSupporting,
     AtralumeProgressBar,
     AtralumeFileInput,
+    TuiInputFiles,
   ],
   templateUrl: "./file-upload.component.html",
   styleUrl: "./file-upload.component.scss",

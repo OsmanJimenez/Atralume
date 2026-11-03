@@ -5,6 +5,10 @@ import * as Stories from "../stories/avatar.component.stories";
 
 # Avatar
 
+The adapter applies Taiga UI's public `TuiAvatar` directive. Atralume keeps initials/image fallback, sizes, shapes, and `--atr-*` tokens. Consumers should not add `tuiAvatar` on the same host.
+
+Taiga UI reference: [Avatar](https://taiga-ui.dev/components/avatar).
+
 Use an image, explicit initials, a name, or a generic fallback for identity. Image errors fall back once per source; changing src permits a new attempt. Initials use the first Unicode code point of the first and last whitespace-separated name segments, at most two, or the first two code points of explicit initials. Combining marks and complex grapheme clusters may need explicit initials. Supply alt when this is the only identifier; use alt="" when an adjacent name provides the same information. The host owns the accessible name and the internal image is decorative. Fixed CSS dimensions and object-fit prevent layout shift; loading defaults to lazy.
 
 ## Import and minimum example
@@ -70,11 +74,6 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
 
 ## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
 
 Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
 

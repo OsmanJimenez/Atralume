@@ -9,7 +9,7 @@ import {
 @Component({
   imports: [AtralumeTabs, AtralumeTabList, AtralumeTab, AtralumeTabPanel],
   template:
-    '<atr-tabs label="Profile sections"><div atrTabList><button atrTab id="overview-tab" panel="overview-panel" type="button">Overview</button><button atrTab id="activity-tab" panel="activity-panel" type="button">Activity</button><button atrTab id="disabled-tab" panel="disabled-panel" type="button" disabled>Unavailable</button></div><section atrTabPanel id="overview-panel" labelledBy="overview-tab">Profile overview</section><section atrTabPanel id="activity-panel" labelledBy="activity-tab">Recent activity</section><section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">Unavailable panel</section></atr-tabs>',
+    '<atr-tabs label="Profile sections"><tui-tabs atrTabList><button atrTab id="overview-tab" panel="overview-panel" type="button">Overview</button><button atrTab id="activity-tab" panel="activity-panel" type="button">Activity</button><button atrTab id="disabled-tab" panel="disabled-panel" type="button" disabled>Unavailable</button></tui-tabs><section atrTabPanel id="overview-panel" labelledBy="overview-tab">Profile overview</section><section atrTabPanel id="activity-panel" labelledBy="activity-tab">Recent activity</section><section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">Unavailable panel</section></atr-tabs>',
 })
 class Host {}
 describe("Tabs", () => {

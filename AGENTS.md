@@ -770,6 +770,19 @@ Angular CDK is permitted.
 
 Angular Material visual components are not.
 
+## 16.1 Taiga UI foundation and Atralume brand layer
+
+Taiga UI 5 is the **only** UI runtime for components, forms, overlays, navigation, feedback, and data display. Atralume is the **brand layer** on top: tokens, theme bridge, and scope modes that restyle every Taiga-backed control together.
+
+- Use only documented public Taiga UI APIs and imports.
+- Before creating a component, check Taiga UI for an equivalent and record strategy in `docs/architecture/taiga-ui-migration-matrix.md`. Statuses are `pending` → `in-progress` → `migrated` | `composed` | `removed`. Do not keep a parallel Atralume UI engine as a terminal `exception`.
+- Thin `atr*` adapters may host or compose public Taiga APIs. Breaking Atralume API is allowed when aligning to Taiga hosts; document each break.
+- If Taiga has no equivalent, compose the closest Taiga/CDK surface. Do not invent a second kit.
+- Atralume owns `--atr-*` tokens, `provideAtralume()`, and modes: `data-atr-theme`, `data-atr-surface`, `data-atr-shape`, `data-atr-brand`. Map Taiga’s documented CSS custom properties from Atralume tokens in `libs/angular/src/styles/taiga-bridge.scss` (see `docs/architecture/taiga-ui-token-bridge.md`).
+- Keep Less as a pinned workspace-only compiler dependency. Do not require consumers to compile Taiga styles or depend on private Taiga selectors/variables.
+- Declare Taiga UI runtime packages as peer dependencies. Do not edit `node_modules` or bundle a second Taiga copy.
+- Validate Taiga package compatibility with the installed Angular version before migrating consumers.
+
 ---
 
 # 17. Overlay standards
@@ -858,7 +871,7 @@ Use motion tokens for:
 Respect:
 
 ```css
-@media (prefers-reduced-motion: reduce)
+@media (prefers-reduced-motion: reduce);
 ```
 
 Reduced motion must preserve understanding.

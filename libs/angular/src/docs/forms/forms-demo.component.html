@@ -14,46 +14,51 @@
     </div>
     <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <atr-form-field
-        label="Email"
         hint="Your email stays in this demo."
-        [required]="true"
         [error]="error('email')"
       >
-        <input
-          #emailInput
-          atrInput
-          type="email"
-          autocomplete="email"
-          required
-          [readonly]="readonly()"
-          formControlName="email"
-          [attr.aria-invalid]="error('email') ? 'true' : null"
-        />
+        <tui-textfield [invalid]="!!error('email')" tuiTextfieldSize="m">
+          <label tuiLabel>Email *</label>
+          <input
+            #emailInput
+            atrInput
+            type="email"
+            autocomplete="email"
+            required
+            [readonly]="readonly()"
+            formControlName="email"
+            [attr.aria-invalid]="error('email') ? 'true' : null"
+          />
+        </tui-textfield>
       </atr-form-field>
       <atr-form-field
-        label="Password"
         hint="Use at least 8 characters."
-        required
         [error]="error('password')"
       >
-        <input
-          atrInput
-          type="password"
-          autocomplete="new-password"
-          required
-          [readonly]="readonly()"
-          formControlName="password"
-          [attr.aria-invalid]="error('password') ? 'true' : null"
-        />
+        <tui-textfield [invalid]="!!error('password')" tuiTextfieldSize="m">
+          <label tuiLabel>Password *</label>
+          <input
+            atrInput
+            type="password"
+            autocomplete="new-password"
+            required
+            [readonly]="readonly()"
+            formControlName="password"
+            [attr.aria-invalid]="error('password') ? 'true' : null"
+          />
+        </tui-textfield>
       </atr-form-field>
-      <atr-form-field label="About you" optional>
-        <textarea
-          atrTextarea
-          rows="3"
-          maxlength="500"
-          [readonly]="readonly()"
-          formControlName="notes"
-        ></textarea>
+      <atr-form-field>
+        <tui-textfield tuiTextfieldSize="m">
+          <label tuiLabel>About you (optional)</label>
+          <textarea
+            atrTextarea
+            rows="3"
+            maxlength="500"
+            [readonly]="readonly()"
+            formControlName="notes"
+          ></textarea>
+        </tui-textfield>
       </atr-form-field>
       <label atrControlLabel
         ><input

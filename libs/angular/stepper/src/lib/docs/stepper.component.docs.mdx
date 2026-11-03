@@ -5,63 +5,43 @@ import * as Stories from "../stories/stepper.component.stories";
 
 # Stepper
 
-Stepper is a workflow, not a general form value control. Linear navigation requires a valid nonpending AbstractControl or explicitly completed previous steps; optional steps may be skipped. A visit alone never completes a step. Step controls can be FormGroups, and Signal Forms consumers can supply completed from their field validity. Content templates are lazy. Headers use native Button and CDK focus management. User activation moves focus to the labelled content region. Bind navigation Button disabled state to canNext/canPrevious. reset resets controls and the active index; consumer-controlled manual completion remains external.
+Thin recipe over Taiga [`TuiStepper`](https://taiga-ui.dev/navigation/stepper): `atr-stepper` hosts `tui-stepper`, headers are `button[tuiStep]`, and `atr-step` projects the active content panel.
+
+Atralume does **not** ship a linear/`AbstractControl` focus engine. Gate Next yourself (for example with form validity). `atrStepperNext` / `atrStepperPrevious` remain thin click helpers. Use `selected`, `next()`, `previous()`, and `reset()` to drive the index.
 
 ## Import, composition and values
 
-Import from `@atralume/angular/stepper`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
-
-## Forms, validation and null
-
-Date Picker, Time Picker, Slider, Range Slider and File Upload implement CVA and the public Signal Forms value-control contract. Use Reactive Forms, ngModel or formField per instance. Required, disabled, touched, dirty, reset and null are covered in unit tests for each control. Signal Forms owns reserved metadata bindings such as min/max: configure numeric validation in its schema instead of binding those names simultaneously. Range Slider uses minimum/maximum for its numeric interval because the form value is an object. Calendar and Stepper do not add an unrelated CVA.
-
-Null is an empty value. A null slider previews its minimum; a null range previews the full available interval without committing a value. External invalid numeric values remain invalid while their preview is clamped. File values are not serialized automatically.
+Import from `@atralume/angular/stepper`. Project `atr-step` children with a `label` and optional `stepState` / `icon` / `disabled`. Content templates render only for the active step. Bind navigation Button `disabled` to your own rules plus `canNext` / `canPrevious` when useful.
 
 ## Keyboard and accessibility
 
-Keep visible labels and names for each interactive control. Native controls retain their editing semantics. Date/time overlays use labelled dialog patterns and restore focus through the shared infrastructure. Calendar uses a labelled grid with one active date. Stepper uses labelled regions and current-step state rather than pretending to be a tab list. Completion/error states have text as well as visual treatment. Test the final application with assistive technology.
-
-## Loading, empty, error and async
-
-The consumer owns remote data, upload transport, progress and business validation. Date/time constraints and step validation are synchronous control configuration; async workflows can pass disabled/loading state through the surrounding composition. Error messages use the existing Form Field or explicit status content. Do not invent HTTP behavior inside these controls.
+Taiga owns header arrow-key focus. Stepper uses labelled regions and `aria-current="step"` rather than a tab list. Completion and error states use `stepState` (`normal` | `pass` | `error`) with Taiga’s visual treatment. Test the final application with assistive technology.
 
 ## Themes, glass and tokens
 
-Import `@atralume/angular/styles/theme.css` once. Customize `--atr-comp-stepper-*` tokens and existing atoms through public CSS tokens. Overlays inherit the trigger theme, surface, density, direction and overrides. Light, Dark, Glass, NestedTheme, RTL, ConsumerOverride and Responsive preserve the same API. Forced colors keeps boundaries and native control semantics; no nonessential animation is required.
-
-## SSR, responsive and limitations
-
-Browser-only selection, previews and overlays are guarded. SSR starts with an empty file selection and no browser overlay. Use a stable initial civil date for server/client rendering; parse serialized civil strings with the same adapter. Native file dialogs and File objects cannot be restored by serializing JSON. No custom virtual scroll is introduced. Calendar shrinks its day targets on small viewports while retaining WCAG minimum target sizes; consumers should verify text zoom and translated labels.
+Import `@atralume/angular/styles/theme.css` once. Customize `--atr-comp-stepper-*` tokens for the content panel. Light, Dark, NestedTheme, RTL and ConsumerOverride preserve the same API.
 
 ## Common mistakes
 
-Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
+Do not treat a visited step as completed — set `stepState="pass"` (or your own marker) explicitly. Do not expect the stepper to validate forms; keep that in the consumer.
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.Playground} />
 {/* public-api:start */}
 
 ## Public TypeScript contract
 
-| Owner             | Member        | Kind     | Type                         | Default                                |
-| ----------------- | ------------- | -------- | ---------------------------- | -------------------------------------- |
-| `AtralumeStep`    | `label`       | `Input`  | `string`                     | `Required`                             |
-| `AtralumeStep`    | `stepId`      | `Input`  | `string`                     | `inject(ɵAtralumeControlIds).create()` |
-| `AtralumeStep`    | `optional`    | `Input`  | `boolean`                    | `false`                                |
-| `AtralumeStep`    | `editable`    | `Input`  | `boolean`                    | `true`                                 |
-| `AtralumeStep`    | `disabled`    | `Input`  | `boolean`                    | `false`                                |
-| `AtralumeStep`    | `completed`   | `Input`  | `boolean \| null`            | `null`                                 |
-| `AtralumeStep`    | `error`       | `Input`  | `string \| null`             | `null`                                 |
-| `AtralumeStep`    | `control`     | `Input`  | `AbstractControl \| null`    | `null`                                 |
-| `AtralumeStepper` | `label`       | `Input`  | `string`                     | `Required`                             |
-| `AtralumeStepper` | `selected`    | `Model`  | `number`                     | `0`                                    |
-| `AtralumeStepper` | `linear`      | `Input`  | `boolean`                    | `false`                                |
-| `AtralumeStepper` | `disabled`    | `Input`  | `boolean`                    | `false`                                |
-| `AtralumeStepper` | `orientation` | `Input`  | `"horizontal" \| "vertical"` | `"horizontal"`                         |
-| `AtralumeStepper` | `stepChange`  | `Output` | `AtralumeStepChange`         | `Event`                                |
+| Owner             | Member        | Kind     | Type                            | Default                                |
+| ----------------- | ------------- | -------- | ------------------------------- | -------------------------------------- |
+| `AtralumeStep`    | `label`       | `Input`  | `string`                        | `Required`                             |
+| `AtralumeStep`    | `stepId`      | `Input`  | `string`                        | `inject(ɵAtralumeControlIds).create()` |
+| `AtralumeStep`    | `disabled`    | `Input`  | `boolean`                       | `false`                                |
+| `AtralumeStep`    | `stepState`   | `Input`  | `"normal" \| "pass" \| "error"` | `"normal"`                             |
+| `AtralumeStep`    | `icon`        | `Input`  | `string`                        | `""`                                   |
+| `AtralumeStepper` | `label`       | `Input`  | `string`                        | `Required`                             |
+| `AtralumeStepper` | `selected`    | `Model`  | `number`                        | `0`                                    |
+| `AtralumeStepper` | `disabled`    | `Input`  | `boolean`                       | `false`                                |
+| `AtralumeStepper` | `orientation` | `Input`  | `"horizontal" \| "vertical"`    | `"horizontal"`                         |
+| `AtralumeStepper` | `stepChange`  | `Output` | `AtralumeStepChange`            | `Event`                                |
 
 ```ts
 export interface AtralumeStepChange {

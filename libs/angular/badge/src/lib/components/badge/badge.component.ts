@@ -4,19 +4,27 @@ import {
   Component,
   computed,
   input,
+  ViewEncapsulation,
 } from "@angular/core";
+import { TuiBadge } from "@taiga-ui/kit";
+
 export type BadgeTone =
   "neutral" | "primary" | "success" | "warning" | "error" | "info";
 export type BadgeAppearance = "filled" | "soft" | "outlined";
 export type BadgeSize = "small" | "medium";
+
+/** Adapter over Taiga UI `TuiBadge`; keeps Atralume tones, appearances, and count API. */
 @Component({
   selector: "atr-badge",
   standalone: true,
+  hostDirectives: [{ directive: TuiBadge, inputs: ["size: tuiSize"] }],
   templateUrl: "./badge.component.html",
   styleUrl: "./badge.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: "atr-badge",
+    "[attr.tuiBadge]": '""',
     "[attr.data-tone]": "tone()",
     "[attr.data-appearance]": "appearance()",
     "[attr.data-size]": "size()",

@@ -1,88 +1,24 @@
-<header>
-  <button
-    atrIconButton
-    type="button"
-    aria-label="Previous month"
-    [disabled]="disabled()"
-    (click)="navigate(-1)"
-  >
-    <atr-icon name="arrow-right" class="previous" />
-  </button>
-  <span class="month-label" aria-live="polite">{{ monthLabel() }}</span>
-  <button
-    atrIconButton
-    type="button"
-    aria-label="Next month"
-    [disabled]="disabled()"
-    (click)="navigate(1)"
-  >
-    <atr-icon name="arrow-right" />
-  </button>
-</header>
-<div class="period">
-  <label
-    >Month
-    <select
-      [value]="adapter.month(visible())"
-      [disabled]="disabled()"
-      (change)="changeMonth($event)"
-    >
-      @for (month of monthNames(); track month.month) {
-        <option [value]="month.month">{{ month.label }}</option>
-      }
-    </select></label
-  >
-  <label
-    >Year
-    <select
-      [value]="adapter.year(visible())"
-      [disabled]="disabled()"
-      (change)="changeYear($event)"
-    >
-      @for (year of years(); track year) {
-        <option [value]="year">{{ year }}</option>
-      }
-    </select></label
-  >
-</div>
-<table
-  role="grid"
-  [attr.aria-label]="label()"
-  [attr.aria-multiselectable]="selectionMode() === 'range'"
->
-  <thead>
-    <tr>
-      @for (day of weekdays(); track $index) {
-        <th scope="col">{{ day }}</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @for (week of weeks(); track $index) {
-      <tr>
-        @for (cell of week; track cell.id) {
-          <td role="gridcell" [attr.aria-selected]="selected(cell.date)">
-            @if (showAdjacentDays() || !cell.adjacent) {
-              <button
-                atrButton
-                type="button"
-                [appearance]="selected(cell.date) ? 'tonal' : 'text'"
-                [disabled]="unavailable(cell.date)"
-                [attr.aria-label]="fullLabel(cell.date)"
-                [attr.aria-current]="isToday(cell.date) ? 'date' : null"
-                [attr.tabindex]="focusedId() === cell.id ? 0 : -1"
-                [attr.cdkFocusInitial]="focusedId() === cell.id ? '' : null"
-                [attr.data-calendar-date]="cell.id"
-                [class.adjacent]="cell.adjacent"
-                (focus)="focused(cell.date)"
-                (click)="select(cell.date)"
-              >
-                {{ cell.day }}
-              </button>
-            }
-          </td>
-        }
-      </tr>
-    }
-  </tbody>
-</table>
+@if (selectionMode() === "range") {
+  <tui-calendar-range
+    [attr.aria-label]="label()"
+    [value]="tuiRange()"
+    (valueChange)="onRange($event)"
+    [month]="tuiMonth()"
+    (monthChange)="onMonth($event)"
+    [min]="tuiMin()"
+    [max]="tuiMax()"
+    [disabledItemHandler]="disabledItemHandler()"
+  />
+} @else {
+  <tui-calendar
+    [attr.aria-label]="label()"
+    [value]="tuiDay()"
+    [month]="tuiMonth()"
+    (monthChange)="onMonth($event)"
+    [min]="tuiMin()"
+    [max]="tuiMax()"
+    [showAdjacent]="showAdjacentDays()"
+    [disabledItemHandler]="disabledItemHandler()"
+    (dayClick)="onDayClick($event)"
+  />
+}

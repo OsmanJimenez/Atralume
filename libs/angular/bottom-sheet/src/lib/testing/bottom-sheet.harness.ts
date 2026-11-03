@@ -1,6 +1,8 @@
 import { ComponentHarness, TestKey } from "@angular/cdk/testing";
+
 export class AtralumeBottomSheetHarness extends ComponentHarness {
-  static hostSelector = ".atr-bottom-sheet-panel";
+  static hostSelector = 'tui-dialog[data-appearance="atr-bottom-sheet"]';
+
   async getText(): Promise<string> {
     return (await this.host()).text();
   }

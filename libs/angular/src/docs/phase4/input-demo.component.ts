@@ -36,7 +36,7 @@ import {
 } from "@atralume/angular/stepper";
 import { AtralumeButton } from "@atralume/angular/button";
 import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeFormField } from "@atralume/angular/form-field";
+import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
 @Component({
   selector: "atr-advanced-input-demo",
   standalone: true,
@@ -55,6 +55,7 @@ import { AtralumeFormField } from "@atralume/angular/form-field";
     AtralumeButton,
     AtralumeInput,
     AtralumeFormField,
+    TuiTextfield,
   ],
   templateUrl: "./input-demo.component.html",
   styleUrl: "./input-demo.component.scss",

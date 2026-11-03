@@ -8,10 +8,16 @@ import {
   ElementRef,
   contentChildren,
   forwardRef,
+  signal,
 } from "@angular/core";
-import { signal } from "@angular/core";
 import { AtralumeTab } from "../../directives/tab.directive";
 import { TAB_CONTEXT, type TabActivation } from "../../models/tabs.types";
+
+/**
+ * Tabs container composing Taiga `tui-tabs` (`TuiTabs`) + `TuiTab` on triggers.
+ * Keeps Atralume string-id selection, panels, and activation modes.
+ * Project the list as `<tui-tabs atrTabList>`.
+ */
 @Component({
   selector: "atr-tabs",
   standalone: true,

@@ -15,7 +15,7 @@
     <atr-icon name="menu" />
   </button>
 </header>
-<nav atrNavigationBar label="Dashboard navigation">
+<atr-navigation-bar label="Dashboard navigation">
   <a atrNavigationItem active href="#dashboard-overview"
     ><atr-icon name="user" /><span>Overview</span></a
   ><a atrNavigationItem href="#dashboard-projects"
@@ -23,7 +23,7 @@
   ><a atrNavigationItem href="#dashboard-forms"
     ><span aria-hidden="true">◇</span><span>Forms</span></a
   >
-</nav>
+</atr-navigation-bar>
 <div class="dashboard-grid">
   <atr-card appearance="elevated"
     ><header atrCardHeader>
@@ -74,7 +74,7 @@
     </header>
     <div atrCardContent [attr.aria-busy]="loading()">
       <atr-tabs label="Project views"
-        ><div atrTabList>
+        ><tui-tabs atrTabList>
           <button
             atrTab
             id="dashboard-current-tab"
@@ -90,7 +90,7 @@
           >
             Activity
           </button>
-        </div>
+        </tui-tabs>
         <section
           atrTabPanel
           id="dashboard-current-panel"
@@ -151,15 +151,15 @@
   data-atr-surface="standard"
 >
   <h3>A nested theme</h3>
-  <atr-accordion
-    ><atr-accordion-item id="dashboard-help"
-      ><span atrAccordionHeader>How is this customized?</span>
+  <tui-accordion class="atr-accordion" [closeOthers]="true">
+    <button tuiAccordion type="button">How is this customized?</button>
+    <tui-expand>
       <p>
         Functional variants are inputs. Theme, surface and brand details are CSS
         tokens.
-      </p></atr-accordion-item
-    ></atr-accordion
-  >
+      </p>
+    </tui-expand>
+  </tui-accordion>
   <div class="dashboard-actions">
     <button
       #createOrigin
@@ -200,8 +200,11 @@
 <ng-template #profile
   ><h2 atrDialogTitle id="dashboard-profile-title">Edit profile</h2>
   <div atrDialogContent>
-    <atr-form-field label="Display name"
-      ><input atrInput [formControl]="displayName" /></atr-form-field
+    <atr-form-field
+      ><tui-textfield tuiTextfieldSize="m"
+        ><label tuiLabel>Display name</label
+        ><input atrInput [formControl]="displayName" /></tui-textfield
+    ></atr-form-field
     ><button
       atrButton
       appearance="text"

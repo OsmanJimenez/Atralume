@@ -1,0 +1,237 @@
+/* stylelint-disable custom-property-pattern, scss/operator-no-newline-after -- Maps public Taiga variables; font shorthands use CSS's line-height slash. */
+/*
+ * Include [tuiTheme] so Taiga's auto body[tuiTheme=dark|light] (from prefers-color-scheme)
+ * cannot replace the bridge with hardcoded Taiga palette after data-atr-theme is set.
+ */
+:root,
+[data-atr-theme],
+[tuiTheme],
+[tuiTheme="light"],
+[tuiTheme="dark"] {
+  /* Used by layout aside[tuiNavigationAside] (defaults to #000 without this). */
+  --tui-theme-color: var(--atr-sys-color-surface-container);
+  --tui-background-base: var(--atr-sys-color-surface);
+  --tui-background-base-alt: var(--atr-sys-color-surface-container);
+  --tui-background-neutral-1: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 4%,
+    transparent
+  );
+  --tui-background-neutral-1-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 8%,
+    transparent
+  );
+  --tui-background-neutral-1-pressed: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 12%,
+    transparent
+  );
+  --tui-background-neutral-2: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 8%,
+    transparent
+  );
+  --tui-background-neutral-2-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 12%,
+    transparent
+  );
+  --tui-background-neutral-2-pressed: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 16%,
+    transparent
+  );
+  --tui-background-accent-1: var(--atr-sys-color-primary);
+  --tui-background-accent-1-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-primary) 88%,
+    var(--atr-sys-color-on-primary)
+  );
+  --tui-background-accent-1-pressed: color-mix(
+    in srgb,
+    var(--atr-sys-color-primary) 80%,
+    var(--atr-sys-color-on-primary)
+  );
+  --tui-background-accent-2: var(--atr-sys-color-tertiary);
+  --tui-background-accent-2-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-tertiary) 88%,
+    var(--atr-sys-color-on-tertiary)
+  );
+  --tui-background-accent-2-pressed: color-mix(
+    in srgb,
+    var(--atr-sys-color-tertiary) 80%,
+    var(--atr-sys-color-on-tertiary)
+  );
+  --tui-background-accent-opposite: var(--atr-sys-color-on-surface);
+  --tui-background-accent-opposite-hover: var(
+    --atr-sys-color-on-surface-variant
+  );
+  --tui-background-accent-opposite-pressed: var(--atr-sys-color-on-surface);
+  --tui-background-elevation-1: var(--atr-sys-color-surface-container-low);
+  --tui-background-elevation-2: var(--atr-sys-color-surface-container);
+  --tui-background-elevation-3: var(--atr-sys-color-surface-container-high);
+  --tui-border-normal: var(--atr-sys-color-outline-variant);
+  --tui-border-hover: var(--atr-sys-color-outline);
+  --tui-border-focus: var(--atr-sys-color-focus);
+  --tui-status-negative: var(--atr-sys-color-error);
+  --tui-status-negative-pale: var(--atr-sys-color-error-container);
+  --tui-status-negative-pale-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-error-container) 80%,
+    var(--atr-sys-color-error)
+  );
+  --tui-status-positive: var(--atr-sys-color-success);
+  --tui-status-positive-pale: var(--atr-sys-color-success-container);
+  --tui-status-positive-pale-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-success-container) 80%,
+    var(--atr-sys-color-success)
+  );
+  --tui-status-warning: var(--atr-sys-color-warning);
+  --tui-status-warning-pale: var(--atr-sys-color-warning-container);
+  --tui-status-warning-pale-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-warning-container) 80%,
+    var(--atr-sys-color-warning)
+  );
+  --tui-status-info: var(--atr-sys-color-info);
+  --tui-status-info-pale: var(--atr-sys-color-info-container);
+  --tui-status-info-pale-hover: color-mix(
+    in srgb,
+    var(--atr-sys-color-info-container) 80%,
+    var(--atr-sys-color-info)
+  );
+  --tui-status-neutral: var(--atr-sys-color-on-surface-variant);
+  --tui-text-primary: var(--atr-sys-color-on-surface);
+  --tui-text-secondary: var(--atr-sys-color-on-surface-variant);
+  --tui-text-tertiary: color-mix(
+    in srgb,
+    var(--atr-sys-color-on-surface) 60%,
+    transparent
+  );
+  --tui-text-action: var(--atr-sys-color-primary);
+  --tui-text-action-hover: var(--atr-sys-color-primary);
+  --tui-text-negative: var(--atr-sys-color-error);
+  --tui-text-negative-hover: var(--atr-sys-color-error);
+  --tui-text-positive: var(--atr-sys-color-success);
+  --tui-text-positive-hover: var(--atr-sys-color-success);
+  --tui-text-primary-on-accent-1: var(--atr-sys-color-on-primary);
+  --tui-text-primary-on-accent-2: var(--atr-sys-color-on-tertiary);
+  --tui-service-autofill-background: var(
+    --atr-sys-color-surface-container-high
+  );
+  --tui-service-selection-background: color-mix(
+    in srgb,
+    var(--atr-sys-color-primary) 12%,
+    transparent
+  );
+  --tui-service-backdrop: color-mix(
+    in srgb,
+    var(--atr-sys-color-scrim) 72%,
+    transparent
+  );
+  --tui-shadow-small: var(--atr-sys-elevation-level-2);
+  --tui-shadow-small-hover: var(--atr-sys-elevation-level-3);
+  --tui-shadow-medium: var(--atr-sys-elevation-level-3);
+  --tui-shadow-medium-hover: var(--atr-sys-elevation-level-4);
+  --tui-shadow-popup: var(--atr-sys-elevation-level-4);
+  --tui-duration: var(--atr-sys-motion-duration-medium);
+  --tui-curve-productive-standard: var(--atr-sys-motion-easing-standard);
+  --tui-disabled-opacity: var(--atr-sys-state-disabled-opacity);
+  --tui-radius-xs: var(--atr-sys-shape-extra-small);
+  --tui-radius-s: var(--atr-sys-shape-small);
+  --tui-radius-m: var(--atr-sys-shape-medium);
+  --tui-radius-l: var(--atr-sys-shape-large);
+  --tui-radius-xl: var(--atr-sys-shape-extra-large);
+  --tui-height-xs: var(--atr-ref-spacing-6);
+  --tui-height-s: var(--atr-ref-spacing-8);
+  --tui-height-m: var(--atr-ref-touch-target-minimum);
+  --tui-height-l: var(--atr-ref-spacing-16);
+  --tui-padding-s: var(--atr-sys-spacing-sm);
+  --tui-padding-m: var(--atr-sys-spacing-md);
+  --tui-padding-l: var(--atr-sys-spacing-lg);
+  --tui-icon-size: var(--atr-comp-icon-size-medium);
+  --tui-progress-color: var(--atr-sys-color-primary);
+  --tui-thumb-size: var(--atr-ref-spacing-6);
+  --tui-typography-family-text: var(
+    --atr-sys-typography-body-medium-font-family
+  );
+  --tui-typography-family-display: var(
+    --atr-sys-typography-display-large-font-family
+  );
+  --tui-typography-body-l: var(--atr-sys-typography-body-large-font-weight)
+    var(--atr-sys-typography-body-large-font-size) /
+    var(--atr-sys-typography-body-large-line-height)
+    var(--atr-sys-typography-body-large-font-family);
+  --tui-typography-body-m: var(--atr-sys-typography-body-medium-font-weight)
+    var(--atr-sys-typography-body-medium-font-size) /
+    var(--atr-sys-typography-body-medium-line-height)
+    var(--atr-sys-typography-body-medium-font-family);
+  --tui-typography-body-s: var(--atr-sys-typography-body-small-font-weight)
+    var(--atr-sys-typography-body-small-font-size) /
+    var(--atr-sys-typography-body-small-line-height)
+    var(--atr-sys-typography-body-small-font-family);
+  --tui-typography-body-xs: var(--atr-sys-typography-label-small-font-weight)
+    var(--atr-sys-typography-label-small-font-size) /
+    var(--atr-sys-typography-label-small-line-height)
+    var(--atr-sys-typography-label-small-font-family);
+  --tui-typography-ui-l: var(--atr-sys-typography-label-large-font-weight)
+    var(--atr-sys-typography-label-large-font-size) /
+    var(--atr-sys-typography-label-large-line-height)
+    var(--atr-sys-typography-label-large-font-family);
+  --tui-typography-ui-m: var(--atr-sys-typography-label-medium-font-weight)
+    var(--atr-sys-typography-label-medium-font-size) /
+    var(--atr-sys-typography-label-medium-line-height)
+    var(--atr-sys-typography-label-medium-font-family);
+  --tui-typography-ui-s: var(--atr-sys-typography-label-small-font-weight)
+    var(--atr-sys-typography-label-small-font-size) /
+    var(--atr-sys-typography-label-small-line-height)
+    var(--atr-sys-typography-label-small-font-family);
+  --tui-typography-ui-xs: var(--atr-sys-typography-label-small-font-weight)
+    var(--atr-sys-typography-label-small-font-size) /
+    var(--atr-sys-typography-label-small-line-height)
+    var(--atr-sys-typography-label-small-font-family);
+  --tui-typography-ui-2xs: var(--atr-sys-typography-label-small-font-weight)
+    var(--atr-sys-typography-label-small-font-size) /
+    var(--atr-sys-typography-label-small-line-height)
+    var(--atr-sys-typography-label-small-font-family);
+  --tui-typography-heading-h1: var(
+      --atr-sys-typography-display-large-font-weight
+    )
+    var(--atr-sys-typography-display-large-font-size) /
+    var(--atr-sys-typography-display-large-line-height)
+    var(--atr-sys-typography-display-large-font-family);
+  --tui-typography-heading-h2: var(
+      --atr-sys-typography-display-medium-font-weight
+    )
+    var(--atr-sys-typography-display-medium-font-size) /
+    var(--atr-sys-typography-display-medium-line-height)
+    var(--atr-sys-typography-display-medium-font-family);
+  --tui-typography-heading-h3: var(
+      --atr-sys-typography-display-small-font-weight
+    )
+    var(--atr-sys-typography-display-small-font-size) /
+    var(--atr-sys-typography-display-small-line-height)
+    var(--atr-sys-typography-display-small-font-family);
+  --tui-typography-heading-h4: var(
+      --atr-sys-typography-headline-large-font-weight
+    )
+    var(--atr-sys-typography-headline-large-font-size) /
+    var(--atr-sys-typography-headline-large-line-height)
+    var(--atr-sys-typography-headline-large-font-family);
+  --tui-typography-heading-h5: var(
+      --atr-sys-typography-headline-medium-font-weight
+    )
+    var(--atr-sys-typography-headline-medium-font-size) /
+    var(--atr-sys-typography-headline-medium-line-height)
+    var(--atr-sys-typography-headline-medium-font-family);
+  --tui-typography-heading-h6: var(
+      --atr-sys-typography-headline-small-font-weight
+    )
+    var(--atr-sys-typography-headline-small-font-size) /
+    var(--atr-sys-typography-headline-small-line-height)
+    var(--atr-sys-typography-headline-small-font-family);
+}
+/* stylelint-enable custom-property-pattern, scss/operator-no-newline-after */

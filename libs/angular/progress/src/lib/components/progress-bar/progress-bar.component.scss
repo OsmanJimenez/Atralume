@@ -1,46 +1,19 @@
 :host {
   display: block;
-  position: relative;
-  overflow: hidden;
+}
+
+.atr-progress-bar__native {
+  display: block;
+  inline-size: 100%;
   block-size: var(--atr-comp-progress-height);
   border-radius: var(--atr-comp-progress-shape);
+  color: var(--atr-comp-progress-indicator-color);
   background: var(--atr-comp-progress-track-color);
 }
 
-.indicator {
-  display: block;
-  block-size: 100%;
-  background: var(--atr-comp-progress-indicator-color);
-  transition: inline-size var(--atr-comp-progress-motion-duration)
-    var(--atr-comp-progress-motion-easing);
-}
-
-:host(.atr-progress--indeterminate) .indicator {
-  inline-size: 35%;
-  animation: atr-bar-travel var(--atr-comp-progress-bar-duration)
+:host(.atr-progress--indeterminate) .atr-progress-bar__native {
+  animation: atr-bar-pulse var(--atr-comp-progress-reduced-motion-duration)
     var(--atr-comp-progress-motion-easing) infinite alternate;
-}
-
-@keyframes atr-bar-travel {
-  from {
-    margin-inline-start: 0;
-  }
-
-  to {
-    margin-inline-start: 65%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .indicator {
-    transition: none;
-  }
-
-  :host(.atr-progress--indeterminate) .indicator {
-    inline-size: 100%;
-    animation: atr-bar-pulse var(--atr-comp-progress-reduced-motion-duration)
-      var(--atr-comp-progress-motion-easing) infinite alternate;
-  }
 }
 
 @keyframes atr-bar-pulse {
@@ -49,13 +22,17 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :host(.atr-progress--indeterminate) .atr-progress-bar__native {
+    animation: atr-bar-pulse var(--atr-comp-progress-reduced-motion-duration)
+      var(--atr-comp-progress-motion-easing) infinite alternate;
+  }
+}
+
 @media (forced-colors: active) {
-  :host {
+  .atr-progress-bar__native {
     background: Canvas;
     border: var(--atr-ref-border-width-thin) solid CanvasText;
-  }
-
-  .indicator {
-    background: Highlight;
+    color: Highlight;
   }
 }

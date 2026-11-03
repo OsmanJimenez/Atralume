@@ -1,34 +1,126 @@
 <div class="atr-table__scroll">
-  <table [attr.aria-label]="label()" [class.atr-table--zebra]="zebra()" [class.atr-table--hover]="hover()">
+  <table
+    tuiTable
+    [columns]="columnIds()"
+    [attr.aria-label]="label()"
+    [class.atr-table--zebra]="zebra()"
+    [class.atr-table--hover]="hover()"
+  >
     <thead>
       <tr>
-        @if (selectionMode() !== 'none') {
-          <th scope="col" class="atr-table__selection">
-            @if (selectionMode() === 'multiple') {
-              <input type="checkbox" aria-label="Select all visible rows" [checked]="allSelected()" (change)="selectAll()" />
+        @if (selectionMode() !== "none") {
+          <th tuiTh scope="col" class="atr-table__selection" [sorter]="null">
+            @if (selectionMode() === "multiple") {
+              <input
+                type="checkbox"
+                aria-label="Select all visible rows"
+                [checked]="allSelected()"
+                (change)="selectAll()"
+              />
             }
           </th>
         }
-        @if (expandable()) { <th scope="col"><span class="atr-sr-only">Expand row</span></th> }
+        @if (expandable()) {
+          <th tuiTh scope="col" [sorter]="null"
+            ><span class="atr-sr-only">Expand row</span></th
+          >
+        }
         @for (column of columns(); track column.id) {
-          <th scope="col" [attr.data-sticky]="column.sticky ?? null" [attr.aria-sort]="sort().active === column.id ? (sort().direction === 'asc' ? 'ascending' : sort().direction === 'desc' ? 'descending' : 'none') : null">
-            @if (column.sortable) { <button type="button" (click)="requestSort(column)" [attr.aria-label]="sortLabel(column)">{{ column.header }}</button> } @else { {{ column.header }} }
+          <th
+            tuiTh
+            scope="col"
+            [sorter]="null"
+            [sticky]="column.sticky === 'start'"
+            [attr.data-sticky]="column.sticky ?? null"
+            [attr.aria-sort]="
+              sort().active === column.id
+                ? sort().direction === 'asc'
+                  ? 'ascending'
+                  : sort().direction === 'desc'
+                    ? 'descending'
+                    : 'none'
+                : null
+            "
+          >
+            @if (column.sortable) {
+              <button
+                type="button"
+                (click)="requestSort(column)"
+                [attr.aria-label]="sortLabel(column)"
+                >{{ column.header }}</button
+              >
+            } @else {
+              {{ column.header }}
+            }
           </th>
         }
       </tr>
     </thead>
-    <tbody>
-      @if (loading()) { <tr><td [attr.colspan]="colspan()" role="status">Loading rows…</td></tr> }
-      @else if (error()) { <tr><td [attr.colspan]="colspan()" role="alert">{{ error() }}</td></tr> }
-      @else if (!rows().length) { <tr><td [attr.colspan]="colspan()">{{ emptyText() }}</td></tr> }
-      @else { @for (row of rows(); track trackBy()(row, $index); let index = $index) {
-        <tr [attr.aria-selected]="selectionMode() === 'none' ? null : isSelected(row, index)" [class.atr-table__row--selected]="isSelected(row, index)">
-          @if (selectionMode() !== 'none') { <td class="atr-table__selection"><input type="checkbox" [attr.aria-label]="'Select row ' + (index + 1)" [checked]="isSelected(row, index)" (change)="select(row, index)" /></td> }
-          @if (expandable()) { <td><button type="button" class="atr-table__expander" [attr.aria-label]="(isExpanded(row, index) ? 'Collapse' : 'Expand') + ' row ' + (index + 1)" [attr.aria-expanded]="isExpanded(row, index)" (click)="toggleExpanded(row, index)">⌄</button></td> }
-          @for (column of columns(); track column.id) { <td [attr.data-sticky]="column.sticky ?? null">{{ column.cell(row) }}</td> }
-        </tr>
-        @if (isExpanded(row, index)) { <tr class="atr-table__detail"><td [attr.colspan]="colspan()">{{ detail()(row) }}</td></tr> }
-      } }
+    <tbody tuiTbody [data]="rows()">
+      @if (loading()) {
+        <tr
+          ><td tuiTd [attr.colspan]="colspan()" role="status"
+            >Loading rows…</td
+          ></tr
+        >
+      } @else if (error()) {
+        <tr
+          ><td tuiTd [attr.colspan]="colspan()" role="alert">{{
+            error()
+          }}</td></tr
+        >
+      } @else if (!rows().length) {
+        <tr
+          ><td tuiTd [attr.colspan]="colspan()">{{ emptyText() }}</td></tr
+        >
+      } @else {
+        @for (row of rows(); track trackBy()(row, $index); let index = $index) {
+          <tr
+            [attr.aria-selected]="
+              selectionMode() === 'none' ? null : isSelected(row, index)
+            "
+            [class.atr-table__row--selected]="isSelected(row, index)"
+          >
+            @if (selectionMode() !== "none") {
+              <td tuiTd class="atr-table__selection"
+                ><input
+                  type="checkbox"
+                  [attr.aria-label]="'Select row ' + (index + 1)"
+                  [checked]="isSelected(row, index)"
+                  (change)="select(row, index)"
+              /></td>
+            }
+            @if (expandable()) {
+              <td tuiTd
+                ><button
+                  type="button"
+                  class="atr-table__expander"
+                  [attr.aria-label]="
+                    (isExpanded(row, index) ? 'Collapse' : 'Expand') +
+                    ' row ' +
+                    (index + 1)
+                  "
+                  [attr.aria-expanded]="isExpanded(row, index)"
+                  (click)="toggleExpanded(row, index)"
+                  >⌄</button
+                ></td
+              >
+            }
+            @for (column of columns(); track column.id) {
+              <td tuiTd [attr.data-sticky]="column.sticky ?? null">{{
+                column.cell(row)
+              }}</td>
+            }
+          </tr>
+          @if (isExpanded(row, index)) {
+            <tr class="atr-table__detail"
+              ><td tuiTd [attr.colspan]="colspan()">{{
+                detail()(row)
+              }}</td></tr
+            >
+          }
+        }
+      }
     </tbody>
   </table>
 </div>

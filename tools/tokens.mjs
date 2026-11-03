@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import StyleDictionary from "style-dictionary";
 import { createStyleDictionaryConfig } from "../libs/angular/tokens/config/style-dictionary.config.mjs";
+import { compileTaigaFoundationStyles } from "./taiga-styles.mjs";
 
 const root = process.cwd();
 const tokenRoot = path.join(root, "libs/angular/tokens/source");
@@ -200,8 +201,11 @@ async function buildInto(directory) {
     path.join(directory, "foundations-common.css"),
     "utf8",
   );
+  const taigaStyles = await compileTaigaFoundationStyles(root);
   const authoredStyles = [
     "themes.scss",
+    "modes.scss",
+    "taiga-bridge.scss",
     "base.scss",
     "surfaces.scss",
     "accessibility.scss",
@@ -218,7 +222,7 @@ async function buildInto(directory) {
     .join("\n");
   fs.writeFileSync(
     path.join(directory, "foundations.css"),
-    `${reference}\n${common}\n${systemLight}\n${systemDark}\n${fs.readFileSync(path.join(root, "node_modules/@angular/cdk/overlay-prebuilt.css"), "utf8")}\n${authoredStyles}`,
+    `${reference}\n${common}\n${systemLight}\n${systemDark}\n${taigaStyles}\n${fs.readFileSync(path.join(root, "node_modules/@angular/cdk/overlay-prebuilt.css"), "utf8")}\n${authoredStyles}`,
   );
 
   const dictionary = new StyleDictionary(
@@ -268,6 +272,20 @@ async function check() {
     await buildInto(second);
     if (digest(first) !== digest(second))
       throw new Error("Token output is not deterministic.");
+    const foundations = fs.readFileSync(
+      path.join(first, "foundations.css"),
+      "utf8",
+    );
+    for (const required of [
+      "[tuiButton]",
+      "--tui-background-base: var(--atr-sys-color-surface)",
+      "--tui-duration: var(--atr-sys-motion-duration-medium)",
+    ]) {
+      if (!foundations.includes(required))
+        throw new Error(
+          `Generated theme is missing Taiga bridge item: ${required}`,
+        );
+    }
     for (const file of fs.readdirSync(first)) {
       const content = fs.readFileSync(path.join(first, file), "utf8");
       if (/generated on|\/home\/|[A-Z]:\\|process\.env/i.test(content))

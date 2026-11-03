@@ -5,10 +5,14 @@ import * as Stories from "../stories/table.component.stories";
 
 # Table
 
-`AtralumeTable` preserves native table semantics for readable structured data. It exposes sort, visible-row selection and expansion as controlled state; it never fetches, paginates or mutates consumer rows. Use a grid only when you implement its full cell-navigation behavior.
+Composed over `@taiga-ui/addon-table` (`table[tuiTable]`, `th[tuiTh]`, `td[tuiTd]`, `tbody[tuiTbody]`). Atralume keeps a high-level `rows` / `columns` / selection / sort / expand contract; cells render through `column.cell()`.
 
-Import from `@atralume/angular/table`. `rows`, `columns`, `selected`, `expanded` and `sort` are controlled inputs/models. `sortChange` is emitted by the `sort` model; consumers decide whether ordering is local or remote. Use stable `trackBy` identities for object rows. It supports loading, empty and error states, sticky columns, density tokens, RTL, forced colors and nested themes. Virtualization is intentionally not enabled for this semantic table.
+Declare peer `@taiga-ui/addon-table` (optional peer; required when importing `@atralume/angular/table`). Bootstrap with `provideAtralume()`.
 
-Keyboard focus, labels and checkbox names remain native. Table does not use `role="grid"` and selection is distinct from focus and expansion.
+`AtralumeTable` preserves native table semantics for readable structured data. It exposes sort, visible-row selection and expansion as controlled state; it never fetches, paginates or mutates consumer rows.
 
-<Canvas of={Stories.Default} />
+Import from `@atralume/angular/table`. Use stable `trackBy` identities for object rows. Virtualization is intentionally not enabled for this semantic table.
+
+Taiga UI reference: [Table](https://taiga-ui.dev/components/table).
+
+<Canvas of={Stories.Playground} />

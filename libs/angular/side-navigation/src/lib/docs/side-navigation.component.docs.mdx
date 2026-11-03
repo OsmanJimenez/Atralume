@@ -5,7 +5,11 @@ import * as Stories from "../stories/side-navigation.component.stories";
 
 # Side Navigation
 
-Side Navigation composes a container, navigation panel, header, groups, native anchor items and main content. side resizes adjacent content; push preserves content width and pushes it within the clipped container; over uses the shared modal infrastructure with backdrop, focus trap, Escape and restoration. panelId must be stable and unique. opened is a model; collapsed retains accessible label text in a rail. Consumers choose mode at responsive breakpoints and decide whether to preserve open state. Pass origin for focus restoration to the trigger. No focus trap runs in side/push modes.
+Composes Taiga `aside[tuiNavigationAside]` + `main[tuiNavigationMain]`. Breaking: custom overlay engine for `mode="over"` removed; open/close is show/hide. `collapsed` maps to Taiga `expanded` inverted.
+
+Taiga UI reference: [Navigation](https://taiga-ui.dev/components/navigation).
+
+Side Navigation composes a container, Taiga aside panel, header, groups, `[tuiAsideItem]` anchors and main content. panelId must be stable and unique. opened is a model; collapsed shrinks the aside rail. `mode` is retained for compatibility but no longer portals.
 
 ## Import, API and minimum composition
 
@@ -23,7 +27,6 @@ import {
 
 ```html
 <button
-  #origin
   type="button"
   (click)="opened=!opened"
   [attr.aria-expanded]="opened"
@@ -34,9 +37,7 @@ import {
   ><atr-side-navigation
     panelId="workspace-nav"
     label="Workspace"
-    [mode]="mode"
     [(opened)]="opened"
-    [origin]="origin"
     ><header atrSideNavigationHeader><h2>Workspace</h2></header>
     <section atrSideNavigationGroup>
       <a atrSideNavigationItem href="#overview" active
@@ -48,17 +49,15 @@ import {
       >
     </section></atr-side-navigation
   >
-  <main atrSideNavigationContent>
-    Application content remains usable in side and push modes.
-  </main></atr-side-navigation-container
->
+  Application content remains usable beside the aside.
+</atr-side-navigation-container>
 ```
 
 The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
 
 ## Accessibility, keyboard and focus
 
-Side Navigation composes a container, navigation panel, header, groups, native anchor items and main content. side resizes adjacent content; push preserves content width and pushes it within the clipped container; over uses the shared modal infrastructure with backdrop, focus trap, Escape and restoration. panelId must be stable and unique. opened is a model; collapsed retains accessible label text in a rail. Consumers choose mode at responsive breakpoints and decide whether to preserve open state. Pass origin for focus restoration to the trigger. No focus trap runs in side/push modes.
+Side Navigation composes a container, Taiga aside, header, groups, `[tuiAsideItem]` anchors and `main[tuiNavigationMain]`. panelId must be stable and unique. opened is a model; collapsed shrinks the aside rail. `mode` / `origin` remain for compatibility but no longer portal overlays.
 
 Keep visible names, focus indicators, logical reading order and persistent alternatives for unavailable navigation. Do not use menu or tab roles for ordinary links. Do not attach arbitrary click handlers to noninteractive containers.
 
@@ -72,12 +71,7 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-side-navigat
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL, motion and common mistakes
 
 Logical CSS supports RTL; native navigation retains browser behavior. Components flow or wrap at narrow widths. Overlays constrain themselves to the viewport and safe areas. There is no unnecessary animation; forced colors preserves focus/selection boundaries. Test final application colors, zoom and assistive technology. Do not use CSS-valued inputs or replace native semantics for styling.

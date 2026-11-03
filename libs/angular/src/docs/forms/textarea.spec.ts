@@ -8,16 +8,21 @@ import {
   DefaultValueAccessor,
 } from "@angular/forms";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
-import { AtralumeControlLabel } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@atralume/angular/form-field";
+
 @Component({
-  imports: [AtralumeTextarea, AtralumeControlLabel, ReactiveFormsModule],
-  template:
-    '<label atrControlLabel><textarea atrTextarea  [formControl]="control" resize="none"></textarea><span>Value</span></label>',
+  imports: [AtralumeTextarea, TuiTextfield, ReactiveFormsModule],
+  template: `
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Value</label>
+      <textarea atrTextarea [formControl]="control" resize="none"></textarea>
+    </tui-textfield>
+  `,
 })
 class Host {
   readonly control = new FormControl("", { nonNullable: true });
-  indeterminate = true;
 }
+
 describe("AtralumeTextarea", () => {
   it("keeps the official Angular value accessor and native semantics", async () => {
     const f = TestBed.createComponent(Host);

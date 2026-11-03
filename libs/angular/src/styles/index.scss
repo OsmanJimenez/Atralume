@@ -6,6 +6,7 @@
 @use "./overlays";
 @use "./advanced";
 @forward "./themes";
+@forward "./modes";
 @forward "./base";
 @forward "./surfaces";
 @forward "./accessibility";

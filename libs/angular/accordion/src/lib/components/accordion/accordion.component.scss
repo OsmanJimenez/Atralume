@@ -1,5 +1,4 @@
 :host {
   display: block;
-  border-radius: var(--atr-comp-accordion-shape);
-  overflow: hidden;
+  min-inline-size: 0;
 }

@@ -4,7 +4,6 @@ import {
   AtralumeSideNavigationContainer,
   AtralumeSideNavigation,
   AtralumeSideNavigationHeader,
-  AtralumeSideNavigationContent,
   AtralumeSideNavigationItem,
   AtralumeSideNavigationGroup,
   AtralumeSideNavigationLabel,
@@ -14,13 +13,12 @@ import {
     AtralumeSideNavigationContainer,
     AtralumeSideNavigation,
     AtralumeSideNavigationHeader,
-    AtralumeSideNavigationContent,
     AtralumeSideNavigationItem,
     AtralumeSideNavigationGroup,
     AtralumeSideNavigationLabel,
   ],
   template:
-    '<button #origin type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" label="Workspace" [mode]="mode" [(opened)]="opened" [origin]="origin"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><span aria-hidden="true">\u2302</span><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><span aria-hidden="true">\u2699</span><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation><main atrSideNavigationContent>Application content remains usable in side and push modes.</main></atr-side-navigation-container>',
+    '<button type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" label="Workspace" [mode]="mode" [(opened)]="opened"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><span aria-hidden="true">\u2302</span><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><span aria-hidden="true">\u2699</span><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation>Application content remains usable in side and push modes.</atr-side-navigation-container>',
 })
 class Host {
   opened = true;
@@ -32,16 +30,16 @@ describe("Side Navigation", () => {
     f.detectChanges();
     await f.whenStable();
     const e = f.nativeElement as HTMLElement;
-    expect(e.querySelector("nav")?.getAttribute("aria-label")).toBe(
+    expect(e.querySelector("aside[tuiNavigationAside]")?.getAttribute("aria-label")).toBe(
       "Workspace",
     );
     expect(document.querySelector(".atr-side-navigation-overlay")).toBeNull();
-    expect(e.querySelector("main")?.textContent).toContain(
+    expect(e.querySelector("main[tuiNavigationMain]")?.textContent).toContain(
       "Application content",
     );
     (e.querySelector("button") as HTMLButtonElement).click();
     f.detectChanges();
     await f.whenStable();
-    expect(e.querySelector("nav")).toBeNull();
+    expect(e.querySelector("aside[tuiNavigationAside]")).toBeNull();
   });
 });

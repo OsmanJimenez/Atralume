@@ -1,8 +1,9 @@
-import { DOCUMENT } from "@angular/common";
+import { DOCUMENT, isPlatformBrowser } from "@angular/common";
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  PLATFORM_ID,
   Renderer2,
   TemplateRef,
   ViewContainerRef,
@@ -23,12 +24,7 @@ import {
 } from "@atralume/angular/dialog";
 import { AtralumeCombobox } from "@atralume/angular/combobox";
 import { AtralumeButton } from "@atralume/angular/button";
-import {
-  AtralumeIcon,
-  provideAtralumeIcons,
-  arrowRightIcon,
-} from "@atralume/angular/icon";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { provideAtralumeIcons, arrowRightIcon } from "@atralume/angular/icon";
 export interface AtralumeCommand<T> {
   readonly id: string;
   readonly label: string;
@@ -44,10 +40,15 @@ export interface AtralumeCommandShortcut {
   readonly modifier: "control" | "meta" | "either";
   readonly allowInEditable?: boolean;
 }
+
+/**
+ * Composition of Atralume Dialog + Combobox. No Taiga command-palette primitive;
+ * evaluated against input/dropdown/data-list building blocks.
+ */
 @Component({
   selector: "atr-command-palette",
   standalone: true,
-  imports: [AtralumeCombobox, AtralumeButton, AtralumeIcon],
+  imports: [AtralumeCombobox, AtralumeButton],
   templateUrl: "./command-palette.component.html",
   styleUrl: "./command-palette.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -95,9 +96,9 @@ export class AtralumeCommandPalette<T> {
   private readonly dialog = inject(AtralumeDialog);
   private readonly views = inject(ViewContainerRef);
   private readonly owner = inject(DestroyRef);
-  private readonly engine = inject(ɵAtralumeOverlayInfrastructure);
   private readonly document = inject(DOCUMENT);
   private readonly renderer = inject(Renderer2);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private ref: AtralumeDialogRef<unknown> | null = null;
   private origin: HTMLElement | undefined;
   constructor() {
@@ -127,7 +128,7 @@ export class AtralumeCommandPalette<T> {
         ref.close();
       });
     });
-    if (this.engine.browser) {
+    if (this.browser) {
       const unlisten = this.renderer.listen(
         this.document,
         "keydown",
@@ -170,17 +171,14 @@ export class AtralumeCommandPalette<T> {
   close(): void {
     this.opened.set(false);
   }
-  protected choose(
-    value: AtralumeCommand<T> | readonly AtralumeCommand<T>[] | null,
-  ): void {
-    if (!value || Array.isArray(value)) return;
-    const command = value as AtralumeCommand<T>;
+  protected choose(value: AtralumeCommand<T> | string | null): void {
+    if (!value || typeof value === "string") return;
+    const command = value;
     if (command.disabled) return;
     if (command.children) {
       this.levels.update((levels) => [...levels, command]);
       this.query.set("");
       this.combobox()?.query.set("");
-      this.combobox()?.activeId.set(null);
       return;
     }
     this.invoked.emit(command);

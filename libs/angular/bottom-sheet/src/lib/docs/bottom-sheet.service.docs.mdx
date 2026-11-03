@@ -5,23 +5,25 @@ import * as Stories from "../stories/bottom-sheet.service.stories";
 
 # Bottom Sheet
 
-Bottom Sheet presents temporary content at the lower viewport edge. Use modal for a focus-trapped task and standard for a nonmodal panel that leaves the page usable. The service accepts typed data/result like Dialog. Supply owner or viewContainerRef, accessible label, and origin for scoped theme. Safe-area padding and dynamic viewport height preserve mobile usability. Drag and snap gestures are intentionally outside this phase.
+Bottom Sheet presents temporary content at the lower viewport edge. The service accepts typed data/result like Dialog.
+
+**Ola 5:** composed over Taiga `TuiDialogService` with `appearance: "atr-bottom-sheet"` and CSS that docks the dialog to the bottom edge. `TuiDrawer` remains horizontal-only and is not used as the sheet engine. `mode: "standard"` is retained for API compatibility; Taiga dialogs are modal.
+
+Structural markers (`atrBottomSheetTitle` / `Content` / `Actions` / `Close`) remain Atralume layout helpers.
+
+Taiga UI reference: [Dialog](https://taiga-ui.dev/components/dialog).
 
 ## Import and API
 
-Import public components, directives, services and types from `@atralume/angular/bottom-sheet`. See the exported TypeScript interfaces for all configuration options. No CDK type is required in consuming templates or service calls. The executable demo source shows component/template composition and typed results.
+Import public components, directives, services and types from `@atralume/angular/bottom-sheet`.
 
 ## Accessibility, keyboard and focus
 
-Bottom Sheet presents temporary content at the lower viewport edge. Use modal for a focus-trapped task and standard for a nonmodal panel that leaves the page usable. The service accepts typed data/result like Dialog. Supply owner or viewContainerRef, accessible label, and origin for scoped theme. Safe-area padding and dynamic viewport height preserve mobile usability. Drag and snap gestures are intentionally outside this phase.
+Supply `label` (passed to Taiga dialog). Escape dismisses when `disableClose` is false. Focus returns with the dialog lifecycle.
 
-Escape dismisses the top overlay before lower overlays. Focus must return to a connected origin when configured. Keep visible names and labels independent of overlays. Check Tab and Shift+Tab through modal content and preserve a clear dismissal action.
+## Tokens
 
-## Context propagation and personalization
-
-The shared infrastructure captures the nearest theme, surface and density attributes, direction and only `--atr-sys-*`, `--atr-comp-*`, `--atr-ref-*` custom properties. It does not copy all computed styles. Explicit contextClasses support consumer theme classes. System color preference refreshes modal contexts. Open a new panel or refresh consumer composition after changing arbitrary runtime brand overrides.
-
-Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay CSS. Component tokens use `--atr-comp-bottom-sheet-*`. Consumers control brand through tokens, functional choices through typed configuration. Glass belongs to the originating context and has an opaque fallback. Z-index roles and stack offsets are shared system tokens.
+Import `@atralume/angular/styles/theme.css`. Component tokens use `--atr-comp-bottom-sheet-*`.
 
 ```css
 .custom {
@@ -29,15 +31,7 @@ Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay 
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-
-## Responsive, RTL, motion and common mistakes
-
-Logical positioning and viewport collision fallback support RTL and small viewports. Dynamic viewport limits and safe areas avoid covering all content. Reduced motion has no nonessential panel animation; forced colors preserves boundaries. Do not nest interactive content in tooltips, use menus for route navigation, or remove modal labels. Do not create a second Modal or Toast service. Server calls return closed references and do not attach browser overlays; trigger-created overlays clean up with their owner.
+<Canvas of={Stories.Playground} />
 
 {/* public-api:start */}
 

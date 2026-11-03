@@ -5,7 +5,9 @@ import * as Stories from "../stories/divider.directive.stories";
 
 # Divider
 
-Use hr for a thematic horizontal break. A vertical divider uses orientation="vertical" on an element such as div. Semantic dividers expose role=separator and aria-orientation; decorative dividers use presentation and aria-hidden. Insets use logical directions and work in RTL. Do not use a divider as an interactive resize handle.
+Minimal native separator: `hr` (or a vertical host) plus `--atr-comp-divider-*` tokens. No public Taiga divider primitive exists in `@taiga-ui/core` / `kit` / `layout`, so Atralume keeps a thin tokenized host rather than inventing a parallel engine.
+
+Use `hr` for a thematic horizontal break. A vertical divider uses `orientation="vertical"` on an element such as `div`. Semantic dividers expose `role=separator` and `aria-orientation`; decorative dividers use presentation and `aria-hidden`. Insets use logical directions and work in RTL. Do not use a divider as an interactive resize handle.
 
 ## Import and minimum example
 
@@ -47,15 +49,9 @@ type DividerInset = "none" | "start" | "end" | "both";
 
 ## Accessibility
 
-Use hr for a thematic horizontal break. A vertical divider uses orientation="vertical" on an element such as div. Semantic dividers expose role=separator and aria-orientation; decorative dividers use presentation and aria-hidden. Insets use logical directions and work in RTL. Do not use a divider as an interactive resize handle.
-
-Keep names meaningful, preserve visible keyboard focus, and check your application at 200% zoom and in forced colors. Automated axe checks run at error level; review assistive technology and real backgrounds manually as well.
+Keep names meaningful, preserve visible keyboard focus, and check your application at 200% zoom and in forced colors.
 
 ## Customization and component tokens
-
-Functional variants are stable inputs; component tokens control visual details. A theme supplies semantic color decisions, a surface supplies the background context, and an instance override changes one composition. Import `@atralume/angular/styles/theme.css` once, including for directive styles. Do not create CSS-valued inputs.
-
-The public token manifest at `@atralume/angular/styles/tokens.json` lists every token. This atom uses the `--atr-comp-divider-*` namespace, including color, size or spacing, shape and motion where applicable.
 
 ```css
 .my-example {
@@ -63,17 +59,4 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 }
 ```
 
-Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
-
-## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
-Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
-
-## Common mistakes
-
-Avoid replacing native semantics, encoding information by color alone, removing accessible names, or relying on a tooltip for a label. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.
+Overrides inherit globally, through nested themes and surfaces, or from a consumer class.

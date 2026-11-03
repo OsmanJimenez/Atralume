@@ -1,13 +1,14 @@
 # Atralume
 
-Atralume is an Angular design-system foundation built with Nx, Storybook, DTCG design tokens, CSS custom properties, and an internal Atomic Design architecture.
+Atralume is an Angular design system built with Nx, Storybook, DTCG design tokens, CSS custom properties, and an internal Atomic Design architecture. Taiga UI 5 is the technical foundation for component behavior and primitives; Atralume owns its consumer API, tokens, themes, and visual identity.
 
 ## Status
 
-The Angular library includes a token-driven atom catalogue for actions,
-navigation, identity, status, activity, and native form controls. Components
-preserve browser semantics and share light, dark, system, nested-theme, and
-glass styling. Molecules and organisms build on these public atoms.
+The Angular library includes a token-driven component catalogue for actions,
+navigation, identity, status, activity, and native form controls. The Taiga UI
+migration is in progress component-by-component; its permanent decision and
+verified inventory are documented in the [ADR](docs/architecture/adr/ADR-001-use-taiga-ui-as-component-foundation.md)
+and [migration matrix](docs/architecture/taiga-ui-migration-matrix.md).
 
 ## Requirements
 
@@ -26,6 +27,26 @@ Storybook runs with `npm run storybook` on port 6006. The public deployment targ
 
 ## Use the atoms
 
+Consumers install Atralume and its Taiga UI peer package:
+
+```bash
+npm install @atralume/angular @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
+```
+
+Register providers in the application config:
+
+```ts
+import { provideTaiga } from "@taiga-ui/core";
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
+
+bootstrapApplication(App, {
+  providers: [provideEventPlugins(), provideTaiga()],
+});
+```
+
+Use the peer versions published by `@atralume/angular`; do not bypass Angular
+or Taiga UI peer conflicts with `--force`.
+
 ```ts
 import { AtralumeButton } from "@atralume/angular/button";
 import { AtralumeCheckbox } from "@atralume/angular/checkbox";
@@ -41,8 +62,11 @@ import { AtralumeInput } from "@atralume/angular/input";
   Accept the terms
 </label>
 
-<atr-form-field label="Email">
-  <input atrInput type="email" autocomplete="email" />
+<atr-form-field>
+  <tui-textfield tuiTextfieldSize="m">
+    <label tuiLabel>Email</label>
+    <input atrInput type="email" autocomplete="email" />
+  </tui-textfield>
 </atr-form-field>
 ```
 
@@ -101,4 +125,4 @@ tools                  Architecture, package, PR, and browser checks
 docs                   Technical and delivery documentation
 ```
 
-See [architecture](docs/architecture.md), [theming](docs/theming.md), [branching](docs/branching.md), [deployment](docs/deployment.md), [release policy](docs/releases.md), [migration guides](docs/migrations/README.md), and [roadmap](docs/roadmap.md). The current component maturity is documented in [component maturity](docs/component-maturity.md).
+See [architecture](docs/architecture.md), [theming](docs/theming.md), [branching](docs/branching.md), [deployment](docs/deployment.md), [release policy](docs/releases.md), [migration guides](docs/migrations/README.md), [Taiga UI migration](docs/migrations/taiga-ui.md), [third-party licenses](THIRD_PARTY_LICENSES.md), and [roadmap](docs/roadmap.md). The current component maturity is documented in [component maturity](docs/component-maturity.md).

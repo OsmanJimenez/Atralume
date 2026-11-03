@@ -22,7 +22,11 @@
       "inputs": [
         "{workspaceRoot}/libs/angular/tokens/source/**/*.tokens.json",
         "{workspaceRoot}/libs/angular/tokens/config/**/*.mjs",
-        "{workspaceRoot}/tools/tokens.mjs"
+        "{workspaceRoot}/tools/tokens.mjs",
+        "{workspaceRoot}/tools/taiga-styles.mjs",
+        "{workspaceRoot}/libs/angular/src/styles/taiga-bridge.scss",
+        "{workspaceRoot}/package.json",
+        "{workspaceRoot}/package-lock.json"
       ]
     },
     "build": {

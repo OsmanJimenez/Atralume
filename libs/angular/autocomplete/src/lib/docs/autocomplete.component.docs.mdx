@@ -7,6 +7,10 @@ import * as Stories from "../stories/autocomplete.component.stories";
 
 Autocomplete composes editable Combobox, Listbox and Option. query is controlled and emits queryChange. With filterOptions=false the consumer supplies remote suggestions and owns debounce, cancellation and caching. minimumCharacters controls when suggestions are eligible. mode=automatic activates the first suggestion; manual mode waits for navigation. Inline text completion is not implemented.
 
+Taiga UI note: evaluated against `TuiComboBox`. Atralume Autocomplete keeps the
+controlled `query`, remote `filterOptions=false` contract, and listbox overlay
+and is retained as an exception.
+
 ## Import and composition
 
 Import from `@atralume/angular/autocomplete`. The Default and Keyboard examples are executable compositions. Every action uses the existing Button or IconButton; panels share the existing theme and overlay engine. Custom option templates receive the typed option, its value and selected state.
@@ -36,10 +40,6 @@ Panels have viewport limits and collision fallback. SSR renders the closed contr
 Do not use Menu for selecting a form value, put interactive descendants inside options, use array indices as remote option identity, or attach both ngModel and formControl. Consumers own filtering policy, remote data and business state.
 
 <Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
 {/* public-api:start */}
 
 ## Public TypeScript contract

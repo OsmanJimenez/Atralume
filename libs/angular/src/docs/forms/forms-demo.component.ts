@@ -9,6 +9,7 @@ import { AtralumeButton } from "@atralume/angular/button";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
+  TuiTextfield,
 } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
@@ -28,6 +29,7 @@ import { AtralumeSwitch } from "@atralume/angular/switch";
     AtralumeCheckbox,
     AtralumeRadio,
     AtralumeSwitch,
+    TuiTextfield,
   ],
   templateUrl: "./forms-demo.component.html",
   styleUrl: "./forms-demo.component.scss",

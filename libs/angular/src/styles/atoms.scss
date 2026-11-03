@@ -1,4 +1,5 @@
-.atr-icon-button {
+/* Beat Taiga `[tuiIconButton] { background: none }` cascade. */
+[tuiIconButton].atr-icon-button {
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -18,16 +19,16 @@
   --atr-comp-icon-size-medium: var(--atr-comp-icon-button-icon-size);
 }
 
-.atr-icon-button[data-size="large"] {
+[tuiIconButton].atr-icon-button[data-size="large"] {
   inline-size: var(--atr-ref-spacing-16);
   block-size: var(--atr-ref-spacing-16);
 }
 
-.atr-icon-button[data-appearance="standard"] {
+[tuiIconButton].atr-icon-button[data-appearance="standard"] {
   background: transparent;
 }
 
-.atr-icon-button[data-appearance="filled"] {
+[tuiIconButton].atr-icon-button[data-appearance="filled"] {
   background: var(
     --atr-comp-icon-button-filled-container-color,
     var(--atr-sys-color-primary)
@@ -38,7 +39,7 @@
   );
 }
 
-.atr-icon-button[data-appearance="tonal"] {
+[tuiIconButton].atr-icon-button[data-appearance="tonal"] {
   background: var(
     --atr-comp-icon-button-tonal-container-color,
     var(--atr-sys-color-secondary-container)
@@ -49,26 +50,26 @@
   );
 }
 
-.atr-icon-button[data-appearance="outlined"] {
+[tuiIconButton].atr-icon-button[data-appearance="outlined"] {
   background: transparent;
   border-color: var(--atr-comp-icon-button-outline-color);
 }
 
-.atr-icon-button:hover:enabled::before {
+[tuiIconButton].atr-icon-button:hover:enabled::before {
   opacity: var(--atr-comp-icon-button-hover-opacity);
 }
 
-.atr-icon-button:active:enabled::before {
+[tuiIconButton].atr-icon-button:active:enabled::before {
   opacity: var(--atr-comp-icon-button-pressed-opacity);
 }
 
-.atr-icon-button:disabled {
+[tuiIconButton].atr-icon-button:disabled {
   color: var(--atr-comp-icon-button-disabled-color);
   background: var(--atr-sys-color-surface-container);
   cursor: not-allowed;
 }
 
-.atr-icon-button:focus-visible {
+[tuiIconButton].atr-icon-button:focus-visible {
   outline: var(--atr-comp-icon-button-focus-ring-width) solid
     var(--atr-comp-icon-button-focus-ring-color);
   outline-offset: var(--atr-sys-focus-ring-offset);
@@ -153,11 +154,11 @@
 }
 
 @media (forced-colors: active) {
-  .atr-icon-button {
+  [tuiIconButton].atr-icon-button {
     border-color: ButtonText;
   }
 
-  .atr-icon-button:disabled {
+  [tuiIconButton].atr-icon-button:disabled {
     color: GrayText;
   }
 
@@ -170,12 +171,12 @@
   }
 }
 
-.atr-icon-button {
+[tuiIconButton].atr-icon-button {
   position: relative;
   isolation: isolate;
 }
 
-.atr-icon-button::before {
+[tuiIconButton].atr-icon-button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -186,10 +187,10 @@
   z-index: -1;
 }
 
-.atr-icon-button[data-size="small"] {
+[tuiIconButton].atr-icon-button[data-size="small"] {
   --atr-comp-icon-size-medium: var(--atr-comp-icon-button-icon-size-small);
 }
 
-.atr-icon-button[data-size="large"] {
+[tuiIconButton].atr-icon-button[data-size="large"] {
   --atr-comp-icon-size-medium: var(--atr-comp-icon-button-icon-size-large);
 }

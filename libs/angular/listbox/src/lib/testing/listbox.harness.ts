@@ -8,7 +8,8 @@ export interface AtralumeOptionHarnessFilters extends BaseHarnessFilters {
   label?: string | RegExp;
 }
 export class AtralumeOptionHarness extends ComponentHarness {
-  static hostSelector = "atr-option";
+  /** Taiga data-list option buttons inside `atr-listbox`. */
+  static hostSelector = "button[tuiOption], button[atrOption]";
   static with(
     options: AtralumeOptionHarnessFilters = {},
   ): HarnessPredicate<AtralumeOptionHarness> {

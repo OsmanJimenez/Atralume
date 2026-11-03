@@ -5,63 +5,58 @@ import * as Stories from "../stories/popover.component.stories";
 
 # Popover
 
-Popover holds interactive content; Tooltip is brief noninteractive help. Use an explicit role only when the content calls for one. Dialog and region roles require labels. Focus may remain at the trigger, move to the first control, or be trapped. Connected positioning, collision fallback, outside click, optional backdrop, Escape and cleanup use the existing shared overlay infrastructure.
+Thin adapter over Taiga `TuiDropdown`. Apply `[atrPopover]` on the trigger and pass panel content as a `TemplateRef`. Popover holds interactive content; Tooltip is brief noninteractive help. Use `panelRole` (maps to `tuiDropdownRole`) when the content calls for a dialog/listbox role. Labels name the dropdown host for assistive tech.
+
+**Breaking (Ola 5):** removed split `atr-popover` panel + `atrPopoverTriggerFor` + Atralume overlay engine. Trigger-hosted Taiga dropdown replaces connected overlay positioning, backdrop, and focus options (`focus` / `restoreFocus` / `hasBackdrop` / `arrow` / `origin` dropped).
+
+Taiga UI reference: [Dropdown](https://taiga-ui.dev/directives/dropdown).
 
 ## Import and composition
 
-Import from `@atralume/angular/popover`. The Default and Keyboard examples are executable compositions. Every action uses the existing Button or IconButton; panels share the existing theme and overlay engine. Custom option templates receive the typed option, its value and selected state.
+```ts
+import { AtralumePopover } from "@atralume/angular/popover";
+```
 
-## Forms and values
-
-Select, Combobox and Autocomplete support Reactive Forms, ngModel and the public Signal Forms value-control contract. Use one binding strategy per instance. Null represents no selection, and multiple selection uses an array. External writes do not emit a form change callback. Blur reports touched; disabled and readonly block user commits. Business validation and error messages belong to the consumer. Listbox is a selection primitive, not a CVA; Popover and Command Palette do not represent form values.
-
-## Loading, empty, error and async
-
-The consumer provides options, loading and loadError. No component performs HTTP requests or owns a backend cache. Empty and loading content have status semantics. Keep result announcements concise and stable. Option IDs must remain unique and stable as results change.
-
-## Keyboard and accessibility
-
-Provide visible labels. Arrow keys navigate options, Enter confirms and Escape closes without committing navigation. Tab closes without trapping the combobox; popup DOM focus stays on its input or trigger. Select-only typeahead is distinct from editable text input. Read the Keyboard story and test the resulting application with assistive technology.
+```html
+<button
+  atrButton
+  atrPopover
+  [atrPopover]="panel"
+  [(opened)]="opened"
+  panelRole="dialog"
+  label="Edit details"
+>
+  Open details
+</button>
+<ng-template #panel>
+  <div class="atr-popover-content">…</div>
+</ng-template>
+```
 
 ## Themes, glass, tokens and consumer overrides
 
-Import `@atralume/angular/styles/theme.css` once. Use `--atr-comp-popover-*` and shared `--atr-comp-selection-option-*` / `--atr-comp-selection-panel-*` tokens. Portals inherit the trigger theme, surface, density, direction and public overrides. Light, Dark, Glass, NestedTheme and RTL show the same component in different contexts. Glass examples include a visible background; forced colors uses an opaque fallback.
-
-## Responsive, SSR and virtualization
-
-Panels have viewport limits and collision fallback. SSR renders the closed control and does not create browser overlays. Stable IDs support server/client consistency; hydration requires integration verification. LargeDataset uses ordinary rendering. CDK virtualization is not enabled in these examples: recycled options require additional active-descendant and scroll coordination, so this implementation does not promise virtualized accessibility or dynamic row-height support.
+Import `@atralume/angular/styles/theme.css` once. Appearance `atr-popover` styles `tui-dropdown` via `--atr-comp-popover-*` tokens.
 
 ## Common mistakes
 
-Do not use Menu for selecting a form value, put interactive descendants inside options, use array indices as remote option identity, or attach both ngModel and formControl. Consumers own filtering policy, remote data and business state.
+Do not keep a parallel overlay engine for popovers. Do not use Menu for selecting a form value.
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.Playground} />
 {/* public-api:start */}
 
 ## Public TypeScript contract
 
-| Owner                    | Member                 | Kind    | Type                                      | Default                                |
-| ------------------------ | ---------------------- | ------- | ----------------------------------------- | -------------------------------------- |
-| `AtralumePopover`        | `origin`               | `Input` | `HTMLElement`                             | `Required`                             |
-| `AtralumePopover`        | `opened`               | `Model` | `boolean`                                 | `false`                                |
-| `AtralumePopover`        | `panelId`              | `Input` | `string`                                  | `inject(ɵAtralumeControlIds).create()` |
-| `AtralumePopover`        | `panelRole`            | `Input` | `"dialog" \| "region" \| "group" \| null` | `null`                                 |
-| `AtralumePopover`        | `label`                | `Input` | `string \| null`                          | `null`                                 |
-| `AtralumePopover`        | `position`             | `Input` | `PopoverPosition`                         | `"below"`                              |
-| `AtralumePopover`        | `focus`                | `Input` | `PopoverFocus`                            | `"none"`                               |
-| `AtralumePopover`        | `restoreFocus`         | `Input` | `boolean`                                 | `true`                                 |
-| `AtralumePopover`        | `hasBackdrop`          | `Input` | `boolean`                                 | `false`                                |
-| `AtralumePopover`        | `arrow`                | `Input` | `boolean`                                 | `false`                                |
-| `AtralumePopoverTrigger` | `atrPopoverTriggerFor` | `Input` | `AtralumePopover`                         | `Required`                             |
+| Owner             | Member           | Kind    | Type                                      | Default    |
+| ----------------- | ---------------- | ------- | ----------------------------------------- | ---------- |
+| `AtralumePopover` | `atrPopover`     | `Input` | `PolymorpheusContent`                     | `Required` |
+| `AtralumePopover` | `opened`         | `Model` | `boolean`                                 | `false`    |
+| `AtralumePopover` | `popoverEnabled` | `Input` | `boolean`                                 | `true`     |
+| `AtralumePopover` | `panelRole`      | `Input` | `string`                                  | `"dialog"` |
+| `AtralumePopover` | `label`          | `Input` | `string \| null`                          | `null`     |
+| `AtralumePopover` | `position`       | `Input` | `PopoverPosition`                         | `"below"`  |
 
 ```ts
 export type PopoverPosition = "above" | "below" | "before" | "after";
-
-export type PopoverFocus = "none" | "first" | "trap";
 ```
 
 {/* public-api:end */}

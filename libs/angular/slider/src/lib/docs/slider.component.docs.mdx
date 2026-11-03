@@ -7,9 +7,15 @@ import * as Stories from "../stories/slider.component.stories";
 
 Slider and Range Slider preserve native range inputs for keyboard, pointer and touch. Range values are `{start,end}`; thumbs have separate labels and do not cross. Discrete values use integer-scaled rounding to avoid visible floating-point artifacts. continuous allows arbitrary values. Range bounds are minimum/maximum, while single-value bounds are min/max: this avoids conflicting with object-valued Signal Forms metadata. Each thumb exposes orientation, value, text and its available interval. Native arrows/Home/End and Page Up/Down are supported. Tick and active-track visuals use component tokens.
 
+Taiga UI foundation: each native range thumb uses public `TuiSliderComponent`
+(`input[type=range][tuiSlider]`). Atralume keeps the `atr-slider` /
+`atr-range-slider` hosts, `{ start, end }` range value, and `--atr-*` tokens.
+`TuiRange` was evaluated for dual thumbs but uses a `tui-range` host and
+`[number, number]` value. Taiga reference: [Slider](https://taiga-ui.dev/components/slider/).
+
 ## Import, composition and values
 
-Import from `@atralume/angular/slider`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+Import from `@atralume/angular/slider`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Playground and Keyboard examples show complete composition.
 
 ## Forms, validation and null
 
@@ -37,11 +43,7 @@ Browser-only selection, previews and overlays are guarded. SSR starts with an em
 
 Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.Playground} />
 {/* public-api:start */}
 
 ## Public TypeScript contract

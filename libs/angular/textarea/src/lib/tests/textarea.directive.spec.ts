@@ -1,12 +1,22 @@
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
+import { TuiTextfield } from "@atralume/angular/form-field";
 import { AtralumeTextarea, AtralumeTextareaHarness } from "../../index";
 
 @Component({
-  imports: [AtralumeTextarea],
-  template:
-    '<label>Message<textarea atrTextarea rows="3" [readonly]="readonly" resize="none"></textarea></label>',
+  imports: [AtralumeTextarea, TuiTextfield],
+  template: `
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Message</label>
+      <textarea
+        atrTextarea
+        rows="3"
+        [readonly]="readonly"
+        resize="none"
+      ></textarea>
+    </tui-textfield>
+  `,
 })
 class Host {
   readonly = false;

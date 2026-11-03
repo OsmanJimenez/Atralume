@@ -10,6 +10,11 @@ disabled, and form behavior remain available. Resize can be `none`, `vertical`
 (the default), `horizontal`, or `both`; this control does not auto-resize or
 provide rich-text editing.
 
+Taiga UI foundation: uses public CDK `TuiNativeValidator` and `TuiId`. Taiga's
+`textarea[tuiTextarea]` requires `tui-textfield` and owns min/max rows; Atralume
+keeps `atrTextarea` and the `resize` input. Taiga reference:
+[Textarea](https://taiga-ui.dev/components/textarea/).
+
 ## Import and example
 
 ```ts
@@ -60,7 +65,3 @@ forced-colors, and reduced-motion behavior. Textarea uses the shared
 `--atr-comp-form-field-*` token family; override those public CSS custom
 properties locally rather than editing package styles.
 
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />

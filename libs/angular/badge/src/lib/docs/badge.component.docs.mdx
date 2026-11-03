@@ -5,6 +5,10 @@ import * as Stories from "../stories/badge.component.stories";
 
 # Badge
 
+The adapter applies Taiga UI's public `TuiBadge` directive. Atralume keeps tone, appearance, count/max, and dot labeling. Consumers should not add `tuiBadge` on the same host.
+
+Taiga UI reference: [Badge](https://taiga-ui.dev/components/badge).
+
 Use short text for categories or status, never color alone. Badges are noninteractive; compose in a button or link for actions. Use count with max (99 by default) to abbreviate large values; the accessible label retains the exact count. Set a descriptive label such as "125 unread messages". Dot badges require a label. There is no dismiss button; removable content belongs in a future Chip.
 
 ## Import and minimum example
@@ -69,11 +73,6 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
 
 ## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
 
 Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
 

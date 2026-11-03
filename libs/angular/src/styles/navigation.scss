@@ -107,7 +107,8 @@
 }
 
 .atr-navigation-item[aria-current="page"],
-.atr-side-navigation-item[aria-current="page"] {
+[tuiButton].atr-side-navigation-item[aria-current="page"],
+[tuiButton].atr-side-navigation-item._active {
   background: var(--atr-sys-color-primary-container);
   color: var(--atr-sys-color-on-primary-container);
   font-weight: var(--atr-ref-font-weight-medium);
@@ -133,15 +134,38 @@ atr-side-navigation-container:has(
   padding: var(--atr-comp-side-navigation-gap);
 }
 
-.atr-side-navigation-item {
+/*
+ * Taiga aside[tuiNavigationAside] hardcodes host tuiTheme="dark" and
+ * background: var(--tui-theme-color, #000). Keep Atralume surface tokens.
+ */
+aside[tuiNavigationAside] {
+  background: var(
+    --tui-theme-color,
+    var(--atr-sys-color-surface-container)
+  );
+  color: var(--atr-sys-color-on-surface);
+}
+
+aside[tuiNavigationAside]::before {
+  box-shadow: -1.5rem 0
+    var(--tui-theme-color, var(--atr-sys-color-surface-container));
+}
+
+/* Beat TuiButton primary/flat cascade; nav items are text on surface. */
+[tuiButton].atr-side-navigation-item {
   display: flex;
   align-items: center;
   gap: var(--atr-comp-side-navigation-gap);
   min-block-size: var(--atr-sys-touch-target-minimum);
   padding-inline: var(--atr-comp-side-navigation-padding);
   border-radius: var(--atr-comp-side-navigation-shape);
-  color: inherit;
+  background: transparent;
+  color: var(
+    --atr-comp-side-navigation-label-color,
+    var(--atr-sys-color-on-surface)
+  );
   text-decoration: none;
+  box-shadow: none;
 }
 
 atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
@@ -159,7 +183,8 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
   border-radius: var(--atr-sys-shape-none);
 }
 
-.atr-fab {
+/* Beat Taiga `[tuiButton] { background: none }` cascade. */
+[tuiButton].atr-fab {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -176,21 +201,21 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
   cursor: pointer;
 }
 
-.atr-fab[data-size="small"] {
+[tuiButton].atr-fab[data-size="small"] {
   min-inline-size: var(--atr-comp-fab-size-small);
   min-block-size: var(--atr-comp-fab-size-small);
 }
 
-.atr-fab[data-size="large"] {
+[tuiButton].atr-fab[data-size="large"] {
   min-inline-size: var(--atr-comp-fab-size-large);
   min-block-size: var(--atr-comp-fab-size-large);
 }
 
-.atr-fab[data-extended="true"] {
+[tuiButton].atr-fab[data-extended="true"] {
   padding-inline: var(--atr-comp-fab-padding);
 }
 
-.atr-fab[data-appearance="secondary"] {
+[tuiButton].atr-fab[data-appearance="secondary"] {
   background: var(
     --atr-comp-fab-secondary-container-color,
     var(--atr-sys-color-secondary-container)
@@ -201,7 +226,7 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
   );
 }
 
-.atr-fab[data-appearance="tertiary"] {
+[tuiButton].atr-fab[data-appearance="tertiary"] {
   background: var(
     --atr-comp-fab-tertiary-container-color,
     var(--atr-sys-color-tertiary-container)
@@ -212,12 +237,12 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
   );
 }
 
-.atr-fab[data-appearance="surface"] {
+[tuiButton].atr-fab[data-appearance="surface"] {
   background: var(--atr-sys-color-surface-container-high);
   color: var(--atr-sys-color-primary);
 }
 
-.atr-fab:disabled {
+[tuiButton].atr-fab:disabled {
   box-shadow: none;
   opacity: var(--atr-sys-state-disabled-content-opacity);
   cursor: not-allowed;
@@ -242,7 +267,7 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
 
 .atr-fab:focus-visible,
 .atr-navigation-item:focus-visible,
-.atr-side-navigation-item:focus-visible,
+[tuiButton].atr-side-navigation-item:focus-visible,
 .atr-speed-dial-action:focus-visible,
 .atr-breadcrumb-item:focus-visible {
   outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
@@ -258,7 +283,8 @@ atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {
 
   .atr-navigation-item[aria-current="page"],
   .atr-tab[aria-selected="true"],
-  .atr-side-navigation-item[aria-current="page"] {
+  [tuiButton].atr-side-navigation-item[aria-current="page"],
+  [tuiButton].atr-side-navigation-item._active {
     outline: var(--atr-sys-focus-ring-width) solid Highlight;
   }
 }

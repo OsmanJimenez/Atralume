@@ -1,4 +1,4 @@
-import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import * as Stories from "../stories/fab.directive.stories";
 
 <Meta of={Stories} name="Docs" />
@@ -35,11 +35,8 @@ Import `@atralume/angular/styles/theme.css`. Tokens use `--atr-comp-fab-*` and s
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
 
 ## Responsive, RTL, motion and common mistakes
 

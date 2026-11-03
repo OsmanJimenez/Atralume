@@ -5,11 +5,15 @@ import * as Stories from "../stories/calendar.component.stories";
 
 # Calendar
 
+Exception relative to Taiga `TuiCalendar`: Atralume keeps a generic `DateAdapter<D>` and range selection; Taiga is bound to `TuiDay`.
+
+Taiga UI reference: [Calendar](https://taiga-ui.dev/components/calendar).
+
 Calendar is independent from Date Picker. It supports single days, sorted inclusive ranges, month/year navigation, disabled dates, bounds, a dateFilter, adjacent days and a configurable week start. Arrow keys navigate days/weeks; Home/End navigate within a week; Page Up/Down change month and Shift changes year. Enter/Space activate native day buttons. RTL reverses horizontal movement.
 
 ## Import, composition and values
 
-Import from `@atralume/angular/calendar`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+Import from `@atralume/angular/calendar`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Playground and Keyboard examples show complete composition.
 
 ## Adapter and civil dates
 
@@ -43,11 +47,7 @@ Browser-only selection, previews and overlays are guarded. SSR starts with an em
 
 Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.Playground} />
 {/* public-api:start */}
 
 ## Public TypeScript contract

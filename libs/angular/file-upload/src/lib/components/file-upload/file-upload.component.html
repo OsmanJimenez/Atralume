@@ -8,36 +8,35 @@
   (dragover)="dragOver($event)"
   (drop)="dropped($event)"
 >
-  <atr-form-field
-    [label]="label()"
-    [hint]="hint()"
-    [error]="error()"
-    [required]="required()"
-    ><input
-      #nativeFile
-      atrFileInput
-      class="native-file"
-      type="file"
-      [id]="controlId()"
-      [accept]="accept()"
-      [multiple]="multiple()"
-      [disabled]="blocked() || readonly()"
-      [attr.aria-invalid]="displayInvalid()"
-      tabindex="-1"
-      (change)="changed($event)"
-  /></atr-form-field>
-  <button
-    atrButton
-    data-atr-value-control
-    type="button"
-    [disabled]="blocked() || readonly()"
-    (click)="choose()"
-  >
-    {{ multiple() ? "Choose files" : "Choose file" }}
-  </button>
-  @if (dropZone()) {
-    <p>Or drop files here.</p>
-  }
+  <atr-form-field [hint]="hint()" [error]="error()">
+    <span class="atr-file-upload__label">
+      {{ label() }}@if (required()) { *}
+    </span>
+    <label tuiInputFiles class="atr-file-upload__input-files">
+      <input
+        #nativeFile
+        atrFileInput
+        type="file"
+        [id]="controlId()"
+        [attr.aria-label]="label()"
+        [accept]="accept()"
+        [multiple]="multiple()"
+        [disabled]="blocked() || readonly()"
+        [attr.aria-invalid]="displayInvalid()"
+        (change)="changed($event)"
+      />
+      <ng-template let-dragged>
+        @if (dragged) {
+          Drop files here
+        } @else {
+          {{ multiple() ? "Choose files" : "Choose file" }}
+          @if (dropZone()) {
+            <span class="atr-file-upload__hint">Or drop files here.</span>
+          }
+        }
+      </ng-template>
+    </label>
+  </atr-form-field>
 </div>
 <p role="status">
   {{ files().length }} {{ files().length === 1 ? "file" : "files" }} selected

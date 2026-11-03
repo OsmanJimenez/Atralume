@@ -1,9 +1,7 @@
-import { Injectable, inject, DestroyRef } from "@angular/core";
-import { ReplaySubject } from "rxjs";
-import {
-  ɵAtralumeOverlayInfrastructure,
-  type ɵOverlayHandle,
-} from "@atralume/angular";
+import { Injectable, inject, DestroyRef, Injector } from "@angular/core";
+import { ReplaySubject, Subscription } from "rxjs";
+import { TuiNotificationService } from "@taiga-ui/core";
+import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { AtralumeSnackbarPanel } from "../components/snackbar-panel/snackbar-panel.component";
 import {
   SNACKBAR_SESSION,
@@ -11,25 +9,38 @@ import {
   type SnackbarSession,
   type SnackbarConfig,
   type SnackbarResult,
+  type SnackbarTone,
 } from "../models/snackbar.types";
+
+const TONE_APPEARANCE: Record<SnackbarTone, string> = {
+  neutral: "neutral",
+  success: "positive",
+  info: "info",
+  warning: "warning",
+  error: "negative",
+};
+
 interface Entry {
   config: SnackbarConfig;
   ref: AtralumeSnackbarRef;
   result: ReplaySubject<SnackbarResult>;
-  overlay?: ɵOverlayHandle<SnackbarResult>;
-  remaining: number;
-  started: number;
-  timer?: ReturnType<typeof setTimeout>;
-  paused: Set<string>;
+  subscription?: Subscription;
   finished: boolean;
   unregister?: () => void;
 }
+
+/**
+ * Adapter over Taiga UI `TuiNotificationService`.
+ * Preserves AtralumeSnackbar / AtralumeSnackbarRef and queue policies.
+ */
 @Injectable({ providedIn: "root" })
 export class AtralumeSnackbar {
-  private readonly engine = inject(ɵAtralumeOverlayInfrastructure);
+  private readonly notifications = inject(TuiNotificationService);
+  private readonly injector = inject(Injector);
   private readonly destroy = inject(DestroyRef);
   private queue: Entry[] = [];
   private current?: Entry;
+
   constructor() {
     this.destroy.onDestroy(() => {
       const entries = [...this.queue, ...(this.current ? [this.current] : [])];
@@ -38,6 +49,7 @@ export class AtralumeSnackbar {
       for (const entry of entries) this.finish(entry, "dismiss");
     });
   }
+
   open(config: SnackbarConfig): AtralumeSnackbarRef {
     if (!config.message.trim()) throw new Error("Snackbar requires a message.");
     const result = new ReplaySubject<SnackbarResult>(1);
@@ -47,16 +59,8 @@ export class AtralumeSnackbar {
       ref: new AtralumeSnackbarRef(result.asObservable(), (reason) =>
         this.finish(entry, reason),
       ),
-      remaining: config.duration ?? 5000,
-      started: 0,
-      paused: new Set(),
       finished: false,
     };
-    if (!this.engine.browser) {
-      result.next("dismiss");
-      result.complete();
-      return entry.ref;
-    }
     if (config.owner)
       entry.unregister = config.owner.onDestroy(() =>
         this.finish(entry, "dismiss"),
@@ -75,63 +79,52 @@ export class AtralumeSnackbar {
     } else this.show(entry);
     return entry.ref;
   }
+
   dismiss(): void {
     if (this.current) this.finish(this.current, "dismiss");
   }
+
   private show(entry: Entry): void {
     this.current = entry;
-    entry.overlay = this.engine.open(AtralumeSnackbarPanel, {
-      kind: "snackbar",
-      position: entry.config.position,
-      modal: false,
-      origin: entry.config.origin,
-      restoreFocus: false,
-      providers: () => [
-        {
-          provide: SNACKBAR_SESSION,
-          useValue: {
-            config: entry.config,
-            ref: entry.ref,
-            pause: (reason: string) => this.pause(entry, reason),
-            resume: (reason: string) => this.resume(entry, reason),
-          } satisfies SnackbarSession,
+    const tone = entry.config.tone ?? "neutral";
+    const session: SnackbarSession = {
+      config: entry.config,
+      ref: entry.ref,
+      pause: () => undefined,
+      resume: () => undefined,
+    };
+    const contentInjector = Injector.create({
+      parent: this.injector,
+      providers: [{ provide: SNACKBAR_SESSION, useValue: session }],
+    });
+    const content =
+      entry.config.action != null && entry.config.action !== ""
+        ? new PolymorpheusComponent(AtralumeSnackbarPanel, contentInjector)
+        : entry.config.message;
+
+    entry.subscription = this.notifications
+      .open(content, {
+        appearance: TONE_APPEARANCE[tone],
+        autoClose: entry.config.duration ?? 5000,
+        closable: true,
+        label: "",
+      })
+      .subscribe({
+        complete: () => {
+          if (!entry.finished) this.finish(entry, "timeout");
         },
-      ],
-    });
-    entry.overlay.afterClosed.subscribe(() => {
-      if (!entry.finished) this.finish(entry, "dismiss");
-    });
-    this.start(entry);
+        error: () => {
+          if (!entry.finished) this.finish(entry, "dismiss");
+        },
+      });
   }
-  private start(entry: Entry): void {
-    if (entry.remaining <= 0 || entry.paused.size || entry.finished) return;
-    entry.started = Date.now();
-    entry.timer = setTimeout(
-      () => this.finish(entry, "timeout"),
-      entry.remaining,
-    );
-  }
-  private pause(entry: Entry, reason: string): void {
-    if (!entry.paused.size && entry.timer !== undefined) {
-      clearTimeout(entry.timer);
-      entry.timer = undefined;
-      entry.remaining = Math.max(
-        1,
-        entry.remaining - (Date.now() - entry.started),
-      );
-    }
-    entry.paused.add(reason);
-  }
-  private resume(entry: Entry, reason: string): void {
-    entry.paused.delete(reason);
-    if (!entry.paused.size) this.start(entry);
-  }
+
   private finish(entry: Entry, reason: SnackbarResult): void {
     if (entry.finished) return;
     entry.finished = true;
-    if (entry.timer !== undefined) clearTimeout(entry.timer);
     entry.unregister?.();
-    entry.overlay?.close(reason);
+    entry.subscription?.unsubscribe();
+    entry.subscription = undefined;
     entry.result.next(reason);
     entry.result.complete();
     this.queue = this.queue.filter((item) => item !== entry);

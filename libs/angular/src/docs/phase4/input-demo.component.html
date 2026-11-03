@@ -82,24 +82,26 @@
     <atr-stepper
       #stepper
       label="Account setup"
-      linear
       [disabled]="disabled()"
       [orientation]="vertical() ? 'vertical' : 'horizontal'"
       (stepChange)="result.set('step ' + ($event.current + 1))"
     >
-      <atr-step label="Profile" [control]="profile"
-        ><atr-form-field label="Profile name" required
-          ><input atrInput [formControl]="profile" /></atr-form-field
+      <atr-step label="Profile"
+        ><atr-form-field
+          ><tui-textfield tuiTextfieldSize="m"
+            ><label tuiLabel>Profile name *</label
+            ><input atrInput [formControl]="profile" /></tui-textfield
+        ></atr-form-field
         ><button
           atrButton
           atrStepperNext
           type="button"
-          [disabled]="!stepper.canNext()"
+          [disabled]="profile.invalid || !stepper.canNext()"
         >
           Next
         </button></atr-step
       >
-      <atr-step label="Review" [completed]="true"
+      <atr-step label="Review" stepState="pass"
         ><p>Review your details.</p>
         <button
           atrButton
@@ -118,7 +120,7 @@
           Next
         </button></atr-step
       >
-      <atr-step label="Finish" [completed]="true"
+      <atr-step label="Finish" stepState="pass"
         ><p>Setup complete.</p>
         <button atrButton type="button" (click)="stepper.reset()">
           Reset workflow

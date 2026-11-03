@@ -33,11 +33,7 @@ import {
   AtralumeListHeadline,
   AtralumeListSupporting,
 } from "@atralume/angular/list";
-import {
-  AtralumeAccordion,
-  AtralumeAccordionItem,
-  AtralumeAccordionHeader,
-} from "@atralume/angular/accordion";
+import { TuiAccordion } from "@taiga-ui/kit";
 import { AtralumeSkeleton } from "@atralume/angular/skeleton";
 import { AtralumeTooltip } from "@atralume/angular/tooltip";
 import {
@@ -69,7 +65,7 @@ import {
   AtralumeSpeedDial,
   AtralumeSpeedDialAction,
 } from "@atralume/angular/speed-dial";
-import { AtralumeFormField } from "@atralume/angular/form-field";
+import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
 import { FormsDemo } from "../forms/forms-demo.component";
 @Component({
@@ -91,9 +87,7 @@ import { FormsDemo } from "../forms/forms-demo.component";
     AtralumeListItem,
     AtralumeListHeadline,
     AtralumeListSupporting,
-    AtralumeAccordion,
-    AtralumeAccordionItem,
-    AtralumeAccordionHeader,
+    TuiAccordion,
     AtralumeSkeleton,
     AtralumeTooltip,
     AtralumeMenu,
@@ -114,6 +108,7 @@ import { FormsDemo } from "../forms/forms-demo.component";
     AtralumeSpeedDial,
     AtralumeSpeedDialAction,
     AtralumeFormField,
+    TuiTextfield,
     AtralumeInput,
     FormsDemo,
   ],

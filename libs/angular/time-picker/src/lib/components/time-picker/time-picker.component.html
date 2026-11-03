@@ -1,110 +1,19 @@
-<atr-form-field
-  [label]="label()"
-  [hint]="hint()"
-  [error]="message()"
-  [required]="required()"
->
-  <div class="atr-input-group">
-    <input
-      atrInput
-      data-atr-value-control
-      type="time"
-      [id]="controlId()"
-      [value]="rawValue()"
-      [step]="step()"
-      [min]="formatValue(min())"
-      [max]="formatValue(max())"
-      [disabled]="blocked()"
-      [readOnly]="readonly()"
-      [attr.aria-invalid]="
-        displayInvalid() || rawValue.parseErrors().length > 0
-      "
-      [attr.aria-required]="required()"
-      (input)="typed($event)"
-    />
-    <div class="actions">
-      <button
-        #timeToggle
-        atrIconButton
-        type="button"
-        [attr.aria-label]="'Open time picker for ' + label()"
-        aria-haspopup="dialog"
-        [attr.aria-expanded]="opened()"
-        [disabled]="blocked() || readonly()"
-        (click)="toggle()"
-      >
-        <atr-icon name="chevron-down" />
-      </button>
-      @if (clearable() && value()) {
-        <button
-          atrIconButton
-          type="button"
-          [attr.aria-label]="'Clear ' + label()"
-          [disabled]="blocked() || readonly()"
-          (click)="clear()"
-        >
-          <atr-icon name="close" />
-        </button>
-      }
-    </div>
-  </div>
-</atr-form-field>
-@if (toggleElement(); as origin) {
-  <atr-popover
-    [origin]="origin.nativeElement"
-    [(opened)]="opened"
-    panelRole="dialog"
-    [label]="label() + ' time'"
-    focus="first"
+<atr-form-field [hint]="hint()" [error]="error()">
+  <tui-textfield
+    [invalid]="displayInvalid()"
+    [tuiTextfieldCleaner]="clearable()"
+    tuiTextfieldSize="m"
   >
-    <div class="time-fields">
-      <atr-select
-        label="Hours"
-        [options]="hourOptions()"
-        [value]="hour()"
-        (valueChange)="setHour($event)"
-      />
-      <atr-select
-        label="Minutes"
-        [options]="minuteOptions()"
-        [value]="minute()"
-        (valueChange)="setMinute($event)"
-      />
-      @if (hasSeconds()) {
-        <atr-select
-          label="Seconds"
-          [options]="minuteOptions()"
-          [value]="second()"
-          (valueChange)="setSecond($event)"
-        />
-      }
-      @if (format() === "12h") {
-        <atr-select
-          label="Period"
-          [options]="periods"
-          [value]="period()"
-          (valueChange)="setPeriod($event)"
-        />
-      }
-    </div>
-    @if (draftInvalid()) {
-      <p role="status">Choose a time within the allowed interval and step.</p>
-    }
-    <button
-      atrButton
-      type="button"
-      [disabled]="draftInvalid()"
-      (click)="save()"
-    >
-      Set time
-    </button>
-    <button
-      atrButton
-      appearance="text"
-      type="button"
-      (click)="opened.set(false)"
-    >
-      Cancel
-    </button>
-  </atr-popover>
-}
+    <label tuiLabel>
+      {{ label() }}@if (required()) { *}
+    </label>
+    <input
+      tuiInputTime
+      data-atr-value-control
+      [id]="controlId()"
+      [formControl]="inner"
+      [mode]="mode()"
+      [readOnly]="readonly()"
+    />
+  </tui-textfield>
+</atr-form-field>

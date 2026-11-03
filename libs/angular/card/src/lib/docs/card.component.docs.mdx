@@ -5,6 +5,10 @@ import * as Stories from "../stories/card.component.stories";
 
 # Card
 
+The adapter applies Taiga UI's public `TuiCardLarge` directive from `@taiga-ui/layout`. Atralume keeps appearance (including glass), header/media/content/actions slots, and `--atr-*` tokens.
+
+Taiga UI reference: [Card](https://taiga-ui.dev/layout/card-large).
+
 Use for related content. Use native anchors and buttons inside the card for actions; do not nest interactive controls inside a clickable card. Header, media, content and actions are explicit directive slots. Glass is a surface appearance, not an action variant.
 
 Card projects its action area. Import Button and Avatar for the composed examples; action styling and behavior come from those public atoms.
@@ -34,7 +38,7 @@ import {
 
 ## API, variants and states
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Default and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
 
 ## Accessibility, keyboard and focus
 
@@ -52,12 +56,7 @@ Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-co
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
-
+<Canvas of={Stories.Playground} />
 ## Responsive, RTL and motion
 
 Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.

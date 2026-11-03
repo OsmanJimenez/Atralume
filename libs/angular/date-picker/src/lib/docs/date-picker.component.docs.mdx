@@ -7,6 +7,10 @@ import * as Stories from "../stories/date-picker.component.stories";
 
 Date Picker composes Form Field, Input, IconButton, Popover or Dialog, Calendar and Button. The value is D or `AtralumeDateRange<D>`, never a hidden string conversion. readonlyInput prevents typing while preserving visual selection; readonly blocks all value changes. An incomplete range remains invalid until both endpoints are present. Clear writes null. Native input parsing reports errors through the public Signal Forms transformedValue contract and classic validators.
 
+Taiga UI note: `TuiInputDate` / `TuiInputDateRange` use CDK `TuiDay` /
+`TuiDayRange`. Atralume keeps the generic `AtralumeDateAdapter<D>`, calendar,
+and popover/dialog presentation and is retained as an exception.
+
 ## Import, composition and values
 
 Import from `@atralume/angular/date-picker`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
@@ -44,10 +48,7 @@ Browser-only selection, previews and overlays are guarded. SSR starts with an em
 Do not confuse Calendar with Date Picker, civil days with instants, selected files with uploaded records, or visited steps with completed steps. Do not use both formControl and ngModel, override Signal Forms reserved metadata bindings, mutate consumer objects, or remove accessible thumb labels.
 
 <Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.Glass} />
-
+<Canvas of={Stories.OpenCalendar} />
 {/* public-api:start */}
 
 ## Public TypeScript contract

@@ -1,5 +1,3 @@
-export { AtralumePopover } from "./lib/components/popover/popover.component";
-export { AtralumePopoverTrigger } from "./lib/directives/popover-trigger.directive";
-export type { PopoverPosition, PopoverFocus } from "./lib/components/popover/popover.component";
-
+export { AtralumePopover } from "./lib/directives/popover.directive";
+export type { PopoverPosition } from "./lib/directives/popover.directive";
 export * from "./lib/testing/popover.harness";

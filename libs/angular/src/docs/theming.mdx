@@ -4,16 +4,28 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Theming
 
-The cascade is Reference → System → Component → Consumer override. Use `data-atr-theme` globally or on any nested section. `system` follows `prefers-color-scheme` without JavaScript.
+Atralume is the **brand layer over Taiga UI**. Tokens cascade Reference → System → Component → Consumer override. The token bridge maps `--atr-*` into Taiga’s `--tui-*` theme so every Taiga-backed control follows the brand.
+
+## Modes (scope attributes)
+
+Use on `html` or any nested section. Storybook exposes the same controls in the toolbar.
+
+| Attribute | Values | Effect |
+| --------- | ------ | ------ |
+| `data-atr-theme` | `light` \| `dark` \| `system` | Color scheme (`system` follows `prefers-color-scheme`) |
+| `data-atr-surface` | `standard` \| `elevated` \| `glass` \| `transparent` | Surface treatment (incl. glass) |
+| `data-atr-shape` | `sharp` \| `rounded` \| `pill` | Global radius / curve |
+| `data-atr-brand` | omit / `green` | Accent palette (example: green primary) |
+
+Bootstrap with `provideAtralume()` and load `@atralume/angular/styles/theme.css` once.
+
+## Manual token overrides
 
 ```css
 .my-brand {
   --atr-sys-color-primary: #2457d6;
   --atr-sys-color-on-primary: #fff;
 }
-.my-special-action {
-  --atr-comp-button-container-color: var(--atr-sys-color-tertiary);
-}
 ```
 
-Overrides are responsible for preserving contrast. Prefer system tokens for semantic themes and component tokens for targeted customization.
+Preserve contrast. Prefer system tokens for semantic themes; use modes for glass, curve, and brand accent across the whole Taiga surface.

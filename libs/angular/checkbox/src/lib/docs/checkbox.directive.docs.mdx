@@ -49,7 +49,13 @@ touch target. Keep validation instructions associated with the control.
 
 <Canvas of={Stories.Playground} />
 <Controls of={Stories.Playground} />
-<Canvas of={Stories.Interaction} />
+
+
+## Relation to Taiga UI
+
+`AtralumeCheckbox` is an adapter over Taiga UI `TuiCheckbox`. Consumers keep
+using `input[atrCheckbox]`; Taiga supplies the attribute-component behavior and
+published styles bridged through Atralume tokens.
 
 ## Themes and customization
 
@@ -58,7 +64,3 @@ forced-colors, and reduced-motion behavior. Checkbox uses the shared
 `--atr-comp-form-field-*` token family; override those public CSS custom
 properties locally rather than editing package styles.
 
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />

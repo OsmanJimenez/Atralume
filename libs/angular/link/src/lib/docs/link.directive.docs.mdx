@@ -7,6 +7,8 @@ import * as Stories from "../stories/link.directive.stories";
 
 Use anchors with href for navigation. Use buttons for actions. Inline links are always underlined by default. Reserve underline="hover" for standalone navigation with another clear cue. Native target, rel, browser history and visited state remain consumer-controlled. New tabs must be explicit and communicated in the label. Unavailable navigation should not be rendered as an active link.
 
+The Atralume directive applies Taiga UI's public `TuiLink` foundation and the compiled Taiga link styles. Native anchor behavior remains intact; Atralume retains its `atrLink` selector, appearance and underline inputs, and component tokens.
+
 ## Import and minimum example
 
 ```ts
@@ -62,11 +64,6 @@ The public token manifest at `@atralume/angular/styles/tokens.json` lists every 
 Overrides inherit globally, through nested themes and surfaces, or from a consumer class. Specific appearance colors can be overridden through appearance-specific tokens documented in the manifest; defaults resolve from system tokens.
 
 ## Themes and surfaces
-
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
 
 Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
 

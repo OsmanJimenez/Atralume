@@ -1,53 +1,17 @@
 <span class="range-label">{{ label() }}</span>
-<div
-  class="range-track"
-  [style.--atr-slider-start]="startPercent() + '%'"
-  [style.--atr-slider-end]="endPercent() + '%'"
-  (pointerdown)="track($event)"
->
-  <span class="track" aria-hidden="true"></span>
-  <input
-    data-atr-value-control
-    type="range"
-    [id]="controlId() + '-start'"
-    [attr.aria-label]="startLabel() || label() + ' start'"
-    [min]="minimum()"
-    [max]="maximum()"
-    [step]="continuous() ? 'any' : step()"
-    [value]="displayed().start"
-    [disabled]="blocked()"
-    [attr.aria-valuemin]="minimum()"
-    [attr.aria-valuemax]="displayed().end"
-    [attr.aria-valuenow]="displayed().start"
-    [attr.aria-valuetext]="displayWith()(displayed().start)"
-    [attr.aria-orientation]="orientation()"
-    [attr.aria-invalid]="displayInvalid()"
-    [attr.aria-readonly]="readonly()"
-    (input)="input($event, 'start')"
-    (keydown)="key($event, 'start')"
-    (pointerdown)="guard($event)"
-  />
-  <input
-    type="range"
-    [id]="controlId() + '-end'"
-    [attr.aria-label]="endLabel() || label() + ' end'"
-    [min]="minimum()"
-    [max]="maximum()"
-    [step]="continuous() ? 'any' : step()"
-    [value]="displayed().end"
-    [disabled]="blocked()"
-    [attr.aria-valuemin]="displayed().start"
-    [attr.aria-valuemax]="maximum()"
-    [attr.aria-valuenow]="displayed().end"
-    [attr.aria-valuetext]="displayWith()(displayed().end)"
-    [attr.aria-orientation]="orientation()"
-    [attr.aria-invalid]="displayInvalid()"
-    [attr.aria-readonly]="readonly()"
-    (input)="input($event, 'end')"
-    (keydown)="key($event, 'end')"
-    (pointerdown)="guard($event)"
-  />
-</div>
+<tui-range
+  data-atr-value-control
+  [formControl]="inner"
+  [min]="minimum()"
+  [max]="maximum()"
+  [step]="rangeStep()"
+  [segments]="segments()"
+  [focusable]="!readonly()"
+  [attr.aria-label]="label()"
+  [attr.aria-invalid]="displayInvalid()"
+  [attr.aria-readonly]="readonly()"
+  [attr.aria-orientation]="orientation()"
+/>
 <output
   >{{ displayWith()(displayed().start) }} –
   {{ displayWith()(displayed().end) }}</output

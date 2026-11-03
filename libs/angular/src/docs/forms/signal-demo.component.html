@@ -1,9 +1,15 @@
 <div class="atr-forms-demo">
-  <atr-form-field label="Signal email"
-    ><input atrInput type="email" [formField]="fields.email"
-  /></atr-form-field>
-  <atr-form-field label="Signal notes">
-    <textarea atrTextarea [formField]="fields.notes"></textarea>
+  <atr-form-field>
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Signal email</label>
+      <input atrInput type="email" [formField]="fields.email" />
+    </tui-textfield>
+  </atr-form-field>
+  <atr-form-field>
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Signal notes</label>
+      <textarea atrTextarea [formField]="fields.notes"></textarea>
+    </tui-textfield>
   </atr-form-field>
   <label atrControlLabel
     ><input atrCheckbox type="checkbox" [formField]="fields.accepted" /><span

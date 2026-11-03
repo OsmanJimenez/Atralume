@@ -1,4 +1,12 @@
-import type { Preview } from "@storybook/angular";
+import {
+  applicationConfig,
+  componentWrapperDecorator,
+  moduleMetadata,
+  type Preview,
+} from "@storybook/angular";
+import { TuiRoot } from "@taiga-ui/core";
+import { provideAtralume } from "../src/lib/foundations/provide-atralume";
+
 const preview: Preview = {
   parameters: {
     controls: { expanded: true },
@@ -7,9 +15,20 @@ const preview: Preview = {
       storySort: {
         order: [
           "Atralume",
-          ["Introduction", "Getting Started", "Theming", "Accessibility"],
+          [
+            "Introduction",
+            "Getting Started",
+            "Installation",
+            "Architecture",
+            "Taiga UI Foundation",
+            "Theming",
+            "Customization",
+            "Accessibility",
+            "Migration Guide",
+          ],
           "Foundations",
-          "Atoms",
+          "Components",
+          "Patterns",
         ],
       },
     },
@@ -17,7 +36,7 @@ const preview: Preview = {
   },
   globalTypes: {
     theme: {
-      description: "Atralume color theme",
+      description: "Color theme (data-atr-theme)",
       defaultValue: "light",
       toolbar: {
         icon: "paintbrush",
@@ -28,13 +47,75 @@ const preview: Preview = {
         ],
       },
     },
+    surface: {
+      description: "Surface mode (data-atr-surface)",
+      defaultValue: "standard",
+      toolbar: {
+        icon: "contrast",
+        items: [
+          { value: "standard", title: "Standard" },
+          { value: "elevated", title: "Elevated" },
+          { value: "glass", title: "Glass" },
+          { value: "transparent", title: "Transparent" },
+        ],
+      },
+    },
+    shape: {
+      description: "Shape / curve (data-atr-shape)",
+      defaultValue: "rounded",
+      toolbar: {
+        icon: "circlehollow",
+        items: [
+          { value: "sharp", title: "Sharp" },
+          { value: "rounded", title: "Rounded" },
+          { value: "pill", title: "Pill / curved" },
+        ],
+      },
+    },
+    brand: {
+      description: "Brand accent (data-atr-brand)",
+      defaultValue: "default",
+      toolbar: {
+        icon: "hearthollow",
+        items: [
+          { value: "default", title: "Default brand" },
+          { value: "green", title: "Green brand" },
+        ],
+      },
+    },
   },
   decorators: [
+    applicationConfig({
+      providers: [provideAtralume()],
+    }),
+    // Dropdowns/dialogs/hints portal into TuiRoot; without it Taiga throws
+    // TuiNoHostException and lists render empty. Import + wrap so the
+    // Angular component (and its tui-popups host) actually mounts.
+    moduleMetadata({ imports: [TuiRoot] }),
+    componentWrapperDecorator(TuiRoot),
     (story, context) => {
-      delete document.documentElement.dataset["atrTheme"];
-      document.documentElement.dataset["atrTheme"] = context.globals[
-        "theme"
-      ] as string;
+      const root = document.documentElement;
+      const theme = String(context.globals["theme"] ?? "light");
+      root.dataset["atrTheme"] = theme;
+      root.dataset["atrSurface"] = String(
+        context.globals["surface"] ?? "standard",
+      );
+      root.dataset["atrShape"] = String(context.globals["shape"] ?? "rounded");
+      const brand = String(context.globals["brand"] ?? "default");
+      if (brand === "default") {
+        delete root.dataset["atrBrand"];
+      } else {
+        root.dataset["atrBrand"] = brand;
+      }
+      // Keep Taiga body[tuiTheme] aligned with Atralume toolbar theme so OS
+      // prefers-color-scheme cannot paint hardcoded Taiga dark over light stories.
+      if (typeof document !== "undefined" && document.body) {
+        if (theme === "dark") {
+          document.body.setAttribute("tuiTheme", "dark");
+        } else if (theme === "light") {
+          document.body.removeAttribute("tuiTheme");
+        }
+      }
       return story();
     },
   ],

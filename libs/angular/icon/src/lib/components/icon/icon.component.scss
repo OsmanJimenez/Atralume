@@ -21,9 +21,14 @@
   color: var(--atr-comp-icon-disabled-color, currentColor);
 }
 
-svg {
+svg,
+:host(.atr-icon--tui) tui-icon {
   inline-size: 100%;
   block-size: 100%;
+}
+
+:host(.atr-icon--tui) {
+  font-size: var(--atr-icon-custom-size, var(--atr-comp-icon-size-medium));
 }
 
 :host(.atr-icon--rtl:dir(rtl)) svg {

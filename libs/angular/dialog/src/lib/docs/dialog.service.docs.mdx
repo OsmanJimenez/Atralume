@@ -5,7 +5,11 @@ import * as Stories from "../stories/dialog.service.stories";
 
 # Dialog
 
-Dialog includes the modal pattern; there is no separate Modal API. open accepts a component or TemplateRef with typed Data and Result, returns an AtralumeDialogRef and exposes afterClosed. Inject ATR_DIALOG_DATA and AtralumeDialogRef in component content. Supply label or labelledBy, optionally describedBy, and an owner DestroyRef or viewContainerRef for lifetime cleanup. CDK handles focus trap, initial focus, restoration, backdrop, scroll blocking and Escape. disableClose is for justified critical operations; explain an available way out.
+Dialog includes the modal pattern; there is no separate Modal API. open accepts a component or TemplateRef with typed Data and Result, returns an AtralumeDialogRef and exposes afterClosed. Inject ATR_DIALOG_DATA and AtralumeDialogRef in component content. Supply label or labelledBy, optionally describedBy, and an owner DestroyRef or viewContainerRef for lifetime cleanup. disableClose is for justified critical operations; explain an available way out.
+
+The adapter wraps Taiga UI `TuiDialogService` while preserving `AtralumeDialog`, `AtralumeDialogRef`, and `ATR_DIALOG_DATA`. Structural markers (`atrDialogTitle`, `atrDialogContent`, `atrDialogActions`, `atrDialogClose`) remain Atralume layout helpers. Consumers should not call Taiga dialog APIs on the same flows.
+
+Taiga UI reference: [Dialog](https://taiga-ui.dev/components/dialog).
 
 ## Import and API
 
@@ -29,11 +33,7 @@ Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay 
 }
 ```
 
-<Canvas of={Stories.Default} />
-<Canvas of={Stories.Keyboard} />
-<Canvas of={Stories.Dark} />
-<Canvas of={Stories.NestedTheme} />
-<Canvas of={Stories.OnGlass} />
+<Canvas of={Stories.Playground} />
 
 ## Responsive, RTL, motion and common mistakes
 

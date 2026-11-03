@@ -11,6 +11,8 @@ import {
 } from "@angular/core";
 import { AtralumeChip } from "../chip/chip.component";
 import { CHIP_SET } from "../../models/chip.types";
+
+/** Composition around Taiga-backed `AtralumeChip`; no Taiga chip-group primitive. */
 @Component({
   selector: "atr-chip-set",
   standalone: true,

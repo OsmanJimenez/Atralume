@@ -57,34 +57,3 @@ export const WithIcon: Story = {
       '<atr-badge tone="success"><atr-icon name="check" size="small" />Active</atr-badge>',
   }),
 };
-export const Themes: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><p>light</p><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section><section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><p>dark</p><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section><section data-atr-theme="system" data-atr-surface="standard" style="padding:2rem"><p>system</p><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section>',
-  }),
-};
-
-export const NestedThemes: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> <section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section></section>',
-  }),
-};
-export const OnGlass: Story = {
-  render: () => ({
-    template:
-      '<div style="padding:3rem;background:radial-gradient(circle at 20% 30%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-tertiary-container),var(--atr-sys-color-secondary-container))"><section data-atr-surface="glass" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section></div>',
-  }),
-};
-export const Surfaces: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-surface="standard" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section><section data-atr-surface="elevated" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section><section data-atr-surface="transparent" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section><section data-atr-surface="glass" style="padding:2rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </section>',
-  }),
-};
-export const ConsumerOverride: Story = {
-  render: () => ({
-    template:
-      '<div style="--atr-comp-badge-shape:1rem"><atr-badge appearance="filled">filled</atr-badge> <atr-badge appearance="soft">soft</atr-badge> <atr-badge appearance="outlined">outlined</atr-badge> </div>',
-  }),
-};

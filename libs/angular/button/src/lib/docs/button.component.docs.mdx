@@ -7,6 +7,10 @@ import * as Stories from "../stories/button.component.stories";
 
 Use native buttons for actions and anchors with atrButton for navigation. Keep the native type, form attributes and click events. Loading disables activation, sets aria-busy, preserves the label and keeps width stable. Set type="button" inside forms unless submission is intended. Leading and trailing icons are projected content.
 
+The adapter applies Taiga UI's public `TuiButton` directive and uses the Taiga button and appearance styles compiled into Atralume's public theme stylesheet. Native HTML remains responsible for button and link activation semantics; Atralume adds loading and disabled-anchor behavior to preserve its contract. Atralume keeps the stable `atrButton` selector, appearance and size inputs, and `--atr-*` visual tokens. Consumers should not add Taiga UI's directive to the same host or depend on Taiga UI's internal DOM.
+
+Taiga UI reference: [Button](https://taiga-ui.dev/components/button/).
+
 ## Import and minimum example
 
 ```ts
@@ -70,13 +74,11 @@ Overrides inherit globally, through nested themes and surfaces, or from a consum
 
 ## Themes and surfaces
 
-<Canvas of={Stories.Themes} />
-<Canvas of={Stories.NestedThemes} />
-<Canvas of={Stories.OnGlass} />
-<Canvas of={Stories.ConsumerOverride} />
+Use the Storybook theme toolbar for light, dark, and system. Nested themes and
+glass surfaces share the same semantic color contract; override `--atr-comp-button-*`
+tokens locally when needed. Verify contrast against the final composited background.
 
-Light, dark and system scopes are supported, including nested scopes. Standard, elevated, transparent and glass surfaces share the same semantic color contract. Glass uses the existing backdrop and opaque fallback; atoms do not apply their own backdrop filter. Verify contrast against the final composited background.
-
+<Canvas of={Stories.IconPlacement} />
 ## Common mistakes
 
 Avoid replacing native semantics, encoding information by color alone, removing accessible names, or relying on a tooltip for a label. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

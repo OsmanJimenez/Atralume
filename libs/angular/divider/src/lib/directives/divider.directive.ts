@@ -1,6 +1,12 @@
 import { booleanAttribute, Directive, input } from "@angular/core";
+
 export type DividerOrientation = "horizontal" | "vertical";
 export type DividerInset = "none" | "start" | "end" | "both";
+
+/**
+ * Minimal divider: native `hr` / separator semantics + `--atr-comp-divider-*` tokens.
+ * No public Taiga divider primitive in core/kit/layout.
+ */
 @Directive({
   selector: "[atrDivider]",
   standalone: true,

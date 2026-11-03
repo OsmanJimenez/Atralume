@@ -2,14 +2,30 @@ import {
   ChangeDetectionStrategy,
   Component,
   booleanAttribute,
-  computed,
-  contentChild,
-  effect,
   input,
 } from "@angular/core";
-import { ɵATR_FORM_FIELD_CONTROL } from "@atralume/angular";
+
 export type AtralumeFormFieldAppearance = "outline" | "filled";
 export type AtralumeFormFieldDensity = "comfortable" | "compact";
+
+/**
+ * Brand chrome (hint/error/density attrs) around a Taiga `tui-textfield`.
+ *
+ * Breaking: project a consumer-authored `tui-textfield` with
+ * `label[tuiLabel]` and `input[atrInput]` / `textarea[atrTextarea]`.
+ * Do not project a bare input into this host — `TuiInputDirective` must
+ * inject `TuiTextfieldComponent` from the same consumer template tree.
+ *
+ * @example
+ * ```html
+ * <atr-form-field [hint]="hint" [error]="error">
+ *   <tui-textfield [invalid]="!!error" tuiTextfieldSize="m">
+ *     <label tuiLabel>Email</label>
+ *     <input atrInput type="email" formControlName="email" />
+ *   </tui-textfield>
+ * </atr-form-field>
+ * ```
+ */
 @Component({
   selector: "atr-form-field",
   standalone: true,
@@ -17,39 +33,19 @@ export type AtralumeFormFieldDensity = "comfortable" | "compact";
   styleUrl: "./form-field.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: "atr-form-field",
+    class: "atr-form-field-host",
     "[attr.data-appearance]": "appearance()",
     "[attr.data-density]": "density()",
-    "[class.atr-form-field--disabled]": "control()?.disabled()",
-    "[class.atr-form-field--readonly]": "control()?.readonly()",
-    "[class.atr-form-field--invalid]": "!!error() || control()?.invalid()",
-    "[class.atr-form-field--focused]": "control()?.focused()",
   },
 })
 export class AtralumeFormField {
-  readonly label = input.required<string>();
   readonly hint = input<string | null>(null);
   readonly error = input<string | null>(null);
+  readonly appearance = input<AtralumeFormFieldAppearance>("outline");
+  readonly density = input<AtralumeFormFieldDensity>("comfortable");
+  /** Kept for call-site compatibility; render label inside `tui-textfield`. */
+  readonly label = input<string>("");
   readonly required = input(false, { transform: booleanAttribute });
   readonly optional = input(false, { transform: booleanAttribute });
   readonly optionalText = input("Optional");
-  readonly appearance = input<AtralumeFormFieldAppearance>("outline");
-  readonly density = input<AtralumeFormFieldDensity>("comfortable");
-  protected readonly control = contentChild(ɵATR_FORM_FIELD_CONTROL);
-  protected readonly hintId = computed(
-    () => this.control()?.controlId() + "-hint",
-  );
-  protected readonly errorId = computed(
-    () => this.control()?.controlId() + "-error",
-  );
-  constructor() {
-    effect((onCleanup) => {
-      const control = this.control();
-      control?.setDescribedByIds([
-        ...(this.hint() ? [this.hintId()] : []),
-        ...(this.error() ? [this.errorId()] : []),
-      ]);
-      onCleanup(() => control?.setDescribedByIds([]));
-    });
-  }
 }

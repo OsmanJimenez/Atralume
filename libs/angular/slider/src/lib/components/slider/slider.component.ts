@@ -11,10 +11,17 @@ import {
   type Validator,
   type ValidationErrors,
 } from "@angular/forms";
+import { TuiSliderComponent } from "@taiga-ui/core";
 import { AtralumeSliderBase } from "../../internal/slider-base";
+
+/**
+ * Composition over Taiga UI `TuiSliderComponent` on the native range input.
+ * Keeps the public `atr-slider` host, forms API, and `--atr-*` tokens.
+ */
 @Component({
   selector: "atr-slider",
   standalone: true,
+  imports: [TuiSliderComponent],
   templateUrl: "./slider.component.html",
   styleUrl: "./slider.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,6 +67,12 @@ export class AtralumeSlider
     this.max() === this.min()
       ? 0
       : (100 * (this.displayed() - this.min())) / (this.max() - this.min()),
+  );
+  /** Visual tick count for Taiga `TuiSliderComponent` segments. */
+  protected readonly segments = computed(() =>
+    this.showTicks() && !this.continuous() && this.step() > 0
+      ? Math.max(1, Math.round((this.max() - this.min()) / this.step()))
+      : 1,
   );
   protected input(event: Event): void {
     const input = event.target as HTMLInputElement;

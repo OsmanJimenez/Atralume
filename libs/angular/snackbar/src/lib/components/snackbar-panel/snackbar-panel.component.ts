@@ -7,12 +7,15 @@ import {
 } from "@atralume/angular/icon";
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { SNACKBAR_SESSION } from "../../models/snackbar.types";
+
+/**
+ * Action-capable snackbar body opened through `TuiNotificationService`.
+ */
 @Component({
   selector: "atr-snackbar-panel",
   standalone: true,
   imports: [AtralumeButton, AtralumeIconButton, AtralumeIcon],
   providers: [provideAtralumeIcons([closeIcon])],
-
   templateUrl: "./snackbar-panel.component.html",
   styleUrl: "./snackbar-panel.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

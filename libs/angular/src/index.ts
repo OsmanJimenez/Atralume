@@ -1,8 +1,10 @@
 /**
- * Root entry point for Atralume foundations.
+ * Root entry point for Atralume foundations (brand layer over Taiga UI).
  * Components are exported from explicit secondary entry points.
  */
 export const ATRALUME_VERSION = "0.0.0";
+
+export { provideAtralume } from "./lib/foundations/provide-atralume";
 
 // Internal cross-entrypoint bridge. The ɵ prefix excludes this from supported consumer API.
 export {
@@ -12,9 +14,6 @@ export {
 export type { AtralumeFormFieldControl as ɵAtralumeFormFieldControl } from "./lib/foundations/form-control";
 
 export { AtralumeOverlayInfrastructure as ɵAtralumeOverlayInfrastructure } from "./lib/foundations/overlay-context";
-export type {
-  OverlayHandle as ɵOverlayHandle,
-  OverlayOptions as ɵOverlayOptions,
-} from "./lib/foundations/overlay-context";
+export type { OverlayKind as ɵOverlayKind } from "./lib/foundations/overlay-context";
 
 export { AtralumeControlIds as ɵAtralumeControlIds } from "./lib/foundations/form-control";

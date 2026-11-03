@@ -1,4 +1,14 @@
+html,
+body {
+  background: var(--atr-sys-color-surface);
+  color: var(--atr-sys-color-on-surface);
+}
+
 #storybook-root {
   color: var(--atr-sys-color-on-surface);
   font-family: var(--atr-ref-font-family-plain);
+  background: var(--atr-sys-color-surface);
+  min-block-size: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 }

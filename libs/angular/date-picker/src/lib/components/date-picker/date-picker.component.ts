@@ -1,75 +1,56 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  type OnInit,
-  Injector,
-  runInInjectionContext,
   DestroyRef,
-  ElementRef,
-  TemplateRef,
-  ViewContainerRef,
   booleanAttribute,
   computed,
   effect,
   forwardRef,
   inject,
   input,
-  model,
   untracked,
-  viewChild,
 } from "@angular/core";
-import { NgTemplateOutlet } from "@angular/common";
 import {
+  FormControl,
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
+  ReactiveFormsModule,
   type Validator,
   type ValidationErrors,
 } from "@angular/forms";
-import {
-  transformedValue,
-  type ParseResult,
-  type TransformedValueSignal,
-} from "@angular/forms/signals";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import { TuiDay, TuiDayRange } from "@taiga-ui/cdk/date-time";
+import { TuiInputDate, TuiInputDateRange } from "@taiga-ui/kit";
 import { AtralumeFormField } from "@atralume/angular/form-field";
-import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeIconButton } from "@atralume/angular/icon-button";
-import {
-  AtralumeIcon,
-  provideAtralumeIcons,
-  chevronDownIcon,
-  closeIcon,
-} from "@atralume/angular/icon";
-import { AtralumePopover } from "@atralume/angular/popover";
-import {
-  AtralumeDialog,
-  type AtralumeDialogRef,
-} from "@atralume/angular/dialog";
-import {
-  AtralumeCalendar,
-  AtralumeDateAdapter,
-  type AtralumeDateRange,
-} from "@atralume/angular/calendar";
-export type AtralumeDatePickerValue<D> = D | AtralumeDateRange<D>;
+import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import type { AtralumeDateRange } from "@atralume/angular/calendar";
+
+export type AtralumeDatePickerValue<D = Date> = D | AtralumeDateRange<D>;
+
+function toDay(value: Date | null | undefined): TuiDay | null {
+  return value ? TuiDay.fromLocalNativeDate(value) : null;
+}
+
+function fromDay(value: TuiDay | null): Date | null {
+  return value ? value.toLocalNativeDate() : null;
+}
+
+/**
+ * Thin date picker over Taiga `tuiInputDate` / `tuiInputDateRange`.
+ * Public value stays `Date` / `{ start, end }`; inner FormControl holds CDK types.
+ */
 @Component({
   selector: "atr-date-picker",
   standalone: true,
   imports: [
-    NgTemplateOutlet,
+    ReactiveFormsModule,
     AtralumeFormField,
-    AtralumeInput,
-    AtralumeButton,
-    AtralumeIconButton,
-    AtralumeIcon,
-    AtralumePopover,
-    AtralumeCalendar,
+    TuiInputDate,
+    TuiInputDateRange,
   ],
   templateUrl: "./date-picker.component.html",
   styleUrl: "./date-picker.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    provideAtralumeIcons([chevronDownIcon, closeIcon]),
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => AtralumeDatePicker),
@@ -83,202 +64,117 @@ export type AtralumeDatePickerValue<D> = D | AtralumeDateRange<D>;
   ],
   host: { class: "atr-date-picker" },
 })
-export class AtralumeDatePicker<D>
-  extends ɵAtralumeValueControl<AtralumeDatePickerValue<D>>
-  implements Validator, OnInit
+export class AtralumeDatePicker
+  extends ɵAtralumeValueControl<AtralumeDatePickerValue<Date>>
+  implements Validator
 {
-  readonly adapter = inject(AtralumeDateAdapter) as AtralumeDateAdapter<D>;
   readonly selectionMode = input<"single" | "range">("single");
-  readonly opened = model(false);
-  readonly visibleDate = model<D | null>(null);
-  readonly min = input<D | null>(null);
-  readonly max = input<D | null>(null);
-  readonly dateFilter = input<(value: D) => boolean>(() => true);
-  readonly locale = input(this.adapter.locale);
-  readonly readonlyInput = input(false, { transform: booleanAttribute });
+  readonly min = input<Date | null>(null);
+  readonly max = input<Date | null>(null);
+  readonly dateFilter = input<(value: Date) => boolean>(() => true);
   readonly clearable = input(false, { transform: booleanAttribute });
+  /** Kept for API compatibility; Taiga dropdown replaces popover/dialog. */
   readonly presentation = input<"popover" | "dialog">("popover");
-  readonly singleValue = computed(() =>
-    this.selectionMode() === "single" ? (this.value() as D | null) : null,
-  );
-  readonly rangeValue = computed(() =>
-    this.selectionMode() === "range"
-      ? (this.value() as AtralumeDateRange<D> | null)
-      : null,
-  );
-  rawValue!: TransformedValueSignal<string>;
-  private readonly parserInjector = inject(Injector);
-  ngOnInit(): void {
-    runInInjectionContext(this.parserInjector, () => {
-      this.rawValue = transformedValue(this.value, {
-        parse: (text: string) => this.parse(text),
-        format: (value) => this.format(value),
-      });
-    });
-  }
+  readonly visibleDate = input<Date | null>(null);
 
-  protected readonly message = computed(
-    () => this.error() || this.rawValue?.parseErrors()[0]?.message || null,
+  protected readonly tuiMin = computed(
+    () => toDay(this.min()) ?? undefined,
   );
-  protected readonly toggleElement = viewChild<
-    unknown,
-    ElementRef<HTMLButtonElement>
-  >("calendarToggle", { read: ElementRef });
-  private readonly content =
-    viewChild.required<TemplateRef<unknown>>("calendarContent");
-  private readonly dialog = inject(AtralumeDialog);
-  private readonly owner = inject(DestroyRef);
-  private readonly views = inject(ViewContainerRef);
-  private dialogRef: AtralumeDialogRef<unknown> | null = null;
+  protected readonly tuiMax = computed(
+    () => toDay(this.max()) ?? undefined,
+  );
+  protected readonly disabledItemHandler = computed(() => {
+    const filter = this.dateFilter();
+    return (day: TuiDay) => !filter(day.toLocalNativeDate());
+  });
+
+  protected readonly single = new FormControl<TuiDay | null>(null);
+  protected readonly range = new FormControl<TuiDayRange | null>(null);
+
   private validatorChanged: () => void = () => undefined;
+
   constructor() {
     super();
+    const destroyRef = inject(DestroyRef);
+    const singleSub = this.single.valueChanges.subscribe((day) => {
+      if (this.selectionMode() !== "single") return;
+      this.commit(fromDay(day));
+    });
+    const rangeSub = this.range.valueChanges.subscribe((value) => {
+      if (this.selectionMode() !== "range") return;
+      this.commit(
+        value
+          ? { start: fromDay(value.from), end: fromDay(value.to) }
+          : null,
+      );
+    });
+    destroyRef.onDestroy(() => {
+      singleSub.unsubscribe();
+      rangeSub.unsubscribe();
+    });
+    effect(() => {
+      const mode = this.selectionMode();
+      const next = this.value();
+      untracked(() => {
+        if (mode === "single") {
+          const day = toDay((next as Date | null) ?? null);
+          if (!Object.is(this.single.value, day) && !(day && this.single.value?.daySame(day))) {
+            this.single.setValue(day, { emitEvent: false });
+          }
+        } else {
+          const rangeValue = next as AtralumeDateRange<Date> | null;
+          const mapped =
+            rangeValue?.start && rangeValue.end
+              ? new TuiDayRange(
+                  TuiDay.fromLocalNativeDate(rangeValue.start),
+                  TuiDay.fromLocalNativeDate(rangeValue.end),
+                )
+              : null;
+          const current = this.range.value;
+          if (
+            (!mapped && current) ||
+            (mapped && (!current || !current.daySame(mapped)))
+          ) {
+            this.range.setValue(mapped, { emitEvent: false });
+          }
+        }
+      });
+    });
+    effect(() => {
+      const blocked = this.blocked();
+      untracked(() => {
+        if (blocked) {
+          this.single.disable({ emitEvent: false });
+          this.range.disable({ emitEvent: false });
+        } else {
+          this.single.enable({ emitEvent: false });
+          this.range.enable({ emitEvent: false });
+        }
+      });
+    });
     effect(() => {
       this.value();
       this.min();
       this.max();
-      this.dateFilter();
       this.required();
-      this.rawValue?.parseErrors();
       untracked(() => this.validatorChanged());
     });
-    effect((onCleanup) => {
-      const opened = this.opened(),
-        presentation = this.presentation(),
-        origin = this.toggleElement();
-      this.content();
-      if (!opened || presentation !== "dialog" || !origin || this.blocked())
-        return;
-      const ref = untracked(() =>
-        this.dialog.open(this.content(), {
-          origin: origin.nativeElement,
-          label: this.label() + " calendar",
-          owner: this.owner,
-          viewContainerRef: this.views,
-        }),
-      );
-      this.dialogRef = ref;
-      const sub = ref.afterClosed.subscribe(() => {
-        if (this.dialogRef === ref) {
-          this.dialogRef = null;
-          this.opened.set(false);
-        }
-      });
-      onCleanup(() => {
-        sub.unsubscribe();
-        if (this.dialogRef === ref) this.dialogRef = null;
-        ref.close();
-      });
-    });
-    effect(() => {
-      if (this.blocked() || this.readonly()) this.opened.set(false);
-    });
   }
-  private valid(date: D): boolean {
-    const min = this.min(),
-      max = this.max();
-    return (
-      this.adapter.isValid(date) &&
-      (!min || this.adapter.compare(date, min) >= 0) &&
-      (!max || this.adapter.compare(date, max) <= 0) &&
-      this.dateFilter()(date)
-    );
-  }
-  private parse(text: string): ParseResult<AtralumeDatePickerValue<D> | null> {
-    if (!text.trim()) return { value: null };
-    if (this.selectionMode() === "single") {
-      const date = this.adapter.parse(text, this.locale());
-      return date && this.valid(date)
-        ? { value: date }
-        : {
-            value: null,
-            error: { kind: "dateParse", message: "Enter an allowed date" },
-          };
-    }
-    const parts = text.split(" — ");
-    const start = this.adapter.parse(parts[0] ?? "", this.locale()),
-      end = this.adapter.parse(parts[1] ?? "", this.locale());
-    return parts.length === 2 &&
-      start &&
-      end &&
-      this.valid(start) &&
-      this.valid(end) &&
-      this.adapter.compare(start, end) <= 0
-      ? { value: { start, end } }
-      : {
-          value: null,
-          error: {
-            kind: "dateRange",
-            message: "Enter an allowed start and end date separated by —",
-          },
-        };
-  }
-  private format(value: AtralumeDatePickerValue<D> | null): string {
-    if (!value) return "";
-    if (this.selectionMode() === "single")
-      return this.adapter.isValid(value)
-        ? this.adapter.format(value, "input", this.locale())
-        : "";
-    const range = value as AtralumeDateRange<D>;
-    return (
-      (range.start && this.adapter.isValid(range.start)
-        ? this.adapter.format(range.start, "input", this.locale())
-        : "") +
-      " — " +
-      (range.end && this.adapter.isValid(range.end)
-        ? this.adapter.format(range.end, "input", this.locale())
-        : "")
-    );
-  }
+
   validate(): ValidationErrors | null {
-    if (this.rawValue?.parseErrors().length) return { dateParse: true };
     const value = this.value();
     if (value === null) return this.required() ? { required: true } : null;
-    if (this.selectionMode() === "single")
-      return this.valid(value as D) ? null : { dateInvalid: true };
-    const range = value as AtralumeDateRange<D>;
-    return range.start &&
-      range.end &&
-      this.valid(range.start) &&
-      this.valid(range.end) &&
-      this.adapter.compare(range.start, range.end) <= 0
-      ? null
-      : { dateRange: true };
+    if (this.selectionMode() === "single") {
+      const date = value as Date;
+      return date instanceof Date && !Number.isNaN(date.getTime())
+        ? null
+        : { dateInvalid: true };
+    }
+    const range = value as AtralumeDateRange<Date>;
+    return range.start && range.end ? null : { dateRange: true };
   }
+
   registerOnValidatorChange(fn: () => void): void {
     this.validatorChanged = fn;
-  }
-  protected typed(event: Event): void {
-    if (this.blocked() || this.readonly() || this.readonlyInput()) return;
-    this.rawValue.set((event.target as HTMLInputElement).value);
-    this.commit(this.value());
-  }
-  toggle(): void {
-    if (!this.blocked() && !this.readonly())
-      this.opened.update((value) => !value);
-  }
-  close(): void {
-    this.opened.set(false);
-  }
-  protected pick(value: D | null): void {
-    if (this.selectionMode() !== "single") return;
-    this.commit(value);
-    if (value) {
-      this.close();
-      this.focus();
-    }
-  }
-  protected pickRange(value: AtralumeDateRange<D> | null): void {
-    if (this.selectionMode() !== "range") return;
-    this.commit(value);
-    if (value?.start && value.end) {
-      this.close();
-      this.focus();
-    }
-  }
-  clear(): void {
-    this.commit(null);
-    this.rawValue.set("");
-    this.focus();
   }
 }

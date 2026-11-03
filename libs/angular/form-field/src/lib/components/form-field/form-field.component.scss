@@ -3,12 +3,6 @@
   gap: var(--atr-sys-spacing-sm);
 }
 
-.atr-form-field__label {
-  color: var(--atr-comp-form-field-label-color);
-  font-size: var(--atr-comp-form-field-label-font-size);
-  font-weight: var(--atr-comp-form-field-label-font-weight);
-}
-
 .atr-form-field__hint,
 .atr-form-field__error {
   margin: 0;
@@ -17,9 +11,9 @@
 
 .atr-form-field__hint,
 .atr-form-field__optional {
-  color: var(--atr-comp-form-field-hint-color);
+  color: var(--atr-comp-form-field-hint-color, var(--atr-sys-color-on-surface-variant));
 }
 
 .atr-form-field__error {
-  color: var(--atr-comp-form-field-error-color);
+  color: var(--atr-comp-form-field-error-color, var(--atr-sys-color-error));
 }

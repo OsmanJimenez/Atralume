@@ -54,64 +54,7 @@ export const IconPlacement: Story = {
   }),
 };
 
-export const ExternalExample: Story = {
-  render: () => ({
-    template:
-      '<a atrLink href="https://angular.dev" target="_blank" rel="noopener noreferrer">Angular documentation (opens in a new tab)</a>',
-  }),
-};
-export const Visited: Story = {
-  render: () => ({
-    template:
-      '<p>Visit and return to inspect browser-controlled history styling: <a atrLink href="#visited-example">Visited example</a></p>',
-  }),
-};
-export const Themes: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><p>light</p><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section><section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><p>dark</p><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section><section data-atr-theme="system" data-atr-surface="standard" style="padding:2rem"><p>system</p><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section>',
-  }),
-};
-
-export const NestedThemes: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-theme="dark" data-atr-surface="standard" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p><section data-atr-theme="light" data-atr-surface="standard" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section></section>',
-  }),
-};
-export const OnGlass: Story = {
-  render: () => ({
-    template:
-      '<div style="padding:3rem;background:radial-gradient(circle at 20% 30%,var(--atr-sys-color-primary),transparent),linear-gradient(120deg,var(--atr-sys-color-tertiary-container),var(--atr-sys-color-secondary-container))"><section data-atr-surface="glass" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section></div>',
-  }),
-};
-export const Surfaces: Story = {
-  render: () => ({
-    template:
-      '<section data-atr-surface="standard" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section><section data-atr-surface="elevated" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section><section data-atr-surface="transparent" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section><section data-atr-surface="glass" style="padding:2rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></section>',
-  }),
-};
-export const ConsumerOverride: Story = {
-  render: () => ({
-    template:
-      '<div style="--atr-comp-link-underline-offset:1rem"><p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p></div>',
-  }),
-};
-export const FocusVisible: Story = {
-  render: () => ({
-    template:
-      '<p>Read the <a atrLink href="#documentation">documentation</a> before continuing.</p>',
-  }),
-  play: async ({ canvasElement }) => {
-    const target = within(canvasElement).getByRole("link", {
-      name: /documentation/i,
-    });
-    await userEvent.tab();
-    await expect(target).toHaveFocus();
-    await expect(target.matches(":focus-visible")).toBe(true);
-  },
-};
-export const Keyboard: Story = {
+export const Interaction: Story = {
   render: () => ({
     props: { activated: false },
     template:

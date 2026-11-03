@@ -1,5 +1,6 @@
 <label [for]="controlId()">{{ label() }}</label>
 <input
+  tuiSlider
   data-atr-value-control
   type="range"
   [id]="controlId()"
@@ -8,6 +9,7 @@
   [step]="continuous() ? 'any' : step()"
   [value]="displayed()"
   [disabled]="blocked()"
+  [segments]="segments()"
   [attr.aria-valuemin]="min()"
   [attr.aria-valuemax]="max()"
   [attr.aria-valuenow]="displayed()"
