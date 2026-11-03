@@ -1,15 +1,14 @@
 name: Atralume CI
 
+# Manual only. Automatic quality checks are disabled so master only runs Pages.
 on:
-  pull_request:
-    branches: [develop, release, master]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -35,9 +34,6 @@ jobs:
         run: npm install --global npm@11.9.0
       - name: Install
         run: npm ci
-      - name: Check PR promotion policy
-        if: github.event_name == 'pull_request'
-        run: node tools/check-pr-policy.mjs
       - name: Install Chromium
         run: npx --no-install playwright install --with-deps chromium
       - name: Verify

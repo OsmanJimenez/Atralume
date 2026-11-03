@@ -1,8 +1,7 @@
 name: Atralume Canary Package
 
+# Manual only. Automatic canary packs on develop are disabled.
 on:
-  push:
-    branches: [develop]
   workflow_dispatch:
 
 permissions:
