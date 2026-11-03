@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: atralume-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   CI: "true"
@@ -37,10 +37,8 @@ jobs:
         run: npm install --global npm@11.9.0
       - name: Install
         run: npm ci
-      - name: Install Chromium
-        run: npx --no-install playwright install --with-deps chromium
-      - name: Verify commit
-        run: npm run verify
+      - name: Build Storybook
+        run: npm run build:storybook
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload Storybook

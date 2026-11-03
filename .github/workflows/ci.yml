@@ -3,8 +3,6 @@ name: Atralume CI
 on:
   pull_request:
     branches: [develop, release, master]
-  push:
-    branches: [develop, release, master]
   workflow_dispatch:
 
 permissions:

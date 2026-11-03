@@ -13,6 +13,9 @@
 # Node modules and dependency files
 /node_modules/
 /yarn.lock
+# Accidental shell artifacts (never commit)
+/sudo
+/sudo.exe
 
 # Environment files
 /.env
