@@ -1,9 +1,17 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Elevation" />
-# Elevation Six restrained levels support menus, overlays and raised surfaces.
-Surface-container color communicates hierarchy before shadow. Dark themes retain
-tonal separation; forced colors removes shadows and restores explicit
-boundaries.
+
+# Elevation
+
+Elevation establishes reading order. Prefer tonal separation first; use the
+smallest shadow that clarifies an overlay, a raised container, or a floating
+action. It is not decoration for every rectangle.
+
+<Canvas of={Preview.Elevation} />
+
+In forced-colors mode, elevation falls back to explicit boundaries.
+
 <Canvas of={Tokens.System} />

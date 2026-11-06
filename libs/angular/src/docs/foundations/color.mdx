@@ -1,9 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Color" />
-# Color Material 3 role names guide Atralume without adding a visual dependency.
-Semantic roles cover actions, containers, errors, surfaces, outlines, inverse
-content and focus. Override paired system tokens together and recheck contrast;
-reference palettes are not a final brand identity.
+
+# Color
+
+Choose color by meaning: primary for actions, containers for persistent
+selection, success for completed work, and error for a problem that requires
+recovery. A palette is only a source; components consume semantic roles.
+
+<Canvas of={Preview.Color} />
+
+When creating a brand, override the paired foreground and container roles
+together. Do not use a brand hue as the only error or selected-state signal.
+
 <Canvas of={Tokens.System} />

@@ -1,8 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/State" />
-# State Hover, focus, pressed, dragged and disabled opacities describe state
-layers. Combine container color, state-layer color and opacity; do not reduce
-the opacity of an entire control when that would weaken projected content.
+
+# State
+
+State is behavior made visible. Hover and pressed feedback acknowledge input;
+selected states persist; disabled controls remain legible and unavailable.
+Never communicate a state with opacity or color alone.
+
+<Canvas of={Preview.State} />
+
+Use state layers over the existing container instead of inventing an unrelated
+color for every interaction.
+
 <Canvas of={Tokens.System} />

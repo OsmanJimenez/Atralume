@@ -1,8 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Focus" />
-# Focus The shared ring contract defines color, width, offset and style and
-appears only with `:focus-visible`. Never remove a native outline without an
-equivalent. Forced-colors mode uses `Highlight`.
+
+# Focus
+
+Focus tells keyboard users where the next action will happen. It appears with
+`:focus-visible`, has enough offset to survive dense layouts, and never relies
+on color alone.
+
+<Canvas of={Preview.Focus} />
+
+Never remove a native outline without an equivalent. Forced colors uses the
+platform `Highlight` color.
+
 <Canvas of={Tokens.System} />

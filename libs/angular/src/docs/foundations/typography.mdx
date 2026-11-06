@@ -1,9 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Typography" />
-# Typography A system-font stack avoids remote or proprietary assets. Reference
-tokens define family, weight, size, line height and tracking. Semantic roles may
-evolve before 1.0; components should consume component aliases rather than
-hard-coded font values.
+
+# Typography
+
+Typography establishes hierarchy before color or decoration. Display text names
+the page, headlines organize content, body text carries the task, and labels
+make controls scannable.
+
+<Canvas of={Preview.Typography} />
+
+Use semantic typography roles in components rather than hard-coding individual
+font values. This preserves a coherent rhythm as themes evolve.
+
 <Canvas of={Tokens.Reference} />

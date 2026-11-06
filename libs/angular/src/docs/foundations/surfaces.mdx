@@ -1,4 +1,5 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Surfaces" />
 
@@ -8,6 +9,8 @@ Surface treatment is an explicit container decision, not a global preview
 mode. Cards, dialogs, popovers, menus, and bottom sheets expose the appearance
 that suits their purpose: filled, elevated, outlined, or glass where it has a
 meaningful backdrop.
+
+<Canvas of={Preview.Surfaces} />
 
 Use a component's documented appearance input when it needs elevation or
 transparency. Primary actions retain their brand color so action hierarchy

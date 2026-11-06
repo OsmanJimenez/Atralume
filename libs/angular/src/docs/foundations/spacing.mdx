@@ -1,8 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Spacing" />
-# Spacing The finite 4px-based scale uses rem for scalable layout. System
-aliases express intent and include the minimum touch target. Avoid inventing
-intermediate values inside public components.
+
+# Spacing
+
+The 4px scale creates a repeatable rhythm. Use close values within a control,
+larger values between related groups, and the largest intervals when a section
+changes subject. The minimum touch target is non-negotiable.
+
+<Canvas of={Preview.Spacing} />
+
+Avoid one-off intermediate values in public components; add a semantic token
+only when the decision recurs.
+
 <Canvas of={Tokens.Reference} />

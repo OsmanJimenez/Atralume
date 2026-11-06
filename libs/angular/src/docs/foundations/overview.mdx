@@ -1,10 +1,19 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Overview" />
 
-# Foundations overview
+# Foundations
 
-The DTCG source is authoritative. Style Dictionary generates stable `--atr-ref-*`, `--atr-sys-*`, and `--atr-comp-*` variables. Applications consume public styles, never token build paths. Generated values are shown below.
+Foundations are decisions, not a bag of variables. Reference tokens hold raw
+values; system tokens assign meaning; component tokens turn that meaning into a
+stable contract; consumers override only the scope they own.
 
+<Canvas of={Tokens.System} />
+
+Use the visual model to decide where a change belongs. The generated list below
+is the audit trail, not the starting point for design work.
+
+<Canvas of={Preview.Overview} />
 <Canvas of={Tokens.System} />

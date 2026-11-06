@@ -1,0 +1,119 @@
+<section class="foundation-preview" [attr.data-foundation]="kind()">
+  @switch (kind()) {
+    @case ("overview") {
+      <div class="flow" aria-label="Token architecture">
+        <div><strong>Reference</strong><span>Raw tonal values</span></div>
+        <span aria-hidden="true">→</span>
+        <div><strong>System</strong><span>Semantic decisions</span></div>
+        <span aria-hidden="true">→</span>
+        <div><strong>Component</strong><span>Local contracts</span></div>
+        <span aria-hidden="true">→</span>
+        <div><strong>Consumer</strong><span>Scoped override</span></div>
+      </div>
+    }
+    @case ("color") {
+      <div class="color-roles" aria-label="Semantic color roles">
+        <div class="swatch primary">
+          <strong>Primary</strong><span>Action</span>
+        </div>
+        <div class="swatch primary-container">
+          <strong>Container</strong><span>Selected state</span>
+        </div>
+        <div class="swatch success">
+          <strong>Success</strong><span>Confirmation</span>
+        </div>
+        <div class="swatch error">
+          <strong>Error</strong><span>Recovery needed</span>
+        </div>
+      </div>
+    }
+    @case ("elevation") {
+      <div class="elevation-scale" aria-label="Tonal elevation scale">
+        <div class="level level-0">Base surface</div>
+        <div class="level level-1">Raised content</div>
+        <div class="level level-3">Overlay priority</div>
+      </div>
+    }
+    @case ("focus") {
+      <div class="focus-demo">
+        <label for="foundation-focus">Name</label>
+        <div class="focus-row">
+          <input id="foundation-focus" placeholder="Focus this field" />
+          <button type="button">Continue</button>
+        </div>
+        <p>Keyboard focus is visible without adding visual noise at rest.</p>
+      </div>
+    }
+    @case ("glass") {
+      <div class="glass-scene">
+        <span class="orb orb-one" aria-hidden="true"></span>
+        <span class="orb orb-two" aria-hidden="true"></span>
+        <div class="glass-panel">
+          <strong>Glass is contextual</strong
+          ><span>Readable over real depth.</span>
+        </div>
+      </div>
+    }
+    @case ("motion") {
+      <div class="motion-demo">
+        <button type="button" (click)="replayMotion()">
+          Replay transition
+        </button>
+        <div class="motion-track" [attr.data-run]="motionRun()">
+          <span class="motion-dot" aria-hidden="true"></span>
+        </div>
+        <p>
+          Motion confirms a change; it never carries required information alone.
+        </p>
+      </div>
+    }
+    @case ("shape") {
+      <div class="shape-scale" aria-label="Shape scale">
+        <div class="shape sharp">Sharp</div>
+        <div class="shape rounded">Rounded</div>
+        <div class="shape pill">Pill</div>
+      </div>
+    }
+    @case ("spacing") {
+      <div class="spacing-demo" aria-label="Spacing scale">
+        <div><span>4</span><i class="space-1"></i></div>
+        <div><span>8</span><i class="space-2"></i></div>
+        <div><span>16</span><i class="space-4"></i></div>
+        <div><span>24</span><i class="space-6"></i></div>
+      </div>
+    }
+    @case ("state") {
+      <div class="state-demo">
+        <button
+          type="button"
+          [attr.aria-pressed]="pressed()"
+          (click)="togglePressed()"
+        >
+          {{ pressed() ? "Selected" : "Select item" }}
+        </button>
+        <button type="button" disabled>Unavailable</button>
+        <p aria-live="polite">
+          {{ pressed() ? "Selection confirmed." : "Ready for selection." }}
+        </p>
+      </div>
+    }
+    @case ("surfaces") {
+      <div class="surface-demo" aria-label="Container appearances">
+        <div class="surface filled">Filled</div>
+        <div class="surface elevated">Elevated</div>
+        <div class="surface outlined">Outlined</div>
+      </div>
+    }
+    @case ("typography") {
+      <div class="type-demo">
+        <p class="display">Build with intention.</p>
+        <p class="headline">Clear hierarchy makes interfaces faster to read.</p>
+        <p class="body">
+          System typography provides predictable rhythm while consumers retain
+          control through semantic tokens.
+        </p>
+        <p class="label">LABEL / MEDIUM</p>
+      </div>
+    }
+  }
+</section>

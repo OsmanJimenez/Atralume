@@ -1,8 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Shape" />
-# Shape Reference radii map to semantic shapes from none through full. The
-Button resolves its component radius through `--atr-sys-shape-full`, so
-consumers can customize either semantic or component scope.
+
+# Shape
+
+Shape signals purpose. Use sharp geometry for structural edges, rounded corners
+for containers, and full pills only for compact controls such as chips or small
+actions—not for every block on the page.
+
+<Canvas of={Preview.Shape} />
+
+Components resolve their radius through semantic shape tokens, so a scoped mode
+or component override remains predictable.
+
 <Canvas of={Tokens.Button} />

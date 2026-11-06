@@ -1,9 +1,18 @@
 import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as Tokens from "./foundations.stories";
+import * as Preview from "./foundation-previews.stories";
 
 <Meta title="Foundations/Glass" />
-# Glass Glass centralizes translucent background, opaque fallback, border, blur,
-saturation, shadow, highlight and noise opacity. It should sit above visually
-varied content. Unsupported backdrop filtering, reduced transparency and forced
-colors all retain an opaque readable fallback.
+
+# Glass
+
+Glass belongs to a floating container over meaningful visual depth, not a flat
+page or a generic button. Its fallback remains opaque and readable when
+backdrop filtering is unavailable or transparency is reduced.
+
+<Canvas of={Preview.Glass} />
+
+Use it for Card, Dialog, Bottom Sheet, or Popover where the underlying context
+adds information without compromising contrast.
+
 <Canvas of={Tokens.System} />
