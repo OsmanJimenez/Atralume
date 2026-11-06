@@ -47,19 +47,6 @@ const preview: Preview = {
         ],
       },
     },
-    surface: {
-      description: "Surface mode (data-atr-surface)",
-      defaultValue: "standard",
-      toolbar: {
-        icon: "contrast",
-        items: [
-          { value: "standard", title: "Standard" },
-          { value: "elevated", title: "Elevated" },
-          { value: "glass", title: "Glass" },
-          { value: "transparent", title: "Transparent" },
-        ],
-      },
-    },
     shape: {
       description: "Shape / curve (data-atr-shape)",
       defaultValue: "rounded",
@@ -79,7 +66,17 @@ const preview: Preview = {
         icon: "hearthollow",
         items: [
           { value: "default", title: "Default brand" },
-          { value: "green", title: "Green brand" },
+          { value: "blue", title: "Blue" },
+          { value: "indigo", title: "Indigo" },
+          { value: "purple", title: "Purple" },
+          { value: "pink", title: "Pink" },
+          { value: "red", title: "Red" },
+          { value: "orange", title: "Orange" },
+          { value: "yellow", title: "Yellow" },
+          { value: "green", title: "Green" },
+          { value: "mint", title: "Mint" },
+          { value: "teal", title: "Teal" },
+          { value: "cyan", title: "Cyan" },
         ],
       },
     },
@@ -102,9 +99,6 @@ const preview: Preview = {
       const root = document.documentElement;
       const theme = String(context.globals["theme"] ?? "light");
       root.dataset["atrTheme"] = theme;
-      root.dataset["atrSurface"] = String(
-        context.globals["surface"] ?? "standard",
-      );
       root.dataset["atrShape"] = String(context.globals["shape"] ?? "rounded");
       const brand = String(context.globals["brand"] ?? "default");
       if (brand === "default") {

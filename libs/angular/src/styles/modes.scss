@@ -32,35 +32,142 @@
   --atr-sys-shape-full: var(--atr-ref-radius-full);
 }
 
-/* --- Brand accent (example: green) -------------------------------------- */
+/* --- Brand accents --------------------------------------------------------
+ *
+ * Every accent is a compact MD3 tonal ramp, tuned from the familiar Apple
+ * system-color families. The selected family becomes the semantic primary;
+ * component APIs remain unchanged.
+ */
 
-[data-atr-brand="green"] {
-  --atr-sys-color-primary: var(--atr-ref-color-success-40);
-  --atr-sys-color-on-primary: var(--atr-ref-color-success-100);
-  --atr-sys-color-primary-container: var(--atr-ref-color-success-90);
-  --atr-sys-color-on-primary-container: var(--atr-ref-color-success-10);
-  --atr-sys-color-focus: var(--atr-ref-color-success-40);
-  --atr-sys-color-inverse-primary: var(--atr-ref-color-success-80);
+/* Two attribute selectors deliberately outrank the single theme attribute.
+   A brand scope must replace every semantic primary role, including the
+   container roles consumed by tabs, selected chips, and selection controls. */
+[data-atr-brand][data-atr-brand] {
+  --atr-sys-color-primary: var(--atr-brand-primary-40);
+  --atr-sys-color-on-primary: var(--atr-brand-primary-100);
+  --atr-sys-color-primary-container: var(--atr-brand-primary-90);
+  --atr-sys-color-on-primary-container: var(--atr-brand-primary-10);
+  --atr-sys-color-focus: var(--atr-brand-primary-40);
+  --atr-sys-color-inverse-primary: var(--atr-brand-primary-80);
 }
 
-[data-atr-theme="dark"][data-atr-brand="green"],
-[data-atr-brand="green"][data-atr-theme="dark"] {
-  --atr-sys-color-primary: var(--atr-ref-color-success-80);
-  --atr-sys-color-on-primary: var(--atr-ref-color-success-20);
-  --atr-sys-color-primary-container: var(--atr-ref-color-success-40);
-  --atr-sys-color-on-primary-container: var(--atr-ref-color-success-90);
-  --atr-sys-color-focus: var(--atr-ref-color-success-80);
-  --atr-sys-color-inverse-primary: var(--atr-ref-color-success-40);
+[data-atr-brand="blue"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-blue-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-blue-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-blue-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-blue-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-blue-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-blue-100);
+}
+
+[data-atr-brand="indigo"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-indigo-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-indigo-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-indigo-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-indigo-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-indigo-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-indigo-100);
+}
+
+[data-atr-brand="purple"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-purple-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-purple-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-purple-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-purple-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-purple-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-purple-100);
+}
+
+[data-atr-brand="pink"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-pink-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-pink-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-pink-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-pink-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-pink-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-pink-100);
+}
+
+[data-atr-brand="red"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-red-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-red-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-red-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-red-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-red-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-red-100);
+}
+
+[data-atr-brand="orange"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-orange-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-orange-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-orange-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-orange-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-orange-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-orange-100);
+}
+
+[data-atr-brand="yellow"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-yellow-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-yellow-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-yellow-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-yellow-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-yellow-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-yellow-100);
+}
+
+[data-atr-brand="green"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-green-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-green-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-green-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-green-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-green-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-green-100);
+}
+
+[data-atr-brand="mint"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-mint-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-mint-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-mint-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-mint-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-mint-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-mint-100);
+}
+
+[data-atr-brand="teal"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-teal-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-teal-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-teal-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-teal-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-teal-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-teal-100);
+}
+
+[data-atr-brand="cyan"] {
+  --atr-brand-primary-10: var(--atr-ref-color-brand-cyan-10);
+  --atr-brand-primary-20: var(--atr-ref-color-brand-cyan-20);
+  --atr-brand-primary-40: var(--atr-ref-color-brand-cyan-40);
+  --atr-brand-primary-80: var(--atr-ref-color-brand-cyan-80);
+  --atr-brand-primary-90: var(--atr-ref-color-brand-cyan-90);
+  --atr-brand-primary-100: var(--atr-ref-color-brand-cyan-100);
+}
+
+[data-atr-theme="dark"][data-atr-brand][data-atr-brand],
+[data-atr-brand][data-atr-theme="dark"][data-atr-brand] {
+  --atr-sys-color-primary: var(--atr-brand-primary-80);
+  --atr-sys-color-on-primary: var(--atr-brand-primary-20);
+  --atr-sys-color-primary-container: var(--atr-brand-primary-40);
+  --atr-sys-color-on-primary-container: var(--atr-brand-primary-90);
+  --atr-sys-color-focus: var(--atr-brand-primary-80);
+  --atr-sys-color-inverse-primary: var(--atr-brand-primary-40);
 }
 
 @media (prefers-color-scheme: dark) {
-  [data-atr-theme="system"][data-atr-brand="green"],
-  [data-atr-brand="green"][data-atr-theme="system"] {
-    --atr-sys-color-primary: var(--atr-ref-color-success-80);
-    --atr-sys-color-on-primary: var(--atr-ref-color-success-20);
-    --atr-sys-color-primary-container: var(--atr-ref-color-success-40);
-    --atr-sys-color-on-primary-container: var(--atr-ref-color-success-90);
-    --atr-sys-color-focus: var(--atr-ref-color-success-80);
-    --atr-sys-color-inverse-primary: var(--atr-ref-color-success-40);
+  [data-atr-theme="system"][data-atr-brand][data-atr-brand],
+  [data-atr-brand][data-atr-theme="system"][data-atr-brand] {
+    --atr-sys-color-primary: var(--atr-brand-primary-80);
+    --atr-sys-color-on-primary: var(--atr-brand-primary-20);
+    --atr-sys-color-primary-container: var(--atr-brand-primary-40);
+    --atr-sys-color-on-primary-container: var(--atr-brand-primary-90);
+    --atr-sys-color-focus: var(--atr-brand-primary-80);
+    --atr-sys-color-inverse-primary: var(--atr-brand-primary-40);
   }
 }

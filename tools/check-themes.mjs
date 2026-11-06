@@ -75,33 +75,88 @@ async function glassComputed(media = {}) {
   return result;
 }
 
+function contrast(colorA, colorB) {
+  const luminance = (color) => {
+    const channels = color.match(/\d+(?:\.\d+)?/g)?.slice(0, 3);
+    if (!channels) throw new Error(`Cannot parse computed color: ${color}`);
+    const [red, green, blue] = channels.map((channel) => {
+      const value = Number(channel) / 255;
+      return value <= 0.04045
+        ? value / 12.92
+        : ((value + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+  };
+  const [first, second] = [luminance(colorA), luminance(colorB)].sort(
+    (left, right) => right - left,
+  );
+  return (first + 0.05) / (second + 0.05);
+}
+
+async function brandComputed() {
+  const page = await browser.newPage();
+  await page.goto(
+    `http://127.0.0.1:${port}/Atralume/iframe.html?id=atoms-button--playground&viewMode=story`,
+  );
+  const button = page.locator("button.atr-button");
+  await button.waitFor();
+  await button.evaluate((element) => {
+    element.style.transition = "none";
+  });
+  const results = {};
+  for (const brand of [
+    "blue",
+    "indigo",
+    "purple",
+    "pink",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "mint",
+    "teal",
+    "cyan",
+  ]) {
+    await page.evaluate((value) => {
+      document.documentElement.dataset["atrBrand"] = value;
+    }, brand);
+    results[brand] = await button.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { background: style.backgroundColor, color: style.color };
+    });
+  }
+  await page.close();
+  return results;
+}
+
 try {
-  const light = await computed("atoms-button--themes", {
-    colorScheme: "light",
-  });
-  const dark = await computed(
-    "atoms-button--themes",
-    { colorScheme: "dark" },
-    1,
-  );
-  const systemLight = await computed(
-    "atoms-button--themes",
-    { colorScheme: "light" },
-    2,
-  );
-  const systemDark = await computed(
-    "atoms-button--themes",
-    { colorScheme: "dark" },
-    2,
-  );
-  const overridden = await computed("atoms-button--consumer-override");
-  const nestedLight = await computed("atoms-button--nested-themes", {}, 0);
-  const nestedDark = await computed("atoms-button--nested-themes", {}, 1);
-  const reduced = await computed("atoms-button--playground&args=loading:true", {
-    reducedMotion: "reduce",
-  });
-  const glass = await glassComputed();
-  const forcedGlass = await glassComputed({ forcedColors: "active" });
+  const [
+    light,
+    dark,
+    systemLight,
+    systemDark,
+    overridden,
+    nestedLight,
+    nestedDark,
+    reduced,
+    glass,
+    forcedGlass,
+    brands,
+  ] = await Promise.all([
+    computed("atoms-button--themes", { colorScheme: "light" }),
+    computed("atoms-button--themes", { colorScheme: "dark" }, 1),
+    computed("atoms-button--themes", { colorScheme: "light" }, 2),
+    computed("atoms-button--themes", { colorScheme: "dark" }, 2),
+    computed("atoms-button--consumer-override"),
+    computed("atoms-button--nested-themes", {}, 0),
+    computed("atoms-button--nested-themes", {}, 1),
+    computed("atoms-button--playground&args=loading:true", {
+      reducedMotion: "reduce",
+    }),
+    glassComputed(),
+    glassComputed({ forcedColors: "active" }),
+    brandComputed(),
+  ]);
   if (light.background === dark.background)
     throw new Error("Light and dark computed button colors are identical.");
   if (systemLight.background === systemDark.background)
@@ -121,8 +176,16 @@ try {
   if (glass.border === "none") throw new Error("Glass boundary is missing.");
   if (forcedGlass.backdrop !== "none")
     throw new Error("Forced colors did not disable glass backdrop filtering.");
+  for (const [brand, colors] of Object.entries(brands)) {
+    if (contrast(colors.background, colors.color) < 4.5)
+      throw new Error(`${brand} brand does not meet 4.5:1 button contrast.`);
+  }
+  if (
+    new Set(Object.values(brands).map(({ background }) => background)).size < 11
+  )
+    throw new Error("Brand palettes do not produce distinct primary actions.");
   console.log(
-    "Theme integration passed: light, dark, system, override, shape, and reduced motion.",
+    "Theme integration passed: light, dark, system, brand palettes, override, shape, and reduced motion.",
   );
 } finally {
   await browser.close();

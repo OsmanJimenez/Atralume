@@ -72,7 +72,7 @@ export const Overview: Story = {
       notify: true,
     },
     template: `
-      <section class="atr-scope" data-atr-surface="standard" style="padding:2rem;max-width:48rem;margin:auto;display:grid;gap:1.5rem">
+      <section class="atr-scope" style="padding:2rem;max-width:48rem;margin:auto;display:grid;gap:1.5rem">
         <div>
           <p style="margin:0;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase">Atralume / Atoms</p>
           <h2 style="margin:.5rem 0 0">Shared language</h2>

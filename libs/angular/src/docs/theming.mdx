@@ -10,12 +10,11 @@ Atralume is the **brand layer over Taiga UI**. Tokens cascade Reference → Syst
 
 Use on `html` or any nested section. Storybook exposes the same controls in the toolbar.
 
-| Attribute | Values | Effect |
-| --------- | ------ | ------ |
-| `data-atr-theme` | `light` \| `dark` \| `system` | Color scheme (`system` follows `prefers-color-scheme`) |
-| `data-atr-surface` | `standard` \| `elevated` \| `glass` \| `transparent` | Surface treatment (incl. glass) |
-| `data-atr-shape` | `sharp` \| `rounded` \| `pill` | Global radius / curve |
-| `data-atr-brand` | omit / `green` | Accent palette (example: green primary) |
+| Attribute        | Values                                                                                                                    | Effect                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `data-atr-theme` | `light` \| `dark` \| `system`                                                                                             | Color scheme (`system` follows `prefers-color-scheme`) |
+| `data-atr-shape` | `sharp` \| `rounded` \| `pill`                                                                                            | Global radius / curve                                  |
+| `data-atr-brand` | omit / `blue` \| `indigo` \| `purple` \| `pink` \| `red` \| `orange` \| `yellow` \| `green` \| `mint` \| `teal` \| `cyan` | Accent tonal palette                                   |
 
 Bootstrap with `provideAtralume()` and load `@atralume/angular/styles/theme.css` once.
 
@@ -28,4 +27,4 @@ Bootstrap with `provideAtralume()` and load `@atralume/angular/styles/theme.css`
 }
 ```
 
-Preserve contrast. Prefer system tokens for semantic themes; use modes for glass, curve, and brand accent across the whole Taiga surface.
+Preserve contrast. Prefer system tokens for semantic themes; use component appearances for glass and elevation, and modes for curve and brand accent across the whole Taiga surface.
