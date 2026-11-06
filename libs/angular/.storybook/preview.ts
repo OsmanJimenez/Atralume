@@ -91,8 +91,13 @@ const preview: Preview = {
     // Dropdowns/dialogs/hints portal into TuiRoot; without it Taiga throws
     // TuiNoHostException and lists render empty. Import + wrap so the
     // Angular component (and its tui-popups host) actually mounts.
+    //
+    // Use a template wrapper, not componentWrapperDecorator(TuiRoot):
+    // Storybook's isComponent(TuiRoot) can fail on Taiga's Ivy metadata in the
+    // webpack docs build, then it calls TuiRoot(story) as a function and throws
+    // "Class constructor TuiRoot cannot be invoked without 'new'".
     moduleMetadata({ imports: [TuiRoot] }),
-    componentWrapperDecorator(TuiRoot),
+    componentWrapperDecorator((story) => `<tui-root>${story}</tui-root>`),
     (story, context) => {
       const root = document.documentElement;
       const theme = String(context.globals["theme"] ?? "light");

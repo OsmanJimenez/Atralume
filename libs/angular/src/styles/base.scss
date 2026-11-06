@@ -2,4 +2,35 @@
   background: var(--atr-sys-color-surface);
   color: var(--atr-sys-color-on-surface);
   font-family: var(--atr-ref-font-family-plain);
+  color-scheme: light dark;
+  text-rendering: optimizelegibility;
+}
+
+.atr-scope ::selection {
+  background: var(--atr-sys-color-primary-container);
+  color: var(--atr-sys-color-on-primary-container);
+}
+
+.atr-scope :focus-visible {
+  outline: var(--atr-sys-focus-ring-width) var(--atr-sys-focus-ring-style)
+    var(--atr-sys-color-focus);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .atr-scope {
+    scrollbar-color: var(--atr-sys-color-outline) transparent;
+    scrollbar-width: thin;
+  }
+
+  .atr-scope ::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .atr-scope ::-webkit-scrollbar-thumb {
+    background: var(--atr-sys-color-outline);
+    border: 0.1875rem solid var(--atr-sys-color-surface);
+    border-radius: var(--atr-sys-shape-full);
+  }
 }

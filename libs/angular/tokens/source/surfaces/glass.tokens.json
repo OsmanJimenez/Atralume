@@ -3,7 +3,7 @@
   "atr": {
     "sys": {
       "glass": {
-        "background": { "$type": "color", "$value": "#fef7ffe0" },
+        "background": { "$type": "color", "$value": "#fbfbffe0" },
         "fallback-background": {
           "$type": "color",
           "$value": "{atr.sys.color.surface-container}"
@@ -19,7 +19,7 @@
         "blur": { "$type": "dimension", "$value": "{atr.ref.blur.glass}" },
         "saturation": { "$type": "number", "$value": 1.25 },
         "shadow": { "$type": "shadow", "$value": "{atr.ref.shadow.level-2}" },
-        "highlight": { "$type": "color", "$value": "#ffffff66" },
+        "highlight": { "$type": "color", "$value": "#ffffff80" },
         "noise-opacity": {
           "$type": "number",
           "$value": "{atr.ref.opacity.noise}"

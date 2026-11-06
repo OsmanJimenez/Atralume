@@ -13,6 +13,7 @@
 }
 
 :host([data-appearance="elevated"]) {
+  background: var(--atr-sys-color-surface-container-high);
   box-shadow: var(--atr-comp-card-elevation);
 }
 

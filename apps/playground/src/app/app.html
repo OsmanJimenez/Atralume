@@ -3,18 +3,40 @@
   [attr.data-atr-theme]="theme()"
   data-atr-surface="standard"
 >
-  <header class="hero" data-atr-surface="glass">
-    <p class="eyebrow">Atralume · Design foundations</p>
-    <h1>One semantic language. Every luminous surface.</h1>
-    <p class="lede">
-      A live consumer of the public Button and generated theme contract.
-    </p>
-    <button atrButton type="button" (click)="toggleTheme()">
-      Use {{ theme() === 'light' ? 'dark' : 'light' }} theme
-    </button>
-  </header>
-  <section class="section">
-    <h2>Semantic color</h2>
+  <atr-card class="hero" appearance="glass">
+    <div class="hero-copy">
+      <p class="hero-mark" aria-label="Atralume">A / 01</p>
+      <h1>A coordinate system for every interface.</h1>
+      <p class="lede">
+        Atralume joins Taiga UI’s proven behavior with a luminous, adaptive
+        visual language for real application work.
+      </p>
+      <div class="hero-actions">
+        <button atrButton type="button" (click)="toggleTheme()">
+          Use {{ theme() === 'light' ? 'dark' : 'light' }} theme
+        </button>
+        <a atrLink href="#foundations" appearance="standalone">
+          Explore foundations
+        </a>
+      </div>
+    </div>
+    <div class="hero-atlas" aria-hidden="true">
+      <span class="hero-atlas__orb hero-atlas__orb--core"></span>
+      <span class="hero-atlas__orb hero-atlas__orb--one"></span>
+      <span class="hero-atlas__orb hero-atlas__orb--two"></span>
+      <span class="hero-atlas__star hero-atlas__star--one"></span>
+      <span class="hero-atlas__star hero-atlas__star--two"></span>
+      <span class="hero-atlas__star hero-atlas__star--three"></span>
+    </div>
+  </atr-card>
+  <section class="section system-intro" id="foundations">
+    <div>
+      <h2>One foundation. Many expressions.</h2>
+      <p>
+        Themes, surface context, shape and brand are inherited decisions—not
+        per-component exceptions.
+      </p>
+    </div>
     <div class="swatches">
       <div class="swatch primary">Primary</div>
       <div class="swatch secondary">Secondary</div>
@@ -22,28 +44,27 @@
       <div class="swatch error">Error</div>
     </div>
   </section>
-  <section class="section theme-grid">
-    <article data-atr-theme="light" data-atr-surface="elevated">
+  <section class="section theme-grid" aria-label="Theme contexts">
+    <atr-card data-atr-theme="light" appearance="elevated">
       <h2>Light</h2>
       <button atrButton type="button">Continue</button>
-    </article>
-    <article data-atr-theme="dark" data-atr-surface="elevated">
+    </atr-card>
+    <atr-card data-atr-theme="dark" appearance="elevated">
       <h2>Dark</h2>
       <button atrButton type="button">Continue</button>
-    </article>
-    <article data-atr-theme="system" data-atr-surface="elevated">
+    </atr-card>
+    <atr-card data-atr-theme="system" appearance="elevated">
       <h2>System</h2>
       <button atrButton type="button">Continue</button>
-    </article>
+    </atr-card>
   </section>
-  <section class="section glass-stage">
-    <article data-atr-surface="glass">
-      <p class="eyebrow">Glass surface</p>
+  <section class="section glass-stage" aria-label="Glass surface example">
+    <atr-card appearance="glass">
       <h2>Readable over a varied backdrop.</h2>
       <button atrButton type="button">Glass action</button>
-    </article>
+    </atr-card>
   </section>
-  <section class="section samples">
+  <section class="section samples" aria-label="Foundation samples">
     <div>
       <h2>Typography</h2>
       <p class="display">Display</p>
@@ -51,9 +72,9 @@
     </div>
     <div>
       <h2>Shape & elevation</h2>
-      <div class="shape" data-atr-surface="elevated">
+      <atr-card class="shape" appearance="elevated">
         Medium shape · level 2
-      </div>
+      </atr-card>
     </div>
     <div>
       <h2>Local override</h2>

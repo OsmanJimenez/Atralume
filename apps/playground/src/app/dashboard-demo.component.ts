@@ -65,7 +65,8 @@ import {
   AtralumeSpeedDial,
   AtralumeSpeedDialAction,
 } from "@atralume/angular/speed-dial";
-import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
+import { AtralumeFormField } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@taiga-ui/core";
 import { AtralumeInput } from "@atralume/angular/input";
 import { FormsDemo } from "./forms-demo.component";
 @Component({

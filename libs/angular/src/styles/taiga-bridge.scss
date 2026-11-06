@@ -1,4 +1,5 @@
 /* stylelint-disable custom-property-pattern, scss/operator-no-newline-after -- Maps public Taiga variables; font shorthands use CSS's line-height slash. */
+
 /*
  * Include [tuiTheme] so Taiga's auto body[tuiTheme=dark|light] (from prefers-color-scheme)
  * cannot replace the bridge with hardcoded Taiga palette after data-atr-theme is set.
@@ -75,6 +76,7 @@
   --tui-border-normal: var(--atr-sys-color-outline-variant);
   --tui-border-hover: var(--atr-sys-color-outline);
   --tui-border-focus: var(--atr-sys-color-focus);
+  --tui-text-selection-color: var(--atr-sys-color-on-primary-container);
   --tui-status-negative: var(--atr-sys-color-error);
   --tui-status-negative-pale: var(--atr-sys-color-error-container);
   --tui-status-negative-pale-hover: color-mix(
@@ -124,8 +126,8 @@
   );
   --tui-service-selection-background: color-mix(
     in srgb,
-    var(--atr-sys-color-primary) 12%,
-    transparent
+    var(--atr-sys-color-primary-container) 88%,
+    var(--atr-sys-color-surface)
   );
   --tui-service-backdrop: color-mix(
     in srgb,

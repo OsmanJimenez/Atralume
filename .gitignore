@@ -60,3 +60,5 @@ Thumbs.db
 .angular
 
 __screenshots__/
+.codex/hooks.json
+.grok/hooks/impeccable.json
