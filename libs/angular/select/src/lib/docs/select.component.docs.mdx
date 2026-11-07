@@ -44,35 +44,23 @@ Do not use Menu for selecting a form value, put interactive descendants inside o
 
 ## Public TypeScript contract
 
-| Owner                  | Member              | Kind     | Type                                                            | Default                               |
-| ---------------------- | ------------------- | -------- | --------------------------------------------------------------- | ------------------------------------- |
-| `AtralumeSelect`       | `options`           | `Input`  | `readonly AtralumeOptionData<T>[]`                              | `[]`                                  |
-| `AtralumeSelect`       | `multiple`          | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeSelect`       | `opened`            | `Model`  | `boolean`                                                       | `false`                               |
-| `AtralumeSelect`       | `query`             | `Model`  | `string`                                                        | `""`                                  |
-| `AtralumeSelect`       | `placeholder`       | `Input`  | `string`                                                        | `"Choose an option"`                  |
-| `AtralumeSelect`       | `clearable`         | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeSelect`       | `loading`           | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeSelect`       | `loadError`         | `Input`  | `string \| null`                                                | `null`                                |
-| `AtralumeSelect`       | `compareWith`       | `Input`  | `(a: T, b: T) => boolean`                                       | `Object.is`                           |
-| `AtralumeSelect`       | `displayWith`       | `Input`  | `((value: T) => string) \| null`                                | `null`                                |
-| `AtralumeSelect`       | `display`           | `Input`  | `SelectionDisplay`                                              | `"text"`                              |
-| `AtralumeSelect`       | `mode`              | `Input`  | `AutocompleteStrategy`                                          | `"manual"`                            |
-| `AtralumeSelect`       | `minimumCharacters` | `Input`  | `number`                                                        | `0`                                   |
-| `AtralumeSelect`       | `filterOptions`     | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeSelect`       | `textToValue`       | `Input`  | `((text: string) => T) \| null`                                 | `null`                                |
-| `AtralumeSelect`       | `optionTemplate`    | `Input`  | `TemplateRef<     AtralumeOptionTemplateContext<T>   > \| null` | `null`                                |
-| `AtralumeSelect`       | `triggerTemplate`   | `Input`  | `TemplateRef<{     $implicit: readonly T[];   }> \| null`       | `null`                                |
-| `AtralumeSelect`       | `emptyText`         | `Input`  | `string`                                                        | `"No results"`                        |
-| `AtralumeValueControl` | `value`             | `Model`  | `T \| null`                                                     | `null`                                |
-| `AtralumeValueControl` | `label`             | `Input`  | `string`                                                        | `Required`                            |
-| `AtralumeValueControl` | `controlId`         | `Input`  | `string`                                                        | `inject(AtralumeControlIds).create()` |
-| `AtralumeValueControl` | `disabled`          | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeValueControl` | `readonly`          | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeValueControl` | `required`          | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeValueControl` | `invalid`           | `Input`  | `boolean`                                                       | `false`                               |
-| `AtralumeValueControl` | `hint`              | `Input`  | `string \| null`                                                | `null`                                |
-| `AtralumeValueControl` | `error`             | `Input`  | `string \| null`                                                | `null`                                |
-| `AtralumeValueControl` | `touch`             | `Output` | `void`                                                          | `Event`                               |
+| Owner                  | Member        | Kind     | Type                               | Default                               |
+| ---------------------- | ------------- | -------- | ---------------------------------- | ------------------------------------- |
+| `AtralumeSelect`       | `options`     | `Input`  | `readonly AtralumeOptionData<T>[]` | `[]`                                  |
+| `AtralumeSelect`       | `placeholder` | `Input`  | `string`                           | `"Choose an option"`                  |
+| `AtralumeSelect`       | `clearable`   | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeSelect`       | `emptyText`   | `Input`  | `string`                           | `"No results"`                        |
+| `AtralumeSelect`       | `compareWith` | `Input`  | `(a: T, b: T) => boolean`          | `Object.is`                           |
+| `AtralumeSelect`       | `displayWith` | `Input`  | `((value: T) => string) \| null`   | `null`                                |
+| `AtralumeValueControl` | `value`       | `Model`  | `T \| null`                        | `null`                                |
+| `AtralumeValueControl` | `label`       | `Input`  | `string`                           | `Required`                            |
+| `AtralumeValueControl` | `controlId`   | `Input`  | `string`                           | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled`    | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `readonly`    | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `required`    | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `invalid`     | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `hint`        | `Input`  | `string \| null`                   | `null`                                |
+| `AtralumeValueControl` | `error`       | `Input`  | `string \| null`                   | `null`                                |
+| `AtralumeValueControl` | `touch`       | `Output` | `void`                             | `Event`                               |
 
 {/* public-api:end */}

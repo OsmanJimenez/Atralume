@@ -9,16 +9,26 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  args: { pageCount: 50, page: 3, loading: false },
+  args: {
+    label: "Pagination",
+    pageCount: 50,
+    page: 3,
+    siblingCount: 1,
+    loading: false,
+    disabled: false,
+  },
   argTypes: {
+    label: { control: "text" },
     pageCount: { control: "number" },
     page: { control: "number" },
+    siblingCount: { control: "number" },
     loading: { control: "boolean" },
+    disabled: { control: "boolean" },
   },
   render: (args) => ({
     props: args,
     template:
-      '<atr-pagination [pageCount]="pageCount" [(page)]="page" [loading]="loading" />',
+      '<atr-pagination [label]="label" [pageCount]="pageCount" [(page)]="page" [siblingCount]="siblingCount" [loading]="loading" [disabled]="disabled" />',
   }),
 };
 export const Keyboard: Story = {

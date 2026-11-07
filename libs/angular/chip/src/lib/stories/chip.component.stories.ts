@@ -9,9 +9,22 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    selection: "single",
+    orientation: "horizontal",
+    disabled: false,
+    removable: true,
+  },
+  argTypes: {
+    selection: { control: "select", options: ["single", "multiple"] },
+    orientation: { control: "select", options: ["horizontal", "vertical"] },
+    disabled: { control: "boolean" },
+    removable: { control: "boolean" },
+  },
+  render: (args) => ({
+    props: args,
     template:
-      '<atr-chip-set label="Technologies" selection="single"><atr-chip kind="filter" value="angular" label="Angular" /><atr-chip kind="filter" value="css" label="CSS" /><atr-chip kind="input" value="token" label="Tokens" removable /></atr-chip-set>',
+      '<atr-chip-set label="Technologies" [selection]="selection" [orientation]="orientation" [disabled]="disabled"><atr-chip kind="filter" value="angular" label="Angular" /><atr-chip kind="filter" value="css" label="CSS" /><atr-chip kind="input" value="token" label="Tokens" [removable]="removable" /></atr-chip-set>',
   }),
 };
 export const Keyboard: Story = {

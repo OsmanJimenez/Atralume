@@ -94,3 +94,37 @@
     outline: var(--atr-sys-focus-ring-width) solid Highlight;
   }
 }
+
+/* Accordion: brand chrome over Taiga tui-accordion / atr-accordion-item. */
+.atr-accordion,
+tui-accordion.atr-accordion {
+  display: grid;
+  gap: var(--atr-comp-accordion-gap);
+  padding: var(--atr-comp-accordion-padding);
+  border: var(--atr-comp-accordion-border-width) solid
+    var(--atr-comp-accordion-border-color);
+  border-radius: var(--atr-comp-accordion-shape);
+  background: var(--atr-comp-accordion-container-color);
+  color: var(--atr-comp-accordion-label-color);
+  font-family: var(--atr-comp-accordion-font-family);
+  box-shadow: var(--atr-comp-accordion-elevation);
+}
+
+.atr-accordion-item > button[tuiAccordion],
+.atr-accordion-header {
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: var(--atr-comp-accordion-padding);
+  color: inherit;
+  font: inherit;
+}
+
+.atr-accordion-item > tui-expand,
+.atr-accordion-panel {
+  padding: var(--atr-comp-accordion-padding);
+  color: inherit;
+}
+
+.atr-accordion-item > button[tuiAccordion]:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
+  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+}

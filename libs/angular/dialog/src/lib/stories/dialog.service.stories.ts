@@ -11,5 +11,10 @@ type Story = StoryObj;
 
 /** Opens via the demo button; Taiga dialog portals outside the canvas. */
 export const Playground: Story = {
-  render: () => ({ template: '<atr-overlay-demo family="dialog" />' }),
+  args: { family: "dialog" },
+  argTypes: { family: { control: false } },
+  render: (args) => ({
+    props: args,
+    template: '<atr-overlay-demo [family]="family" />',
+  }),
 };

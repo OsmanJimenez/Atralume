@@ -57,6 +57,7 @@ export interface AtralumeBottomSheetConfig<D> {
   viewContainerRef?: ViewContainerRef;
   contextClasses?: readonly string[];
   closeOnNavigation?: boolean;
+  /** Retained for API compatibility; Taiga dialogs are modal. */
   mode?: "modal" | "standard";
 }
 ```

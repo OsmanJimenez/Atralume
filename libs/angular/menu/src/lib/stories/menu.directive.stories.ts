@@ -9,5 +9,10 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({ template: '<atr-overlay-demo family="menu" />' })
+  args: { family: "menu" },
+  argTypes: { family: { control: false } },
+  render: (args) => ({
+    props: args,
+    template: '<atr-overlay-demo [family]="family" />',
+  }),
 };

@@ -44,59 +44,32 @@ Do not use Menu for selecting a form value, put interactive descendants inside o
 
 ## Public TypeScript contract
 
-| Owner                     | Member              | Kind     | Type                                                            | Default                                |
-| ------------------------- | ------------------- | -------- | --------------------------------------------------------------- | -------------------------------------- |
-| `AtralumeCombobox`        | `options`           | `Input`  | `readonly AtralumeOptionData<T>[]`                              | `[]`                                   |
-| `AtralumeCombobox`        | `multiple`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeCombobox`        | `editable`          | `Input`  | `boolean`                                                       | `true`                                 |
-| `AtralumeCombobox`        | `opened`            | `Model`  | `boolean`                                                       | `false`                                |
-| `AtralumeCombobox`        | `query`             | `Model`  | `string`                                                        | `""`                                   |
-| `AtralumeCombobox`        | `placeholder`       | `Input`  | `string`                                                        | `"Choose an option"`                   |
-| `AtralumeCombobox`        | `clearable`         | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeCombobox`        | `loading`           | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeCombobox`        | `loadError`         | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeCombobox`        | `minimumCharacters` | `Input`  | `number`                                                        | `0`                                    |
-| `AtralumeCombobox`        | `filterOptions`     | `Input`  | `boolean`                                                       | `true`                                 |
-| `AtralumeCombobox`        | `autocomplete`      | `Input`  | `AutocompleteStrategy`                                          | `"manual"`                             |
-| `AtralumeCombobox`        | `textToValue`       | `Input`  | `((text: string) => T) \| null`                                 | `null`                                 |
-| `AtralumeCombobox`        | `compareWith`       | `Input`  | `(a: T, b: T) => boolean`                                       | `Object.is`                            |
-| `AtralumeCombobox`        | `displayWith`       | `Input`  | `((value: T) => string) \| null`                                | `null`                                 |
-| `AtralumeCombobox`        | `display`           | `Input`  | `SelectionDisplay`                                              | `"text"`                               |
-| `AtralumeCombobox`        | `inline`            | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeCombobox`        | `optionTemplate`    | `Input`  | `TemplateRef<     AtralumeOptionTemplateContext<T>   > \| null` | `null`                                 |
-| `AtralumeCombobox`        | `triggerTemplate`   | `Input`  | `TemplateRef<{     $implicit: readonly T[];   }> \| null`       | `null`                                 |
-| `AtralumeCombobox`        | `emptyText`         | `Input`  | `string`                                                        | `"No results"`                         |
-| `AtralumeCombobox`        | `loadingText`       | `Input`  | `string`                                                        | `"Loading options"`                    |
-| `AtralumeComboboxInput`   | `opened`            | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeComboboxInput`   | `popupId`           | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeComboboxInput`   | `activeId`          | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeComboboxInput`   | `popupType`         | `Input`  | `ComboboxPopupType`                                             | `"listbox"`                            |
-| `AtralumeComboboxInput`   | `autocomplete`      | `Input`  | `"none" \| "list" \| "both" \| "inline"`                        | `"list"`                               |
-| `AtralumeComboboxTrigger` | `controlId`         | `Input`  | `string`                                                        | `inject(ɵAtralumeControlIds).create()` |
-| `AtralumeComboboxTrigger` | `popupId`           | `Input`  | `string`                                                        | `Required`                             |
-| `AtralumeComboboxTrigger` | `opened`            | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeComboboxTrigger` | `popupType`         | `Input`  | `ComboboxPopupType`                                             | `"listbox"`                            |
-| `AtralumeComboboxTrigger` | `activeId`          | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeComboboxTrigger` | `disabled`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeComboboxTrigger` | `readonly`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeComboboxTrigger` | `invalid`           | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeValueControl`    | `value`             | `Model`  | `T \| null`                                                     | `null`                                 |
-| `AtralumeValueControl`    | `label`             | `Input`  | `string`                                                        | `Required`                             |
-| `AtralumeValueControl`    | `controlId`         | `Input`  | `string`                                                        | `inject(AtralumeControlIds).create()`  |
-| `AtralumeValueControl`    | `disabled`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeValueControl`    | `readonly`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeValueControl`    | `required`          | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeValueControl`    | `invalid`           | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeValueControl`    | `hint`              | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeValueControl`    | `error`             | `Input`  | `string \| null`                                                | `null`                                 |
-| `AtralumeValueControl`    | `touch`             | `Output` | `void`                                                          | `Event`                                |
+| Owner                  | Member          | Kind     | Type                               | Default                               |
+| ---------------------- | --------------- | -------- | ---------------------------------- | ------------------------------------- |
+| `AtralumeCombobox`     | `options`       | `Input`  | `readonly AtralumeOptionData<T>[]` | `[]`                                  |
+| `AtralumeCombobox`     | `query`         | `Model`  | `string`                           | `""`                                  |
+| `AtralumeCombobox`     | `placeholder`   | `Input`  | `string`                           | `"Choose an option"`                  |
+| `AtralumeCombobox`     | `clearable`     | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeCombobox`     | `emptyText`     | `Input`  | `string`                           | `"No results"`                        |
+| `AtralumeCombobox`     | `strict`        | `Input`  | `boolean`                          | `true`                                |
+| `AtralumeCombobox`     | `filterOptions` | `Input`  | `boolean`                          | `true`                                |
+| `AtralumeCombobox`     | `compareWith`   | `Input`  | `(a: T, b: T) => boolean`          | `Object.is`                           |
+| `AtralumeCombobox`     | `displayWith`   | `Input`  | `((value: T) => string) \| null`   | `null`                                |
+| `AtralumeValueControl` | `value`         | `Model`  | `T \| null`                        | `null`                                |
+| `AtralumeValueControl` | `label`         | `Input`  | `string`                           | `Required`                            |
+| `AtralumeValueControl` | `controlId`     | `Input`  | `string`                           | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled`      | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `readonly`      | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `required`      | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `invalid`       | `Input`  | `boolean`                          | `false`                               |
+| `AtralumeValueControl` | `hint`          | `Input`  | `string \| null`                   | `null`                                |
+| `AtralumeValueControl` | `error`         | `Input`  | `string \| null`                   | `null`                                |
+| `AtralumeValueControl` | `touch`         | `Output` | `void`                             | `Event`                               |
 
 ```ts
 export type AutocompleteStrategy = "manual" | "automatic";
 
 export type SelectionDisplay = "text" | "count" | "chips";
-
-export type ComboboxPopupType = "listbox" | "grid" | "dialog" | "tree";
 ```
 
 {/* public-api:end */}

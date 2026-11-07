@@ -40,27 +40,16 @@ Do not use Menu for selecting a form value, put interactive descendants inside o
 
 ## Public TypeScript contract
 
-| Owner                 | Member                  | Kind     | Type                                                            | Default                                |
-| --------------------- | ----------------------- | -------- | --------------------------------------------------------------- | -------------------------------------- |
-| `AtralumeListbox`     | `label`                 | `Input`  | `string`                                                        | `Required`                             |
-| `AtralumeListbox`     | `options`               | `Input`  | `readonly AtralumeOptionData<T>[]`                              | `[]`                                   |
-| `AtralumeListbox`     | `value`                 | `Model`  | `readonly T[]`                                                  | `[]`                                   |
-| `AtralumeListbox`     | `selectionMode`         | `Input`  | `SelectionMode`                                                 | `"single"`                             |
-| `AtralumeListbox`     | `focusMode`             | `Input`  | `FocusMode`                                                     | `"roving"`                             |
-| `AtralumeListbox`     | `tabIndex`              | `Input`  | `number \| null`                                                | `null`                                 |
-| `AtralumeListbox`     | `disabled`              | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeListbox`     | `readonly`              | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeListbox`     | `orientation`           | `Input`  | `"vertical" \| "horizontal"`                                    | `"vertical"`                           |
-| `AtralumeListbox`     | `selectionFollowsFocus` | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeListbox`     | `compareWith`           | `Input`  | `(a: T, b: T) => boolean`                                       | `Object.is`                            |
-| `AtralumeListbox`     | `optionTemplate`        | `Input`  | `TemplateRef<     AtralumeOptionTemplateContext<T>   > \| null` | `null`                                 |
-| `AtralumeListbox`     | `activeIdChange`        | `Output` | `string \| null`                                                | `Event`                                |
-| `AtralumeListbox`     | `chosen`                | `Output` | `T`                                                             | `Event`                                |
-| `AtralumeOption`      | `value`                 | `Input`  | `T`                                                             | `Required`                             |
-| `AtralumeOption`      | `label`                 | `Input`  | `string`                                                        | `Required`                             |
-| `AtralumeOption`      | `id`                    | `Input`  | `string`                                                        | `inject(ɵAtralumeControlIds).create()` |
-| `AtralumeOption`      | `disabled`              | `Input`  | `boolean`                                                       | `false`                                |
-| `AtralumeOptionGroup` | `label`                 | `Input`  | `string`                                                        | `Required`                             |
+| Owner                 | Member          | Kind     | Type                               | Default        |
+| --------------------- | --------------- | -------- | ---------------------------------- | -------------- |
+| `AtralumeListbox`     | `label`         | `Input`  | `string`                           | `Required`     |
+| `AtralumeListbox`     | `options`       | `Input`  | `readonly AtralumeOptionData<T>[]` | `[]`           |
+| `AtralumeListbox`     | `value`         | `Model`  | `readonly T[]`                     | `[]`           |
+| `AtralumeListbox`     | `selectionMode` | `Input`  | `SelectionMode`                    | `"single"`     |
+| `AtralumeListbox`     | `disabled`      | `Input`  | `boolean`                          | `false`        |
+| `AtralumeListbox`     | `emptyText`     | `Input`  | `string`                           | `"No results"` |
+| `AtralumeListbox`     | `chosen`        | `Output` | `T`                                | `Event`        |
+| `AtralumeOptionGroup` | `label`         | `Input`  | `string`                           | `Required`     |
 
 ```ts
 export type SelectionMode = "single" | "multiple";

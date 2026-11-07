@@ -53,31 +53,28 @@ Do not confuse Calendar with Date Picker, civil days with instants, selected fil
 
 ## Public TypeScript contract
 
-| Owner                  | Member          | Kind     | Type                    | Default                               |
-| ---------------------- | --------------- | -------- | ----------------------- | ------------------------------------- |
-| `AtralumeDatePicker`   | `selectionMode` | `Input`  | `"single" \| "range"`   | `"single"`                            |
-| `AtralumeDatePicker`   | `opened`        | `Model`  | `boolean`               | `false`                               |
-| `AtralumeDatePicker`   | `visibleDate`   | `Model`  | `D \| null`             | `null`                                |
-| `AtralumeDatePicker`   | `min`           | `Input`  | `D \| null`             | `null`                                |
-| `AtralumeDatePicker`   | `max`           | `Input`  | `D \| null`             | `null`                                |
-| `AtralumeDatePicker`   | `dateFilter`    | `Input`  | `(value: D) => boolean` | `() => true`                          |
-| `AtralumeDatePicker`   | `locale`        | `Input`  | `number`                | `this.adapter.locale`                 |
-| `AtralumeDatePicker`   | `readonlyInput` | `Input`  | `boolean`               | `false`                               |
-| `AtralumeDatePicker`   | `clearable`     | `Input`  | `boolean`               | `false`                               |
-| `AtralumeDatePicker`   | `presentation`  | `Input`  | `"popover" \| "dialog"` | `"popover"`                           |
-| `AtralumeValueControl` | `value`         | `Model`  | `T \| null`             | `null`                                |
-| `AtralumeValueControl` | `label`         | `Input`  | `string`                | `Required`                            |
-| `AtralumeValueControl` | `controlId`     | `Input`  | `string`                | `inject(AtralumeControlIds).create()` |
-| `AtralumeValueControl` | `disabled`      | `Input`  | `boolean`               | `false`                               |
-| `AtralumeValueControl` | `readonly`      | `Input`  | `boolean`               | `false`                               |
-| `AtralumeValueControl` | `required`      | `Input`  | `boolean`               | `false`                               |
-| `AtralumeValueControl` | `invalid`       | `Input`  | `boolean`               | `false`                               |
-| `AtralumeValueControl` | `hint`          | `Input`  | `string \| null`        | `null`                                |
-| `AtralumeValueControl` | `error`         | `Input`  | `string \| null`        | `null`                                |
-| `AtralumeValueControl` | `touch`         | `Output` | `void`                  | `Event`                               |
+| Owner                  | Member          | Kind     | Type                       | Default                               |
+| ---------------------- | --------------- | -------- | -------------------------- | ------------------------------------- |
+| `AtralumeDatePicker`   | `selectionMode` | `Input`  | `"single" \| "range"`      | `"single"`                            |
+| `AtralumeDatePicker`   | `min`           | `Input`  | `Date \| null`             | `null`                                |
+| `AtralumeDatePicker`   | `max`           | `Input`  | `Date \| null`             | `null`                                |
+| `AtralumeDatePicker`   | `dateFilter`    | `Input`  | `(value: Date) => boolean` | `() => true`                          |
+| `AtralumeDatePicker`   | `clearable`     | `Input`  | `boolean`                  | `false`                               |
+| `AtralumeDatePicker`   | `presentation`  | `Input`  | `"popover" \| "dialog"`    | `"popover"`                           |
+| `AtralumeDatePicker`   | `visibleDate`   | `Input`  | `Date \| null`             | `null`                                |
+| `AtralumeValueControl` | `value`         | `Model`  | `T \| null`                | `null`                                |
+| `AtralumeValueControl` | `label`         | `Input`  | `string`                   | `Required`                            |
+| `AtralumeValueControl` | `controlId`     | `Input`  | `string`                   | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled`      | `Input`  | `boolean`                  | `false`                               |
+| `AtralumeValueControl` | `readonly`      | `Input`  | `boolean`                  | `false`                               |
+| `AtralumeValueControl` | `required`      | `Input`  | `boolean`                  | `false`                               |
+| `AtralumeValueControl` | `invalid`       | `Input`  | `boolean`                  | `false`                               |
+| `AtralumeValueControl` | `hint`          | `Input`  | `string \| null`           | `null`                                |
+| `AtralumeValueControl` | `error`         | `Input`  | `string \| null`           | `null`                                |
+| `AtralumeValueControl` | `touch`         | `Output` | `void`                     | `Event`                               |
 
 ```ts
-export type AtralumeDatePickerValue<D> = D | AtralumeDateRange<D>;
+export type AtralumeDatePickerValue<D = Date> = D | AtralumeDateRange<D>;
 ```
 
 {/* public-api:end */}

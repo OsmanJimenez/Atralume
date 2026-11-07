@@ -1,0 +1,42 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/form-field.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Form Field
+
+Use Form Field to provide hint and error text around one projected Taiga
+`tui-textfield`. It keeps supporting text visually and semantically close to
+the native control while the consumer retains ownership of validation.
+
+```ts
+import { AtralumeFormField } from "@atralume/angular/form-field";
+```
+
+```html
+<atr-form-field hint="Use your work email.">
+  <tui-textfield tuiTextfieldSize="m">
+    <label tuiLabel>Email</label>
+    <input atrInput type="email" />
+  </tui-textfield>
+</atr-form-field>
+```
+
+Use `error` after the control is touched or the form is submitted. Do not use
+the visual required marker as validation; keep native `required` on the input.
+
+Signal inputs: `hint`, `error`, `appearance` (`outline` | `filled`), `density`
+(`comfortable` | `compact`), `label` (compat), `required`, `optional`,
+`optionalText`. Override chrome with `--atr-comp-form-field-*` tokens.
+
+<Canvas of={Stories.Playground} />
+<Canvas of={Stories.Filled} />
+<Canvas of={Stories.Compact} />
+
+## Accessibility
+
+Keep the projected label visible. Error text is announced politely, and the
+native control remains responsible for value, disabled, readonly, and Angular
+Forms semantics.
+
+<Canvas of={Stories.Invalid} />

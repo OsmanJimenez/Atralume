@@ -15,7 +15,7 @@ import { SignalDemo } from "./signal-demo.component";
 import { TemplateDemo } from "./template-demo.component";
 
 export default {
-  title: "Forms/Form Field",
+  title: "Forms/Examples",
   decorators: [
     moduleMetadata({
       imports: [

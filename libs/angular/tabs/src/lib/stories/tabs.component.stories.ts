@@ -18,9 +18,20 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    label: "Profile sections",
+    activation: "automatic",
+    orientation: "horizontal",
+  },
+  argTypes: {
+    label: { control: "text" },
+    activation: { control: "select", options: ["automatic", "manual"] },
+    orientation: { control: "select", options: ["horizontal", "vertical"] },
+  },
+  render: (args) => ({
+    props: args,
     template:
-      '<atr-tabs label="Profile sections"><tui-tabs atrTabList><button atrTab id="overview-tab" panel="overview-panel" type="button">Overview</button><button atrTab id="activity-tab" panel="activity-panel" type="button">Activity</button><button atrTab id="disabled-tab" panel="disabled-panel" type="button" disabled>Unavailable</button></tui-tabs><section atrTabPanel id="overview-panel" labelledBy="overview-tab">Profile overview</section><section atrTabPanel id="activity-panel" labelledBy="activity-tab">Recent activity</section><section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">Unavailable panel</section></atr-tabs>',
+      '<atr-tabs [label]="label" [activation]="activation" [orientation]="orientation"><tui-tabs atrTabList><button atrTab id="overview-tab" panel="overview-panel" type="button">Overview</button><button atrTab id="activity-tab" panel="activity-panel" type="button">Activity</button><button atrTab id="disabled-tab" panel="disabled-panel" type="button" disabled>Unavailable</button></tui-tabs><section atrTabPanel id="overview-panel" labelledBy="overview-tab">Profile overview</section><section atrTabPanel id="activity-panel" labelledBy="activity-tab">Recent activity</section><section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">Unavailable panel</section></atr-tabs>',
   }),
 };
 export const Keyboard: Story = {
@@ -41,10 +52,11 @@ export const Keyboard: Story = {
   },
 };
 export const ManualActivation: Story = {
-  render: () => ({
-    template:
-      '<atr-tabs label="Profile sections" activation="manual"><tui-tabs atrTabList><button atrTab id="overview-tab" panel="overview-panel" type="button">Overview</button><button atrTab id="activity-tab" panel="activity-panel" type="button">Activity</button><button atrTab id="disabled-tab" panel="disabled-panel" type="button" disabled>Unavailable</button></tui-tabs><section atrTabPanel id="overview-panel" labelledBy="overview-tab">Profile overview</section><section atrTabPanel id="activity-panel" labelledBy="activity-tab">Recent activity</section><section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">Unavailable panel</section></atr-tabs>',
-  }),
+  ...Playground,
+  args: {
+    ...Playground.args,
+    activation: "manual",
+  },
   play: async ({ canvasElement }) => {
     const c = within(canvasElement);
     const first = c.getByRole("tab", { name: "Overview" });

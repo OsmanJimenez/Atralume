@@ -23,16 +23,20 @@ import {
 ```
 
 ```html
-<atr-accordion
-  ><atr-accordion-item id="profile"
-    ><span atrAccordionHeader>Profile</span>
-    <p atrAccordionPanel>Profile details</p></atr-accordion-item
-  ><atr-accordion-item id="security"
-    ><span atrAccordionHeader>Security</span>
-    <p atrAccordionPanel>Security details</p></atr-accordion-item
-  ></atr-accordion
->
+<tui-accordion [closeOthers]="true" class="atr-accordion">
+  <atr-accordion-item id="profile">
+    <span atrAccordionHeader>Profile</span>
+    <p atrAccordionPanel>Profile details</p>
+  </atr-accordion-item>
+  <atr-accordion-item id="security">
+    <span atrAccordionHeader>Security</span>
+    <p atrAccordionPanel>Security details</p>
+  </atr-accordion-item>
+</tui-accordion>
 ```
+
+Prefer `tui-accordion` as the DI host so `button[tuiAccordion]` can inject
+`TuiAccordionComponent`. Keep `class="atr-accordion"` for Atralume tokens.
 
 ## API, variants and states
 
@@ -67,11 +71,12 @@ Do not use CSS-valued inputs, duplicate native events, or remove accessible name
 
 ## Public TypeScript contract
 
-| Owner                   | Member     | Kind    | Type      | Default    |
-| ----------------------- | ---------- | ------- | --------- | ---------- |
-| `AtralumeAccordion`     | `multi`    | `Input` | `boolean` | `false`    |
-| `AtralumeAccordionItem` | `id`       | `Input` | `string`  | `Required` |
-| `AtralumeAccordionItem` | `expanded` | `Model` | `boolean` | `false`    |
-| `AtralumeAccordionItem` | `disabled` | `Input` | `boolean` | `false`    |
+| Owner                   | Member     | Kind    | Type                | Default    |
+| ----------------------- | ---------- | ------- | ------------------- | ---------- |
+| `AtralumeAccordion`     | `multi`    | `Input` | `boolean`           | `false`    |
+| `AtralumeAccordion`     | `size`     | `Input` | `"s" \| "m" \| "l"` | `"m"`      |
+| `AtralumeAccordionItem` | `id`       | `Input` | `string`            | `Required` |
+| `AtralumeAccordionItem` | `expanded` | `Model` | `boolean`           | `false`    |
+| `AtralumeAccordionItem` | `disabled` | `Input` | `boolean`           | `false`    |
 
 {/* public-api:end */}

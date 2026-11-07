@@ -13,9 +13,20 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    label: "Breadcrumb",
+    size: "m",
+    itemsLimit: 4,
+  },
+  argTypes: {
+    label: { control: "text" },
+    size: { control: "select", options: ["m", "l"] },
+    itemsLimit: { control: "number" },
+  },
+  render: (args) => ({
+    props: args,
     template: `
-      <atr-breadcrumbs aria-label="Breadcrumb">
+      <atr-breadcrumbs [label]="label" [size]="size" [itemsLimit]="itemsLimit">
         <a *tuiItem href="#home">Home</a>
         <a *tuiItem href="#projects">Projects</a>
         <span *tuiItem>Atralume</span>

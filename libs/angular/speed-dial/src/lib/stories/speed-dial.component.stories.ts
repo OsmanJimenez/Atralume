@@ -11,9 +11,22 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    label: "Create",
+    opened: false,
+    disabled: false,
+    orientation: "vertical",
+  },
+  argTypes: {
+    label: { control: "text" },
+    opened: { control: "boolean" },
+    disabled: { control: "boolean" },
+    orientation: { control: "select", options: ["vertical", "horizontal"] },
+  },
+  render: (args) => ({
+    props: args,
     template:
-      '<atr-speed-dial id="create-dial" label="Create"><button atrSpeedDialAction type="button">Document</button><button atrSpeedDialAction type="button">Project</button><button atrSpeedDialAction type="button" disabled>Unavailable</button></atr-speed-dial>',
+      '<atr-speed-dial id="create-dial" [label]="label" [(opened)]="opened" [disabled]="disabled" [orientation]="orientation"><button atrSpeedDialAction type="button">Document</button><button atrSpeedDialAction type="button">Project</button><button atrSpeedDialAction type="button" disabled>Unavailable</button></atr-speed-dial>',
   }),
 };
 export const Keyboard: Story = {

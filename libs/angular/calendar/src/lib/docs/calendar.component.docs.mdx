@@ -52,22 +52,20 @@ Do not confuse Calendar with Date Picker, civil days with instants, selected fil
 
 ## Public TypeScript contract
 
-| Owner              | Member             | Kind    | Type                           | Default                |
-| ------------------ | ------------------ | ------- | ------------------------------ | ---------------------- |
-| `AtralumeCalendar` | `label`            | `Input` | `string`                       | `"Choose date"`        |
-| `AtralumeCalendar` | `locale`           | `Input` | `number`                       | `this.adapter.locale`  |
-| `AtralumeCalendar` | `value`            | `Model` | `D \| null`                    | `null`                 |
-| `AtralumeCalendar` | `rangeValue`       | `Model` | `AtralumeDateRange<D> \| null` | `null`                 |
-| `AtralumeCalendar` | `selectionMode`    | `Input` | `"single" \| "range"`          | `"single"`             |
-| `AtralumeCalendar` | `visibleDate`      | `Model` | `D \| null`                    | `null`                 |
-| `AtralumeCalendar` | `today`            | `Input` | `number`                       | `this.adapter.today()` |
-| `AtralumeCalendar` | `min`              | `Input` | `D \| null`                    | `null`                 |
-| `AtralumeCalendar` | `max`              | `Input` | `D \| null`                    | `null`                 |
-| `AtralumeCalendar` | `dateFilter`       | `Input` | `(value: D) => boolean`        | `() => true`           |
-| `AtralumeCalendar` | `firstDayOfWeek`   | `Input` | `number \| null`               | `null`                 |
-| `AtralumeCalendar` | `showAdjacentDays` | `Input` | `boolean`                      | `true`                 |
-| `AtralumeCalendar` | `disabled`         | `Input` | `boolean`                      | `false`                |
-| `AtralumeCalendar` | `readonly`         | `Input` | `boolean`                      | `false`                |
+| Owner              | Member             | Kind    | Type                              | Default         |
+| ------------------ | ------------------ | ------- | --------------------------------- | --------------- |
+| `AtralumeCalendar` | `label`            | `Input` | `string`                          | `"Choose date"` |
+| `AtralumeCalendar` | `value`            | `Model` | `Date \| null`                    | `null`          |
+| `AtralumeCalendar` | `rangeValue`       | `Model` | `AtralumeDateRange<Date> \| null` | `null`          |
+| `AtralumeCalendar` | `selectionMode`    | `Input` | `"single" \| "range"`             | `"single"`      |
+| `AtralumeCalendar` | `visibleDate`      | `Model` | `Date \| null`                    | `null`          |
+| `AtralumeCalendar` | `today`            | `Input` | `number`                          | `new Date()`    |
+| `AtralumeCalendar` | `min`              | `Input` | `Date \| null`                    | `null`          |
+| `AtralumeCalendar` | `max`              | `Input` | `Date \| null`                    | `null`          |
+| `AtralumeCalendar` | `dateFilter`       | `Input` | `(value: Date) => boolean`        | `() => true`    |
+| `AtralumeCalendar` | `showAdjacentDays` | `Input` | `boolean`                         | `true`          |
+| `AtralumeCalendar` | `disabled`         | `Input` | `boolean`                         | `false`         |
+| `AtralumeCalendar` | `readonly`         | `Input` | `boolean`                         | `false`         |
 
 ```ts
 export interface AtralumeDateRange<D> {

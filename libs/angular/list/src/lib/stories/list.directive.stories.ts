@@ -24,8 +24,15 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    density: "comfortable",
+  },
+  argTypes: {
+    density: { control: "select", options: ["comfortable", "compact"] },
+  },
+  render: (args) => ({
+    props: args,
     template:
-      '<ul atrList><li><a atrListItem href="#account"><span><span atrListHeadline>Account</span><span atrListSupporting>Manage profile</span></span><span atrListTrailing>\u2192</span></a></li><li atrListItem>Static information</li></ul>',
+      '<ul atrList [density]="density"><li><a atrListItem href="#account"><span><span atrListHeadline>Account</span><span atrListSupporting>Manage profile</span></span><span atrListTrailing>\u2192</span></a></li><li atrListItem>Static information</li></ul>',
   }),
 };

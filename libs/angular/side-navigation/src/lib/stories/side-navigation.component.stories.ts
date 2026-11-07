@@ -26,19 +26,33 @@ export default {
   ],
 } satisfies Meta;
 type Story = StoryObj;
-const shell = (mode: string) =>
-  `<button type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" label="Workspace" mode="${mode}" [(opened)]="opened"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><span aria-hidden="true">\u2302</span><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><span aria-hidden="true">\u2699</span><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation>Application content remains usable beside the aside.</atr-side-navigation-container>`;
+const shell = () =>
+  `<button type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" [label]="label" [mode]="mode" [(opened)]="opened" [collapsed]="collapsed"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><span aria-hidden="true">\u2302</span><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><span aria-hidden="true">\u2699</span><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation>Application content remains usable beside the aside.</atr-side-navigation-container>`;
 export const Playground: Story = {
-  render: () => ({
-    props: { opened: true },
-    template: shell("side"),
+  args: {
+    mode: "side",
+    opened: true,
+    collapsed: false,
+    label: "Workspace",
+  },
+  argTypes: {
+    mode: { control: "select", options: ["side", "over", "push"] },
+    opened: { control: "boolean" },
+    collapsed: { control: "boolean" },
+    label: { control: "text" },
+  },
+  render: (args) => ({
+    props: args,
+    template: shell(),
   }),
 };
 export const Keyboard: Story = {
-  render: () => ({
-    props: { opened: false },
-    template: shell("over"),
-  }),
+  ...Playground,
+  args: {
+    ...Playground.args,
+    mode: "over",
+    opened: false,
+  },
   play: async ({ canvasElement }) => {
     const c = within(canvasElement);
     const trigger = c.getByRole("button", { name: "Toggle navigation" });
@@ -53,8 +67,10 @@ export const Keyboard: Story = {
   },
 };
 export const Push: Story = {
-  render: () => ({
-    props: { opened: true },
-    template: shell("push"),
-  }),
+  ...Playground,
+  args: {
+    ...Playground.args,
+    mode: "push",
+    opened: true,
+  },
 };

@@ -46,14 +46,11 @@ Do not keep a parallel overlay engine for popovers. Do not use Menu for selectin
 
 ## Public TypeScript contract
 
-| Owner             | Member           | Kind    | Type                                      | Default    |
-| ----------------- | ---------------- | ------- | ----------------------------------------- | ---------- |
-| `AtralumePopover` | `atrPopover`     | `Input` | `PolymorpheusContent`                     | `Required` |
-| `AtralumePopover` | `opened`         | `Model` | `boolean`                                 | `false`    |
-| `AtralumePopover` | `popoverEnabled` | `Input` | `boolean`                                 | `true`     |
-| `AtralumePopover` | `panelRole`      | `Input` | `string`                                  | `"dialog"` |
-| `AtralumePopover` | `label`          | `Input` | `string \| null`                          | `null`     |
-| `AtralumePopover` | `position`       | `Input` | `PopoverPosition`                         | `"below"`  |
+| Owner             | Member      | Kind    | Type              | Default    |
+| ----------------- | ----------- | ------- | ----------------- | ---------- |
+| `AtralumePopover` | `label`     | `Input` | `string \| null`  | `null`     |
+| `AtralumePopover` | `panelRole` | `Input` | `string`          | `"dialog"` |
+| `AtralumePopover` | `position`  | `Input` | `PopoverPosition` | `"below"`  |
 
 ```ts
 export type PopoverPosition = "above" | "below" | "before" | "after";

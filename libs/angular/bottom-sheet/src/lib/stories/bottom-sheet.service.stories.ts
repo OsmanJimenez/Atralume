@@ -8,7 +8,12 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({ template: '<atr-overlay-demo family="bottom-sheet" />' }),
+  args: { family: "bottom-sheet" },
+  argTypes: { family: { control: false } },
+  render: (args) => ({
+    props: args,
+    template: '<atr-overlay-demo [family]="family" />',
+  }),
   play: async ({ canvasElement }) => {
     const c = within(canvasElement);
     const body = within(canvasElement.ownerDocument.body);

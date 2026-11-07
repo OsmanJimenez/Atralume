@@ -12,8 +12,15 @@ export default {
 } satisfies Meta;
 type Story = StoryObj;
 export const Playground: Story = {
-  render: () => ({
+  args: {
+    label: "Primary navigation",
+  },
+  argTypes: {
+    label: { control: "text" },
+  },
+  render: (args) => ({
+    props: args,
     template:
-      '<atr-navigation-bar><a atrNavigationItem href="#home" active><span aria-hidden="true">\u2302</span><span>Home</span></a><a atrNavigationItem href="#projects"><span aria-hidden="true">\u25c7</span><span>Projects</span></a><a atrNavigationItem href="#profile"><span aria-hidden="true">\u25cb</span><span>Profile</span></a></atr-navigation-bar>',
+      '<atr-navigation-bar [label]="label"><a atrNavigationItem href="#home" active><span aria-hidden="true">\u2302</span><span>Home</span></a><a atrNavigationItem href="#projects"><span aria-hidden="true">\u25c7</span><span>Projects</span></a><a atrNavigationItem href="#profile"><span aria-hidden="true">\u25cb</span><span>Profile</span></a></atr-navigation-bar>',
   }),
 };

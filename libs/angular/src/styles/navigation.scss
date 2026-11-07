@@ -76,6 +76,25 @@
   color: var(--atr-sys-color-on-surface-variant);
 }
 
+.atr-pagination {
+  color: var(--atr-comp-pagination-label-color);
+  font-family: var(--atr-comp-pagination-font-family);
+}
+
+.atr-pagination nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--atr-comp-pagination-gap);
+  padding: var(--atr-comp-pagination-padding);
+  border-radius: var(--atr-comp-pagination-shape);
+  background: var(--atr-comp-pagination-container-color);
+}
+
+.atr-pagination tui-pagination {
+  color: inherit;
+  font: inherit;
+}
+
 .atr-navigation-bar {
   display: flex;
   justify-content: space-evenly;
