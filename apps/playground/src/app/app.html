@@ -1,11 +1,10 @@
 <main class="atr-scope" [attr.data-atr-theme]="theme()">
-  <atr-card class="hero" appearance="glass">
+  <atr-card class="hero" appearance="elevated">
     <div class="hero-copy">
-      <p class="hero-mark" aria-label="Atralume">A / 01</p>
-      <h1>A coordinate system for every interface.</h1>
+      <h1>One Angular system for themes, forms and overlays</h1>
       <p class="lede">
-        Atralume joins Taiga UI’s proven behavior with a luminous, adaptive
-        visual language for real application work.
+        Atralume gives product teams a token-led layer over Taiga UI, so the
+        same interface stays coherent in every theme and surface context.
       </p>
       <div class="hero-actions">
         <button atrButton type="button" (click)="toggleTheme()">
@@ -16,13 +15,14 @@
         </a>
       </div>
     </div>
-    <div class="hero-atlas" aria-hidden="true">
-      <span class="hero-atlas__orb hero-atlas__orb--core"></span>
-      <span class="hero-atlas__orb hero-atlas__orb--one"></span>
-      <span class="hero-atlas__orb hero-atlas__orb--two"></span>
-      <span class="hero-atlas__star hero-atlas__star--one"></span>
-      <span class="hero-atlas__star hero-atlas__star--two"></span>
-      <span class="hero-atlas__star hero-atlas__star--three"></span>
+    <div class="hero-atlas" aria-label="Atralume context map">
+      <span class="hero-atlas__label hero-atlas__label--theme">Theme</span>
+      <span class="hero-atlas__label hero-atlas__label--surface">Surface</span>
+      <span class="hero-atlas__label hero-atlas__label--shape">Shape</span>
+      <span class="hero-atlas__node hero-atlas__node--core">A</span>
+      <span class="hero-atlas__node hero-atlas__node--light">Light</span>
+      <span class="hero-atlas__node hero-atlas__node--dark">Dark</span>
+      <span class="hero-atlas__node hero-atlas__node--glass">Glass</span>
     </div>
   </atr-card>
   <section class="section system-intro" id="foundations">

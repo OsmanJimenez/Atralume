@@ -1,7 +1,11 @@
 import { Component, DestroyRef, inject } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { firstValueFrom } from "rxjs";
-import { AtralumeDialog, AtralumeDialogRef, ATR_DIALOG_DATA } from "../../index";
+import {
+  AtralumeDialog,
+  AtralumeDialogRef,
+  ATR_DIALOG_DATA,
+} from "../../index";
 @Component({
   template:
     '<p>{{data}}</p><button type="button" (click)="ref.close()">Confirm</button>',

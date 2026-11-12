@@ -189,7 +189,12 @@ try {
   );
   const started = performance.now();
   await story("advanced-forms-select--large-dataset");
-  console.log('Large dataset state',await page.getByRole('option').count(),await page.getByRole('combobox').getAttribute('aria-expanded'),JSON.stringify(errors));
+  console.log(
+    "Large dataset state",
+    await page.getByRole("option").count(),
+    await page.getByRole("combobox").getAttribute("aria-expanded"),
+    JSON.stringify(errors),
+  );
   await page.getByRole("option").nth(999).waitFor();
   const elapsed = performance.now() - started;
   assert.equal(await page.getByRole("option").count(), 1000);

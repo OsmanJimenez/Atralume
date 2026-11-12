@@ -5,15 +5,10 @@ import { AtralumeButton } from "@atralume/angular/button";
 @Component({
   imports: [AtralumePopover, AtralumeButton],
   template:
-    '<button atrButton type="button" (click)="open($event)">Details</button>@if(origin();as source){<atr-popover [origin]="source" [(opened)]="opened" panelRole="dialog" label="Details" focus="first"><button atrButton type="button">Save</button></atr-popover>}',
+    '<button atrButton atrPopover type="button" [atrPopover]="panel" [(opened)]="opened" panelRole="dialog" label="Details">Details</button><ng-template #panel><button atrButton type="button">Save</button></ng-template>',
 })
 class Host {
-  readonly origin = signal<HTMLElement | null>(null);
   readonly opened = signal(false);
-  open(event: Event): void {
-    this.origin.set(event.currentTarget as HTMLElement);
-    this.opened.set(true);
-  }
 }
 describe("Popover context and lifetime", () => {
   it("inherits origin context and disposes its panel with its owner", async () => {
@@ -22,14 +17,14 @@ describe("Popover context and lifetime", () => {
     await f.whenStable();
     f.nativeElement.setAttribute("data-atr-theme", "dark");
     const button = f.nativeElement.querySelector("button") as HTMLButtonElement;
-    button.click();
+    f.componentInstance.opened.set(true);
     await f.whenStable();
-    const panel = document.querySelector(".atr-popover-panel");
+    const panel = document.querySelector('[role="dialog"]');
     expect(panel?.getAttribute("data-atr-theme")).toBe("dark");
     expect(
       document.querySelector("[role=dialog]")?.getAttribute("aria-label"),
     ).toBe("Details");
     f.destroy();
-    expect(document.querySelector(".atr-popover-panel")).toBeNull();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
   });
 });

@@ -158,16 +158,12 @@ atr-side-navigation-container:has(
  * background: var(--tui-theme-color, #000). Keep Atralume surface tokens.
  */
 aside[tuiNavigationAside] {
-  background: var(
-    --tui-theme-color,
-    var(--atr-sys-color-surface-container)
-  );
+  background: var(--atr-sys-color-surface-container);
   color: var(--atr-sys-color-on-surface);
 }
 
 aside[tuiNavigationAside]::before {
-  box-shadow: -1.5rem 0
-    var(--tui-theme-color, var(--atr-sys-color-surface-container));
+  box-shadow: -1.5rem 0 var(--atr-sys-color-surface-container);
 }
 
 /* Beat TuiButton primary/flat cascade; nav items are text on surface. */

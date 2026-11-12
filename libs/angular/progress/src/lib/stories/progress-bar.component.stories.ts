@@ -27,6 +27,5 @@ export const Playground: Story = {
     props: args,
     template:
       '<atr-progress-bar [label]="label" [value]="indeterminate ? null : value" [min]="min" [max]="max"></atr-progress-bar>',
-  })
+  }),
 };
-

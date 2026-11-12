@@ -37,9 +37,7 @@ export const Playground: Story = {
   }),
   play: async ({ args, canvasElement }) => {
     const name = args["extended"] ? args["label"] : args["label"];
-    await userEvent.click(
-      within(canvasElement).getByRole("button", { name }),
-    );
+    await userEvent.click(within(canvasElement).getByRole("button", { name }));
     await expect(args["onAction"]).toHaveBeenCalledOnce();
   },
 };

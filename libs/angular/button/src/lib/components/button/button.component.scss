@@ -47,8 +47,8 @@
 }
 
 [tuiButton].atr-button:focus-visible {
-  outline: var(--atr-comp-button-focus-ring-width) var(--atr-sys-focus-ring-style)
-    var(--atr-comp-button-focus-ring-color);
+  outline: var(--atr-comp-button-focus-ring-width)
+    var(--atr-sys-focus-ring-style) var(--atr-comp-button-focus-ring-color);
   outline-offset: var(--atr-sys-focus-ring-offset);
 }
 

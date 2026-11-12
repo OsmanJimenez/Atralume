@@ -1,9 +1,6 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { fn } from "storybook/test";
-import {
-  AtralumeFormField,
-  TuiTextfield,
-} from "@atralume/angular/form-field";
+import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
 import { AtralumeTextarea } from "../../index";
 
 export default {

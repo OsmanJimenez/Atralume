@@ -61,7 +61,9 @@ export class AtralumeTree<T> {
   }
 
   protected isSelected(node: AtralumeTreeNode<T>): boolean {
-    return this.selected().some((value) => this.compareWith()(node.value, value));
+    return this.selected().some((value) =>
+      this.compareWith()(node.value, value),
+    );
   }
 
   protected select(node: AtralumeTreeNode<T>, event: Event): void {
@@ -74,10 +76,11 @@ export class AtralumeTree<T> {
           ? []
           : [node.value]
         : exists
-          ? this.selected().filter((value) => !this.compareWith()(value, node.value))
+          ? this.selected().filter(
+              (value) => !this.compareWith()(value, node.value),
+            )
           : [...this.selected(), node.value];
     this.selected.set(selected);
     this.selectionChange.emit(selected);
   }
-
 }

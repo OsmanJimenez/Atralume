@@ -30,9 +30,9 @@ describe("Side Navigation", () => {
     f.detectChanges();
     await f.whenStable();
     const e = f.nativeElement as HTMLElement;
-    expect(e.querySelector("aside[tuiNavigationAside]")?.getAttribute("aria-label")).toBe(
-      "Workspace",
-    );
+    expect(
+      e.querySelector("aside[tuiNavigationAside]")?.getAttribute("aria-label"),
+    ).toBe("Workspace");
     expect(document.querySelector(".atr-side-navigation-overlay")).toBeNull();
     expect(e.querySelector("main[tuiNavigationMain]")?.textContent).toContain(
       "Application content",

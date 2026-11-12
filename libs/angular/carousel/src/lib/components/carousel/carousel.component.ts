@@ -56,7 +56,8 @@ export class AtralumeCarousel {
     const length = this.slides().length;
     if (!length) return;
     const current = this.activeIndex();
-    const next = current >= length - 1 ? (this.loop() ? 0 : current) : current + 1;
+    const next =
+      current >= length - 1 ? (this.loop() ? 0 : current) : current + 1;
     this.onIndex(next);
   }
 
@@ -64,7 +65,8 @@ export class AtralumeCarousel {
     const length = this.slides().length;
     if (!length) return;
     const current = this.activeIndex();
-    const next = current <= 0 ? (this.loop() ? length - 1 : current) : current - 1;
+    const next =
+      current <= 0 ? (this.loop() ? length - 1 : current) : current - 1;
     this.onIndex(next);
   }
 }

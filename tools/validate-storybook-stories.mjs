@@ -10,7 +10,9 @@ const { launchBrowser } = await import(
 
 const root = path.resolve(workspace, "dist/storybook/angular");
 if (!fs.existsSync(path.join(root, "index.json"))) {
-  throw new Error("Build Storybook first (missing dist/storybook/angular/index.json).");
+  throw new Error(
+    "Build Storybook first (missing dist/storybook/angular/index.json).",
+  );
 }
 
 const mime = {
@@ -47,7 +49,9 @@ const server = http.createServer((request, response) => {
 
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const { port } = server.address();
-const index = JSON.parse(fs.readFileSync(path.join(root, "index.json"), "utf8"));
+const index = JSON.parse(
+  fs.readFileSync(path.join(root, "index.json"), "utf8"),
+);
 const stories = Object.values(index.entries).filter((s) => s.type === "story");
 
 const browser = await launchBrowser();
@@ -67,7 +71,9 @@ try {
           message,
         )
       ) {
-        playWarnings.push(`${story.id}: ${message.split("\n")[0].slice(0, 160)}`);
+        playWarnings.push(
+          `${story.id}: ${message.split("\n")[0].slice(0, 160)}`,
+        );
         return;
       }
       pageErrors.push(message.split("\n")[0].slice(0, 200));
@@ -100,7 +106,8 @@ try {
           getComputedStyle(errorDisplay).display !== "none" &&
           errorDisplay.clientHeight > 0;
         const hasContent = !!rootEl && rootEl.childElementCount > 0;
-        const phase = window.__STORYBOOK_PREVIEW__?.currentRender?.phase ?? null;
+        const phase =
+          window.__STORYBOOK_PREVIEW__?.currentRender?.phase ?? null;
         const text = (rootEl?.innerText || "").trim().slice(0, 80);
         return { hasContent, errorVisible, phase, text };
       });
@@ -121,7 +128,9 @@ try {
         process.stdout.write(".");
       }
     } catch (error) {
-      failures.push(`${story.id}: ${error.message.split("\n")[0].slice(0, 300)}`);
+      failures.push(
+        `${story.id}: ${error.message.split("\n")[0].slice(0, 300)}`,
+      );
       process.stdout.write("x");
     } finally {
       await page.close();

@@ -47,7 +47,9 @@ export class AtralumeIcon {
   /** Optional bridge toward Taiga `TuiIcon` without breaking registry consumers. */
   readonly engine = input<AtralumeIconEngine>("registry");
   private readonly registry = inject(AtralumeIconRegistry);
-  protected readonly definition = computed(() => this.registry.get(this.name()));
+  protected readonly definition = computed(() =>
+    this.registry.get(this.name()),
+  );
   protected readonly resolvedEngine = computed<"registry" | "tui">(() => {
     const mode = this.engine();
     if (mode === "tui") return "tui";

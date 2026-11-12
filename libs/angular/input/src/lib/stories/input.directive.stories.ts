@@ -1,15 +1,14 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { expect, fn, userEvent, within } from "storybook/test";
-import {
-  AtralumeFormField,
-  TuiTextfield,
-} from "@atralume/angular/form-field";
+import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
 import { AtralumeInput } from "../../index";
 
 export default {
   title: "Atoms/Input",
   decorators: [
-    moduleMetadata({ imports: [AtralumeFormField, AtralumeInput, TuiTextfield] }),
+    moduleMetadata({
+      imports: [AtralumeFormField, AtralumeInput, TuiTextfield],
+    }),
   ],
   tags: ["!autodocs"],
 } satisfies Meta;

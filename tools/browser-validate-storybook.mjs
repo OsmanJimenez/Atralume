@@ -87,7 +87,8 @@ try {
         const text = (root?.innerText || "").replace(/\s+/g, " ").trim();
         const html = root?.innerHTML || "";
         const hasContent = !!root && root.childElementCount > 0;
-        const phase = window.__STORYBOOK_PREVIEW__?.currentRender?.phase || null;
+        const phase =
+          window.__STORYBOOK_PREVIEW__?.currentRender?.phase || null;
 
         const brokenControls = [];
         for (const el of root?.querySelectorAll(
@@ -131,8 +132,10 @@ try {
       });
 
       if (!probe.hasContent) status.issues.push("empty storybook-root");
-      if (probe.errVisible) status.issues.push("Storybook error display visible");
-      if (probe.noPreviewVisible) status.issues.push("No Preview panel visible");
+      if (probe.errVisible)
+        status.issues.push("Storybook error display visible");
+      if (probe.noPreviewVisible)
+        status.issues.push("No Preview panel visible");
       if (probe.invisibleHost)
         status.issues.push("root has nodes but no visible text/media");
       if (probe.brokenControls.length)
@@ -148,7 +151,10 @@ try {
       status.probe = probe;
 
       if (!status.ok) {
-        const shot = path.join(outDir, `${story.id.replace(/[^\w.-]+/g, "_")}.png`);
+        const shot = path.join(
+          outDir,
+          `${story.id.replace(/[^\w.-]+/g, "_")}.png`,
+        );
         await page.screenshot({ path: shot, fullPage: true });
         status.screenshot = shot;
         process.stdout.write("x");
@@ -159,7 +165,10 @@ try {
       status.issues.push(error.message.split("\n")[0].slice(0, 300));
       status.ok = false;
       try {
-        const shot = path.join(outDir, `${story.id.replace(/[^\w.-]+/g, "_")}.png`);
+        const shot = path.join(
+          outDir,
+          `${story.id.replace(/[^\w.-]+/g, "_")}.png`,
+        );
         await page.screenshot({ path: shot, fullPage: true });
         status.screenshot = shot;
       } catch {

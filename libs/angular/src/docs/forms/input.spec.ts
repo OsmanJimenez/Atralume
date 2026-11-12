@@ -8,14 +8,14 @@ import {
   DefaultValueAccessor,
 } from "@angular/forms";
 import { AtralumeInput } from "@atralume/angular/input";
-import { TuiTextfield } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@taiga-ui/core";
 
 @Component({
   imports: [AtralumeInput, TuiTextfield, ReactiveFormsModule],
   template: `
     <tui-textfield tuiTextfieldSize="m">
-      <label tuiLabel>Value</label>
-      <input atrInput type="text" [formControl]="control" />
+      <label tuiLabel for="value">Value</label>
+      <input atrInput id="value" type="text" [formControl]="control" />
     </tui-textfield>
   `,
 })

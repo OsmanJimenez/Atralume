@@ -2,10 +2,7 @@ import { Directive, input } from "@angular/core";
 import { TuiTextareaComponent } from "@taiga-ui/kit";
 
 export type AtralumeTextareaResize =
-  | "none"
-  | "vertical"
-  | "horizontal"
-  | "both";
+  "none" | "vertical" | "horizontal" | "both";
 
 /**
  * Thin adapter: `textarea[atrTextarea]` → Taiga `TuiTextareaComponent`.

@@ -11,7 +11,10 @@
 
 .atr-form-field__hint,
 .atr-form-field__optional {
-  color: var(--atr-comp-form-field-hint-color, var(--atr-sys-color-on-surface-variant));
+  color: var(
+    --atr-comp-form-field-hint-color,
+    var(--atr-sys-color-on-surface-variant)
+  );
 }
 
 .atr-form-field__error {

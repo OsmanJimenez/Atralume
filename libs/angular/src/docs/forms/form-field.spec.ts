@@ -1,7 +1,8 @@
 import { Component, signal } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
-import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
+import { AtralumeFormField } from "@atralume/angular/form-field";
 import { AtralumeInput } from "@atralume/angular/input";
+import { TuiTextfield } from "@taiga-ui/core";
 
 @Component({
   imports: [AtralumeFormField, AtralumeInput, TuiTextfield],
@@ -13,7 +14,12 @@ import { AtralumeInput } from "@atralume/angular/input";
       density="compact"
     >
       <tui-textfield [invalid]="!!error()" tuiTextfieldSize="s">
-        <label tuiLabel>Email@if (required()) { *}</label>
+        <label tuiLabel for="email"
+          >Email
+          @if (required()) {
+            *
+          }
+        </label>
         <input atrInput id="email" type="email" />
       </tui-textfield>
     </atr-form-field>

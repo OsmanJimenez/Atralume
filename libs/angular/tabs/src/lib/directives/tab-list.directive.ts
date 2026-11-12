@@ -36,7 +36,10 @@ import { TAB_CONTEXT } from "../models/tabs.types";
 export class AtralumeTabList {
   readonly underline = input(true, { transform: booleanAttribute });
   protected readonly owner = inject(TAB_CONTEXT);
-  private readonly tabs = inject(TuiTabsDirective, { self: true, optional: true });
+  private readonly tabs = inject(TuiTabsDirective, {
+    self: true,
+    optional: true,
+  });
 
   constructor() {
     effect(() => {

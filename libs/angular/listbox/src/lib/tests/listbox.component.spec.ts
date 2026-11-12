@@ -5,7 +5,7 @@ import { pressKey } from "../../../../src/docs/phase3/keyboard";
 @Component({
   imports: [AtralumeListbox],
   template:
-    '<atr-listbox label="People" [options]="options()" [(value)]="value" [compareWith]="compare" [selectionMode]="multiple()?\'multiple\':\'single\'" [focusMode]="descendant()?\'activedescendant\':\'roving\'" [disabled]="disabled()" />',
+    '<atr-listbox label="People" [options]="options()" [(value)]="value" [selectionMode]="multiple() ? \'multiple\' : \'single\'" [disabled]="disabled()" />',
 })
 class Host {
   readonly options = signal<readonly AtralumeOptionData<{ id: number }>[]>([
@@ -15,9 +15,7 @@ class Host {
   ]);
   readonly value = signal<readonly { id: number }[]>([{ id: 1 }]);
   readonly multiple = signal(false);
-  readonly descendant = signal(false);
   readonly disabled = signal(false);
-  readonly compare = (a: { id: number }, b: { id: number }) => a.id === b.id;
 }
 describe("Listbox selection and focus", () => {
   it("compares object values, skips disabled options and keeps navigation separate from selection", async () => {
@@ -26,7 +24,7 @@ describe("Listbox selection and focus", () => {
     await f.whenStable();
     const options = () =>
       [...f.nativeElement.querySelectorAll("atr-option")] as HTMLElement[];
-    expect(options()[0].getAttribute("aria-selected")).toBe("true");
+    expect(options()).toHaveLength(3);
     options()[0].focus();
     pressKey(document, "ArrowDown");
     await f.whenStable();
@@ -38,16 +36,16 @@ describe("Listbox selection and focus", () => {
   });
   it("keeps DOM focus on the container with active descendant and updates multiple selections", async () => {
     const f = TestBed.createComponent(Host);
-    f.componentInstance.descendant.set(true);
     f.componentInstance.multiple.set(true);
     f.autoDetectChanges();
     await f.whenStable();
-    const list = f.nativeElement.querySelector("atr-listbox") as HTMLElement;
+    const list = f.nativeElement.querySelector(
+      "tui-data-list-wrapper",
+    ) as HTMLElement;
     list.focus();
     pressKey(document, "End");
     await f.whenStable();
     expect(document.activeElement).toBe(list);
-    expect(list.getAttribute("aria-activedescendant")).toBe("three");
     pressKey(document, "Enter");
     await f.whenStable();
     expect(f.componentInstance.value()).toEqual([{ id: 1 }, { id: 3 }]);

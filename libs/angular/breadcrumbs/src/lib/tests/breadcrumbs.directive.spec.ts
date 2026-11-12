@@ -20,8 +20,8 @@ describe("Breadcrumbs", () => {
     await f.whenStable();
     const e = f.nativeElement as HTMLElement;
     expect(e.querySelector("tui-breadcrumbs")).toBeTruthy();
-    expect(e.querySelector(".atr-breadcrumbs")?.getAttribute("aria-label")).toBe(
-      "Breadcrumb",
-    );
+    expect(
+      e.querySelector(".atr-breadcrumbs")?.getAttribute("aria-label"),
+    ).toBe("Breadcrumb");
   });
 });

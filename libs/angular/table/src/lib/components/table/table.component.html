@@ -21,9 +21,9 @@
           </th>
         }
         @if (expandable()) {
-          <th tuiTh scope="col" [sorter]="null"
-            ><span class="atr-sr-only">Expand row</span></th
-          >
+          <th tuiTh scope="col" [sorter]="null">
+            <span class="atr-sr-only">Expand row</span>
+          </th>
         }
         @for (column of columns(); track column.id) {
           <th
@@ -47,8 +47,9 @@
                 type="button"
                 (click)="requestSort(column)"
                 [attr.aria-label]="sortLabel(column)"
-                >{{ column.header }}</button
               >
+                {{ column.header }}
+              </button>
             } @else {
               {{ column.header }}
             }
@@ -58,21 +59,17 @@
     </thead>
     <tbody tuiTbody [data]="rows()">
       @if (loading()) {
-        <tr
-          ><td tuiTd [attr.colspan]="colspan()" role="status"
-            >Loading rows…</td
-          ></tr
-        >
+        <tr>
+          <td tuiTd [attr.colspan]="colspan()" role="status">Loading rows…</td>
+        </tr>
       } @else if (error()) {
-        <tr
-          ><td tuiTd [attr.colspan]="colspan()" role="alert">{{
-            error()
-          }}</td></tr
-        >
+        <tr>
+          <td tuiTd [attr.colspan]="colspan()" role="alert">{{ error() }}</td>
+        </tr>
       } @else if (!rows().length) {
-        <tr
-          ><td tuiTd [attr.colspan]="colspan()">{{ emptyText() }}</td></tr
-        >
+        <tr>
+          <td tuiTd [attr.colspan]="colspan()">{{ emptyText() }}</td>
+        </tr>
       } @else {
         @for (row of rows(); track trackBy()(row, $index); let index = $index) {
           <tr
@@ -82,17 +79,18 @@
             [class.atr-table__row--selected]="isSelected(row, index)"
           >
             @if (selectionMode() !== "none") {
-              <td tuiTd class="atr-table__selection"
-                ><input
+              <td tuiTd class="atr-table__selection">
+                <input
                   type="checkbox"
                   [attr.aria-label]="'Select row ' + (index + 1)"
                   [checked]="isSelected(row, index)"
                   (change)="select(row, index)"
-              /></td>
+                />
+              </td>
             }
             @if (expandable()) {
-              <td tuiTd
-                ><button
+              <td tuiTd>
+                <button
                   type="button"
                   class="atr-table__expander"
                   [attr.aria-label]="
@@ -102,22 +100,21 @@
                   "
                   [attr.aria-expanded]="isExpanded(row, index)"
                   (click)="toggleExpanded(row, index)"
-                  >⌄</button
-                ></td
-              >
+                >
+                  ⌄
+                </button>
+              </td>
             }
             @for (column of columns(); track column.id) {
-              <td tuiTd [attr.data-sticky]="column.sticky ?? null">{{
-                column.cell(row)
-              }}</td>
+              <td tuiTd [attr.data-sticky]="column.sticky ?? null">
+                {{ column.cell(row) }}
+              </td>
             }
           </tr>
           @if (isExpanded(row, index)) {
-            <tr class="atr-table__detail"
-              ><td tuiTd [attr.colspan]="colspan()">{{
-                detail()(row)
-              }}</td></tr
-            >
+            <tr class="atr-table__detail">
+              <td tuiTd [attr.colspan]="colspan()">{{ detail()(row) }}</td>
+            </tr>
           }
         }
       }

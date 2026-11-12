@@ -24,7 +24,7 @@ class TemplateHost {
 }
 @Component({
   imports: [AtralumeDatePicker, FormField],
-  template: `<atr-date-picker label="Date" [formField]="fields.value" />`,
+  template: `<atr-date-picker label="Date" [formField]="$any(fields.value)" />`,
 })
 class SignalHost {
   readonly state = signal<{ value: Date | null }>({ value: null });

@@ -41,7 +41,10 @@ export class AtralumeCalendarHarness extends ComponentHarness {
     const cells = await this.cells();
     for (const cell of cells) {
       const text = (await cell.text()).trim();
-      if (text === String(day) && !(await cell.hasClass("t-cell_unavailable"))) {
+      if (
+        text === String(day) &&
+        !(await cell.hasClass("t-cell_unavailable"))
+      ) {
         await cell.click();
         return;
       }

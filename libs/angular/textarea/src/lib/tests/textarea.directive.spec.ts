@@ -1,16 +1,17 @@
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
-import { TuiTextfield } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@taiga-ui/core";
 import { AtralumeTextarea, AtralumeTextareaHarness } from "../../index";
 
 @Component({
   imports: [AtralumeTextarea, TuiTextfield],
   template: `
     <tui-textfield tuiTextfieldSize="m">
-      <label tuiLabel>Message</label>
+      <label tuiLabel for="message">Message</label>
       <textarea
         atrTextarea
+        id="message"
         rows="3"
         [readonly]="readonly"
         resize="none"

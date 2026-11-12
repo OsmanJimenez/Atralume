@@ -140,6 +140,9 @@
   --tui-shadow-medium-hover: var(--atr-sys-elevation-level-4);
   --tui-shadow-popup: var(--atr-sys-elevation-level-4);
   --tui-duration: var(--atr-sys-motion-duration-medium);
+  --tui-curve-expressive-standard: var(--atr-sys-motion-easing-standard);
+  --tui-curve-expressive-entrance: var(--atr-sys-motion-easing-decelerate);
+  --tui-curve-expressive-exit: var(--atr-sys-motion-easing-accelerate);
   --tui-curve-productive-standard: var(--atr-sys-motion-easing-standard);
   --tui-disabled-opacity: var(--atr-sys-state-disabled-opacity);
   --tui-radius-xs: var(--atr-sys-shape-extra-small);

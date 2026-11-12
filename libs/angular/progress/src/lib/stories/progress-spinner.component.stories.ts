@@ -29,6 +29,5 @@ export const Playground: Story = {
     props: args,
     template:
       '<atr-progress-spinner [label]="label" [value]="indeterminate ? null : value" [min]="min" [max]="max" [size]="size"></atr-progress-spinner>',
-  })
+  }),
 };
-

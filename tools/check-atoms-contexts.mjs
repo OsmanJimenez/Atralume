@@ -265,9 +265,9 @@ try {
       focus.width >= 2,
     `keyboard focus visible: ${JSON.stringify(focus)}`,
   );
-  await page.getByRole("button", { name: "Focus test start" }).evaluate((el) =>
-    el.remove(),
-  );
+  await page
+    .getByRole("button", { name: "Focus test start" })
+    .evaluate((el) => el.remove());
   await page.goto(
     `${base}/iframe.html?id=atralume-atoms--light&viewMode=story`,
   );

@@ -83,15 +83,14 @@ export class AtralumeRangeSlider
   /** Visual tick count for Taiga `TuiRange` segments. */
   protected readonly segments = computed(() =>
     this.showTicks() && !this.continuous() && this.step() > 0
-      ? Math.max(
-          1,
-          Math.round((this.maximum() - this.minimum()) / this.step()),
-        )
+      ? Math.max(1, Math.round((this.maximum() - this.minimum()) / this.step()))
       : 1,
   );
 
   protected readonly rangeStep = computed(() =>
-    this.continuous() ? Math.max(0.01, (this.maximum() - this.minimum()) / 1000) : this.step(),
+    this.continuous()
+      ? Math.max(0.01, (this.maximum() - this.minimum()) / 1000)
+      : this.step(),
   );
 
   /** Inner CVA host for Taiga `tui-range`. */

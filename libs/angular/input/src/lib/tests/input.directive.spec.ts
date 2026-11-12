@@ -1,15 +1,15 @@
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
-import { TuiTextfield } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@taiga-ui/core";
 import { AtralumeInput, AtralumeInputHarness } from "../../index";
 
 @Component({
   imports: [AtralumeInput, TuiTextfield],
   template: `
     <tui-textfield tuiTextfieldSize="m">
-      <label tuiLabel>Email</label>
-      <input atrInput type="email" [readonly]="readonly" />
+      <label tuiLabel for="input-email">Email</label>
+      <input atrInput id="input-email" type="email" [readonly]="readonly" />
     </tui-textfield>
   `,
 })

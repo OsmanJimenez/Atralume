@@ -6,8 +6,11 @@
       [disabledItemHandler]="disabledItemHandler()"
       tuiTextfieldSize="m"
     >
-      <label tuiLabel>
-        {{ label() }}@if (required()) { *}
+      <label tuiLabel [attr.for]="controlId()">
+        {{ label() }}
+        @if (required()) {
+          *
+        }
       </label>
       <input
         tuiInputDateRange
@@ -29,8 +32,11 @@
       [disabledItemHandler]="disabledItemHandler()"
       tuiTextfieldSize="m"
     >
-      <label tuiLabel>
-        {{ label() }}@if (required()) { *}
+      <label tuiLabel [attr.for]="controlId()">
+        {{ label() }}
+        @if (required()) {
+          *
+        }
       </label>
       <input
         tuiInputDate

@@ -13,7 +13,6 @@ describe("Autocomplete editable behavior", () => {
     const input = f.nativeElement.querySelector("input") as HTMLInputElement;
     input.value = "Beta";
     input.dispatchEvent(new Event("input", { bubbles: true }));
-    f.componentInstance.opened.set(true);
     await f.whenStable();
     input.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),

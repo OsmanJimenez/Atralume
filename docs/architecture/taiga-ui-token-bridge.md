@@ -23,7 +23,7 @@ dependency; no compiler is needed by Atralume consumers.
 | Atralume contract                     | Taiga UI theme variables                                                                                                                             |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Primary and tertiary accent           | `--tui-background-accent-1*`, `--tui-background-accent-2*`, `--tui-text-primary-on-accent-1`, `--tui-text-primary-on-accent-2`, `--tui-text-action*` |
-| Surface and elevation                 | `--tui-background-base`, `--tui-background-base-alt`, `--tui-background-elevation-*`, `--tui-shadow-*`, `--tui-theme-color` (layout aside)            |
+| Surface and elevation                 | `--tui-background-base`, `--tui-background-base-alt`, `--tui-background-elevation-*`, `--tui-shadow-*`, `--tui-theme-color` (layout aside)           |
 | Interactive surfaces                  | `--tui-background-neutral-*`                                                                                                                         |
 | Text and borders                      | `--tui-text-*`, `--tui-border-*`                                                                                                                     |
 | Error, success, warning, and info     | `--tui-status-*`, `--tui-text-negative*`, `--tui-text-positive*`                                                                                     |

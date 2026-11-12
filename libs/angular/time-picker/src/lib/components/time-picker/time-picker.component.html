@@ -4,8 +4,11 @@
     [tuiTextfieldCleaner]="clearable()"
     tuiTextfieldSize="m"
   >
-    <label tuiLabel>
-      {{ label() }}@if (required()) { *}
+    <label tuiLabel [attr.for]="controlId()">
+      {{ label() }}
+      @if (required()) {
+        *
+      }
     </label>
     <input
       tuiInputTime

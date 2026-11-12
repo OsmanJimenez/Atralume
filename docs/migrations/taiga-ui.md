@@ -45,12 +45,12 @@ export const appConfig: ApplicationConfig = {
 
 Set attributes on `html`, `body`, or any scope:
 
-| Attribute | Values |
-| --------- | ------ |
-| `data-atr-theme` | `light` \| `dark` \| `system` |
+| Attribute          | Values                                               |
+| ------------------ | ---------------------------------------------------- |
+| `data-atr-theme`   | `light` \| `dark` \| `system`                        |
 | `data-atr-surface` | `standard` \| `elevated` \| `glass` \| `transparent` |
-| `data-atr-shape` | `sharp` \| `rounded` \| `pill` |
-| `data-atr-brand` | `default` (omit) \| `green` |
+| `data-atr-shape`   | `sharp` \| `rounded` \| `pill`                       |
+| `data-atr-brand`   | `default` (omit) \| `green`                          |
 
 Modes update `--atr-*`; the bridge maps them to `--tui-*` so Taiga controls
 follow the brand without per-component CSS.
@@ -90,7 +90,7 @@ directives on the same host. Do not import Taiga internals.
 
 - Popover is trigger-hosted `TuiDropdown` (`[atrPopover]`).
 - Bottom sheet uses `TuiDialogService` with `appearance: atr-bottom-sheet`.
-- Shared overlay *open* engines were removed; CDK Menu still uses slim
+- Shared overlay _open_ engines were removed; CDK Menu still uses slim
   decorate/dismissal helpers.
 
 ### Composed leftovers

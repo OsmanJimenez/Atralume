@@ -1,14 +1,23 @@
 <div class="atr-forms-demo">
   <atr-form-field>
     <tui-textfield tuiTextfieldSize="m">
-      <label tuiLabel>Signal email</label>
-      <input atrInput type="email" [formField]="fields.email" />
+      <label tuiLabel for="signal-email">Signal email</label>
+      <input
+        atrInput
+        id="signal-email"
+        type="email"
+        [formField]="fields.email"
+      />
     </tui-textfield>
   </atr-form-field>
   <atr-form-field>
     <tui-textfield tuiTextfieldSize="m">
-      <label tuiLabel>Signal notes</label>
-      <textarea atrTextarea [formField]="fields.notes"></textarea>
+      <label tuiLabel for="signal-notes">Signal notes</label>
+      <textarea
+        atrTextarea
+        id="signal-notes"
+        [formField]="fields.notes"
+      ></textarea>
     </tui-textfield>
   </atr-form-field>
   <label atrControlLabel

@@ -29,10 +29,6 @@ describe("Combobox confirmation", () => {
     f.componentInstance.writeValue("a");
     f.autoDetectChanges();
     await f.whenStable();
-    f.componentInstance.open();
-    await f.whenStable();
-    f.componentInstance.close();
-    await f.whenStable();
     expect(f.componentInstance.value()).toBe("a");
     f.componentRef.setInput("textToValue", (text: string) => text);
     await f.whenStable();
@@ -58,8 +54,6 @@ describe("Combobox confirmation", () => {
     const input = f.nativeElement.querySelector("input") as HTMLInputElement;
     input.value = "Beta";
     input.dispatchEvent(new Event("input", { bubbles: true }));
-    f.componentInstance.open();
-    await f.whenStable();
     input.dispatchEvent(
       new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
     );

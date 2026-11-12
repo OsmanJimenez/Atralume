@@ -8,8 +8,11 @@
     [tuiTextfieldCleaner]="clearable()"
     tuiTextfieldSize="m"
   >
-    <label tuiLabel>
-      {{ label() }}@if (required()) { *}
+    <label tuiLabel [attr.for]="controlId()">
+      {{ label() }}
+      @if (required()) {
+        *
+      }
     </label>
     <input
       atrSelect
@@ -19,10 +22,7 @@
       [formControl]="inner"
     />
     <ng-template tuiDropdown>
-      <tui-data-list-wrapper
-        [items]="items()"
-        [emptyContent]="emptyText()"
-      />
+      <tui-data-list-wrapper [items]="items()" [emptyContent]="emptyText()" />
     </ng-template>
   </tui-textfield>
 </atr-form-field>

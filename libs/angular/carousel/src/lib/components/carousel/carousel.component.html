@@ -1,4 +1,8 @@
-<section role="region" [attr.aria-label]="label()" aria-roledescription="carousel">
+<section
+  role="region"
+  [attr.aria-label]="label()"
+  aria-roledescription="carousel"
+>
   <tui-carousel
     [index]="activeIndex()"
     (indexChange)="onIndex($event)"
@@ -7,7 +11,12 @@
     [max]="max()"
   >
     @for (slide of slides(); track slide.id; let index = $index) {
-      <div *tuiItem class="atr-carousel__slide" role="group" aria-roledescription="slide">
+      <div
+        *tuiItem
+        class="atr-carousel__slide"
+        role="group"
+        aria-roledescription="slide"
+      >
         <h3>{{ slide.label }}</h3>
         @if (slide.description) {
           <p>{{ slide.description }}</p>
@@ -16,15 +25,31 @@
     }
   </tui-carousel>
   <div class="atr-carousel__controls">
-    <button atrButton type="button" appearance="text" aria-label="Previous slide" (click)="previous()">
+    <button
+      atrButton
+      type="button"
+      appearance="text"
+      aria-label="Previous slide"
+      (click)="previous()"
+    >
       Previous
     </button>
-    <button atrButton type="button" appearance="text" aria-label="Next slide" (click)="next()">
+    <button
+      atrButton
+      type="button"
+      appearance="text"
+      aria-label="Next slide"
+      (click)="next()"
+    >
       Next
     </button>
   </div>
   @if (showIndicators()) {
-    <div class="atr-carousel__indicators" role="tablist" aria-label="Choose slide">
+    <div
+      class="atr-carousel__indicators"
+      role="tablist"
+      aria-label="Choose slide"
+    >
       @for (slide of slides(); track slide.id; let index = $index) {
         <button
           atrButton

@@ -51,13 +51,6 @@ main {
   max-width: 42rem;
 }
 
-.hero-mark {
-  color: var(--atr-sys-color-primary);
-  font-weight: var(--atr-ref-font-weight-bold);
-  letter-spacing: 0.08em;
-  margin-block: 0 var(--atr-sys-spacing-lg);
-}
-
 h1 {
   font-size: clamp(3rem, 7vw, 6rem);
   letter-spacing: -0.035em;
@@ -91,53 +84,69 @@ h1 {
   width: min(100%, 22rem);
 }
 
-.hero-atlas__orb,
-.hero-atlas__star {
-  border-radius: var(--atr-sys-shape-full);
+.hero-atlas__node,
+.hero-atlas__label {
   position: absolute;
 }
 
-.hero-atlas__orb {
-  border: 1px solid
-    color-mix(in srgb, var(--atr-sys-color-primary) 52%, transparent);
-  inset: 14%;
+.hero-atlas__label {
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: var(--atr-ref-font-size-12);
+  letter-spacing: 0.02em;
 }
 
-.hero-atlas__orb--core {
+.hero-atlas__label--theme {
+  left: 12%;
+  top: 16%;
+}
+
+.hero-atlas__label--surface {
+  right: 10%;
+  top: 42%;
+}
+
+.hero-atlas__label--shape {
+  bottom: 14%;
+  left: 22%;
+}
+
+.hero-atlas__node {
+  align-items: center;
+  background: var(--atr-sys-color-surface-container-high);
+  border: 1px solid var(--atr-sys-color-outline-variant);
+  border-radius: var(--atr-sys-shape-medium);
+  color: var(--atr-sys-color-on-surface);
+  display: flex;
+  font-size: var(--atr-ref-font-size-12);
+  justify-content: center;
+  min-height: 2rem;
+  padding-inline: var(--atr-sys-spacing-sm);
+}
+
+.hero-atlas__node--core {
   background: var(--atr-sys-color-primary);
-  height: 1rem;
+  border-color: var(--atr-sys-color-primary);
+  border-radius: var(--atr-sys-shape-full);
+  color: var(--atr-sys-color-on-primary);
+  font-weight: var(--atr-ref-font-weight-medium);
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
-  width: 1rem;
+  width: 2.5rem;
 }
 
-.hero-atlas__orb--one {
-  inset: 28%;
+.hero-atlas__node--light {
+  left: 14%;
+  top: 34%;
 }
 
-.hero-atlas__orb--two {
-  inset: 2%;
+.hero-atlas__node--dark {
+  right: 12%;
+  top: 24%;
 }
 
-.hero-atlas__star {
-  background: var(--atr-sys-color-tertiary);
-  height: 0.5rem;
-  width: 0.5rem;
-}
-
-.hero-atlas__star--one {
-  left: 21%;
-  top: 27%;
-}
-
-.hero-atlas__star--two {
-  right: 16%;
-  top: 43%;
-}
-
-.hero-atlas__star--three {
-  bottom: 17%;
-  left: 42%;
+.hero-atlas__node--glass {
+  bottom: 20%;
+  right: 18%;
 }
 
 .section {

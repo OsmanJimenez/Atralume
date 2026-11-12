@@ -1,10 +1,6 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { expect, within } from "storybook/test";
-import {
-  AtralumeFormField,
-  TuiLabel,
-  TuiTextfield,
-} from "../../index";
+import { AtralumeFormField, TuiLabel, TuiTextfield } from "../../index";
 import { AtralumeInput } from "@atralume/angular/input";
 
 const meta = {
@@ -80,9 +76,15 @@ export const Invalid: Story = {
 };
 
 export const Compact: Story = {
-  args: { density: "compact", hint: "Compact density uses the same token bridge." },
+  args: {
+    density: "compact",
+    hint: "Compact density uses the same token bridge.",
+  },
 };
 
 export const Filled: Story = {
-  args: { appearance: "filled", hint: "Filled appearance for denser surfaces." },
+  args: {
+    appearance: "filled",
+    hint: "Filled appearance for denser surfaces.",
+  },
 };

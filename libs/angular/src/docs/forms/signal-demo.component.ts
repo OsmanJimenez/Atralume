@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
-  TuiTextfield,
 } from "@atralume/angular/form-field";
+import { TuiTextfield } from "@taiga-ui/core";
 import { AtralumeInput } from "@atralume/angular/input";
 import { AtralumeTextarea } from "@atralume/angular/textarea";
 import { AtralumeCheckbox } from "@atralume/angular/checkbox";

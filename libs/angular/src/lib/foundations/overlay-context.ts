@@ -1,19 +1,9 @@
 import { RendererFactory2 } from "@angular/core";
 import { DOCUMENT, isPlatformBrowser } from "@angular/common";
-import {
-  DestroyRef,
-  Injectable,
-  PLATFORM_ID,
-  inject,
-} from "@angular/core";
+import { DestroyRef, Injectable, PLATFORM_ID, inject } from "@angular/core";
 
 export type OverlayKind =
-  | "tooltip"
-  | "menu"
-  | "snackbar"
-  | "bottom-sheet"
-  | "dialog"
-  | "critical";
+  "tooltip" | "menu" | "snackbar" | "bottom-sheet" | "dialog" | "critical";
 
 /**
  * Shared portal helpers for CDK Menu (theme attrs, token copy, Escape stack).

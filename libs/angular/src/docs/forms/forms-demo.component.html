@@ -18,10 +18,11 @@
         [error]="error('email')"
       >
         <tui-textfield [invalid]="!!error('email')" tuiTextfieldSize="m">
-          <label tuiLabel>Email *</label>
+          <label tuiLabel for="profile-email">Email *</label>
           <input
             #emailInput
             atrInput
+            id="profile-email"
             type="email"
             autocomplete="email"
             required
@@ -36,9 +37,10 @@
         [error]="error('password')"
       >
         <tui-textfield [invalid]="!!error('password')" tuiTextfieldSize="m">
-          <label tuiLabel>Password *</label>
+          <label tuiLabel for="profile-password">Password *</label>
           <input
             atrInput
+            id="profile-password"
             type="password"
             autocomplete="new-password"
             required
@@ -50,9 +52,10 @@
       </atr-form-field>
       <atr-form-field>
         <tui-textfield tuiTextfieldSize="m">
-          <label tuiLabel>About you (optional)</label>
+          <label tuiLabel for="profile-notes">About you (optional)</label>
           <textarea
             atrTextarea
+            id="profile-notes"
             rows="3"
             maxlength="500"
             [readonly]="readonly()"

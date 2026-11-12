@@ -70,8 +70,7 @@ export class AtralumeCalendar {
   protected readonly disabledItemHandler = computed(() => {
     const filter = this.dateFilter();
     const blocked = this.disabled() || this.readonly();
-    return (day: TuiDay) =>
-      blocked || !filter(day.toLocalNativeDate());
+    return (day: TuiDay) => blocked || !filter(day.toLocalNativeDate());
   });
 
   protected onDayClick(day: TuiDay): void {

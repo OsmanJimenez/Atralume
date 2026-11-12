@@ -23,8 +23,8 @@ import { TuiInputDirective } from "@taiga-ui/core";
 })
 export class AtralumeInput {
   constructor() {
-    const type = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement
-      .type;
+    const type =
+      inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement.type;
     if (
       isDevMode() &&
       [

@@ -1,7 +1,9 @@
 import { ComponentHarness } from "@angular/cdk/testing";
 export class AtralumeFormFieldHarness extends ComponentHarness {
   static hostSelector = "atr-form-field";
-  private readonly label = this.locatorForOptional("label[tuiLabel], .atr-form-field__label");
+  private readonly label = this.locatorForOptional(
+    "label[tuiLabel], .atr-form-field__label",
+  );
   private readonly hint = this.locatorForOptional(".atr-form-field__hint");
   private readonly error = this.locatorForOptional(".atr-form-field__error");
   async getLabel(): Promise<string> {

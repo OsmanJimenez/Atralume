@@ -77,12 +77,8 @@ export class AtralumeDatePicker
   readonly presentation = input<"popover" | "dialog">("popover");
   readonly visibleDate = input<Date | null>(null);
 
-  protected readonly tuiMin = computed(
-    () => toDay(this.min()) ?? undefined,
-  );
-  protected readonly tuiMax = computed(
-    () => toDay(this.max()) ?? undefined,
-  );
+  protected readonly tuiMin = computed(() => toDay(this.min()) ?? undefined);
+  protected readonly tuiMax = computed(() => toDay(this.max()) ?? undefined);
   protected readonly disabledItemHandler = computed(() => {
     const filter = this.dateFilter();
     return (day: TuiDay) => !filter(day.toLocalNativeDate());
@@ -103,9 +99,7 @@ export class AtralumeDatePicker
     const rangeSub = this.range.valueChanges.subscribe((value) => {
       if (this.selectionMode() !== "range") return;
       this.commit(
-        value
-          ? { start: fromDay(value.from), end: fromDay(value.to) }
-          : null,
+        value ? { start: fromDay(value.from), end: fromDay(value.to) } : null,
       );
     });
     destroyRef.onDestroy(() => {
@@ -118,7 +112,10 @@ export class AtralumeDatePicker
       untracked(() => {
         if (mode === "single") {
           const day = toDay((next as Date | null) ?? null);
-          if (!Object.is(this.single.value, day) && !(day && this.single.value?.daySame(day))) {
+          if (
+            !Object.is(this.single.value, day) &&
+            !(day && this.single.value?.daySame(day))
+          ) {
             this.single.setValue(day, { emitEvent: false });
           }
         } else {

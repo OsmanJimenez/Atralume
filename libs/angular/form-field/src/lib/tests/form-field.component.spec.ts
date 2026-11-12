@@ -9,8 +9,8 @@ import { AtralumeFormField } from "../../index";
   template: `
     <atr-form-field hint="Work email" error="Enter a valid email address.">
       <tui-textfield tuiTextfieldSize="m">
-        <label tuiLabel>Email</label>
-        <input atrInput type="email" required />
+        <label tuiLabel for="work-email">Email</label>
+        <input atrInput id="work-email" type="email" required />
       </tui-textfield>
     </atr-form-field>
   `,

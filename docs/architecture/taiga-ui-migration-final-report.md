@@ -20,15 +20,15 @@ composed **2**, removed **1**; pending/in-progress/exception **0**.
 
 ## Delivered by wave
 
-| Wave | Scope | Status |
-| ---- | ----- | ------ |
-| Ola 0 | ADR, `provideAtralume()`, modes, Storybook toolbar, matrix rewrite | Done |
-| Ola 1 | Forms core (form-field, input, textarea, checkbox/radio/switch) | Done |
-| Ola 2 | Selection (select, combobox, autocomplete, listbox, option, file upload, slider/range) | Done |
-| Ola 3 | Date/time (calendar, date picker, time picker) | Done |
-| Ola 4 | Navigation / disclosure / media | Done |
-| Ola 5 | Overlays / gaps (popover, bottom sheet, divider, table) | Done |
-| Ola 6 | Cleanup: dead engines, required peers, docs, matrix sweep | Done |
+| Wave  | Scope                                                                                  | Status |
+| ----- | -------------------------------------------------------------------------------------- | ------ |
+| Ola 0 | ADR, `provideAtralume()`, modes, Storybook toolbar, matrix rewrite                     | Done   |
+| Ola 1 | Forms core (form-field, input, textarea, checkbox/radio/switch)                        | Done   |
+| Ola 2 | Selection (select, combobox, autocomplete, listbox, option, file upload, slider/range) | Done   |
+| Ola 3 | Date/time (calendar, date picker, time picker)                                         | Done   |
+| Ola 4 | Navigation / disclosure / media                                                        | Done   |
+| Ola 5 | Overlays / gaps (popover, bottom sheet, divider, table)                                | Done   |
+| Ola 6 | Cleanup: dead engines, required peers, docs, matrix sweep                              | Done   |
 
 ## Ola 6 cleanup specifics
 
@@ -45,12 +45,12 @@ composed **2**, removed **1**; pending/in-progress/exception **0**.
 
 ## Counts
 
-| Status | Count | Meaning |
-| ------ | ----- | ------- |
-| migrated | 64 | Thin adapters / compositions on Taiga |
-| composed | 2 | Icon (registry default), Tree (expansion deferred) |
-| removed | 1 | Tooltip panel |
-| pending / in-progress / exception | 0 | — |
+| Status                            | Count | Meaning                                            |
+| --------------------------------- | ----- | -------------------------------------------------- |
+| migrated                          | 64    | Thin adapters / compositions on Taiga              |
+| composed                          | 2     | Icon (registry default), Tree (expansion deferred) |
+| removed                           | 1     | Tooltip panel                                      |
+| pending / in-progress / exception | 0     | —                                                  |
 
 ## Justified composed leftovers
 
@@ -72,10 +72,10 @@ npm install @atralume/angular \
 
 ## Validations
 
-| Check | Result |
-| ----- | ------ |
-| Doctrine docs / matrix / checklist | Updated (Ola 6 done) |
-| `nx run angular:build` | Successfully ran (Ola 6) |
-| `nx build-storybook angular --configuration=ci` | Successfully ran (post–Ola 6) |
-| Browser validate (`tools/browser-validate-storybook.mjs` :6008) | **OK 92/92** |
-| ESLint / unit tests | Deferred to wave-close preference |
+| Check                                                           | Result                            |
+| --------------------------------------------------------------- | --------------------------------- |
+| Doctrine docs / matrix / checklist                              | Updated (Ola 6 done)              |
+| `nx run angular:build`                                          | Successfully ran (Ola 6)          |
+| `nx build-storybook angular --configuration=ci`                 | Successfully ran (post–Ola 6)     |
+| Browser validate (`tools/browser-validate-storybook.mjs` :6008) | **OK 92/92**                      |
+| ESLint / unit tests                                             | Deferred to wave-close preference |

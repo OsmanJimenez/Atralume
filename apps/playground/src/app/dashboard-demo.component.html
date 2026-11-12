@@ -21,7 +21,7 @@
   ><a atrNavigationItem href="#dashboard-projects"
     ><atr-icon name="check" /><span>Projects</span></a
   ><a atrNavigationItem href="#dashboard-forms"
-    ><span aria-hidden="true">◇</span><span>Forms</span></a
+    ><atr-icon name="check" /><span>Forms</span></a
   >
 </atr-navigation-bar>
 <div class="dashboard-grid">
@@ -60,7 +60,7 @@
       </button>
     </footer></atr-card
   >
-  <atr-card appearance="glass" class="custom-card" id="dashboard-projects"
+  <atr-card appearance="elevated" class="custom-card" id="dashboard-projects"
     ><header atrCardHeader>
       <h3>Projects</h3>
       <button
@@ -168,7 +168,7 @@
       extended
       (click)="openProfile(profile, $event)"
     >
-      + Create project</button
+      <atr-icon name="check" />Create project</button
     ><atr-speed-dial id="dashboard-quick-actions" label="Quick create"
       ><button
         atrSpeedDialAction
@@ -202,9 +202,11 @@
   <div atrDialogContent>
     <atr-form-field
       ><tui-textfield tuiTextfieldSize="m"
-        ><label tuiLabel>Display name</label
-        ><input atrInput [formControl]="displayName" /></tui-textfield
-    ></atr-form-field
+        ><label tuiLabel for="profile-display-name">Display name</label
+        ><input
+          atrInput
+          id="profile-display-name"
+          [formControl]="displayName" /></tui-textfield></atr-form-field
     ><button
       atrButton
       appearance="text"

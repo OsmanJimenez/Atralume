@@ -89,9 +89,11 @@
       <atr-step label="Profile"
         ><atr-form-field
           ><tui-textfield tuiTextfieldSize="m"
-            ><label tuiLabel>Profile name *</label
-            ><input atrInput [formControl]="profile" /></tui-textfield
-        ></atr-form-field
+            ><label tuiLabel for="profile-name">Profile name *</label
+            ><input
+              atrInput
+              id="profile-name"
+              [formControl]="profile" /></tui-textfield></atr-form-field
         ><button
           atrButton
           atrStepperNext

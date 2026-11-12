@@ -15,7 +15,9 @@ import { Observable, Subject, Subscription } from "rxjs";
 import { TuiDialogService } from "@taiga-ui/core";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 
-export const ATR_DIALOG_DATA = new InjectionToken<unknown>("AtralumeDialog data");
+export const ATR_DIALOG_DATA = new InjectionToken<unknown>(
+  "AtralumeDialog data",
+);
 
 const ATR_DIALOG_TEMPLATE = new InjectionToken<TemplateRef<unknown>>(
   "AtralumeDialog template",

@@ -12,15 +12,16 @@
   font: inherit;
   cursor: pointer;
   padding: 0.125rem 0.25rem;
-  border-radius: var(--tui-radius-s, 0.25rem);
+  border-radius: var(--atr-comp-tree-shape);
   text-align: start;
 }
 
 .atr-tree__label--selected {
-  background: var(--tui-background-neutral-1-hover, rgba(0, 0, 0, 0.06));
+  background: var(--atr-comp-tree-selected-container-color);
+  color: var(--atr-comp-tree-selected-label-color);
 }
 
 .atr-tree__label:disabled {
-  opacity: var(--tui-disabled-opacity, 0.56);
+  opacity: var(--atr-sys-state-disabled-content-opacity);
   cursor: default;
 }

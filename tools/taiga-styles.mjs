@@ -27,7 +27,12 @@ export async function compileTaigaFoundationStyles(root) {
     math: "always",
   });
 
-  for (const marker of ["[tuiButton]", "[tuiLink]", "[tuiCheckbox]", "[tuiSwitch]"]) {
+  for (const marker of [
+    "[tuiButton]",
+    "[tuiLink]",
+    "[tuiCheckbox]",
+    "[tuiSwitch]",
+  ]) {
     if (!result.css.includes(marker)) {
       throw new Error(
         `Taiga UI styles missing expected marker ${marker} in the output.`,

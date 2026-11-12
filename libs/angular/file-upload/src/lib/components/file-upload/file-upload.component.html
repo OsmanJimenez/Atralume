@@ -10,7 +10,10 @@
 >
   <atr-form-field [hint]="hint()" [error]="error()">
     <span class="atr-file-upload__label">
-      {{ label() }}@if (required()) { *}
+      {{ label() }}
+      @if (required()) {
+        *
+      }
     </span>
     <label tuiInputFiles class="atr-file-upload__input-files">
       <input

@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { AtralumeTree, type AtralumeTreeNode } from "../../index";
 describe("AtralumeTree", () => {
   it("renders tui-tree and keeps selection outside consumer nodes", () => {
-    const fixture = TestBed.createComponent(AtralumeTree<string>);
+    const fixture = TestBed.createComponent(AtralumeTree);
     const nodes: AtralumeTreeNode<string>[] = [
       {
         value: "root",
@@ -13,8 +13,10 @@ describe("AtralumeTree", () => {
     fixture.componentRef.setInput("nodes", nodes);
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector("tui-tree")).toBeTruthy();
-    const root = nodes[0];
-    fixture.componentInstance.select(root, new Event("click"));
+    const root = fixture.nativeElement.querySelector(
+      ".atr-tree__label",
+    ) as HTMLButtonElement;
+    root.click();
     expect(fixture.componentInstance.selected()).toEqual(["root"]);
     expect(nodes[0]).not.toHaveProperty("selected");
   });

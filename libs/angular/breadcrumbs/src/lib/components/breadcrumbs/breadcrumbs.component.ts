@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { TuiItem } from "@taiga-ui/cdk/directives/item";
 import { TuiBreadcrumbs } from "@taiga-ui/kit";
 

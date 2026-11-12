@@ -202,9 +202,11 @@
   <div atrDialogContent>
     <atr-form-field
       ><tui-textfield tuiTextfieldSize="m"
-        ><label tuiLabel>Display name</label
-        ><input atrInput [formControl]="displayName" /></tui-textfield
-    ></atr-form-field
+        ><label tuiLabel for="profile-display-name">Display name</label
+        ><input
+          atrInput
+          id="profile-display-name"
+          [formControl]="displayName" /></tui-textfield></atr-form-field
     ><button
       atrButton
       appearance="text"

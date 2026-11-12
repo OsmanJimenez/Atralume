@@ -57,10 +57,14 @@ export class AtralumeTable<T extends Partial<Record<keyof T, unknown>>> {
   readonly selectionChange = output<AtralumeTableSelectionChange<T>>();
   readonly expansionChange = output<readonly T[]>();
 
-  readonly columnIds = computed(() => this.columns().map((column) => column.id));
+  readonly columnIds = computed(() =>
+    this.columns().map((column) => column.id),
+  );
   readonly allSelected = computed(() => {
     const rows = this.rows();
-    return rows.length > 0 && rows.every((row, index) => this.isSelected(row, index));
+    return (
+      rows.length > 0 && rows.every((row, index) => this.isSelected(row, index))
+    );
   });
   readonly colspan = computed(
     () =>

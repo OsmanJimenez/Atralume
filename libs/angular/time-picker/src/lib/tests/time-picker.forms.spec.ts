@@ -27,7 +27,7 @@ class TemplateHost {
 }
 @Component({
   imports: [AtralumeTimePicker, FormField],
-  template: `<atr-time-picker label="Time" [formField]="fields.value" />`,
+  template: `<atr-time-picker label="Time" [formField]="$any(fields.value)" />`,
 })
 class SignalHost {
   readonly state = signal<{ value: AtralumeTimeValue | null }>({ value: null });
