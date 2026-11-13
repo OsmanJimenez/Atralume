@@ -93,7 +93,9 @@ export class OverlayDemo {
         origin: event.currentTarget as HTMLElement,
         owner: this.owner,
         viewContainerRef: this.views,
-        label: "Share profile",
+        // Prefer labelledBy so Taiga does not render a duplicate title header
+        // beside the projected atrBottomSheetTitle heading.
+        labelledBy: "demo-sheet-title",
         mode: standard ? "standard" : "modal",
       })
       .afterClosed.pipe(takeUntilDestroyed(this.owner))

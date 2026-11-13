@@ -14,8 +14,9 @@ npm install @atralume/angular \
 The package declares Angular 22, RxJS 7, Angular CDK, and Taiga UI 5 as peer
 dependencies. Required Taiga peers include `cdk`, `core`, `kit`, `layout`,
 `addon-table`, and `polymorpheus`. Call `provideAtralume()` once in the app
-config and load `@atralume/angular/styles/theme.css`. Use Angular versions
-already used by your application.
+config, mount `<tui-root>` once around the application shell, and load
+`@atralume/angular/styles/theme.css`. Use Angular versions already used by
+your application.
 
 ## Use a component
 

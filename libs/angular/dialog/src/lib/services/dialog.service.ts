@@ -14,6 +14,7 @@ import { NgTemplateOutlet } from "@angular/common";
 import { Observable, Subject, Subscription } from "rxjs";
 import { TuiDialogService } from "@taiga-ui/core";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
+import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
 
 export const ATR_DIALOG_DATA = new InjectionToken<unknown>(
   "AtralumeDialog data",
@@ -54,11 +55,12 @@ export class AtralumeDialogRef<R = unknown> {
   selector: "atr-dialog-template-host",
   standalone: true,
   imports: [NgTemplateOutlet],
-  template: `<ng-container *ngTemplateOutlet="template" />`,
+  template: `<ng-container *ngTemplateOutlet="template; injector: injector" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class AtralumeDialogTemplateHost {
   readonly template = inject(ATR_DIALOG_TEMPLATE);
+  readonly injector = inject(Injector);
 }
 
 /**
@@ -69,6 +71,7 @@ class AtralumeDialogTemplateHost {
 export class AtralumeDialog {
   private readonly dialogs = inject(TuiDialogService);
   private readonly injector = inject(Injector);
+  private readonly overlays = inject(ɵAtralumeOverlayInfrastructure);
 
   open<T, D = unknown, R = unknown>(
     content: Type<T> | TemplateRef<T>,
@@ -122,6 +125,8 @@ export class AtralumeDialog {
 
     subscription = this.dialogs
       .open<R>(polyContent, {
+        // Taiga only accepts a string title. labelledBy is applied to the
+        // portaled tui-modal after mount (see applyAccessibilityAttrs).
         label: config.label ?? "",
         dismissible: !config.disableClose,
         closable: !config.disableClose,
@@ -134,8 +139,55 @@ export class AtralumeDialog {
         error: () => finish(undefined),
       });
 
+    queueMicrotask(() =>
+      this.applyPortalChrome(config),
+    );
+
     config.owner?.onDestroy(() => dialogRef.close());
 
     return dialogRef;
+  }
+
+  /**
+   * Taiga portals outside the trigger tree. Re-apply labelledBy/describedBy and
+   * copy theme/dir/token context onto the mounted modal + dialog hosts.
+   */
+  private applyPortalChrome(config: AtralumeDialogConfig<unknown>): void {
+    const bind = () => {
+      const dialogs = document.querySelectorAll<HTMLElement>(
+        'tui-modal[role="dialog"], tui-modal[role="alertdialog"]',
+      );
+      const modal = dialogs.item(dialogs.length - 1);
+      if (!modal) return false;
+      const panel =
+        modal.querySelector<HTMLElement>('tui-dialog[data-appearance="atr-dialog"]') ??
+        modal;
+      this.overlays.decorate(
+        panel,
+        config.origin,
+        "dialog",
+        config.contextClasses ?? [],
+      );
+      // Keep theme attrs on the role=dialog host for accessible queries.
+      this.overlays.decorate(modal, config.origin, "dialog");
+      if (config.labelledBy && modal.ownerDocument.getElementById(config.labelledBy)) {
+        modal.setAttribute("aria-labelledby", config.labelledBy);
+      }
+      if (config.describedBy && modal.ownerDocument.getElementById(config.describedBy)) {
+        modal.setAttribute("aria-describedby", config.describedBy);
+      }
+      if (config.role) modal.setAttribute("role", config.role);
+      return (
+        !config.labelledBy ||
+        modal.getAttribute("aria-labelledby") === config.labelledBy
+      );
+    };
+
+    if (bind()) return;
+    let attempts = 0;
+    const timer = globalThis.setInterval(() => {
+      attempts += 1;
+      if (bind() || attempts >= 20) globalThis.clearInterval(timer);
+    }, 16);
   }
 }

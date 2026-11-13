@@ -22,6 +22,16 @@
   gap: var(--atr-comp-dialog-gap);
 }
 
+tui-dialog[data-appearance="atr-dialog"] {
+  background: var(--atr-comp-dialog-container-color);
+  color: var(--atr-comp-dialog-label-color);
+  border-radius: var(--atr-comp-dialog-shape);
+  box-shadow: var(--atr-comp-dialog-elevation);
+  max-inline-size: min(var(--atr-comp-dialog-max-width, 40rem), calc(100vw - 2rem));
+  max-block-size: calc(100dvh - 2rem);
+  overflow: auto;
+}
+
 tui-dialog[data-appearance="atr-bottom-sheet"] {
   inline-size: min(var(--atr-comp-bottom-sheet-max-width), 100vw);
   background: var(--atr-comp-bottom-sheet-container-color);

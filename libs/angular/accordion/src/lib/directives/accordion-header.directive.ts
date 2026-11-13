@@ -1,7 +1,7 @@
 import { Directive } from "@angular/core";
 
 @Directive({
-  selector: "[atrAccordionHeader]",
+  selector: "button[tuiAccordion][atrAccordionHeader]",
   standalone: true,
   host: { class: "atr-accordion-header" },
 })

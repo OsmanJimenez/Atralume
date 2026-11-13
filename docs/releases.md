@@ -17,9 +17,10 @@ tooling, private documentation, tests, playground-only work and CI do not need
 a changeset. Reviewers must verify the SemVer level and release note.
 
 `develop` produces only a validated tarball artifact. `release` may publish a
-protected `next` prerelease after approval. Stable `latest` publication is
-restricted to a matching tag on `master`, with a protected environment and npm
-Trusted Publishing. Workflows never use a long-lived npm token.
+protected `next` prerelease after approval. On `master`, the Pages workflow
+deploys Storybook first and then publishes an unpublished package version as
+`latest`, through the protected `npm-production` environment and npm Trusted
+Publishing. Workflows never use a long-lived npm token.
 
 ## Rollback
 

@@ -2,6 +2,7 @@ import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { TuiAccordion } from "@taiga-ui/kit";
 import { expect, userEvent, within } from "storybook/test";
 import {
+  AtralumeAccordion,
   AtralumeAccordionItem,
   AtralumeAccordionHeader,
   AtralumeAccordionPanel,
@@ -14,6 +15,7 @@ export default {
     moduleMetadata({
       imports: [
         TuiAccordion,
+        AtralumeAccordion,
         AtralumeAccordionItem,
         AtralumeAccordionHeader,
         AtralumeAccordionPanel,
@@ -34,15 +36,11 @@ export const Playground: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <tui-accordion [closeOthers]="!multi" class="atr-accordion">
-        <atr-accordion-item id="profile">
-          <span atrAccordionHeader>Profile</span>
-          <p atrAccordionPanel>Profile details</p>
-        </atr-accordion-item>
-        <atr-accordion-item id="security">
-          <span atrAccordionHeader>Security</span>
-          <p atrAccordionPanel>Security details</p>
-        </atr-accordion-item>
+      <tui-accordion atrAccordion [closeOthers]="!multi" size="m">
+        <button tuiAccordion atrAccordionItem atrAccordionHeader>Profile</button>
+        <tui-expand atrAccordionPanel><p>Profile details</p></tui-expand>
+        <button tuiAccordion atrAccordionItem atrAccordionHeader>Security</button>
+        <tui-expand atrAccordionPanel><p>Security details</p></tui-expand>
       </tui-accordion>
     `,
   }),

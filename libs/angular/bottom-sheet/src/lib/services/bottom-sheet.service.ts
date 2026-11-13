@@ -14,6 +14,7 @@ import { NgTemplateOutlet } from "@angular/common";
 import { Observable, Subject, Subscription } from "rxjs";
 import { TuiDialogService } from "@taiga-ui/core";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
+import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
 
 /**
  * Bottom sheet over Taiga `TuiDialogService` with `appearance: atr-bottom-sheet`.
@@ -60,17 +61,19 @@ export class AtralumeBottomSheetRef<R = unknown> {
   selector: "atr-bottom-sheet-template-host",
   standalone: true,
   imports: [NgTemplateOutlet],
-  template: `<ng-container *ngTemplateOutlet="template" />`,
+  template: `<ng-container *ngTemplateOutlet="template; injector: injector" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class AtralumeBottomSheetTemplateHost {
   readonly template = inject(ATR_BOTTOM_SHEET_TEMPLATE);
+  readonly injector = inject(Injector);
 }
 
 @Injectable({ providedIn: "root" })
 export class AtralumeBottomSheet {
   private readonly dialogs = inject(TuiDialogService);
   private readonly injector = inject(Injector);
+  private readonly overlays = inject(ɵAtralumeOverlayInfrastructure);
 
   open<T, D = unknown, R = unknown>(
     content: Type<T> | TemplateRef<T>,
@@ -137,8 +140,49 @@ export class AtralumeBottomSheet {
         error: () => finish(undefined),
       });
 
+    queueMicrotask(() => this.applyPortalChrome(config));
+
     config.owner?.onDestroy(() => sheetRef.close());
 
     return sheetRef;
+  }
+
+  private applyPortalChrome(config: AtralumeBottomSheetConfig<unknown>): void {
+    const bind = () => {
+      const dialogs = document.querySelectorAll<HTMLElement>(
+        'tui-modal[role="dialog"], tui-modal[role="alertdialog"]',
+      );
+      const modal = dialogs.item(dialogs.length - 1);
+      if (!modal) return false;
+      const panel =
+        modal.querySelector<HTMLElement>(
+          'tui-dialog[data-appearance="atr-bottom-sheet"]',
+        ) ?? modal;
+      this.overlays.decorate(
+        panel,
+        config.origin,
+        "bottom-sheet",
+        config.contextClasses ?? [],
+      );
+      this.overlays.decorate(modal, config.origin, "bottom-sheet");
+      if (config.labelledBy && modal.ownerDocument.getElementById(config.labelledBy)) {
+        modal.setAttribute("aria-labelledby", config.labelledBy);
+      }
+      if (config.describedBy && modal.ownerDocument.getElementById(config.describedBy)) {
+        modal.setAttribute("aria-describedby", config.describedBy);
+      }
+      if (config.role) modal.setAttribute("role", config.role);
+      return (
+        !config.labelledBy ||
+        modal.getAttribute("aria-labelledby") === config.labelledBy
+      );
+    };
+
+    if (bind()) return;
+    let attempts = 0;
+    const timer = globalThis.setInterval(() => {
+      attempts += 1;
+      if (bind() || attempts >= 20) globalThis.clearInterval(timer);
+    }, 16);
   }
 }

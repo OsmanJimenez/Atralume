@@ -33,15 +33,24 @@ Consumers install Atralume and its Taiga UI peer package:
 npm install @atralume/angular @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
 ```
 
-Register providers in the application config:
+Register Atralume providers and mount the Taiga root once in the application shell:
 
 ```ts
-import { provideTaiga } from "@taiga-ui/core";
-import { provideEventPlugins } from "@taiga-ui/event-plugins";
+import { provideAtralume } from "@atralume/angular";
 
 bootstrapApplication(App, {
-  providers: [provideEventPlugins(), provideTaiga()],
+  providers: [provideAtralume()],
 });
+```
+
+```ts
+import { TuiRoot } from "@taiga-ui/core";
+
+@Component({
+  imports: [TuiRoot],
+  template: `<tui-root><router-outlet /></tui-root>`,
+})
+export class App {}
 ```
 
 Use the peer versions published by `@atralume/angular`; do not bypass Angular

@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
+import { TuiAccordion } from "@taiga-ui/kit";
 import {
   AtralumeAccordion,
   AtralumeAccordionItem,
@@ -8,13 +9,14 @@ import {
 } from "../../index";
 @Component({
   imports: [
+    TuiAccordion,
     AtralumeAccordion,
     AtralumeAccordionItem,
     AtralumeAccordionHeader,
     AtralumeAccordionPanel,
   ],
   template:
-    '<atr-accordion><atr-accordion-item id="profile"><span atrAccordionHeader>Profile</span><p atrAccordionPanel>Profile details</p></atr-accordion-item><atr-accordion-item id="security"><span atrAccordionHeader>Security</span><p atrAccordionPanel>Security details</p></atr-accordion-item></atr-accordion>',
+    '<tui-accordion atrAccordion [closeOthers]="true"><button tuiAccordion atrAccordionItem atrAccordionHeader>Profile</button><tui-expand atrAccordionPanel><p>Profile details</p></tui-expand><button tuiAccordion atrAccordionItem atrAccordionHeader>Security</button><tui-expand atrAccordionPanel><p>Security details</p></tui-expand></tui-accordion>',
 })
 class Host {}
 describe("Accordion", () => {
@@ -28,9 +30,11 @@ describe("Accordion", () => {
     f.detectChanges();
     await f.whenStable();
     expect(buttons[0].getAttribute("aria-expanded")).toBe("true");
-    expect(
-      e.querySelector("#profile-panel")?.getAttribute("aria-labelledby"),
-    ).toBe("profile-header");
+    const panelId = buttons[0].getAttribute("aria-controls");
+    expect(panelId).toBeTruthy();
+    expect(e.querySelector(`#${panelId}`)?.tagName.toLowerCase()).toBe(
+      "tui-expand",
+    );
     buttons[1].click();
     f.detectChanges();
     await f.whenStable();

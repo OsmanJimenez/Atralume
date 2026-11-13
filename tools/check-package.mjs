@@ -195,6 +195,7 @@ try {
               },
               configurations: {
                 production: { outputHashing: "all" },
+                development: { optimization: false, sourceMap: true },
               },
             },
           },
@@ -220,7 +221,7 @@ try {
   );
   fs.writeFileSync(
     path.join(temporary, "src/index.html"),
-    '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Consumer</title></head><body><consumer-root></consumer-root></body></html>',
+    '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Consumer</title></head><body><package-root></package-root></body></html>',
   );
   fs.writeFileSync(
     path.join(temporary, "src/styles.scss"),
@@ -229,6 +230,8 @@ try {
   fs.writeFileSync(
     path.join(temporary, "src/main.ts"),
     `import { Component, inject, DestroyRef, ViewContainerRef, TemplateRef } from '@angular/core';
+import { provideAtralume } from '@atralume/angular';
+import { TuiRoot, TuiLabel, TuiTextfield } from '@taiga-ui/core';
 import { AtralumeListbox } from '@atralume/angular/listbox';
 import { AtralumeCombobox } from '@atralume/angular/combobox';
 import { AtralumeSelect } from '@atralume/angular/select';
@@ -238,7 +241,8 @@ import { AtralumeCommandPalette } from '@atralume/angular/command-palette';
 import {AtralumeCard,AtralumeCardContent} from '@atralume/angular/card';
 import {AtralumeChip,AtralumeChipSet} from '@atralume/angular/chip';
 import {AtralumeList,AtralumeListItem} from '@atralume/angular/list';
-import {AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader} from '@atralume/angular/accordion';
+import {AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeAccordionPanel} from '@atralume/angular/accordion';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {AtralumeSkeleton} from '@atralume/angular/skeleton';
 import {AtralumeTooltip} from '@atralume/angular/tooltip';
 import {AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem} from '@atralume/angular/menu';
@@ -268,18 +272,45 @@ import { AtralumeTextarea } from '@atralume/angular/textarea';
 import { AtralumeCheckbox } from '@atralume/angular/checkbox';
 import { AtralumeRadio } from '@atralume/angular/radio';
 import { AtralumeSwitch } from '@atralume/angular/switch';
-@Component({ selector: 'consumer-root', providers:[provideAtralumeIcons([checkIcon])], imports: [AtralumeListbox,AtralumeCombobox,AtralumeSelect,AtralumeAutocomplete,AtralumePopover,AtralumeCommandPalette,AtralumeCard,AtralumeCardContent,AtralumeChip,AtralumeChipSet,AtralumeList,AtralumeListItem,AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeSkeleton,AtralumeTooltip,AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem,AtralumeDialogClose,AtralumeBottomSheetClose,AtralumeTabs,AtralumeTabList,AtralumeTab,AtralumeTabPanel,AtralumeBreadcrumbs,AtralumeBreadcrumbItem,AtralumeBreadcrumbSeparator,AtralumePagination,AtralumeNavigationBar,AtralumeNavigationItem,AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem,AtralumeFab,AtralumeSpeedDial,AtralumeSpeedDialAction,AtralumeIcon, AtralumeIconButton, AtralumeLink, AtralumeBadge, AtralumeAvatar, AtralumeDivider, AtralumeProgressSpinner, AtralumeProgressBar, AtralumeButton, ReactiveFormsModule, AtralumeFormField, AtralumeControlLabel, AtralumeInput, AtralumeTextarea, AtralumeCheckbox, AtralumeRadio, AtralumeSwitch], template: '<atr-form-field label="Email" hint="Packed hint"><input atrInput type="email" [formControl]="email" /></atr-form-field><atr-form-field label="Notes"><textarea atrTextarea></textarea></atr-form-field><label atrControlLabel><input atrCheckbox type="checkbox" [formControl]="accepted" />Accept terms</label><fieldset><legend>Plan</legend><label atrControlLabel><input atrRadio type="radio" name="plan" value="personal" [formControl]="plan" />Personal</label><label atrControlLabel><input atrRadio type="radio" name="plan" value="business" [formControl]="plan" />Business</label></fieldset><label atrControlLabel><input atrSwitch type="checkbox" [formControl]="notifications" />Notifications</label><button atrButton type="button"><atr-icon name="check" />Packed</button><button atrIconButton type="button" aria-label="Save"><atr-icon name="check" /></button><a atrLink href="#docs">Packed docs</a><atr-badge tone="success">Packed active</atr-badge><atr-avatar name="Packed User" alt="Packed User" /><hr atrDivider /><atr-progress-spinner label="Packed spinner" [value]="50" /><atr-progress-bar label="Packed progress" [value]="65" /><section data-atr-theme="dark" data-atr-surface="standard" style="--atr-comp-dialog-shape:1.5rem;padding:1rem"><atr-card><div atrCardContent>Packed composition</div></atr-card><atr-listbox label="Packed listbox" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-select label="Packed select" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-autocomplete label="Packed search" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-combobox label="Packed combo" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-command-palette /><atr-chip-set label="Packed filters"><atr-chip kind="filter" label="Angular" value="angular" /></atr-chip-set><ul atrList><li atrListItem>Packed list</li></ul><atr-accordion><atr-accordion-item id="packed-disclosure"><span atrAccordionHeader>Packed disclosure</span><p>Expanded content</p></atr-accordion-item></atr-accordion><section aria-busy="true"><atr-skeleton /></section><button type="button" atrTooltip="Packed help" tooltipId="packed-tooltip" [showDelay]="0">Packed tooltip trigger</button><button type="button" [atrMenuTriggerFor]="commands">Packed commands</button><ng-template #commands><div atrMenu aria-label="Packed commands"><button atrMenuItem>Execute</button></div></ng-template><button type="button" (click)="openDialog(dialogContent,$event)">Open packed dialog</button><ng-template #dialogContent><h2 id="packed-dialog-heading">Packed dialog</h2><button type="button" atrDialogClose>Close packed dialog</button></ng-template><button type="button" (click)="openSheet(sheetContent,$event)">Open packed sheet</button><ng-template #sheetContent><h2>Packed sheet</h2><button type="button" atrBottomSheetClose>Close packed sheet</button></ng-template><button type="button" (click)="notify($event)">Packed notification</button><atr-tabs label="Packed tabs"><div atrTabList><button atrTab type="button" id="packed-tab-a" panel="packed-panel-a">One</button><button atrTab type="button" id="packed-tab-b" panel="packed-panel-b">Two</button></div><section atrTabPanel id="packed-panel-a" labelledBy="packed-tab-a">Panel one</section><section atrTabPanel id="packed-panel-b" labelledBy="packed-tab-b">Panel two</section></atr-tabs><nav atrBreadcrumbs><ol><li><a atrBreadcrumbItem href="#root">Root</a><span atrBreadcrumbSeparator>/</span></li><li><span atrBreadcrumbItem current>Packed current</span></li></ol></nav><atr-pagination [pageCount]="10" /><nav atrNavigationBar><a atrNavigationItem href="#home" active>Home</a><a atrNavigationItem href="#work">Work</a><a atrNavigationItem href="#profile">Profile</a></nav><atr-side-navigation-container><atr-side-navigation panelId="packed-navigation" label="Packed navigation"><a atrSideNavigationItem href="#profile" active>Profile</a></atr-side-navigation><main atrSideNavigationContent>App content</main></atr-side-navigation-container><button atrFab type="button" aria-label="Packed create">+</button><atr-speed-dial id="packed-dial" label="Packed actions"><button atrSpeedDialAction type="button">Create document</button></atr-speed-dial></section>' })
+@Component({ selector: 'consumer-root', providers:[provideAtralumeIcons([checkIcon])], imports: [AtralumeListbox,AtralumeCombobox,AtralumeSelect,AtralumeAutocomplete,AtralumePopover,AtralumeCommandPalette,AtralumeCard,AtralumeCardContent,AtralumeChip,AtralumeChipSet,AtralumeList,AtralumeListItem,TuiAccordion,AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeAccordionPanel,AtralumeSkeleton,AtralumeTooltip,AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem,AtralumeDialogClose,AtralumeBottomSheetClose,AtralumeTabs,AtralumeTabList,AtralumeTab,AtralumeTabPanel,AtralumeBreadcrumbs,AtralumeBreadcrumbItem,AtralumeBreadcrumbSeparator,AtralumePagination,AtralumeNavigationBar,AtralumeNavigationItem,AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem,AtralumeFab,AtralumeSpeedDial,AtralumeSpeedDialAction,AtralumeIcon, AtralumeIconButton, AtralumeLink, AtralumeBadge, AtralumeAvatar, AtralumeDivider, AtralumeProgressSpinner, AtralumeProgressBar, AtralumeButton, ReactiveFormsModule, AtralumeFormField, AtralumeControlLabel, AtralumeInput, AtralumeTextarea, AtralumeCheckbox, AtralumeRadio, AtralumeSwitch], template: '<atr-form-field label="Email" hint="Packed hint"><input atrInput type="email" [formControl]="email" /></atr-form-field><atr-form-field label="Notes"><textarea atrTextarea></textarea></atr-form-field><label atrControlLabel><input atrCheckbox type="checkbox" [formControl]="accepted" />Accept terms</label><fieldset><legend>Plan</legend><label atrControlLabel><input atrRadio type="radio" name="plan" value="personal" [formControl]="plan" />Personal</label><label atrControlLabel><input atrRadio type="radio" name="plan" value="business" [formControl]="plan" />Business</label></fieldset><label atrControlLabel><input atrSwitch type="checkbox" [formControl]="notifications" />Notifications</label><button atrButton type="button"><atr-icon name="check" />Packed</button><button atrIconButton type="button" aria-label="Save"><atr-icon name="check" /></button><a atrLink href="#docs">Packed docs</a><atr-badge tone="success">Packed active</atr-badge><atr-avatar name="Packed User" alt="Packed User" /><hr atrDivider /><atr-progress-spinner label="Packed spinner" [value]="50" /><atr-progress-bar label="Packed progress" [value]="65" /><section data-atr-theme="dark" data-atr-surface="standard" style="--atr-comp-dialog-shape:1.5rem;padding:1rem"><atr-card><div atrCardContent>Packed composition</div></atr-card><atr-listbox label="Packed listbox" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-select label="Packed select" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-autocomplete label="Packed search" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-combobox label="Packed combo" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-command-palette /><atr-chip-set label="Packed filters"><atr-chip kind="filter" label="Angular" value="angular" /></atr-chip-set><ul atrList><li atrListItem>Packed list</li></ul><tui-accordion atrAccordion [closeOthers]="true" size="m"><button tuiAccordion atrAccordionItem atrAccordionHeader>Packed disclosure</button><tui-expand atrAccordionPanel>Expanded content</tui-expand></tui-accordion><section aria-busy="true"><atr-skeleton /></section><button type="button" atrTooltip="Packed help" tooltipId="packed-tooltip" [showDelay]="0">Packed tooltip trigger</button><button type="button" [atrMenuTriggerFor]="commands">Packed commands</button><ng-template #commands><div atrMenu aria-label="Packed commands"><button atrMenuItem>Execute</button></div></ng-template><button type="button" (click)="openDialog(dialogContent,$event)">Open packed dialog</button><ng-template #dialogContent><h2 id="packed-dialog-heading">Packed dialog</h2><button type="button" atrDialogClose>Close packed dialog</button></ng-template><button type="button" (click)="openSheet(sheetContent,$event)">Open packed sheet</button><ng-template #sheetContent><h2 id="packed-sheet-heading">Packed sheet</h2><button type="button" atrBottomSheetClose>Close packed sheet</button></ng-template><button type="button" (click)="notify($event)">Packed notification</button><atr-tabs label="Packed tabs"><div atrTabList><button atrTab type="button" id="packed-tab-a" panel="packed-panel-a">One</button><button atrTab type="button" id="packed-tab-b" panel="packed-panel-b">Two</button></div><section atrTabPanel id="packed-panel-a" labelledBy="packed-tab-a">Panel one</section><section atrTabPanel id="packed-panel-b" labelledBy="packed-tab-b">Panel two</section></atr-tabs><nav atrBreadcrumbs><ol><li><a atrBreadcrumbItem href="#root">Root</a><span atrBreadcrumbSeparator>/</span></li><li><span atrBreadcrumbItem current>Packed current</span></li></ol></nav><atr-pagination [pageCount]="10" /><nav atrNavigationBar><a atrNavigationItem href="#home" active>Home</a><a atrNavigationItem href="#work">Work</a><a atrNavigationItem href="#profile">Profile</a></nav><atr-side-navigation-container><atr-side-navigation panelId="packed-navigation" label="Packed navigation"><a atrSideNavigationItem href="#profile" active>Profile</a></atr-side-navigation><main atrSideNavigationContent>App content</main></atr-side-navigation-container><button atrFab type="button" aria-label="Packed create">+</button><atr-speed-dial id="packed-dial" label="Packed actions"><button atrSpeedDialAction type="button">Create document</button></atr-speed-dial></section>' })
 class ConsumerRoot { private readonly dialog=inject(AtralumeDialog);private readonly sheet=inject(AtralumeBottomSheet);private readonly snackbar=inject(AtralumeSnackbar);private readonly owner=inject(DestroyRef);private readonly views=inject(ViewContainerRef);
 openDialog(template:TemplateRef<unknown>,event:Event):void{this.dialog.open(template,{labelledBy:'packed-dialog-heading',origin:event.currentTarget as HTMLElement,owner:this.owner,viewContainerRef:this.views});}
-openSheet(template:TemplateRef<unknown>,event:Event):void{this.sheet.open(template,{label:'Packed sheet',origin:event.currentTarget as HTMLElement,owner:this.owner,viewContainerRef:this.views});}
+openSheet(template:TemplateRef<unknown>,event:Event):void{this.sheet.open(template,{labelledBy:'packed-sheet-heading',origin:event.currentTarget as HTMLElement,owner:this.owner,viewContainerRef:this.views});}
 notify(event:Event):void{this.snackbar.open({message:'Packed notification saved',action:'Undo packed',duration:0,origin:event.currentTarget as HTMLElement,owner:this.owner});}
  readonly email = new FormControl('packed@example.com', {nonNullable:true}); readonly accepted = new FormControl(false, {nonNullable:true}); readonly plan = new FormControl('personal', {nonNullable:true}); readonly notifications = new FormControl(false, {nonNullable:true}); }
-bootstrapApplication(ConsumerRoot);
+@Component({selector:'package-root',standalone:true,imports:[TuiRoot,ConsumerRoot],template:'<tui-root><consumer-root /></tui-root>'})
+class PackageRoot {}
+bootstrapApplication(PackageRoot,{providers:[provideAtralume()]});
 `,
   );
-  run("npx", ["ng", "build", "consumer", "--configuration=production"], {
+  const consumerSourcePath = path.join(temporary, "src/main.ts");
+  const consumerSource = fs.readFileSync(consumerSourcePath, "utf8");
+  fs.writeFileSync(
+    consumerSourcePath,
+    consumerSource
+      .replace(
+        "AtralumeFormField, AtralumeControlLabel, AtralumeInput",
+        "AtralumeFormField, AtralumeControlLabel, TuiLabel, TuiTextfield, AtralumeInput",
+      )
+      .replace(
+        '<atr-form-field label="Email" hint="Packed hint"><input atrInput type="email" [formControl]="email" /></atr-form-field><atr-form-field label="Notes"><textarea atrTextarea></textarea></atr-form-field>',
+        '<atr-form-field hint="Packed hint"><tui-textfield tuiTextfieldSize="m"><label tuiLabel>Email</label><input atrInput type="email" [formControl]="email" /></tui-textfield></atr-form-field><atr-form-field><tui-textfield tuiTextfieldSize="m"><label tuiLabel>Notes</label><textarea atrTextarea></textarea></tui-textfield></atr-form-field>',
+      ),
+  );
+  run(
+    "npx",
+    [
+      "ng",
+      "build",
+      "consumer",
+      ...(process.env["ATRLUME_PACKAGE_DEBUG"]
+        ? ["--configuration=development"]
+        : ["--configuration=production"]),
+    ],
+    {
     cwd: temporary,
-  });
+    },
+  );
   const output = path.join(temporary, "dist/browser");
   const server = http.createServer((request, response) => {
     if (request.url === "/favicon.ico") return response.writeHead(204).end();
@@ -305,8 +336,10 @@ bootstrapApplication(ConsumerRoot);
     browser = await launchBrowser();
     const page = await browser.newPage();
     const errors = [];
-    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("pageerror", (error) => errors.push(error.stack || error.message));
     await page.goto(`http://127.0.0.1:${server.address().port}`);
+    await page.waitForTimeout(250);
+    assert.deepEqual(errors, [], "Consumer application must bootstrap cleanly");
     const email = page.getByLabel("Email");
     await email.waitFor();
     assert.equal(await email.inputValue(), "packed@example.com");
@@ -328,12 +361,6 @@ bootstrapApplication(ConsumerRoot);
     assert.equal(await page.locator('atr-icon[name="check"] path').count(), 2);
     assert.equal(
       await page
-        .locator('atr-accordion-item atr-icon[name="chevron-down"] path')
-        .count(),
-      1,
-    );
-    assert.equal(
-      await page
         .getByRole("link", { name: "Packed docs" })
         .getAttribute("href"),
       "#docs",
@@ -345,7 +372,7 @@ bootstrapApplication(ConsumerRoot);
     assert.equal(
       await page
         .getByRole("progressbar", { name: "Packed progress" })
-        .getAttribute("aria-valuenow"),
+        .evaluate((element) => String(element.value)),
       "65",
     );
     assert.equal(
@@ -367,9 +394,8 @@ bootstrapApplication(ConsumerRoot);
       .getByRole("button", { name: "Packed disclosure", exact: true })
       .click();
     await page
-      .locator(
-        'button[aria-controls="packed-disclosure-panel"][aria-expanded="true"]',
-      )
+      .locator('button[aria-expanded="true"]')
+      .filter({ hasText: "Packed disclosure" })
       .waitFor();
     assert.equal(
       await page
@@ -394,14 +420,11 @@ bootstrapApplication(ConsumerRoot);
     await page.getByRole("button", { name: "Open packed dialog" }).click();
     const dialog = page.getByRole("dialog", { name: "Packed dialog" });
     await dialog.waitFor();
+    const dialogPanel = page.locator('tui-dialog[data-appearance="atr-dialog"]');
+    await dialogPanel.waitFor();
+    assert.equal(await dialogPanel.getAttribute("data-atr-theme"), "dark");
     assert.equal(
-      await dialog.locator("..").getAttribute("data-atr-theme"),
-      "dark",
-    );
-    assert.equal(
-      await dialog
-        .locator("..")
-        .evaluate((el) => getComputedStyle(el).borderRadius),
+      await dialogPanel.evaluate((el) => getComputedStyle(el).borderRadius),
       "24px",
     );
     await page.keyboard.press("Escape");
@@ -430,24 +453,37 @@ bootstrapApplication(ConsumerRoot);
     });
     await packedSelect.click();
     await page
-      .locator(".atr-combobox-panel")
       .getByRole("option", { name: "Packed Alpha", exact: true })
       .click();
-    await packedSelect.getByText("Packed Alpha", { exact: true }).waitFor();
-    assert.ok((await packedSelect.innerText()).includes("Packed Alpha"));
+    await page.waitForFunction(() => {
+      const field = document.querySelector(
+        'atr-select input[role="combobox"], input.atr-select-input',
+      );
+      return (
+        field instanceof HTMLInputElement &&
+        /Packed Alpha/i.test(field.value || field.textContent || "")
+      );
+    });
+    assert.match(await packedSelect.inputValue(), /Packed Alpha/i);
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(150);
     const packedSearch = page.getByRole("combobox", {
       name: "Packed search",
       exact: true,
     });
+    await packedSearch.click();
     await packedSearch.fill("Beta");
     await page.keyboard.press("ArrowDown");
-    await page
-      .locator(".atr-combobox-panel")
-      .getByRole("option", { name: "Packed Beta", exact: true })
-      .waitFor();
+    const autocompleteOption = page
+      .locator("tui-dropdown")
+      .last()
+      .getByRole("option", { name: "Packed Beta", exact: true });
+    await autocompleteOption.waitFor();
     await page.keyboard.press("Enter");
     await page.waitForFunction(() => {
-      const field = document.querySelector('input[aria-label="Packed search"]');
+      const field = document.querySelector(
+        'atr-autocomplete input[role="combobox"], input.atr-combobox-input',
+      );
       return field instanceof HTMLInputElement && field.value === "Packed Beta";
     });
     assert.equal(await packedSearch.inputValue(), "Packed Beta");
@@ -471,6 +507,7 @@ bootstrapApplication(ConsumerRoot);
 import '@angular/compiler';
 import assert from 'node:assert/strict';
 import { Component, inject } from '@angular/core';
+import { provideAtralume } from '@atralume/angular';
 import { AtralumeListbox } from '@atralume/angular/listbox';
 import { AtralumeCombobox } from '@atralume/angular/combobox';
 import { AtralumeSelect } from '@atralume/angular/select';
@@ -480,7 +517,8 @@ import { AtralumeCommandPalette } from '@atralume/angular/command-palette';
 import {AtralumeCard,AtralumeCardContent} from '@atralume/angular/card';
 import {AtralumeChip,AtralumeChipSet} from '@atralume/angular/chip';
 import {AtralumeList,AtralumeListItem} from '@atralume/angular/list';
-import {AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader} from '@atralume/angular/accordion';
+import {AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeAccordionPanel} from '@atralume/angular/accordion';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {AtralumeSkeleton} from '@atralume/angular/skeleton';
 import {AtralumeTooltip} from '@atralume/angular/tooltip';
 import {AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem} from '@atralume/angular/menu';
@@ -507,8 +545,8 @@ import { AtralumeProgressSpinner, AtralumeProgressBar } from '@atralume/angular/
 class EmptyContent {}
 Component({selector:'empty-server',standalone:true,template:'Server-safe service content'})(EmptyContent);
 class ServerRoot {constructor(){inject(AtralumeDialog).open(EmptyContent,{label:'Server dialog'});inject(AtralumeBottomSheet).open(EmptyContent,{label:'Server sheet'});inject(AtralumeSnackbar).open({message:'Server feedback'});}}
-Component({selector:'ssr-root',standalone:true,imports:[AtralumeListbox,AtralumeCombobox,AtralumeSelect,AtralumeAutocomplete,AtralumePopover,AtralumeCommandPalette,AtralumeCard,AtralumeCardContent,AtralumeChip,AtralumeChipSet,AtralumeList,AtralumeListItem,AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeSkeleton,AtralumeTooltip,AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem,AtralumeDialogClose,AtralumeBottomSheetClose,AtralumeTabs,AtralumeTabList,AtralumeTab,AtralumeTabPanel,AtralumeBreadcrumbs,AtralumeBreadcrumbItem,AtralumeBreadcrumbSeparator,AtralumePagination,AtralumeNavigationBar,AtralumeNavigationItem,AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem,AtralumeFab,AtralumeSpeedDial,AtralumeSpeedDialAction,AtralumeButton,AtralumeIcon,AtralumeIconButton,AtralumeLink,AtralumeBadge,AtralumeAvatar,AtralumeDivider,AtralumeProgressSpinner,AtralumeProgressBar],template:'<button atrButton [loading]="true">Save</button><atr-icon name="check" /><button atrIconButton aria-label="Close">x</button><a atrLink href="/docs">Docs</a><atr-badge>Active</atr-badge><atr-avatar name="Server User" alt="Server User" /><hr atrDivider /><atr-progress-spinner label="Server spinner" /><atr-progress-bar label="Server progress" [value]="65" /><section data-atr-theme="dark" data-atr-surface="standard" style="--atr-comp-dialog-shape:1.5rem;padding:1rem"><atr-card><div atrCardContent>Packed composition</div></atr-card><atr-listbox label="Packed listbox" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-select label="Packed select" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-autocomplete label="Packed search" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-combobox label="Packed combo" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-command-palette /><atr-chip-set label="Packed filters"><atr-chip kind="filter" label="Angular" value="angular" /></atr-chip-set><ul atrList><li atrListItem>Packed list</li></ul><atr-accordion><atr-accordion-item id="packed-disclosure"><span atrAccordionHeader>Packed disclosure</span><p>Expanded content</p></atr-accordion-item></atr-accordion><section aria-busy="true"><atr-skeleton /></section><button type="button" atrTooltip="Packed help" tooltipId="packed-tooltip" [showDelay]="0">Packed tooltip trigger</button><button type="button" [atrMenuTriggerFor]="commands">Packed commands</button><ng-template #commands><div atrMenu aria-label="Packed commands"><button atrMenuItem>Execute</button></div></ng-template><button type="button" (click)="openDialog(dialogContent,$event)">Open packed dialog</button><ng-template #dialogContent><h2 id="packed-dialog-heading">Packed dialog</h2><button type="button" atrDialogClose>Close packed dialog</button></ng-template><button type="button" (click)="openSheet(sheetContent,$event)">Open packed sheet</button><ng-template #sheetContent><h2>Packed sheet</h2><button type="button" atrBottomSheetClose>Close packed sheet</button></ng-template><button type="button" (click)="notify($event)">Packed notification</button><atr-tabs label="Packed tabs"><div atrTabList><button atrTab type="button" id="packed-tab-a" panel="packed-panel-a">One</button><button atrTab type="button" id="packed-tab-b" panel="packed-panel-b">Two</button></div><section atrTabPanel id="packed-panel-a" labelledBy="packed-tab-a">Panel one</section><section atrTabPanel id="packed-panel-b" labelledBy="packed-tab-b">Panel two</section></atr-tabs><nav atrBreadcrumbs><ol><li><a atrBreadcrumbItem href="#root">Root</a><span atrBreadcrumbSeparator>/</span></li><li><span atrBreadcrumbItem current>Packed current</span></li></ol></nav><atr-pagination [pageCount]="10" /><nav atrNavigationBar><a atrNavigationItem href="#home" active>Home</a><a atrNavigationItem href="#work">Work</a><a atrNavigationItem href="#profile">Profile</a></nav><atr-side-navigation-container><atr-side-navigation panelId="packed-navigation" label="Packed navigation"><a atrSideNavigationItem href="#profile" active>Profile</a></atr-side-navigation><main atrSideNavigationContent>App content</main></atr-side-navigation-container><button atrFab type="button" aria-label="Packed create">+</button><atr-speed-dial id="packed-dial" label="Packed actions"><button atrSpeedDialAction type="button">Create document</button></atr-speed-dial></section>'})(ServerRoot);
-const html=await renderApplication((context)=>bootstrapApplication(ServerRoot,{providers:[provideAtralumeIcons([checkIcon])]},context),{document:'<html><head></head><body><ssr-root></ssr-root></body></html>',url:'http://localhost/',allowedHosts:['localhost']});
+Component({selector:'ssr-root',standalone:true,imports:[AtralumeListbox,AtralumeCombobox,AtralumeSelect,AtralumeAutocomplete,AtralumePopover,AtralumeCommandPalette,AtralumeCard,AtralumeCardContent,AtralumeChip,AtralumeChipSet,AtralumeList,AtralumeListItem,TuiAccordion,AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeAccordionPanel,AtralumeSkeleton,AtralumeTooltip,AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem,AtralumeDialogClose,AtralumeBottomSheetClose,AtralumeTabs,AtralumeTabList,AtralumeTab,AtralumeTabPanel,AtralumeBreadcrumbs,AtralumeBreadcrumbItem,AtralumeBreadcrumbSeparator,AtralumePagination,AtralumeNavigationBar,AtralumeNavigationItem,AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem,AtralumeFab,AtralumeSpeedDial,AtralumeSpeedDialAction,AtralumeButton,AtralumeIcon,AtralumeIconButton,AtralumeLink,AtralumeBadge,AtralumeAvatar,AtralumeDivider,AtralumeProgressSpinner,AtralumeProgressBar],template:'<button atrButton [loading]="true">Save</button><atr-icon name="check" /><button atrIconButton aria-label="Close">x</button><a atrLink href="/docs">Docs</a><atr-badge>Active</atr-badge><atr-avatar name="Server User" alt="Server User" /><hr atrDivider /><atr-progress-spinner label="Server spinner" /><atr-progress-bar label="Server progress" [value]="65" /><section data-atr-theme="dark" data-atr-surface="standard" style="--atr-comp-dialog-shape:1.5rem;padding:1rem"><atr-card><div atrCardContent>Packed composition</div></atr-card><atr-listbox label="Packed listbox" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-select label="Packed select" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-autocomplete label="Packed search" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-combobox label="Packed combo" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-command-palette /><atr-chip-set label="Packed filters"><atr-chip kind="filter" label="Angular" value="angular" /></atr-chip-set><ul atrList><li atrListItem>Packed list</li></ul><tui-accordion atrAccordion [closeOthers]="true" size="m"><button tuiAccordion atrAccordionItem atrAccordionHeader>Packed disclosure</button><tui-expand atrAccordionPanel>Expanded content</tui-expand></tui-accordion><section aria-busy="true"><atr-skeleton /></section><button type="button" atrTooltip="Packed help" tooltipId="packed-tooltip" [showDelay]="0">Packed tooltip trigger</button><button type="button" [atrMenuTriggerFor]="commands">Packed commands</button><ng-template #commands><div atrMenu aria-label="Packed commands"><button atrMenuItem>Execute</button></div></ng-template><button type="button" (click)="openDialog(dialogContent,$event)">Open packed dialog</button><ng-template #dialogContent><h2 id="packed-dialog-heading">Packed dialog</h2><button type="button" atrDialogClose>Close packed dialog</button></ng-template><button type="button" (click)="openSheet(sheetContent,$event)">Open packed sheet</button><ng-template #sheetContent><h2 id="packed-sheet-heading">Packed sheet</h2><button type="button" atrBottomSheetClose>Close packed sheet</button></ng-template><button type="button" (click)="notify($event)">Packed notification</button><atr-tabs label="Packed tabs"><div atrTabList><button atrTab type="button" id="packed-tab-a" panel="packed-panel-a">One</button><button atrTab type="button" id="packed-tab-b" panel="packed-panel-b">Two</button></div><section atrTabPanel id="packed-panel-a" labelledBy="packed-tab-a">Panel one</section><section atrTabPanel id="packed-panel-b" labelledBy="packed-tab-b">Panel two</section></atr-tabs><nav atrBreadcrumbs><ol><li><a atrBreadcrumbItem href="#root">Root</a><span atrBreadcrumbSeparator>/</span></li><li><span atrBreadcrumbItem current>Packed current</span></li></ol></nav><atr-pagination [pageCount]="10" /><nav atrNavigationBar><a atrNavigationItem href="#home" active>Home</a><a atrNavigationItem href="#work">Work</a><a atrNavigationItem href="#profile">Profile</a></nav><atr-side-navigation-container><atr-side-navigation panelId="packed-navigation" label="Packed navigation"><a atrSideNavigationItem href="#profile" active>Profile</a></atr-side-navigation><main atrSideNavigationContent>App content</main></atr-side-navigation-container><button atrFab type="button" aria-label="Packed create">+</button><atr-speed-dial id="packed-dial" label="Packed actions"><button atrSpeedDialAction type="button">Create document</button></atr-speed-dial></section>'})(ServerRoot);
+const html=await renderApplication((context)=>bootstrapApplication(ServerRoot,{providers:[provideAtralume(),provideAtralumeIcons([checkIcon])]},context),{document:'<html><head></head><body><ssr-root></ssr-root></body></html>',url:'http://localhost/',allowedHosts:['localhost']});
 assert.ok(html.includes('aria-busy="true"'));
 assert.ok(html.includes('aria-valuenow="65"'));
 assert.ok(html.includes('Server User'));

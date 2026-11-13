@@ -1,82 +1,79 @@
-import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { Canvas, Meta } from "@storybook/addon-docs/blocks";
 import * as Stories from "../stories/accordion.component.stories";
 
 <Meta of={Stories} name="Docs" />
 
 # Accordion
 
-Exception relative to Taiga `TuiAccordion`: Atralume keeps item-id models, multi mode, and projected header/panel slots. Taiga uses `button[tuiAccordion]` with `tui-expand`.
+Use an accordion for short, optional disclosure sections. Atralume styles the
+public Taiga host rather than wrapping it: Taiga pairs direct
+`button[tuiAccordion]` and `tui-expand` children for disclosure, IDs, and ARIA.
 
 Taiga UI reference: [Accordion](https://taiga-ui.dev/components/accordion).
-
-Use for optional disclosure sections. Each item requires a consumer-supplied stable, unique id, including under SSR. expanded is a model signal. Headers contain native buttons with aria-expanded and aria-controls. Panels use aria-labelledby. Multi defaults to false; opening another item closes its sibling. ArrowUp/Down and Home/End move header focus; Enter/Space use native activation.
 
 ## Import and composition
 
 ```ts
+import { TuiAccordion } from "@taiga-ui/kit";
 import {
   AtralumeAccordion,
-  AtralumeAccordionItem,
   AtralumeAccordionHeader,
+  AtralumeAccordionItem,
   AtralumeAccordionPanel,
 } from "@atralume/angular/accordion";
 ```
 
 ```html
-<tui-accordion [closeOthers]="true" class="atr-accordion">
-  <atr-accordion-item id="profile">
-    <span atrAccordionHeader>Profile</span>
-    <p atrAccordionPanel>Profile details</p>
-  </atr-accordion-item>
-  <atr-accordion-item id="security">
-    <span atrAccordionHeader>Security</span>
-    <p atrAccordionPanel>Security details</p>
-  </atr-accordion-item>
+<tui-accordion atrAccordion [closeOthers]="true" size="m">
+  <button tuiAccordion atrAccordionItem atrAccordionHeader>Profile</button>
+  <tui-expand atrAccordionPanel><p>Profile details</p></tui-expand>
+  <button tuiAccordion atrAccordionItem atrAccordionHeader>Security</button>
+  <tui-expand atrAccordionPanel><p>Security details</p></tui-expand>
 </tui-accordion>
 ```
 
-Prefer `tui-accordion` as the DI host so `button[tuiAccordion]` can inject
-`TuiAccordionComponent`. Keep `class="atr-accordion"` for Atralume tokens.
+`atrAccordion` is required on the Taiga host. Buttons and panels must be direct
+children, in alternating order. Use `closeOthers` (`true` by default) for one
+open panel and `false` for several open panels.
 
-## API, variants and states
+## API, states, and accessibility
 
-The exported TypeScript contracts define signal inputs and model/output events. Native attributes and events remain native. See the Playground and Keyboard stories for behavior. Consumers can control models with two-way binding; one-way initial values use the same model contract.
+The Atralume exports are styling directives. `closeOthers`, `size`,
+`[(tuiAccordion)]`, disabled state, and native events remain Taiga/native APIs.
+Taiga generates matching panel IDs and supplies `aria-expanded` and
+`aria-controls` on each native button. Enter and Space use native button
+activation. Keep labels concise and place interactive controls outside headers.
 
-## Accessibility, keyboard and focus
-
-Use for optional disclosure sections. Each item requires a consumer-supplied stable, unique id, including under SSR. expanded is a model signal. Headers contain native buttons with aria-expanded and aria-controls. Panels use aria-labelledby. Multi defaults to false; opening another item closes its sibling. ArrowUp/Down and Home/End move header focus; Enter/Space use native activation.
-
-Keep visible labels, logical document headings and focus indicators. Disabled controls retain native behavior. Avoid changing semantic roles to obtain a visual appearance.
-
-## Tokens, themes and glass
-
-Import `@atralume/angular/styles/theme.css` once. Component tokens use `--atr-comp-accordion-*`, backed by semantic system tokens and the public token manifest. Functional variants use inputs; brand details use CSS. A theme supplies colors, a surface supplies context, and consumer overrides customize an instance or subtree.
+For visual customization, import `@atralume/angular/styles/theme.css` once.
+Component tokens use `--atr-comp-accordion-*`, backed by semantic system tokens.
 
 ```css
-.custom {
+.custom-accordion {
   --atr-comp-accordion-shape: 1.5rem;
+  --atr-comp-accordion-padding: 1.25rem;
 }
 ```
 
+Logical spacing supports RTL. The Taiga expand transition respects reduced
+motion, and native boundaries and focus remain visible in forced-colors mode.
+
+## Migration from the pre-release wrapper
+
+The pre-release `<atr-accordion>` and `<atr-accordion-item>` components are
+replaced by the directives above. This necessary breaking change removes the
+extra DOM boundaries that prevented Taiga from pairing triggers and panels.
+
+Do not wrap `button[tuiAccordion]` or `tui-expand` in custom components: doing
+so breaks Taiga's direct-child pairing. Do not use CSS-valued inputs, duplicate
+native events, or remove accessible names. Test consumer colors, zoom, and
+screen readers in the application.
+
 <Canvas of={Stories.Playground} />
-## Responsive, RTL and motion
-
-Logical spacing supports RTL. Lists and cards flow with the available width; chips wrap. Preserve reading order when composing responsive layouts. Forced colors keeps native boundaries and focus. Reduced motion avoids nonessential animation. Do not use color alone for selection or status.
-
-## Common mistakes
-
-Do not use CSS-valued inputs, duplicate native events, or remove accessible names. Use native navigation for destinations and native buttons for actions. Test final consumer colors, zoom and screen readers in the application.
 
 {/* public-api:start */}
 
 ## Public TypeScript contract
 
-| Owner                   | Member     | Kind    | Type                | Default    |
-| ----------------------- | ---------- | ------- | ------------------- | ---------- |
-| `AtralumeAccordion`     | `multi`    | `Input` | `boolean`           | `false`    |
-| `AtralumeAccordion`     | `size`     | `Input` | `"s" \| "m" \| "l"` | `"m"`      |
-| `AtralumeAccordionItem` | `id`       | `Input` | `string`            | `Required` |
-| `AtralumeAccordionItem` | `expanded` | `Model` | `boolean`           | `false`    |
-| `AtralumeAccordionItem` | `disabled` | `Input` | `boolean`           | `false`    |
+Configuration and native host behavior are described above; the family has no extra visual inputs.
 
 {/* public-api:end */}

@@ -62,3 +62,7 @@ Thumbs.db
 __screenshots__/
 .codex/hooks.json
 .grok/hooks/impeccable.json
+
+# Local Playwright MCP / visual review captures
+.playwright-mcp/
+
