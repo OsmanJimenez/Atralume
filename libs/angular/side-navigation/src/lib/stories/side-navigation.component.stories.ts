@@ -7,6 +7,13 @@ import {
   AtralumeSideNavigationGroup,
   AtralumeSideNavigationLabel,
 } from "../../index";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import {
+  AtralumeIcon,
+  menuIcon,
+  provideAtralumeIcons,
+  userIcon,
+} from "@osmanjimenez/atralume/icon";
 import { expect, userEvent, within } from "storybook/test";
 export default {
   title: "Navigation/Side Navigation",
@@ -21,13 +28,16 @@ export default {
         AtralumeSideNavigationItem,
         AtralumeSideNavigationGroup,
         AtralumeSideNavigationLabel,
+        AtralumeButton,
+        AtralumeIcon,
       ],
+      providers: [provideAtralumeIcons([menuIcon, userIcon])],
     }),
   ],
 } satisfies Meta;
 type Story = StoryObj;
 const shell = () =>
-  `<button type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" [label]="label" [mode]="mode" [(opened)]="opened" [collapsed]="collapsed"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><span aria-hidden="true">\u2302</span><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><span aria-hidden="true">\u2699</span><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation>Application content remains usable beside the aside.</atr-side-navigation-container>`;
+  `<div class="atr-sidenav-story-toolbar" style="display:flex;align-items:center;gap:0.75rem;margin-block-end:0.75rem"><button atrButton appearance="outlined" type="button" (click)="opened=!opened" [attr.aria-expanded]="opened" aria-controls="workspace-nav">Toggle navigation</button></div><atr-side-navigation-container><atr-side-navigation panelId="workspace-nav" [label]="label" [mode]="mode" [(opened)]="opened" [collapsed]="collapsed"><header atrSideNavigationHeader><h2>Workspace</h2></header><section atrSideNavigationGroup><a atrSideNavigationItem href="#overview" active><atr-icon name="menu" aria-hidden="true" /><span atrSideNavigationLabel>Overview</span></a><a atrSideNavigationItem href="#settings"><atr-icon name="user" aria-hidden="true" /><span atrSideNavigationLabel>Settings</span></a></section></atr-side-navigation>Application content remains usable beside the aside.</atr-side-navigation-container>`;
 export const Playground: Story = {
   args: {
     mode: "side",

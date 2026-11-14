@@ -97,17 +97,20 @@ export class AtralumeSnackbar {
       parent: this.injector,
       providers: [{ provide: SNACKBAR_SESSION, useValue: session }],
     });
-    const content =
-      entry.config.action != null && entry.config.action !== ""
-        ? new PolymorpheusComponent(AtralumeSnackbarPanel, contentInjector)
-        : entry.config.message;
+    const usesPanel =
+      entry.config.action != null && entry.config.action !== "";
+    const content = usesPanel
+      ? new PolymorpheusComponent(AtralumeSnackbarPanel, contentInjector)
+      : entry.config.message;
 
     entry.subscription = this.notifications
       .open(content, {
         appearance: TONE_APPEARANCE[tone],
         autoClose: entry.config.duration ?? 5000,
-        closable: true,
+        // Panel already renders dismiss; avoid Taiga's extra Close + info icon.
+        closable: !usesPanel,
         label: "",
+        icon: usesPanel ? "" : undefined,
       })
       .subscribe({
         complete: () => {

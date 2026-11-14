@@ -6,14 +6,25 @@
 
 .atr-tree__label {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--atr-sys-touch-target-minimum);
   border: 0;
   background: transparent;
   color: inherit;
   font: inherit;
   cursor: pointer;
-  padding: 0.125rem 0.25rem;
+  padding: var(--atr-sys-spacing-xs) var(--atr-sys-spacing-sm);
   border-radius: var(--atr-comp-tree-shape);
   text-align: start;
+}
+
+/* Taiga tree expand chevron defaults undersized; raise hit area. */
+:host ::ng-deep button.t-button,
+:host ::ng-deep [tuiTreeController] button,
+:host ::ng-deep tui-tree button.t-button {
+  min-inline-size: var(--atr-sys-touch-target-minimum);
+  min-block-size: var(--atr-sys-touch-target-minimum);
 }
 
 .atr-tree__label--selected {

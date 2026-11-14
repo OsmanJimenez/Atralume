@@ -70,6 +70,23 @@ tui-dialog[data-appearance="atr-bottom-sheet"] {
   align-self: flex-end;
 }
 
+/* Taiga ships tuiButtonX at size=s (32px); raise to Atralume touch target. */
+tui-dialog[data-appearance="atr-dialog"] [tuiButtonX],
+tui-dialog[data-appearance="atr-bottom-sheet"] [tuiButtonX] {
+  min-inline-size: var(--atr-sys-touch-target-minimum);
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  inline-size: var(--atr-sys-touch-target-minimum);
+  block-size: var(--atr-sys-touch-target-minimum);
+  color: var(--atr-sys-color-on-surface-variant);
+  border-radius: var(--atr-sys-shape-full);
+}
+
+tui-dialog[data-appearance="atr-dialog"] [tuiButtonX]:focus-visible,
+tui-dialog[data-appearance="atr-bottom-sheet"] [tuiButtonX]:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
+  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+}
+
 tui-dropdown[data-appearance="atr-popover"] {
   box-sizing: border-box;
   max-inline-size: calc(100vw - 2rem);
@@ -92,7 +109,15 @@ tui-dropdown[data-appearance="atr-popover"] {
 .atr-menu {
   display: flex;
   flex-direction: column;
-  min-inline-size: var(--atr-ref-spacing-16);
+  box-sizing: border-box;
+  min-inline-size: max(
+    var(--atr-ref-spacing-16),
+    var(--atr-menu-trigger-width, 12rem)
+  );
+  inline-size: max(
+    var(--atr-menu-trigger-width, auto),
+    max-content
+  );
   max-inline-size: calc(100vw - 2rem);
   max-block-size: calc(100dvh - 2rem);
   overflow: auto;
@@ -190,4 +215,45 @@ tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
     box-shadow: none;
     backdrop-filter: none;
   }
+}
+
+/* Snackbar: neutralize Taiga notification chrome so atr-snackbar-panel owns color. */
+tui-notification-alert:has(atr-snackbar-panel) {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border: 0;
+}
+
+tui-notification-alert:has(atr-snackbar-panel) [tuiNotification],
+tui-notification-alert:has(atr-snackbar-panel) .t-wrapper {
+  --t-icon-start: none !important;
+  background: transparent !important;
+  color: inherit;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+tui-notification-alert:has(atr-snackbar-panel) [tuiNotification]::before,
+tui-notification-alert:has(atr-snackbar-panel) [tuiNotification]::after,
+tui-notification-alert:has(atr-snackbar-panel) [data-icon-start="tui"]::before {
+  content: none !important;
+  display: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  background: none !important;
+  inline-size: 0 !important;
+  block-size: 0 !important;
+}
+
+tui-notification-alert:has(atr-snackbar-panel) [tuiTitle]:not(:has(*:not(:empty))),
+tui-notification-alert:has(atr-snackbar-panel) [tuiTitle]:empty {
+  display: none;
+}
+
+/* Panel already exposes Undo/Dismiss; hide Taiga's extra Close control. */
+tui-notification-alert:has(atr-snackbar-panel) > div > .t-wrapper > [tuiNotification].t-closable > button,
+tui-notification-alert:has(atr-snackbar-panel) button[tuiButtonX] {
+  display: none !important;
 }

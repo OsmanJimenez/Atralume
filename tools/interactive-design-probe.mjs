@@ -36,19 +36,29 @@ const cases = [
   {
     id: "overlays-bottom-sheet--playground",
     open: async (page) => {
-      await page.getByRole("button", { name: /open bottom sheet/i }).click();
-      await page.waitForTimeout(400);
+      // Story play() may already open the sheet; reuse it or reopen after close.
+      const existing = page.getByRole("dialog", { name: /share profile/i });
+      if (!(await existing.isVisible().catch(() => false))) {
+        await page
+          .getByRole("button", { name: /open bottom sheet/i })
+          .click({ force: true });
+        await page.waitForTimeout(400);
+      }
       return page.evaluate(() => {
         const d = document.querySelector(
           'tui-dialog[data-appearance="atr-bottom-sheet"]',
         );
         if (!d) return { ok: false, reason: "no sheet" };
         const s = getComputedStyle(d);
+        const close = d.querySelector("[tuiButtonX]");
+        const cr = close?.getBoundingClientRect();
         return {
           ok: true,
           bg: s.backgroundColor,
           radius: s.borderRadius,
           text: d.textContent.trim().slice(0, 80),
+          closeW: cr ? Math.round(cr.width) : null,
+          closeH: cr ? Math.round(cr.height) : null,
         };
       });
     },
@@ -257,9 +267,9 @@ const cases = [
     id: "navigation-side-navigation--playground",
     open: async (page) => {
       return page.evaluate(() => {
-        const nav = document.querySelector(
-          "atr-side-navigation, .atr-side-navigation, aside",
-        );
+        const aside = document.querySelector("aside[tuiNavigationAside]");
+        const host = document.querySelector("atr-side-navigation");
+        const nav = aside || host;
         if (!nav) {
           return {
             ok: false,
@@ -269,14 +279,25 @@ const cases = [
           };
         }
         const s = getComputedStyle(nav);
-        const items = nav.querySelectorAll(
+        const items = document.querySelectorAll(
           ".atr-side-navigation-item, [atrSideNavigationItem]",
+        );
+        const toggle = [...document.querySelectorAll("button")].find((b) =>
+          /toggle navigation/i.test(b.textContent || ""),
         );
         return {
           ok: true,
-          w: nav.getBoundingClientRect().width,
+          w: Math.round(nav.getBoundingClientRect().width),
           bg: s.backgroundColor,
           items: items.length,
+          toggleAtr: !!(
+            toggle &&
+            (toggle.hasAttribute("atrButton") ||
+              toggle.classList.contains("atr-button"))
+          ),
+          icons: document.querySelectorAll(
+            "atr-side-navigation atr-icon svg, aside atr-icon svg",
+          ).length,
         };
       });
     },

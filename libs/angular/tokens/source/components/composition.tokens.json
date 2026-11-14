@@ -37,7 +37,7 @@
         },
         "elevation": {
           "$type": "shadow",
-          "$value": "{atr.sys.elevation.level-1}"
+          "$value": "{atr.sys.elevation.level-2}"
         }
       },
       "chip": {

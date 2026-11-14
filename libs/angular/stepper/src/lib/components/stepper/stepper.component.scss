@@ -9,6 +9,12 @@ nav {
   min-inline-size: 0;
 }
 
+/* Ensure Taiga step triggers meet the touch target. */
+:host ::ng-deep [tuiStep],
+:host ::ng-deep tui-stepper button {
+  min-block-size: var(--atr-sys-touch-target-minimum);
+}
+
 .atr-step-content {
   padding: var(--atr-comp-stepper-padding);
   border: 1px solid var(--atr-comp-stepper-border-color);

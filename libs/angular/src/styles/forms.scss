@@ -207,6 +207,7 @@
 
 .atr-switch {
   appearance: none;
+  --t-icon-start: none;
   inline-size: var(--atr-comp-form-field-switch-track-width, 3rem);
   block-size: var(--atr-comp-form-field-switch-track-height, 1.5rem);
   border: 2px solid
@@ -221,11 +222,17 @@
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: var(--atr-comp-form-field-switch-thumb-offset, 0.25rem);
+  inset-block-end: auto;
+  inset-inline-end: auto;
   transform: translateY(-50%);
   inline-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
   block-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
   border-radius: var(--atr-sys-shape-full, 9999px);
   background: var(--atr-comp-form-field-unselected-border-color, currentColor);
+  /* Kill any leftover Taiga icon mask on the thumb pseudo. */
+  mask-image: none;
+  -webkit-mask-image: none;
+  background-image: none;
   transition: inset-inline-start
     var(--atr-comp-form-field-motion-duration, 100ms);
 }
@@ -246,13 +253,40 @@
 }
 
 .atr-input:focus-visible,
-.atr-textarea:focus-visible,
 .atr-checkbox:focus-visible,
 .atr-radio:focus-visible,
 .atr-switch:focus-visible {
   outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
     var(--atr-comp-form-field-focus-ring-color, Highlight);
   outline-offset: var(--atr-sys-focus-ring-offset, 4px);
+}
+
+/* Inside tui-textfield the host owns the focus chrome; avoid a second
+ * offset ring that reads as a black/dark top margin on textarea. */
+tui-textfield .atr-input:focus,
+tui-textfield .atr-input:focus-visible,
+tui-textfield .atr-textarea:focus,
+tui-textfield .atr-textarea:focus-visible,
+atr-form-field .atr-input:focus,
+atr-form-field .atr-input:focus-visible,
+atr-form-field .atr-textarea:focus,
+atr-form-field .atr-textarea:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.atr-textarea:focus-visible {
+  outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
+    var(--atr-comp-form-field-focus-ring-color, Highlight);
+  outline-offset: 2px;
+}
+
+tui-textfield:has(.atr-textarea):focus-within,
+tui-textfield:has(.atr-input):focus-within {
+  outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
+    var(--atr-comp-form-field-focus-ring-color, Highlight);
+  outline-offset: 2px;
 }
 
 .atr-control-label {
@@ -263,6 +297,16 @@
   cursor: pointer;
   color: var(--atr-comp-form-field-label-color, CanvasText);
   font: inherit;
+}
+
+/* Taiga cleaner (Clear) ships at 24px; raise to Atralume touch target. */
+atr-form-field [tuiButtonX],
+.atr-form-field [tuiButtonX],
+tui-textfield [tuiButtonX] {
+  min-inline-size: var(--atr-sys-touch-target-minimum);
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  inline-size: var(--atr-sys-touch-target-minimum);
+  block-size: var(--atr-sys-touch-target-minimum);
 }
 
 .atr-control-label__text,

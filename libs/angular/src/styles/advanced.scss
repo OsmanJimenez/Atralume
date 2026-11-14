@@ -18,7 +18,9 @@ tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
  */
 tui-dropdown:not([data-appearance="atr-popover"]) {
   box-sizing: border-box;
-  max-inline-size: min(24rem, calc(100vw - 2rem));
+  /* Keep Taiga `inline-size: anchor-size(inline)` so the panel matches the
+   * trigger. Only raise the old 24rem ceiling that truncated wide fields. */
+  max-inline-size: min(calc(100vw - 2rem), 100vw);
   max-block-size: min(20rem, calc(100dvh - 2rem));
   overflow: auto;
   padding: var(--atr-sys-spacing-xs);

@@ -6,7 +6,6 @@ import {
   TuiAppearance,
   tuiAppearance,
 } from "@taiga-ui/core/directives/appearance";
-import { TuiIcons, tuiIconStart } from "@taiga-ui/core/directives/icons";
 import { fromEvent } from "rxjs";
 
 /** Mirrors `TUI_SWITCH_OPTIONS.appearance` without hosting `TuiSwitch`. */
@@ -19,7 +18,8 @@ function switchAppearance(el: HTMLInputElement): string {
  *
  * Does not host `TuiSwitch`: without `NgControl` Taiga forces `disabled`, and
  * the component token breaks as `hostDirectives`. Styles come from
- * `[attr.tuiSwitch]`.
+ * `[attr.tuiSwitch]`. Thumb is painted by `.atr-switch::before` — no Taiga
+ * check icon (`TuiIcons` / `tuiIconStart`) so the glyph never shows through.
  */
 @Directive({
   selector: 'input[type="checkbox"][atrSwitch]',
@@ -29,7 +29,6 @@ function switchAppearance(el: HTMLInputElement): string {
       directive: TuiAppearance,
       inputs: ["tuiAppearanceState", "tuiAppearanceFocus", "tuiAppearanceMode"],
     },
-    TuiIcons,
   ],
   host: {
     class: "atr-switch",
@@ -40,7 +39,6 @@ function switchAppearance(el: HTMLInputElement): string {
 export class AtralumeSwitch {
   private readonly el = tuiInjectElement<HTMLInputElement>();
   private readonly appearance = tuiAppearance(switchAppearance(this.el));
-  private readonly checkIcon = tuiIconStart("@tui.check");
   private readonly control = inject(NgControl, { optional: true, self: true });
 
   constructor() {

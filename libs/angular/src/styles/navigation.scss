@@ -95,6 +95,13 @@
   font: inherit;
 }
 
+/* Taiga pagination defaults to size=s (32px); meet Atralume touch target. */
+.atr-pagination tui-pagination button {
+  box-sizing: border-box;
+  min-inline-size: var(--atr-sys-touch-target-minimum) !important;
+  min-block-size: var(--atr-sys-touch-target-minimum) !important;
+}
+
 .atr-navigation-bar {
   display: flex;
   justify-content: space-evenly;
@@ -106,8 +113,24 @@
     var(--atr-comp-navigation-bar-gap),
     env(safe-area-inset-bottom)
   );
+  border: 0;
+  border-block-start: 0;
+  border-block-end: 0;
   border-radius: var(--atr-comp-navigation-bar-shape);
+  box-shadow: var(--atr-comp-navigation-bar-elevation);
   font-family: var(--atr-comp-navigation-bar-font-family);
+}
+
+.atr-navigation-bar > nav,
+.atr-navigation-bar nav[tuiNavigationNav] {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  gap: inherit;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  min-block-size: var(--atr-sys-touch-target-minimum);
 }
 
 .atr-navigation-item {
@@ -181,6 +204,13 @@ aside[tuiNavigationAside]::before {
   );
   text-decoration: none;
   box-shadow: none;
+}
+
+[tuiButton].atr-side-navigation-item atr-icon,
+[tuiButton].atr-side-navigation-item .atr-icon,
+[tuiButton].atr-side-navigation-item tui-icon {
+  color: inherit;
+  --atr-comp-icon-color: currentColor;
 }
 
 atr-side-navigation[data-collapsed="true"] .atr-side-navigation-label {

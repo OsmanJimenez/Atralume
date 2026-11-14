@@ -33,8 +33,14 @@ export class AtralumeMenuTrigger {
       queueMicrotask(() => {
         if (!this.trigger.isOpen()) return;
         const menu = this.trigger.getMenu();
-        if (menu)
-          this.engine.decorate(menu.nativeElement, this.element, "menu");
+        if (!menu) return;
+        const panel = menu.nativeElement;
+        this.engine.decorate(panel, this.element, "menu");
+        // Match menu min width to the trigger so the panel does not look narrower.
+        panel.style.setProperty(
+          "--atr-menu-trigger-width",
+          `${Math.ceil(this.element.getBoundingClientRect().width)}px`,
+        );
       });
     });
     inject(DestroyRef).onDestroy(() => this.trigger.close());
