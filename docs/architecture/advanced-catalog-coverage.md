@@ -56,7 +56,12 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | QuantitySelector | Molécula | Nula | Input number / buttons | P1 | Componer |
 | ShortcutHint | Molécula | Nula | Kbd + Tooltip | P1 | Componer |
 | InlineEdit | Molécula | Nula | Taiga `TuiInputInline` | P1 | Crear (later) |
-| FilterBar | Molécula | Nula | Taiga `TuiFilter` + chips | P1 | Documentar |
+| FilterBar | Molécula | Completa | `AtralumeFilter` → `TuiFilter` | P1 | Reutilizar |
+| Image | Molécula / media | Completa | `AtralumeImage` (native + skeleton) | P0 | Reutilizar |
+| ImagePreview | Molécula / media | Completa | `AtralumeImagePreview` → dialog + `TuiPreview` | P0 | Reutilizar |
+| ImageGallery / mosaic | Organismo / media | Completa | `AtralumeImageGallery` (`carousel` \| `mosaic`) | P0 | Reutilizar |
+| EmptyState | Molécula | Completa | `AtralumeEmptyState` → `TuiBlockStatus` | P0 | Reutilizar |
+| Destination exploration recipe | Patrón | Completa | Playground `atr-exploration-demo` | P0 | Documentar |
 | KeyValueList | Molécula | Nula | List / description list | P1 | Documentar |
 
 ## C. Organisms
@@ -84,6 +89,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | Responsive nav (mobile/desktop) | Side nav + nav bar | P1 | Documentar |
 | Contextual toolbars | Action bar / menus | P1 | Documentar |
 | Search + filters + results | Combobox + chips | P1 | Documentar |
+| Destination exploration (hero + filters + mosaic + preview + empty) | Playground exploration demo + media APIs | P0 | Documentar |
 | Multi-select + bulk actions | Table + ActionBar | P1 | Documentar |
 | Long forms + validation | Form field recipes | P0 | Reutilizar / Documentar |
 | Destructive confirmations | Dialog / Confirm | P0 | Documentar (Taiga `TuiConfirm`) |

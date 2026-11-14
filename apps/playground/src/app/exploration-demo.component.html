@@ -1,0 +1,148 @@
+<section class="exploration" aria-labelledby="exploration-title">
+  <header class="exploration__masthead">
+    <div>
+      <p class="exploration__brand">Atralume Explore</p>
+      <p class="exploration__eyebrow">Experiencia de destinos</p>
+    </div>
+    <div class="exploration__masthead-actions">
+      <button atrButton appearance="text" type="button" (click)="themeToggle.emit()">
+        Tema {{ theme() === "light" ? "oscuro" : "claro" }}
+      </button>
+      <button atrButton appearance="text" type="button" (click)="showEmpty()">
+        Ver estado vacío
+      </button>
+    </div>
+  </header>
+
+  @if (forceEmpty() || !visibleDestinations().length) {
+    <atr-empty-state
+      class="exploration__empty"
+      title="Todavía no hay escapadas aquí"
+      description="Prueba retirando un filtro o vuelve a las recomendaciones de hoy."
+    >
+      <div atrEmptyStateIcon class="exploration__empty-mark" aria-hidden="true">
+        AT
+      </div>
+      <button atrEmptyStatePrimary atrButton type="button" (click)="reset()">
+        Ver recomendaciones
+      </button>
+    </atr-empty-state>
+  } @else {
+    <div class="exploration__intro">
+      <div>
+        <h1 id="exploration-title">Elige un lugar para salir del ruido.</h1>
+        <p>
+          Rutas cercanas, luz abierta y tiempo suficiente para perder la prisa.
+        </p>
+      </div>
+      <p class="exploration__count">{{ resultLabel() }}</p>
+    </div>
+
+    <section class="exploration__hero" aria-label="Destino destacado">
+      <atr-image
+        [src]="featured().src"
+        [alt]="featured().alt"
+        [width]="featured().width ?? null"
+        [height]="featured().height ?? null"
+        aspectRatio="landscape"
+        loading="eager"
+      />
+      <div class="exploration__hero-copy">
+        <p>Escapada destacada</p>
+        <h2>{{ featured().title }}</h2>
+        <span>{{ featured().location }} · {{ featured().meta }}</span>
+      </div>
+    </section>
+
+    <section class="exploration__filters" aria-label="Filtrar escapadas">
+      <atr-filter
+        label="Explora por tipo de plan"
+        [options]="filters"
+        size="m"
+        [ngModel]="selectedFilters()"
+        (selectionChange)="updateFilters($event)"
+      />
+    </section>
+
+    <section class="exploration__collection" aria-labelledby="collection-title">
+      <header>
+        <div>
+          <h2 id="collection-title">Para mirar despacio</h2>
+          <p>Una selección corta, no un feed infinito.</p>
+        </div>
+        <span>
+          {{ activeIndex() + 1 }} de {{ visibleDestinations().length }}
+        </span>
+      </header>
+      <atr-image-gallery
+        layout="mosaic"
+        [images]="visibleDestinations()"
+        [(activeIndex)]="activeIndex"
+        label="Destinos recomendados"
+      />
+    </section>
+
+    <section class="exploration__featured-card" aria-label="Tarjeta de destino">
+      <atr-card appearance="elevated" class="exploration__destination-card">
+        <atr-image
+          [src]="featured().src"
+          [alt]="featured().alt"
+          [width]="featured().width ?? null"
+          [height]="featured().height ?? null"
+          aspectRatio="portrait"
+        />
+        <div class="exploration__destination-body">
+          <p class="exploration__detail-label">{{ featured().location }}</p>
+          <h2>{{ featured().title }}</h2>
+          <p>{{ featured().description }}</p>
+          <ul class="exploration__meta-list" aria-label="Detalles">
+            <li>{{ featured().meta }}</li>
+            @for (tag of featured().tags; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+          <div class="exploration__detail-actions">
+            <atr-image-preview
+              [images]="featuredPreview()"
+              label="Vista completa"
+              triggerLabel="Ver imagen completa"
+            />
+            <button atrButton type="button">Guardar plan</button>
+          </div>
+        </div>
+      </atr-card>
+    </section>
+
+    <section class="exploration__glass-stage" aria-label="Superficie glass">
+      <div class="exploration__glass-backdrop" aria-hidden="true"></div>
+      <atr-card appearance="glass" class="exploration__glass-card">
+        <p class="exploration__detail-label">Nota de viaje</p>
+        <h2>Lleva poca prisa y buena luz.</h2>
+        <p>
+          Esta tarjeta glass se apoya sobre un fondo con profundidad para
+          comprobar contraste y legibilidad.
+        </p>
+        <button atrButton type="button">Planificar salida</button>
+      </atr-card>
+    </section>
+
+    <section class="exploration__detail" aria-label="Plan del destino">
+      <div>
+        <p class="exploration__detail-label">El plan</p>
+        <h2>Una mañana junto al agua.</h2>
+        <p>
+          Sal antes de las ocho, lleva una capa ligera y deja que la caminata
+          marque el ritmo.
+        </p>
+      </div>
+      <div class="exploration__detail-actions">
+        <atr-image-preview
+          [images]="featuredPreview()"
+          label="Vista completa del destino"
+          triggerLabel="Abrir vista previa"
+        />
+        <button atrButton type="button">Compartir ruta</button>
+      </div>
+    </section>
+  }
+</section>

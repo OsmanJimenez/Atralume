@@ -25,7 +25,7 @@ export type AtralumeImageState = "loading" | "loaded" | "error" | "empty";
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: "atr-image",
-    "[attr.data-state]": "state()",
+    "[attr.data-state]": "displayState()",
     "[attr.data-aspect-ratio]": "aspectRatioName()",
     "[style.aspect-ratio]": "resolvedAspectRatio()",
   },
@@ -56,6 +56,10 @@ export class AtralumeImage {
   });
   protected readonly imageAvailable = computed(
     () => !!this.activeSrc() && this.failedFallback() !== this.activeSrc(),
+  );
+  protected readonly isEmpty = computed(() => !this.src());
+  protected readonly displayState = computed<AtralumeImageState>(() =>
+    this.isEmpty() ? "empty" : this.state(),
   );
   protected readonly resolvedAspectRatio = computed(() => {
     const ratio = this.aspectRatio();

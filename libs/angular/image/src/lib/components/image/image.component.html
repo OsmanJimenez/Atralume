@@ -1,4 +1,8 @@
-@if (imageAvailable()) {
+@if (isEmpty()) {
+  <div class="atr-image__error" role="img" [attr.aria-label]="alt()">
+    No image
+  </div>
+} @else if (imageAvailable()) {
   @if (previewable()) {
     <button
       type="button"

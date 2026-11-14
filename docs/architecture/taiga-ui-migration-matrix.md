@@ -36,7 +36,8 @@ Waves: see the [replanned checklist](./taiga-ui-migration-checklist.md).
 | Image preview             | `libs/angular/image-preview/src/lib/components/image-preview/image-preview.component.ts`                           | `AtralumeImagePreview` / `atr-image-preview`                                                       | `TuiPreview` + `AtralumeDialog`                                                                | Composición | composed    | Trigger opens the shared Atralume dialog; zoom is delegated to Taiga                 | `image-preview/src/lib/tests/`   | `image-preview/src/lib/docs/`                   |
 | Filter                    | `libs/angular/filter/src/lib/components/filter/filter.component.ts`                                                | `AtralumeFilter<T>` / `atr-filter`                                                                 | `TuiFilter`                                                                                    | Adaptador   | composed    | Typed option DTO and CVA wrap Taiga multi-select filter                              | `filter/src/lib/tests/`          | `filter/src/lib/docs/`                          |
 | Empty state               | `libs/angular/empty-state/src/lib/components/empty-state/empty-state.component.ts`                                 | `AtralumeEmptyState` / `atr-empty-state`                                                           | `TuiBlockStatus`                                                                               | Composición | composed    | Generic projected actions and illustration slot                                      | `empty-state/src/lib/tests/`     | `empty-state/src/lib/docs/`                     |
-| Image gallery             | `libs/angular/image-gallery/src/lib/components/image-gallery/image-gallery.component.ts`                           | `AtralumeImageGallery` / `atr-image-gallery`                                                       | `TuiCarousel`, `AtralumeImage`, `AtralumeImagePreview`                                         | Composición | composed    | Typed media DTO; delegates image loading, preview zoom, and carousel movement        | `image-gallery/src/lib/tests/`   | `image-gallery/src/lib/docs/`                   |
+| Image gallery             | `libs/angular/image-gallery/src/lib/components/image-gallery/image-gallery.component.ts`                           | `AtralumeImageGallery` / `atr-image-gallery`                                                       | `TuiCarousel`, `AtralumeImage`, `AtralumeImagePreview`                                         | Composición | composed    | Typed media DTO; `carousel`/`mosaic` layouts; captions/location/tags; preview zoom   | `image-gallery/src/lib/tests/`   | `image-gallery/src/lib/docs/`                   |
+| Playground exploration demo | `apps/playground/src/app/exploration-demo.component.ts`                                                          | `ExplorationDemo` / `atr-exploration-demo`                                                         | Public media APIs (`image`, `image-gallery`, `image-preview`, `filter`, `empty-state`, `card`) | Composición | composed    | Internal playground only; destination exploration recipe                             | Playground checks                | Playground                                      |
 | Chip                      | `libs/angular/chip/src/lib/components/chip/chip.component.ts`                                                      | `AtralumeChip` / `atr-chip`                                                                        | `TuiChip` (`@taiga-ui/kit`)                                                                    | Adaptador   | migrated    | Peer `@taiga-ui/kit`                                                                 | `chip/src/lib/tests/`            | `chip/src/lib/docs/`                            |
 | Chip set                  | `libs/angular/chip/src/lib/components/chip-set/chip-set.component.ts`                                              | `AtralumeChipSet` / `atr-chip-set`                                                                 | None (composes `TuiChip` via `AtralumeChip`)                                                   | Composición | migrated    | No previsto                                                                          | `chip/src/lib/tests/`            | `chip/src/lib/docs/`                            |
 | Combobox                  | `libs/angular/combobox/src/lib/components/combobox/combobox.component.ts`                                          | `AtralumeCombobox<T>` / `atr-combobox` + `atrComboBox`                                             | `TuiComboBox` + `tui-data-list-wrapper` (`@taiga-ui/kit`)                                      | Composición | migrated    | Legacy popup/input/trigger engines removed; single-value host                        | `combobox/src/lib/tests/`        | `combobox/src/lib/docs/`                        |
@@ -98,23 +99,24 @@ Waves: see the [replanned checklist](./taiga-ui-migration-checklist.md).
 | OTP input                 | `libs/angular/otp-input/src/lib/components/otp-input/otp-input.component.ts`                                       | `AtralumeOtpInput` / `atr-otp-input`                                                               | `TuiInputPin` (`@taiga-ui/kit`)                                                                | Composición | migrated    | Peer `@taiga-ui/kit`                                                                 | `otp-input/src/lib/tests/`       | `otp-input/src/lib/docs/`                       |
 | Password field recipe     | `libs/angular/form-field/src/lib/stories/password-field.recipe.stories.ts`                                         | Storybook recipe (no package)                                                                      | `TuiPassword` + `atrInput` + form-field                                                        | Composición | migrated    | Docs/recipe only                                                                     | —                                | `form-field/src/lib/docs/password-field.*`      |
 
-## Recount (Ola 6 + advanced catalogue P0)
+## Recount (Ola 6 + advanced catalogue P0 + media exploration)
 
-| Status      | Count               |
-| ----------- | ------------------- |
-| migrated    | 74                  |
-| composed    | 2 (`Icon`, `Tree`)  |
-| removed     | 1 (`Tooltip panel`) |
-| pending     | 0                   |
-| in-progress | 0                   |
-| exception   | 0 (retired)         |
+| Status      | Count                                                                 |
+| ----------- | --------------------------------------------------------------------- |
+| migrated    | 74                                                                    |
+| composed    | 8 (`Icon`, `Tree`, `Image`, `Image preview`, `Filter`, `Empty state`, `Image gallery`, `Playground exploration demo`) |
+| removed     | 1 (`Tooltip panel`)                                                   |
+| pending     | 0                                                                     |
+| in-progress | 0                                                                     |
+| exception   | 0 (retired)                                                           |
 
-**Total inventoried rows:** 77.
+**Total inventoried rows:** 78.
 
 Justified composed leftovers:
 
 - **Icon** — registry default kept for blast radius; optional `engine="tui|auto"` → `TuiIcon`.
 - **Tree** — `tui-tree` in DOM; expansion-map sync / multi-select a11y deferred.
+- **Media exploration set** — native/composed media adapters (`Image`, `Image preview`, `Filter`, `Empty state`, `Image gallery`) plus the playground destination recipe.
 
 Slim overlay helpers (`ɵAtralumeOverlayInfrastructure`) remain only for CDK Menu
 theme/dismissal decoration — not a parallel open engine.

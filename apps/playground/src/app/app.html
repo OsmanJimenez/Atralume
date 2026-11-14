@@ -1,4 +1,8 @@
 <main class="atr-scope" [attr.data-atr-theme]="theme()">
+  <atr-exploration-demo
+    [theme]="theme()"
+    (themeToggle)="toggleTheme()"
+  />
   <atr-card class="hero" appearance="elevated">
     <div class="hero-copy">
       <h1>One Angular system for themes, forms and overlays</h1>
