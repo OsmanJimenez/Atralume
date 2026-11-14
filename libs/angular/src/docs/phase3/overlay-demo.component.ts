@@ -35,6 +35,12 @@ import {
   AtralumeBottomSheetClose,
 } from "@osmanjimenez/atralume/bottom-sheet";
 import { AtralumeSnackbar } from "@osmanjimenez/atralume/snackbar";
+import {
+  AtralumeFormField,
+  TuiLabel,
+  TuiTextfield,
+} from "@osmanjimenez/atralume/form-field";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 @Component({
   selector: "atr-overlay-demo",
   imports: [
@@ -55,6 +61,10 @@ import { AtralumeSnackbar } from "@osmanjimenez/atralume/snackbar";
     AtralumeBottomSheetContent,
     AtralumeBottomSheetActions,
     AtralumeBottomSheetClose,
+    AtralumeFormField,
+    AtralumeInput,
+    TuiLabel,
+    TuiTextfield,
   ],
   templateUrl: "./overlay-demo.component.html",
   styleUrl: "./overlay-demo.component.scss",

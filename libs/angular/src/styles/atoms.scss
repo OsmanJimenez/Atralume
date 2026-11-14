@@ -87,6 +87,13 @@
   display: inline-flex;
   align-items: center;
   gap: var(--atr-comp-link-gap);
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: var(--atr-sys-spacing-xs);
+  box-sizing: border-box;
+}
+
+.atr-link[data-appearance="inline"] {
+  padding-block: 0.125rem;
 }
 
 .atr-link:visited {

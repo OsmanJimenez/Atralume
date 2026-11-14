@@ -12,6 +12,7 @@
           <th tuiTh scope="col" class="atr-table__selection" [sorter]="null">
             @if (selectionMode() === "multiple") {
               <input
+                atrCheckbox
                 type="checkbox"
                 aria-label="Select all visible rows"
                 [checked]="allSelected()"
@@ -81,6 +82,7 @@
             @if (selectionMode() !== "none") {
               <td tuiTd class="atr-table__selection">
                 <input
+                  atrCheckbox
                   type="checkbox"
                   [attr.aria-label]="'Select row ' + (index + 1)"
                   [checked]="isSelected(row, index)"

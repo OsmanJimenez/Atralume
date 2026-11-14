@@ -8,6 +8,7 @@ import {
   output,
 } from "@angular/core";
 import { TuiTable } from "@taiga-ui/addon-table";
+import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
 
 export interface AtralumeTableColumn<T> {
   readonly id: string;
@@ -32,7 +33,7 @@ export interface AtralumeTableSelectionChange<T> {
 @Component({
   selector: "atr-table",
   standalone: true,
-  imports: [TuiTable],
+  imports: [TuiTable, AtralumeCheckbox],
   templateUrl: "./table.component.html",
   styleUrl: "./table.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -77,7 +77,12 @@
 <ng-template #dialogContent
   ><h2 atrDialogTitle id="demo-dialog-title">Edit profile</h2>
   <div atrDialogContent>
-    <label>Display name <input value="Alex Morgan" /></label>
+    <atr-form-field>
+      <tui-textfield tuiTextfieldSize="m">
+        <label tuiLabel>Display name</label>
+        <input atrInput type="text" value="Alex Morgan" />
+      </tui-textfield>
+    </atr-form-field>
     <p>Dialog and modal use the same service.</p>
   </div>
   <footer atrDialogActions>

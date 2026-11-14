@@ -10,3 +10,71 @@ tui-dropdown[data-appearance="atr-popover"][data-atr-surface="glass"] {
     backdrop-filter: none;
   }
 }
+
+/*
+ * Selection portals (select / combobox / autocomplete / listbox).
+ * Taiga hosts these in tui-dropdown without atr-popover appearance; paint with
+ * Atralume selection tokens so opened panels keep brand/surface design.
+ */
+tui-dropdown:not([data-appearance="atr-popover"]) {
+  box-sizing: border-box;
+  max-inline-size: min(24rem, calc(100vw - 2rem));
+  max-block-size: min(20rem, calc(100dvh - 2rem));
+  overflow: auto;
+  padding: var(--atr-sys-spacing-xs);
+  background: var(
+    --atr-comp-select-container-color,
+    var(--atr-sys-color-surface-container)
+  );
+  color: var(--atr-comp-select-label-color, var(--atr-sys-color-on-surface));
+  border: var(--atr-ref-border-width-thin, 1px) solid
+    var(--atr-comp-select-border-color, var(--atr-sys-color-outline-variant));
+  border-radius: var(
+    --atr-comp-selection-panel-shape,
+    var(--atr-sys-shape-medium)
+  );
+  box-shadow: var(--atr-comp-selection-panel-elevation);
+  font-family: var(--atr-ref-font-family-plain);
+}
+
+tui-data-list,
+tui-data-list-wrapper {
+  color: inherit;
+  font: inherit;
+}
+
+[tuiOption],
+button[tuiOption] {
+  box-sizing: border-box;
+  min-block-size: var(
+    --atr-comp-selection-option-height,
+    var(--atr-sys-touch-target-minimum)
+  );
+  border-radius: var(--atr-comp-listbox-shape, var(--atr-sys-shape-medium));
+  color: var(
+    --atr-comp-selection-option-label-color,
+    var(--atr-sys-color-on-surface)
+  );
+}
+
+[tuiOption][data-state="active"],
+[tuiOption]._active,
+button[tuiOption][aria-selected="true"] {
+  background: var(
+    --atr-comp-select-selected-container-color,
+    var(--atr-sys-color-secondary-container)
+  );
+  color: var(
+    --atr-comp-select-selected-label-color,
+    var(--atr-sys-color-on-secondary-container)
+  );
+}
+
+@media (forced-colors: active) {
+  tui-dropdown:not([data-appearance="atr-popover"]) {
+    border: var(--atr-ref-border-width-thin, 1px) solid CanvasText;
+    box-shadow: none;
+    background: Canvas;
+    color: CanvasText;
+  }
+}

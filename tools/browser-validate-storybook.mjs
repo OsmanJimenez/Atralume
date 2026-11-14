@@ -116,7 +116,7 @@ try {
           hasContent &&
           text.length === 0 &&
           !root.querySelector(
-            "img, svg, canvas, video, atr-icon, atr-avatar, atr-progress-bar, atr-progress-spinner, atr-skeleton, [atrDivider], hr",
+            "img, svg, canvas, video, atr-icon, atr-avatar, atr-progress-bar, atr-progress-spinner, atr-skeleton, [atrDivider], hr, tui-icon, atr-rating, tui-rating, atr-visually-hidden, [atrVisuallyHidden]",
           );
 
         return {

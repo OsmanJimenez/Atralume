@@ -1,5 +1,6 @@
-/* Neutralize TuiCardLarge host padding/gap so Atralume slots own spacing. */
-[tuicardlarge].atr-card {
+/* Neutralize TuiCardLarge host padding/gap so Atralume slots own spacing.
+ * Match/exceed Taiga `[tuicardlarge][data-space]:where(...)[data-space=…]` (0,3,0). */
+[tuicardlarge].atr-card[data-space][data-appearance] {
   --t-padding: 0;
   --tui-padding-inline: 0;
   --t-space: 0;
@@ -10,11 +11,11 @@
   border-radius: var(--atr-comp-card-shape);
 }
 
-[tuicardlarge].atr-card > :last-child:not([tuicell]) {
+[tuicardlarge].atr-card[data-space][data-appearance] > :last-child:not([tuicell]) {
   margin-block-start: 0;
 }
 
-[tuicardlarge].atr-card > footer {
+[tuicardlarge].atr-card[data-space][data-appearance] > footer {
   margin-block-end: 0;
 }
 

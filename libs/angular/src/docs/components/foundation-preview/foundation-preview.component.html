@@ -36,10 +36,19 @@
     }
     @case ("focus") {
       <div class="focus-demo">
-        <label for="foundation-focus">Name</label>
         <div class="focus-row">
-          <input id="foundation-focus" placeholder="Focus this field" />
-          <button type="button">Continue</button>
+          <atr-form-field>
+            <tui-textfield tuiTextfieldSize="m">
+              <label tuiLabel for="foundation-focus">Name</label>
+              <input
+                atrInput
+                id="foundation-focus"
+                type="text"
+                placeholder="Focus this field"
+              />
+            </tui-textfield>
+          </atr-form-field>
+          <button atrButton type="button">Continue</button>
         </div>
         <p>Keyboard focus is visible without adding visual noise at rest.</p>
       </div>
@@ -56,7 +65,7 @@
     }
     @case ("motion") {
       <div class="motion-demo">
-        <button type="button" (click)="replayMotion()">
+        <button atrButton type="button" (click)="replayMotion()">
           Replay transition
         </button>
         <div class="motion-track" [attr.data-run]="motionRun()">
@@ -85,13 +94,14 @@
     @case ("state") {
       <div class="state-demo">
         <button
+          atrButton
           type="button"
           [attr.aria-pressed]="pressed()"
           (click)="togglePressed()"
         >
           {{ pressed() ? "Selected" : "Select item" }}
         </button>
-        <button type="button" disabled>Unavailable</button>
+        <button atrButton type="button" disabled>Unavailable</button>
         <p aria-live="polite">
           {{ pressed() ? "Selection confirmed." : "Ready for selection." }}
         </p>

@@ -43,10 +43,8 @@ export const Playground: Story = {
             <span atrListTrailing aria-hidden="true">\u2192</span>
           </a>
         </li>
-        <li>
-          <div atrListItem>
-            <span atrListHeadline>Static information</span>
-          </div>
+        <li atrListItem>
+          <span atrListHeadline>Static information</span>
         </li>
       </ul>
     `,
