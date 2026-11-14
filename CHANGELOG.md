@@ -3,6 +3,18 @@
 All notable public changes to Atralume are documented here. Releases are
 generated from reviewed changesets and follow Semantic Versioning.
 
+## 0.2.2 — 2026-11-14
+
+Patch release: export the catalogue search field from the form-field entry.
+Catalogue remains **preview**.
+
+### Added
+
+- **`AtralumeSearchField`** (`atr-search-field`) on
+  `@osmanjimenez/atralume/form-field` — self-contained search control over
+  `tui-textfield` + `atrInput`, with `label`, `placeholder`, `value`, and
+  `valueChange`.
+
 ## 0.2.1 — 2026-11-14
 
 Patch release: public docs SEO on `atralume.osmanjimenez.dev`, Storybook token
