@@ -95,6 +95,11 @@ jobs:
         run: |
           package_name="$(node -p 'require("./libs/angular/package.json").name')"
           package_version="$(node -p 'require("./libs/angular/package.json").version')"
+          expected_name="@osmanjimenez/atralume"
+          if [ "${package_name}" != "${expected_name}" ]; then
+            echo "::error::Expected package name ${expected_name}, got ${package_name}. Commit and push libs/angular/package.json before publishing."
+            exit 1
+          fi
           echo "package=${package_name}" >> "$GITHUB_OUTPUT"
           echo "version=${package_version}" >> "$GITHUB_OUTPUT"
           if npm view "${package_name}@${package_version}" version --registry=https://registry.npmjs.org >/dev/null 2>&1; then
@@ -117,4 +122,7 @@ jobs:
           if [ -f "$npmrc" ]; then
             sed -i '/_authToken/d' "$npmrc"
           fi
+          echo "npm=$(npm -v) node=$(node -v)"
+          echo "oidc_request_url_set=$([ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] && echo yes || echo no)"
+          echo "publishing=$(node -p 'require("./dist/libs/angular/package.json").name')@$(node -p 'require("./dist/libs/angular/package.json").version')"
           npm publish dist/libs/angular --tag latest --provenance --access public
