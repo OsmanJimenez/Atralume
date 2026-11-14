@@ -94,6 +94,19 @@
       "@atralume/angular/table": ["libs/angular/table/src/index.ts"],
       "@atralume/angular/tree": ["libs/angular/tree/src/index.ts"],
       "@atralume/angular/carousel": ["libs/angular/carousel/src/index.ts"],
+      "@atralume/angular/visually-hidden": [
+        "libs/angular/visually-hidden/src/index.ts"
+      ],
+      "@atralume/angular/kbd": ["libs/angular/kbd/src/index.ts"],
+      "@atralume/angular/status": ["libs/angular/status/src/index.ts"],
+      "@atralume/angular/copy-button": [
+        "libs/angular/copy-button/src/index.ts"
+      ],
+      "@atralume/angular/truncated-text": [
+        "libs/angular/truncated-text/src/index.ts"
+      ],
+      "@atralume/angular/rating": ["libs/angular/rating/src/index.ts"],
+      "@atralume/angular/otp-input": ["libs/angular/otp-input/src/index.ts"],
       "@atralume/angular/internal/forms": [
         "libs/angular/internal/forms/src/index.ts"
       ]

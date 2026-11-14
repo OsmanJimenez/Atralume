@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  min-inline-size: 0;
+  color: var(
+    --atr-comp-truncated-text-color,
+    var(--atr-sys-color-on-surface)
+  );
+}

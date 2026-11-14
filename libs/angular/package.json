@@ -1,6 +1,6 @@
 {
-  "name": "@atralume/angular",
-  "version": "0.1.0",
+  "name": "@osmanjimenez/atralume",
+  "version": "0.1.1",
   "description": "Accessible Angular 22 design-system components and design tokens.",
   "license": "MIT",
   "repository": {

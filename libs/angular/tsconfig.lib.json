@@ -55,6 +55,13 @@
     "table/src/**/*.ts",
     "tree/src/**/*.ts",
     "carousel/src/**/*.ts",
+    "visually-hidden/src/**/*.ts",
+    "kbd/src/**/*.ts",
+    "status/src/**/*.ts",
+    "copy-button/src/**/*.ts",
+    "truncated-text/src/**/*.ts",
+    "rating/src/**/*.ts",
+    "otp-input/src/**/*.ts",
     "internal/forms/src/**/*.ts"
   ],
   "exclude": [

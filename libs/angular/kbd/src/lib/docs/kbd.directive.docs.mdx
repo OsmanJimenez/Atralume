@@ -1,0 +1,59 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/kbd.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Kbd
+
+Styles a native `kbd` element for keyboard shortcut hints. Use it inline next to instructional copy. Prefer the real key labels users see on their platform; do not invent decorative keycaps for non-keyboard actions.
+
+## Import and minimum example
+
+```ts
+import { AtralumeKbd, AtralumeKbdHarness } from "@atralume/angular/kbd";
+```
+
+```html
+<p>
+  Save with <kbd atrKbd>Ctrl</kbd> + <kbd atrKbd>S</kbd>
+</p>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input  | Type       | Default    |
+| ------ | ---------- | ---------- |
+| `size` | `KbdSize`  | `"medium"` |
+
+```ts
+type KbdSize = "small" | "medium";
+```
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.ShortcutHint} />
+<Canvas of={Stories.Sizes} />
+
+## Accessibility
+
+`kbd` conveys keyboard input semantics. Pair shortcuts with visible instructions; do not rely on keycaps alone. Keep contrast against the surrounding surface.
+
+## Customization and component tokens
+
+Styles live in `@atralume/angular/styles` under `.atr-kbd` with `--atr-comp-kbd-*` tokens (padding, shape, font, colors). Import `@atralume/angular/styles/theme.css` once. Do not create CSS-valued inputs.
+
+```css
+.my-example {
+  --atr-comp-kbd-container-color: #f0f0f0;
+}
+```
+
+## Common mistakes
+
+Avoid replacing native semantics or using `kbd` for mouse-only actions. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

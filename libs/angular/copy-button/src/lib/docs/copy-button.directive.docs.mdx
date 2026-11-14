@@ -1,0 +1,53 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/copy-button.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Copy Button
+
+Native button that copies a string to the clipboard. The adapter mirrors Taiga UI `TuiButtonCopy` by composing public `TuiButton` and Angular CDK `Clipboard` (Taiga’s attribute component cannot be used in `hostDirectives` because it ships a template). Uses the clipboard API through CDK; success feedback is exposed via `data-copied` for styling and tests.
+
+Taiga UI reference: [Copy](https://taiga-ui.dev/components/copy).
+
+## Import and minimum example
+
+```ts
+import {
+  AtralumeCopyButton,
+  AtralumeCopyButtonHarness,
+} from "@atralume/angular/copy-button";
+```
+
+```html
+<button atrCopyButton type="button" text="npm i @atralume/angular">
+  Copy install command
+</button>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input  | Type     | Default |
+| ------ | -------- | ------- |
+| `text` | `string` | `""`    |
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.FixedString} />
+
+## Accessibility
+
+Keep a visible label on the button. After a successful copy, `data-copied` is set for a short interval. Clipboard access can fail in insecure contexts or when permission is denied; provide an alternative when copy is critical.
+
+## Customization and component tokens
+
+Light tokenization lives under `.atr-copy-button` in `@atralume/angular/styles`. Import `@atralume/angular/styles/theme.css` once. Do not create CSS-valued inputs.
+
+## Common mistakes
+
+Avoid replacing native button semantics or relying on clipboard success without user feedback. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

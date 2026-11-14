@@ -29,3 +29,18 @@
     outline-color: Highlight;
   }
 }
+
+.atr-visually-hidden:not(.atr-visually-hidden--focusable),
+.atr-visually-hidden--focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  inline-size: 1px !important;
+  block-size: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+

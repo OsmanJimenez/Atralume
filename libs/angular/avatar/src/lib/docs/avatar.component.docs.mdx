@@ -16,6 +16,8 @@ Use an image, explicit initials, a name, or a generic fallback for identity. Ima
 ```ts
 import {
   AtralumeAvatar,
+  AtralumeAvatarGroup,
+  AtralumeAvatarGroupHarness,
   AtralumeAvatarHarness,
 } from "@atralume/angular/avatar";
 ```
@@ -52,6 +54,32 @@ type AvatarShape = "circle" | "rounded";
 
 <Canvas of={Stories.Playground} />
 <Controls of={Stories.Playground} />
+
+## Avatar group
+
+Stack multiple avatars with `atr-avatar-group`, an adapter over Taiga `TuiAvatarStack`. Project `atr-avatar` children; set `direction` to `"start"` or `"end"` (default `"end"`).
+
+```html
+<atr-avatar-group>
+  <atr-avatar name="Alex Morgan" alt="Alex Morgan" />
+  <atr-avatar name="Blake Rivera" alt="Blake Rivera" />
+  <atr-avatar name="Casey Nguyen" alt="Casey Nguyen" />
+</atr-avatar-group>
+```
+
+{/* public-api-group:start */}
+
+| Input       | Type                    | Default |
+| ----------- | ----------------------- | ------- |
+| `direction` | `AvatarGroupDirection`  | `"end"` |
+
+```ts
+type AvatarGroupDirection = "start" | "end";
+```
+
+{/* public-api-group:end */}
+
+<Canvas of={Stories.Group} />
 
 ## Accessibility
 

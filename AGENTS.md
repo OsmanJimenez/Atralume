@@ -778,6 +778,7 @@ Taiga UI 5 is the **only** UI runtime for components, forms, overlays, navigatio
 - Before creating a component, check Taiga UI for an equivalent and record strategy in `docs/architecture/taiga-ui-migration-matrix.md`. Statuses are `pending` → `in-progress` → `migrated` | `composed` | `removed`. Do not keep a parallel Atralume UI engine as a terminal `exception`.
 - Thin `atr*` adapters may host or compose public Taiga APIs. Breaking Atralume API is allowed when aligning to Taiga hosts; document each break.
 - If Taiga has no equivalent, compose the closest Taiga/CDK surface. Do not invent a second kit.
+- When expanding the catalogue beyond migrated surfaces, record coverage decisions in `docs/architecture/advanced-catalog-coverage.md`. Prefer reuse, composition, and Storybook recipes over new packages. Create a thin `atr*` entrypoint only when it adds a stable public API, tokens, accessibility, or composition value that Taiga alone does not provide to consumers.
 - Atralume owns `--atr-*` tokens, `provideAtralume()`, and modes: `data-atr-theme`, `data-atr-surface`, `data-atr-shape`, `data-atr-brand`. Map Taiga’s documented CSS custom properties from Atralume tokens in `libs/angular/src/styles/taiga-bridge.scss` (see `docs/architecture/taiga-ui-token-bridge.md`).
 - Keep Less as a pinned workspace-only compiler dependency. Do not require consumers to compile Taiga styles or depend on private Taiga selectors/variables.
 - Declare Taiga UI runtime packages as peer dependencies. Do not edit `node_modules` or bundle a second Taiga copy.

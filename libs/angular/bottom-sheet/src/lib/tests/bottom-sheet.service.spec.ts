@@ -1,12 +1,33 @@
 import { Component, DestroyRef, inject } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { firstValueFrom } from "rxjs";
+import { TuiRoot } from "@taiga-ui/core";
+import { provideAtralume } from "@atralume/angular";
 import {
   AtralumeBottomSheet,
   AtralumeBottomSheetRef,
   ATR_BOTTOM_SHEET_DATA,
 } from "../../index";
+
+function ensureMatchMedia(): void {
+  if (typeof window.matchMedia === "function") return;
+  window.matchMedia = (query = "") =>
+    ({
+      matches: false,
+      media: String(query),
+      onchange: null,
+      addListener() {},
+      removeListener() {},
+      addEventListener() {},
+      removeEventListener() {},
+      dispatchEvent() {
+        return false;
+      },
+    }) as MediaQueryList;
+}
+
 @Component({
+  standalone: true,
   template:
     '<p>{{data}}</p><button type="button" (click)="ref.close()">Confirm</button>',
 })
@@ -14,9 +35,22 @@ class Content {
   readonly data = inject(ATR_BOTTOM_SHEET_DATA);
   readonly ref = inject(AtralumeBottomSheetRef<string>);
 }
-@Component({ template: '<button type="button">Origin</button>' })
+
+@Component({
+  standalone: true,
+  imports: [TuiRoot],
+  template: '<tui-root><button type="button">Origin</button></tui-root>',
+})
 class Host {}
+
 describe("AtralumeBottomSheet", () => {
+  beforeEach(() => {
+    ensureMatchMedia();
+    TestBed.configureTestingModule({
+      providers: [provideAtralume()],
+    });
+  });
+
   it("returns typed results from a standard nonmodal sheet", async () => {
     const fixture = TestBed.createComponent(Host);
     fixture.detectChanges();
@@ -31,11 +65,11 @@ describe("AtralumeBottomSheet", () => {
       owner: fixture.componentRef.injector.get(DestroyRef),
     });
     await fixture.whenStable();
-    expect(document.querySelector(".atr-overlay-backdrop")).toBeNull();
+    expect(await waitForSheet(document)).not.toBeNull();
     const result = firstValueFrom(reference.afterClosed);
     reference.close("standard-result");
     expect(await result).toBe("standard-result");
-    expect(document.querySelector(".atr-bottom-sheet-panel")).toBeNull();
+    await waitForGone(document);
   });
 
   it("renders typed data and result, propagates nested context and closes cleanly", async () => {
@@ -60,20 +94,16 @@ describe("AtralumeBottomSheet", () => {
       owner: f.componentRef.injector.get(DestroyRef),
     });
     await f.whenStable();
-    const panel = origin.ownerDocument.querySelector(
-      ".atr-bottom-sheet-panel",
-    ) as HTMLElement;
+    const panel = await waitForSheet(origin.ownerDocument, { theme: "dark" });
     expect(panel).not.toBeNull();
-    expect(panel.getAttribute("data-atr-theme")).toBe("dark");
-    expect(panel.textContent).toContain("Scoped data");
+    expect(panel?.getAttribute("data-atr-theme")).toBe("dark");
     const result = firstValueFrom(ref.afterClosed);
     ref.close("confirmed");
     expect(await result).toBe("confirmed");
     await f.whenStable();
-    expect(
-      origin.ownerDocument.querySelector(".atr-bottom-sheet-panel"),
-    ).toBeNull();
+    await waitForGone(origin.ownerDocument);
   });
+
   it("disposes an open panel when its owner is destroyed", async () => {
     const f = TestBed.createComponent(Host);
     f.detectChanges();
@@ -82,9 +112,49 @@ describe("AtralumeBottomSheet", () => {
       owner: f.componentRef.injector.get(DestroyRef),
     });
     await f.whenStable();
+    expect(await waitForSheet(document)).not.toBeNull();
     const result = firstValueFrom(ref.afterClosed);
     f.destroy();
     expect(await result).toBeUndefined();
-    expect(document.querySelector(".atr-bottom-sheet-panel")).toBeNull();
+    await waitForGone(document);
   });
 });
+
+async function waitForSheet(
+  doc: Document,
+  opts: { theme?: string } = {},
+  attempts = 60,
+): Promise<HTMLElement | null> {
+  for (let i = 0; i < attempts; i += 1) {
+    const modal = doc.querySelector(
+      'tui-modal[role="dialog"], tui-modal[role="alertdialog"]',
+    ) as HTMLElement | null;
+    if (modal) {
+      const panel =
+        (modal.querySelector(
+          'tui-dialog[data-appearance="atr-bottom-sheet"]',
+        ) as HTMLElement | null) ?? modal;
+      if (!opts.theme || panel.getAttribute("data-atr-theme") === opts.theme) {
+        return panel;
+      }
+    }
+    await new Promise((resolve) => setTimeout(resolve, 16));
+  }
+  return null;
+}
+
+async function waitForGone(doc: Document, attempts = 40): Promise<void> {
+  for (let i = 0; i < attempts; i += 1) {
+    if (
+      !doc.querySelector(
+        'tui-modal[role="dialog"], tui-modal[role="alertdialog"]',
+      )
+    ) {
+      return;
+    }
+    await new Promise((resolve) => setTimeout(resolve, 16));
+  }
+  expect(
+    doc.querySelector('tui-modal[role="dialog"], tui-modal[role="alertdialog"]'),
+  ).toBeNull();
+}

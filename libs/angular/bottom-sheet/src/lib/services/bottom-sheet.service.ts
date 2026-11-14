@@ -148,12 +148,16 @@ export class AtralumeBottomSheet {
   }
 
   private applyPortalChrome(config: AtralumeBottomSheetConfig<unknown>): void {
+    // Portal chrome needs a real document; skip during SSR / non-browser.
+    if (!this.overlays.browser) return;
+    let seen = false;
     const bind = () => {
       const dialogs = document.querySelectorAll<HTMLElement>(
         'tui-modal[role="dialog"], tui-modal[role="alertdialog"]',
       );
       const modal = dialogs.item(dialogs.length - 1);
       if (!modal) return false;
+      seen = true;
       const panel =
         modal.querySelector<HTMLElement>(
           'tui-dialog[data-appearance="atr-bottom-sheet"]',
@@ -165,24 +169,29 @@ export class AtralumeBottomSheet {
         config.contextClasses ?? [],
       );
       this.overlays.decorate(modal, config.origin, "bottom-sheet");
-      if (config.labelledBy && modal.ownerDocument.getElementById(config.labelledBy)) {
+      // Re-apply a11y attrs every tick: Taiga may reset labelledBy after mount.
+      if (
+        config.labelledBy &&
+        modal.ownerDocument.getElementById(config.labelledBy)
+      ) {
         modal.setAttribute("aria-labelledby", config.labelledBy);
       }
-      if (config.describedBy && modal.ownerDocument.getElementById(config.describedBy)) {
+      if (
+        config.describedBy &&
+        modal.ownerDocument.getElementById(config.describedBy)
+      ) {
         modal.setAttribute("aria-describedby", config.describedBy);
       }
       if (config.role) modal.setAttribute("role", config.role);
-      return (
-        !config.labelledBy ||
-        modal.getAttribute("aria-labelledby") === config.labelledBy
-      );
+      return modal.isConnected;
     };
 
-    if (bind()) return;
+    bind();
     let attempts = 0;
     const timer = globalThis.setInterval(() => {
       attempts += 1;
-      if (bind() || attempts >= 20) globalThis.clearInterval(timer);
+      const connected = bind();
+      if (attempts >= 60 || (seen && !connected)) globalThis.clearInterval(timer);
     }, 16);
   }
 }

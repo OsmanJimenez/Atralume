@@ -32,16 +32,20 @@ function layerOf(file) {
     return "foundations";
   const normalized = file.split(path.sep).join("/");
   if (
-    /\/(button|icon|icon-button|link|badge|avatar|divider|progress)\/src\/lib\//.test(
+    /\/(button|icon|icon-button|link|badge|avatar|divider|progress|visually-hidden|kbd|status|copy-button|truncated-text)\/src\/lib\//.test(
       normalized,
     )
   )
     return "atoms";
   if (/\/(chip|skeleton|fab)\/src\//.test(normalized)) return "atoms";
-  if (/\/(listbox|combobox|popover|calendar|slider)\/src\//.test(normalized))
+  if (
+    /\/(listbox|combobox|popover|calendar|slider|rating)\/src\//.test(
+      normalized,
+    )
+  )
     return "molecules";
   if (
-    /\/(select|autocomplete|command-palette|date-picker|time-picker|file-upload|stepper|table|tree|carousel)\/src\//.test(
+    /\/(select|autocomplete|command-palette|date-picker|time-picker|file-upload|stepper|table|tree|carousel|otp-input)\/src\//.test(
       normalized,
     )
   )

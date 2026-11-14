@@ -1,0 +1,19 @@
+<atr-form-field [hint]="hint()" [error]="error()">
+  <tui-textfield [invalid]="displayInvalid()" tuiTextfieldSize="m">
+    <label tuiLabel [attr.for]="controlId()">
+      {{ label() }}
+      @if (required()) {
+        *
+      }
+    </label>
+    <input
+      tuiInputPin
+      data-atr-value-control
+      [id]="controlId()"
+      [formControl]="inner"
+      [attr.maxlength]="length()"
+      [attr.placeholder]="placeholderMask()"
+      [readOnly]="readonly()"
+    />
+  </tui-textfield>
+</atr-form-field>

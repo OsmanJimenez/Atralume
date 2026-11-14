@@ -1,0 +1,57 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/visually-hidden.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Visually Hidden
+
+Hides content visually while keeping it in the accessibility tree. Use for accessible names next to icon-only controls, or enable `focusable` for skip links that become visible on keyboard focus.
+
+Do not use this to hide error text that sighted users need. Prefer native labels and visible text when the message is required for everyone.
+
+## Import and minimum example
+
+```ts
+import {
+  AtralumeVisuallyHidden,
+  AtralumeVisuallyHiddenHarness,
+} from "@atralume/angular/visually-hidden";
+```
+
+```html
+<button type="button">
+  <span aria-hidden="true">×</span>
+  <span atrVisuallyHidden>Close</span>
+</button>
+
+<a href="#main" atrVisuallyHidden focusable>Skip to content</a>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input       | Type      | Default |
+| ----------- | --------- | ------- |
+| `focusable` | `boolean` | `false` |
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.SkipLink} />
+<Canvas of={Stories.ScreenReaderOnly} />
+
+## Accessibility
+
+Classic mode stays visually hidden at all times. Focusable mode uses a clip pattern that reveals the host on `:focus` / `:focus-within` (skip-link style). Keep names meaningful and verify with a screen reader and keyboard.
+
+## Customization and component tokens
+
+Styles live in `@atralume/angular/styles` under `.atr-visually-hidden` and `.atr-visually-hidden--focusable`. Import `@atralume/angular/styles/theme.css` once. Do not create CSS-valued inputs.
+
+## Common mistakes
+
+Avoid replacing native semantics, encoding information by color alone, or hiding required instructions from sighted users. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

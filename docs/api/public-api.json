@@ -20,7 +20,7 @@
     {
       "entry": "./avatar",
       "types": "./types/atralume-angular-avatar.d.ts",
-      "sha256": "c8ba1cb6160360a4de94c519a8d639462b893245b41135efbf0573f3131b9f56"
+      "sha256": "53e3627ab5a9f8d4e712db589a598ad3a0ace670aa676aa825372b09ea7811e7"
     },
     {
       "entry": "./badge",
@@ -30,7 +30,7 @@
     {
       "entry": "./bottom-sheet",
       "types": "./types/atralume-angular-bottom-sheet.d.ts",
-      "sha256": "d83c890e7a673b70f1dd04be38c0714071b17caab7d896c516aa750ca3cb000d"
+      "sha256": "6315ab521caaf263a86dedf62e6db80fe0893c12b92b7340359bd937f02d9686"
     },
     {
       "entry": "./breadcrumbs",
@@ -78,6 +78,11 @@
       "sha256": "08ca727a1567e0a397e9fb593bb8eff3b718932ab9bd0a3fe1b1d235074161c0"
     },
     {
+      "entry": "./copy-button",
+      "types": "./types/atralume-angular-copy-button.d.ts",
+      "sha256": "1f6804a7118c352bbae4e56840bcbef8f0b78c7a9b59d6232f1af38716fc6b0d"
+    },
+    {
       "entry": "./date-picker",
       "types": "./types/atralume-angular-date-picker.d.ts",
       "sha256": "fb20ccfec4890cc98571b2e94700d4d954edeba703722c6a53a6688185aff1a7"
@@ -85,7 +90,7 @@
     {
       "entry": "./dialog",
       "types": "./types/atralume-angular-dialog.d.ts",
-      "sha256": "6b39d449cb20e0eb5eb15bb99da9e40c8f7ac9a301ee74996b831c430578e880"
+      "sha256": "50a7b3ff49e5f5e38f64b86bb0ca393a5bde10436c7bdde78d613c9e388be8ce"
     },
     {
       "entry": "./divider",
@@ -123,6 +128,11 @@
       "sha256": "756eb5af8297f4f077824888f8168ffaab398230f1dcebf645549d417c3f894f"
     },
     {
+      "entry": "./kbd",
+      "types": "./types/atralume-angular-kbd.d.ts",
+      "sha256": "4c94e36f0dae69845095d77301b96a5cfd06112eec7ff253dc3174eca2e960b4"
+    },
+    {
       "entry": "./link",
       "types": "./types/atralume-angular-link.d.ts",
       "sha256": "0f466e6d0533412e5cea2029b801b6d14bb83707a9514a28d8f59853111a4a08"
@@ -148,6 +158,11 @@
       "sha256": "035f7d8e92974252ff1a5d4e630630e869405059151192bf24e3d99dad533237"
     },
     {
+      "entry": "./otp-input",
+      "types": "./types/atralume-angular-otp-input.d.ts",
+      "sha256": "a9becb47c1192bbbf5b86cedb0f40cf7f422389ccc7722b541e0277fe4684205"
+    },
+    {
       "entry": "./pagination",
       "types": "./types/atralume-angular-pagination.d.ts",
       "sha256": "5c4da86ed2ab92eaa0e6edcad6ea842446cba60e3e240bbd62d9c69588e2291b"
@@ -166,6 +181,11 @@
       "entry": "./radio",
       "types": "./types/atralume-angular-radio.d.ts",
       "sha256": "f2802ee6210d8fcf54b35c097a40745a9988d21a4517d883ba8eecfa61721d44"
+    },
+    {
+      "entry": "./rating",
+      "types": "./types/atralume-angular-rating.d.ts",
+      "sha256": "2f1219ebc02c01ae150292f0a51dce5e784e50e6642f6ec0a55cdd2521e499b2"
     },
     {
       "entry": "./select",
@@ -196,6 +216,11 @@
       "entry": "./speed-dial",
       "types": "./types/atralume-angular-speed-dial.d.ts",
       "sha256": "24fab8140357479c5cb42fa244c8a7390d06d2bea21ae84f4b4ee8f51eaefc05"
+    },
+    {
+      "entry": "./status",
+      "types": "./types/atralume-angular-status.d.ts",
+      "sha256": "2b7af175af3c857bae7841f49ebff5e73bdba8789d2d65e5fbc56ad183f22d6d"
     },
     {
       "entry": "./stepper",
@@ -236,6 +261,16 @@
       "entry": "./tree",
       "types": "./types/atralume-angular-tree.d.ts",
       "sha256": "a6ef0f460288a62e4398346e3684757877f85404f04833dd0ba2e5fcf5915266"
+    },
+    {
+      "entry": "./truncated-text",
+      "types": "./types/atralume-angular-truncated-text.d.ts",
+      "sha256": "1f04f1a1e3fb10a3844db600a8ba2d6d82568264f775e4c64cd467151727b4d1"
+    },
+    {
+      "entry": "./visually-hidden",
+      "types": "./types/atralume-angular-visually-hidden.d.ts",
+      "sha256": "9f43874ed198dd95fdd50164be6505294c03e3970a10ab7abb41fe411c1e6263"
     }
   ]
 }

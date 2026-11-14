@@ -1,0 +1,51 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/truncated-text.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Truncated Text
+
+Use Truncated Text when long copy must fit a fixed number of lines. Pass the
+full string through `content`. Optional hints surface overflow without custom
+measurement.
+
+Composition over Taiga UI
+[`TuiLineClamp`](https://taiga-ui.dev/components/line-clamp) (LineClamp).
+
+## Import
+
+```ts
+import { AtralumeTruncatedText } from "@atralume/angular/truncated-text";
+```
+
+```html
+<atr-truncated-text [content]="description" [lines]="2" [lineHeight]="24" />
+```
+
+## API and behavior
+
+`lines` maps to Taiga `linesLimit`. `showHint` controls the overflow hint.
+Listen to `overflownChange` when layout must react to clamp state.
+
+## Tokens
+
+Override text color with `--atr-comp-truncated-text-color` when needed.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.SingleLine} />
+<Canvas of={Stories.ThreeLines} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                   | Member           | Kind     | Type      | Default |
+| ----------------------- | ---------------- | -------- | --------- | ------- |
+| `AtralumeTruncatedText` | `content`        | `Input`  | `string`  | `""`    |
+| `AtralumeTruncatedText` | `lines`          | `Input`  | `number`  | `1`     |
+| `AtralumeTruncatedText` | `lineHeight`     | `Input`  | `number`  | `24`    |
+| `AtralumeTruncatedText` | `showHint`       | `Input`  | `boolean` | `true`  |
+| `AtralumeTruncatedText` | `overflownChange`| `Output` | `boolean` | `Event` |
+
+{/* public-api:end */}

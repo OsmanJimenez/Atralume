@@ -372,7 +372,7 @@ bootstrapApplication(PackageRoot,{providers:[provideAtralume()]});
     assert.equal(
       await page
         .getByRole("progressbar", { name: "Packed progress" })
-        .evaluate((element) => String(element.value)),
+        .getAttribute("aria-valuenow"),
       "65",
     );
     assert.equal(
@@ -422,6 +422,13 @@ bootstrapApplication(PackageRoot,{providers:[provideAtralume()]});
     await dialog.waitFor();
     const dialogPanel = page.locator('tui-dialog[data-appearance="atr-dialog"]');
     await dialogPanel.waitFor();
+    // Portal chrome copies theme/shape after mount (queueMicrotask + retries).
+    await page.waitForFunction(() => {
+      const panel = document.querySelector(
+        'tui-dialog[data-appearance="atr-dialog"]',
+      );
+      return panel?.getAttribute("data-atr-theme") === "dark";
+    });
     assert.equal(await dialogPanel.getAttribute("data-atr-theme"), "dark");
     assert.equal(
       await dialogPanel.evaluate((el) => getComputedStyle(el).borderRadius),
@@ -532,8 +539,10 @@ import {AtralumeNavigationBar,AtralumeNavigationItem} from '@atralume/angular/na
 import {AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem} from '@atralume/angular/side-navigation';
 import {AtralumeFab} from '@atralume/angular/fab';
 import {AtralumeSpeedDial,AtralumeSpeedDialAction} from '@atralume/angular/speed-dial';
+import { DOCUMENT } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { renderApplication } from '@angular/platform-server';
+import { WA_WINDOW } from '@ng-web-apis/common';
 import { AtralumeButton } from '@atralume/angular/button';
 import { AtralumeIcon, provideAtralumeIcons, checkIcon } from '@atralume/angular/icon';
 import { AtralumeIconButton } from '@atralume/angular/icon-button';
@@ -542,11 +551,45 @@ import { AtralumeBadge } from '@atralume/angular/badge';
 import { AtralumeAvatar } from '@atralume/angular/avatar';
 import { AtralumeDivider } from '@atralume/angular/divider';
 import { AtralumeProgressSpinner, AtralumeProgressBar } from '@atralume/angular/progress';
+// Domino/SSR windows lack browser APIs Taiga pulls via WA_WINDOW (matchMedia, rAF).
+function ensureSsrWindowApis(win) {
+  if (typeof win.matchMedia !== 'function') {
+    win.matchMedia = (query = '') => ({
+      matches: false,
+      media: String(query),
+      onchange: null,
+      addListener() {},
+      removeListener() {},
+      addEventListener() {},
+      removeEventListener() {},
+      dispatchEvent() { return false; },
+    });
+  }
+  if (typeof win.requestAnimationFrame !== 'function') {
+    win.requestAnimationFrame = (cb) => setTimeout(() => cb(Date.now()), 16);
+  }
+  if (typeof win.cancelAnimationFrame !== 'function') {
+    win.cancelAnimationFrame = (id) => clearTimeout(id);
+  }
+  return win;
+}
 class EmptyContent {}
 Component({selector:'empty-server',standalone:true,template:'Server-safe service content'})(EmptyContent);
 class ServerRoot {constructor(){inject(AtralumeDialog).open(EmptyContent,{label:'Server dialog'});inject(AtralumeBottomSheet).open(EmptyContent,{label:'Server sheet'});inject(AtralumeSnackbar).open({message:'Server feedback'});}}
 Component({selector:'ssr-root',standalone:true,imports:[AtralumeListbox,AtralumeCombobox,AtralumeSelect,AtralumeAutocomplete,AtralumePopover,AtralumeCommandPalette,AtralumeCard,AtralumeCardContent,AtralumeChip,AtralumeChipSet,AtralumeList,AtralumeListItem,TuiAccordion,AtralumeAccordion,AtralumeAccordionItem,AtralumeAccordionHeader,AtralumeAccordionPanel,AtralumeSkeleton,AtralumeTooltip,AtralumeMenu,AtralumeMenuTrigger,AtralumeMenuItem,AtralumeDialogClose,AtralumeBottomSheetClose,AtralumeTabs,AtralumeTabList,AtralumeTab,AtralumeTabPanel,AtralumeBreadcrumbs,AtralumeBreadcrumbItem,AtralumeBreadcrumbSeparator,AtralumePagination,AtralumeNavigationBar,AtralumeNavigationItem,AtralumeSideNavigationContainer,AtralumeSideNavigation,AtralumeSideNavigationContent,AtralumeSideNavigationItem,AtralumeFab,AtralumeSpeedDial,AtralumeSpeedDialAction,AtralumeButton,AtralumeIcon,AtralumeIconButton,AtralumeLink,AtralumeBadge,AtralumeAvatar,AtralumeDivider,AtralumeProgressSpinner,AtralumeProgressBar],template:'<button atrButton [loading]="true">Save</button><atr-icon name="check" /><button atrIconButton aria-label="Close">x</button><a atrLink href="/docs">Docs</a><atr-badge>Active</atr-badge><atr-avatar name="Server User" alt="Server User" /><hr atrDivider /><atr-progress-spinner label="Server spinner" /><atr-progress-bar label="Server progress" [value]="65" /><section data-atr-theme="dark" data-atr-surface="standard" style="--atr-comp-dialog-shape:1.5rem;padding:1rem"><atr-card><div atrCardContent>Packed composition</div></atr-card><atr-listbox label="Packed listbox" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-select label="Packed select" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-autocomplete label="Packed search" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-combobox label="Packed combo" [options]=\\'[{id:"alpha",label:"Packed Alpha",value:"a"},{id:"beta",label:"Packed Beta",value:"b"}]\\' /><atr-command-palette /><atr-chip-set label="Packed filters"><atr-chip kind="filter" label="Angular" value="angular" /></atr-chip-set><ul atrList><li atrListItem>Packed list</li></ul><tui-accordion atrAccordion [closeOthers]="true" size="m"><button tuiAccordion atrAccordionItem atrAccordionHeader>Packed disclosure</button><tui-expand atrAccordionPanel>Expanded content</tui-expand></tui-accordion><section aria-busy="true"><atr-skeleton /></section><button type="button" atrTooltip="Packed help" tooltipId="packed-tooltip" [showDelay]="0">Packed tooltip trigger</button><button type="button" [atrMenuTriggerFor]="commands">Packed commands</button><ng-template #commands><div atrMenu aria-label="Packed commands"><button atrMenuItem>Execute</button></div></ng-template><button type="button" (click)="openDialog(dialogContent,$event)">Open packed dialog</button><ng-template #dialogContent><h2 id="packed-dialog-heading">Packed dialog</h2><button type="button" atrDialogClose>Close packed dialog</button></ng-template><button type="button" (click)="openSheet(sheetContent,$event)">Open packed sheet</button><ng-template #sheetContent><h2 id="packed-sheet-heading">Packed sheet</h2><button type="button" atrBottomSheetClose>Close packed sheet</button></ng-template><button type="button" (click)="notify($event)">Packed notification</button><atr-tabs label="Packed tabs"><div atrTabList><button atrTab type="button" id="packed-tab-a" panel="packed-panel-a">One</button><button atrTab type="button" id="packed-tab-b" panel="packed-panel-b">Two</button></div><section atrTabPanel id="packed-panel-a" labelledBy="packed-tab-a">Panel one</section><section atrTabPanel id="packed-panel-b" labelledBy="packed-tab-b">Panel two</section></atr-tabs><nav atrBreadcrumbs><ol><li><a atrBreadcrumbItem href="#root">Root</a><span atrBreadcrumbSeparator>/</span></li><li><span atrBreadcrumbItem current>Packed current</span></li></ol></nav><atr-pagination [pageCount]="10" /><nav atrNavigationBar><a atrNavigationItem href="#home" active>Home</a><a atrNavigationItem href="#work">Work</a><a atrNavigationItem href="#profile">Profile</a></nav><atr-side-navigation-container><atr-side-navigation panelId="packed-navigation" label="Packed navigation"><a atrSideNavigationItem href="#profile" active>Profile</a></atr-side-navigation><main atrSideNavigationContent>App content</main></atr-side-navigation-container><button atrFab type="button" aria-label="Packed create">+</button><atr-speed-dial id="packed-dial" label="Packed actions"><button atrSpeedDialAction type="button">Create document</button></atr-speed-dial></section>'})(ServerRoot);
-const html=await renderApplication((context)=>bootstrapApplication(ServerRoot,{providers:[provideAtralume(),provideAtralumeIcons([checkIcon])]},context),{document:'<html><head></head><body><ssr-root></ssr-root></body></html>',url:'http://localhost/',allowedHosts:['localhost']});
+const ssrProviders=[
+  provideAtralume(),
+  provideAtralumeIcons([checkIcon]),
+  {
+    provide: WA_WINDOW,
+    useFactory: () => {
+      const { defaultView } = inject(DOCUMENT);
+      if (!defaultView) throw new Error('Window is not available');
+      return ensureSsrWindowApis(defaultView);
+    },
+  },
+];
+const html=await renderApplication((context)=>bootstrapApplication(ServerRoot,{providers:ssrProviders},context),{document:'<html><head></head><body><ssr-root></ssr-root></body></html>',url:'http://localhost/',allowedHosts:['localhost']});
 assert.ok(html.includes('aria-busy="true"'));
 assert.ok(html.includes('aria-valuenow="65"'));
 assert.ok(html.includes('Server User'));

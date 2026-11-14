@@ -1,0 +1,64 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/otp-input.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# OTP Input
+
+Use OTP Input for short numeric one-time codes. The public value is a string
+(or `null` when empty). Incomplete codes report `{ otpIncomplete: true }`.
+
+Composition over Taiga UI
+[`TuiInputPin`](https://taiga-ui.dev/components/input-pin) inside Form Field /
+textfield chrome.
+
+## Import
+
+```ts
+import { AtralumeOtpInput } from "@atralume/angular/otp-input";
+```
+
+```html
+<atr-otp-input label="One-time code" [(value)]="code" [length]="6" required />
+```
+
+## Forms and validation
+
+OTP Input implements CVA. Required treats empty/`null` as missing. When the
+typed length is shorter than `length`, validation returns `otpIncomplete`.
+Taiga hardcodes a host `maxlength` of `4` by default; Atralume sets
+`[attr.maxlength]` from the `length` input so cell count can grow.
+
+## Accessibility
+
+Keep the visible `tuiLabel`. The control id links the label to the pin input.
+Use Form Field `hint` / `error` for supporting text.
+
+## Tokens
+
+Chrome inherits Form Field and textfield tokens. No separate OTP paint tokens
+are required beyond brand primary mapping already provided by the Taiga bridge.
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Incomplete} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                  | Member     | Kind     | Type             | Default                               |
+| ---------------------- | ---------- | -------- | ---------------- | ------------------------------------- |
+| `AtralumeOtpInput`     | `length`   | `Input`  | `number`         | `4`                                   |
+| `AtralumeValueControl` | `value`    | `Model`  | `string \| null` | `null`                                |
+| `AtralumeValueControl` | `label`    | `Input`  | `string`         | `Required`                            |
+| `AtralumeValueControl` | `controlId`| `Input`  | `string`         | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled` | `Input`  | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `readonly` | `Input`  | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `required` | `Input`  | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `invalid`  | `Input`  | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `hint`     | `Input`  | `string \| null` | `null`                                |
+| `AtralumeValueControl` | `error`    | `Input`  | `string \| null` | `null`                                |
+| `AtralumeValueControl` | `touch`    | `Output` | `void`           | `Event`                               |
+
+{/* public-api:end */}

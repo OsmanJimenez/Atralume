@@ -1,12 +1,12 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { expect, waitFor, within } from "storybook/test";
-import { AtralumeAvatar } from "../../index";
+import { AtralumeAvatar, AtralumeAvatarGroup } from "../../index";
 export default {
   component: AtralumeAvatar,
   title: "Atoms/Avatar",
   decorators: [
     moduleMetadata({
-      imports: [AtralumeAvatar],
+      imports: [AtralumeAvatar, AtralumeAvatarGroup],
     }),
   ],
   tags: ["!autodocs"],
@@ -55,4 +55,16 @@ export const BrokenImage: Story = {
       { timeout: 5000 },
     );
   },
+};
+
+export const Group: Story = {
+  render: () => ({
+    template: `
+      <atr-avatar-group>
+        <atr-avatar name="Alex Morgan" alt="Alex Morgan" />
+        <atr-avatar name="Blake Rivera" alt="Blake Rivera" />
+        <atr-avatar name="Casey Nguyen" alt="Casey Nguyen" />
+      </atr-avatar-group>
+    `,
+  }),
 };

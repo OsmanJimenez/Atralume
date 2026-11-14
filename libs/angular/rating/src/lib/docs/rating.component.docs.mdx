@@ -1,0 +1,69 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/rating.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Rating
+
+Use Rating for discrete 1…N scores such as reviews or satisfaction. Empty form
+values stay `null`; Taiga’s control uses `0` internally and Atralume maps the
+two carefully.
+
+Composition over Taiga UI [`TuiRating`](https://taiga-ui.dev/components/rating).
+
+## Import
+
+```ts
+import { AtralumeRating } from "@atralume/angular/rating";
+```
+
+```html
+<atr-rating label="Score" [(value)]="score" [max]="5" />
+```
+
+## Forms and validation
+
+Rating implements CVA plus optional required validation. Prefer Reactive Forms,
+`ngModel`, or Signal Forms. Disabled and readonly block interaction; required
+treats `null` as empty.
+
+## Accessibility
+
+`label` is required and applied as `aria-label` on the host. Keep a visible
+caption in surrounding layout when the control is primary content.
+
+## Tokens
+
+Import `@atralume/angular/styles/theme.css` once. Override brand color with
+`--atr-comp-rating-active-color` (falls back to `--atr-sys-color-primary`).
+
+```css
+.custom {
+  --atr-comp-rating-active-color: var(--atr-sys-color-tertiary);
+}
+```
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Disabled} />
+<Canvas of={Stories.Readonly} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                  | Member     | Kind    | Type             | Default                               |
+| ---------------------- | ---------- | ------- | ---------------- | ------------------------------------- |
+| `AtralumeRating`       | `max`      | `Input` | `number`         | `5`                                   |
+| `AtralumeValueControl` | `value`    | `Model` | `number \| null` | `null`                                |
+| `AtralumeValueControl` | `label`    | `Input` | `string`         | `Required`                            |
+| `AtralumeValueControl` | `controlId`| `Input` | `string`         | `inject(AtralumeControlIds).create()` |
+| `AtralumeValueControl` | `disabled` | `Input` | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `readonly` | `Input` | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `required` | `Input` | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `invalid`  | `Input` | `boolean`        | `false`                               |
+| `AtralumeValueControl` | `hint`     | `Input` | `string \| null` | `null`                                |
+| `AtralumeValueControl` | `error`    | `Input` | `string \| null` | `null`                                |
+| `AtralumeValueControl` | `touch`    | `Output`| `void`           | `Event`                               |
+
+{/* public-api:end */}

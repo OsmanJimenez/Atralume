@@ -1,5 +1,19 @@
+import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
-import { AtralumeAvatar } from "../../index";
+import { AtralumeAvatar, AtralumeAvatarGroup } from "../../index";
+
+@Component({
+  imports: [AtralumeAvatar, AtralumeAvatarGroup],
+  template: `
+    <atr-avatar-group>
+      <atr-avatar name="Alex Morgan" alt="Alex Morgan" />
+      <atr-avatar name="Blake Rivera" alt="Blake Rivera" />
+      <atr-avatar name="Casey Nguyen" alt="Casey Nguyen" />
+    </atr-avatar-group>
+  `,
+})
+class AvatarGroupHost {}
+
 describe("AtralumeAvatar", () => {
   it("uses dimensions, loading, alt host and image fallback without retry loops", async () => {
     const f = TestBed.createComponent(AtralumeAvatar);
@@ -48,5 +62,20 @@ describe("AtralumeAvatar", () => {
     await f.whenStable();
     expect(f.nativeElement.querySelector("svg")).not.toBeNull();
     expect(f.nativeElement.getAttribute("aria-hidden")).toBe("true");
+  });
+});
+
+describe("AtralumeAvatarGroup", () => {
+  it("renders a Taiga avatar stack with projected avatars", async () => {
+    const f = TestBed.createComponent(AvatarGroupHost);
+    f.detectChanges();
+    await f.whenStable();
+    const host = f.nativeElement.querySelector(
+      "atr-avatar-group",
+    ) as HTMLElement;
+    const stack = host.querySelector("tui-avatar-stack") as HTMLElement;
+    expect(stack).not.toBeNull();
+    expect(stack.getAttribute("data-direction")).toBe("end");
+    expect(host.querySelectorAll("atr-avatar").length).toBe(3);
   });
 });

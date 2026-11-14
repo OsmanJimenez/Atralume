@@ -15,7 +15,11 @@ import { AtralumeProgress } from "../../models/progress";
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: "atr-progress-bar",
-    "[attr.aria-label]": "null",
+    role: "progressbar",
+    "[attr.aria-label]": "label()",
+    "[attr.aria-valuemin]": "range().min",
+    "[attr.aria-valuemax]": "range().max",
+    "[attr.aria-valuenow]": "normalizedValue()",
     "[class.atr-progress--indeterminate]": "value() === null",
   },
 })

@@ -362,6 +362,32 @@
           "$value": "{atr.ref.spacing.6}"
         }
       },
+      "kbd": {
+        "padding": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.xs}"
+        },
+        "shape": {
+          "$type": "dimension",
+          "$value": "{atr.sys.shape.extra-small}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{atr.ref.font.size.12}"
+        },
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "outline-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.outline}"
+        }
+      },
       "progress": {
         "shape": {
           "$type": "dimension",

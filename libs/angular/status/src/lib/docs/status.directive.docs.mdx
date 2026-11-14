@@ -1,0 +1,67 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/status.directive.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Status
+
+Adapter over Taiga UI `TuiStatus`. Shows a status label with a tone-colored indicator. Prefer semantic `tone` values; pass `color` only for one-off brand colors. Do not use status dots as the only way to communicate critical state.
+
+Taiga UI reference: [Status](https://taiga-ui.dev/components/status).
+
+## Import and minimum example
+
+```ts
+import {
+  AtralumeStatus,
+  AtralumeStatusHarness,
+} from "@atralume/angular/status";
+```
+
+```html
+<span atrStatus tone="success">Online</span>
+```
+
+## Public API, variants and states
+
+Signal inputs use the exported TypeScript unions. Native attributes and native events remain on the host. Explore the sibling stories for variants, sizes and states.
+
+{/* public-api:start */}
+
+| Input   | Type          | Default     |
+| ------- | ------------- | ----------- |
+| `tone`  | `StatusTone`  | `"neutral"` |
+| `color` | `string`      | `""`        |
+| `size`  | `StatusSize`  | `"medium"`  |
+
+```ts
+type StatusTone =
+  | "neutral"
+  | "success"
+  | "warning"
+  | "error"
+  | "info"
+  | "primary";
+type StatusSize = "small" | "medium" | "large";
+```
+
+When `color` is empty, tone styles set `--t-status` from system colors. A non-empty `color` forwards to Taiga `tuiStatus` as an inline CSS color.
+
+{/* public-api:end */}
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Tones} />
+<Canvas of={Stories.Sizes} />
+
+## Accessibility
+
+Pair the indicator with visible text. Color alone is not enough. Keep names meaningful and check contrast on light and dark surfaces.
+
+## Customization and component tokens
+
+Tone colors are defined in `@atralume/angular/styles` for `[tuiStatus].atr-status[data-tone]`. Import `@atralume/angular/styles/theme.css` once. Do not create CSS-valued inputs.
+
+## Common mistakes
+
+Avoid replacing native semantics, encoding information by color alone, or stacking a second `tuiStatus` on the same host. Do not import internal paths or include Storybook in the application runtime. Use the exported harness for observable host state.

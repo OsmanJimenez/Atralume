@@ -1,0 +1,7 @@
+<tui-line-clamp
+  [lineHeight]="lineHeight()"
+  [linesLimit]="lines()"
+  [content]="content()"
+  [showHint]="showHint()"
+  (overflownChange)="overflownChange.emit($event)"
+/>
