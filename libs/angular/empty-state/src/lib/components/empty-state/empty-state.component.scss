@@ -1,0 +1,31 @@
+:host {
+  color: var(--atr-comp-empty-state-label-color);
+  display: block;
+}
+
+tui-block-status {
+  background: var(--atr-comp-empty-state-container-color);
+  border-radius: var(--atr-comp-empty-state-shape);
+  padding: var(--atr-comp-empty-state-padding);
+}
+
+p {
+  color: var(--atr-comp-empty-state-description-color);
+  margin: 0;
+}
+
+.atr-empty-state__visual:empty,
+.atr-empty-state__actions:empty {
+  display: none;
+}
+
+.atr-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--atr-comp-empty-state-gap);
+  justify-content: center;
+}
+
+:host([data-appearance="compact"]) tui-block-status {
+  padding: var(--atr-sys-spacing-md);
+}

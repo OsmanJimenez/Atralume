@@ -1,0 +1,10 @@
+@if (showTrigger()) {
+  <button
+    #trigger
+    type="button"
+    [disabled]="disabled() || !images().length"
+    (click)="open()"
+  >
+    {{ triggerLabel() }}
+  </button>
+}

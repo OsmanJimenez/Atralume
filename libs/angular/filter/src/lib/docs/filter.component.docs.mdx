@@ -1,0 +1,21 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/filter.component.stories";
+
+<Meta of={Stories} name="Docs" />
+# Filter
+
+`AtralumeFilter<T>` presents typed options and communicates a selected collection; it never queries or filters business data itself. It adapts Taiga `TuiFilter` and implements Angular's ControlValueAccessor for reactive and template-driven forms.
+
+```ts
+import {
+  AtralumeFilter,
+  type AtralumeFilterOption,
+} from "@osmanjimenez/atralume/filter";
+```
+
+Each option has a stable `value`, visible `label`, optional `badge`, and optional `disabled` state. The `selectionChange` output and form value are `readonly T[]`. Use `optionTemplate` for richer option content and reserve visual customization for `--atr-comp-filter-*` tokens.
+
+Keyboard focus lands on native checkbox controls supplied by Taiga. Disabled options remain visibly and programmatically disabled; Clear is disabled with an empty selection. The layout wraps at narrow widths and inherits theme, surface, and RTL context.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Compact} />

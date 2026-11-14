@@ -1,0 +1,56 @@
+:host {
+  background: var(--atr-comp-image-gallery-container-color);
+  border-radius: var(--atr-comp-image-gallery-shape);
+  color: var(--atr-comp-image-gallery-label-color);
+  display: block;
+  overflow: hidden;
+  padding: var(--atr-comp-image-gallery-gap);
+}
+
+tui-carousel {
+  display: block;
+}
+
+atr-image {
+  inline-size: 100%;
+}
+
+.atr-image-gallery__controls {
+  align-items: center;
+  display: flex;
+  gap: var(--atr-comp-image-gallery-gap);
+  justify-content: space-between;
+  margin-block: var(--atr-comp-image-gallery-gap);
+}
+
+.atr-image-gallery__thumbnails {
+  display: flex;
+  gap: var(--atr-comp-image-gallery-gap);
+  overflow-x: auto;
+  padding-block-end: var(--atr-comp-image-gallery-gap);
+}
+
+.atr-image-gallery__thumbnails button {
+  background: transparent;
+  border: 0;
+  border-radius: var(--atr-comp-image-gallery-shape);
+  cursor: pointer;
+  flex: 0 0 4.5rem;
+  overflow: hidden;
+  padding: 0;
+}
+
+.atr-image-gallery__thumbnails button[aria-selected="true"] {
+  outline: var(--atr-comp-image-gallery-focus-ring-width)
+    var(--atr-sys-focus-ring-style)
+    var(--atr-comp-image-gallery-focus-ring-color);
+  outline-offset: calc(-1 * var(--atr-comp-image-gallery-focus-ring-width));
+}
+
+.atr-image-gallery__thumbnails img {
+  aspect-ratio: 1;
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+}
+

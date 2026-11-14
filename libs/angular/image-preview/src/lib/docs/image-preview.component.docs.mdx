@@ -1,0 +1,18 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/image-preview.component.stories";
+
+<Meta of={Stories} name="Docs" />
+# Image preview
+
+`AtralumeImagePreview` opens a typed collection in the shared Atralume dialog. It uses Taiga `TuiPreview` for zoom and optional rotation, preserving the established overlay, Escape, focus-restoration, theme, RTL, and cleanup behavior.
+
+```ts
+import { AtralumeImagePreview } from "@osmanjimenez/atralume/image-preview";
+```
+
+Pass local or remote image data through `images`; each item requires `src` and accessible `alt`, and can add title, description, or fallback source. The `activeIndex` model selects the initial image. Set `showTrigger="false"` and call `open(origin)` when integrating a custom image or gallery trigger.
+
+The dialog has Close, Previous, Next, Escape, and focus restoration. Zoom behavior is supplied by Taiga; do not add a second gesture engine. Dialog tokens use `--atr-comp-image-preview-*`; its context propagates from the trigger rather than copying arbitrary computed styles.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Disabled} />

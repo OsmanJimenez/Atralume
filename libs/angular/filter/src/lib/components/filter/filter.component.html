@@ -1,0 +1,21 @@
+<div class="atr-filter__header">
+  <span>{{ label() }}</span
+  ><button
+    type="button"
+    class="atr-filter__clear"
+    [disabled]="disabled() || !selected().length"
+    (click)="clear()"
+  >
+    Clear
+  </button>
+</div>
+<tui-filter
+  [items]="options()"
+  [size]="size()"
+  [content]="content()"
+  [badgeHandler]="badgeHandler"
+  [disabledItemHandler]="disabledItemHandler"
+  [ngModel]="selected()"
+  [ngModelOptions]="{ standalone: true }"
+  (ngModelChange)="update($event)"
+/>

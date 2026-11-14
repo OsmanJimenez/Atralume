@@ -1,0 +1,18 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/image-gallery.component.stories";
+
+<Meta of={Stories} name="Docs" />
+# Image gallery
+
+`AtralumeImageGallery` composes Taiga carousel movement with `AtralumeImage` state handling and `AtralumeImagePreview` zoom. Use it to explore a small, ordered media collection. Do not use it for unbounded feeds or as an application-specific content card.
+
+```ts
+import { AtralumeImageGallery } from "@osmanjimenez/atralume/image-gallery";
+```
+
+Each image has a stable `id`, `src`, and `alt`; metadata and intrinsic dimensions are optional. `activeIndex` is a controlled model and `activeChange` reports navigation. Thumbnails and preview are opt-in, and the empty collection uses the generic Empty State.
+
+Previous, Next, and thumbnails are native labelled controls. The active thumbnail is exposed as a selected tab; responsive thumbnail rows scroll without changing reading order. Motion is delegated to Taiga and disabled under reduced-motion preferences. Consumer tokens begin with `--atr-comp-image-gallery-*`.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Empty} />

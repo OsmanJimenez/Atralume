@@ -1,0 +1,15 @@
+<tui-block-status [card]="appearance() === 'standard'" size="l">
+  <div tuiSlot="top" class="atr-empty-state__visual">
+    <ng-content select="[atrEmptyStateIcon]" />
+  </div>
+  <h2>{{ title() }}</h2>
+  @if (description()) {
+    <p>{{ description() }}</p>
+  }
+  <ng-content />
+  <div class="atr-empty-state__actions">
+    <ng-content select="[atrEmptyStatePrimary]" /><ng-content
+      select="[atrEmptyStateSecondary]"
+    />
+  </div>
+</tui-block-status>

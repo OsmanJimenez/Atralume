@@ -1,0 +1,24 @@
+:host {
+  display: inline-block;
+}
+
+button {
+  background: var(--atr-comp-image-preview-container-color);
+  border: 0;
+  border-radius: var(--atr-comp-image-preview-shape);
+  color: var(--atr-comp-image-preview-label-color);
+  cursor: pointer;
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: var(--atr-sys-spacing-md);
+}
+
+button:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) var(--atr-sys-focus-ring-style)
+    var(--atr-sys-color-focus);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: var(--atr-sys-state-disabled-content-opacity);
+}

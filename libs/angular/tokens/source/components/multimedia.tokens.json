@@ -1,0 +1,91 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "atr": {
+    "comp": {
+      "image": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "error-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.error-container}"
+        },
+        "error-label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-error-container}"
+        },
+        "shape": { "$type": "dimension", "$value": "{atr.sys.shape.medium}" },
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        }
+      },
+      "image-preview": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "scrim-color": { "$type": "color", "$value": "{atr.sys.color.scrim}" },
+        "shape": { "$type": "dimension", "$value": "{atr.sys.shape.large}" },
+        "gap": { "$type": "dimension", "$value": "{atr.sys.spacing.sm}" }
+      },
+      "filter": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "gap": { "$type": "dimension", "$value": "{atr.sys.spacing.sm}" }
+      },
+      "empty-state": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "description-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface-variant}"
+        },
+        "shape": { "$type": "dimension", "$value": "{atr.sys.shape.large}" },
+        "padding": { "$type": "dimension", "$value": "{atr.sys.spacing.lg}" },
+        "gap": { "$type": "dimension", "$value": "{atr.sys.spacing.md}" }
+      },
+      "image-gallery": {
+        "container-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.surface-container}"
+        },
+        "label-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.on-surface}"
+        },
+        "shape": { "$type": "dimension", "$value": "{atr.sys.shape.large}" },
+        "gap": { "$type": "dimension", "$value": "{atr.sys.spacing.sm}" },
+        "focus-ring-color": {
+          "$type": "color",
+          "$value": "{atr.sys.color.focus}"
+        },
+        "focus-ring-width": {
+          "$type": "dimension",
+          "$value": "{atr.sys.focus-ring.width}"
+        }
+      }
+    }
+  }
+}

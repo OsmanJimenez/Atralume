@@ -1,0 +1,29 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/image.component.stories";
+
+<Meta of={Stories} name="Docs" />
+# Image
+
+`AtralumeImage` standardizes native responsive images, their loading/error states, and stable intrinsic dimensions. Use it for content images; do not use it as an icon or a decorative background.
+
+```ts
+import { AtralumeImage } from "@osmanjimenez/atralume/image";
+```
+
+```html
+<atr-image
+  src="/media/example.webp"
+  alt="Example description"
+  aspectRatio="landscape"
+  width="1600"
+  height="900"
+/>
+```
+
+It uses the browser's `loading`, `width`, `height`, `object-fit`, and `object-position` capabilities, so it is SSR and hydration safe. `previewable` only emits `previewRequested`; connect it to Image Preview rather than importing overlays into this atom. `fallbackSrc` is used once after the main source fails.
+
+Use component tokens such as `--atr-comp-image-shape` and `--atr-comp-image-container-color` for consumer overrides. The semantic `alt` is required. Images have no keyboard behavior unless `previewable` is enabled, in which case the image is a labelled button. Reduced motion leaves the placeholder static and forced colors retains its boundary.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.PreviewIntent} />
+<Canvas of={Stories.Error} />

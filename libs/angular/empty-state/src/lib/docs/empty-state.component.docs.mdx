@@ -1,0 +1,18 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/empty-state.component.stories";
+
+<Meta of={Stories} name="Docs" />
+# Empty state
+
+Use `AtralumeEmptyState` for a collection with no content, a search with no matches, or an initial no-data state. Do not use it for failures that need recovery details; use an error status instead.
+
+```ts
+import { AtralumeEmptyState } from "@osmanjimenez/atralume/empty-state";
+```
+
+Provide a precise title and optional description. Project an icon or illustration with `atrEmptyStateIcon`, and native Atralume buttons with `atrEmptyStatePrimary` and `atrEmptyStateSecondary`. It composes Taiga `TuiBlockStatus`, keeping its heading and action semantics rather than inventing an unrelated status pattern.
+
+The standard appearance is a surface; compact is suitable inside a panel. Override `--atr-comp-empty-state-*` tokens in consumer scopes. Actions stay in DOM order, wrap responsively, and work in light, dark, glass, and forced-colors contexts.
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Compact} />

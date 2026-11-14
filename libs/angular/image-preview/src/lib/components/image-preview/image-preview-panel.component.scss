@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  max-inline-size: min(92vw, 70rem);
+}
+
+section {
+  color: var(--atr-comp-image-preview-label-color);
+  display: grid;
+  gap: var(--atr-comp-image-preview-gap);
+}
+
+header,
+footer {
+  align-items: center;
+  display: flex;
+  gap: var(--atr-comp-image-preview-gap);
+  justify-content: space-between;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+p {
+  color: var(--atr-sys-color-on-surface-variant);
+}
+
+tui-preview {
+  background: var(--atr-comp-image-preview-scrim-color);
+  border-radius: var(--atr-comp-image-preview-shape);
+  min-block-size: min(60vh, 42rem);
+}
+
+tui-preview img {
+  block-size: 100%;
+  inline-size: 100%;
+  object-fit: contain;
+}

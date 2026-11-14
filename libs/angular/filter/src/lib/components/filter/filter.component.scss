@@ -1,0 +1,35 @@
+:host {
+  color: var(--atr-comp-filter-label-color);
+  display: block;
+}
+
+.atr-filter__header {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+  gap: var(--atr-comp-filter-gap);
+  justify-content: space-between;
+  margin-block-end: var(--atr-comp-filter-gap);
+}
+
+.atr-filter__clear {
+  background: transparent;
+  border: 0;
+  color: var(--atr-sys-color-primary);
+  cursor: pointer;
+  font: inherit;
+  min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: var(--atr-sys-spacing-sm);
+}
+
+.atr-filter__clear:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) var(--atr-sys-focus-ring-style)
+    var(--atr-sys-color-focus);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+.atr-filter__clear:disabled {
+  color: var(--atr-sys-color-on-surface-variant);
+  cursor: not-allowed;
+}
+

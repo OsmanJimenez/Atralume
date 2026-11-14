@@ -1,0 +1,75 @@
+@if (images().length) {
+  <section role="region" [attr.aria-label]="label()">
+    <tui-carousel
+      [index]="activeIndex()"
+      (indexChange)="onIndex($event)"
+      [min]="0"
+      [max]="max()"
+    >
+      @for (image of images(); track image.id; let index = $index) {
+        <atr-image
+          *tuiItem
+          [src]="image.src"
+          [fallbackSrc]="image.fallbackSrc ?? null"
+          [alt]="image.alt"
+          [width]="image.width ?? null"
+          [height]="image.height ?? null"
+          aspectRatio="landscape"
+          [previewable]="previewable()"
+          (previewRequested)="openPreview(index, $event)"
+        />
+      }
+    </tui-carousel>
+    <div class="atr-image-gallery__controls">
+      <button
+        atrButton
+        type="button"
+        appearance="text"
+        [disabled]="activeIndex() === 0 && !loop()"
+        (click)="previous()"
+      >
+        Previous</button
+      ><span>{{ activeIndex() + 1 }} / {{ images().length }}</span
+      ><button
+        atrButton
+        type="button"
+        appearance="text"
+        [disabled]="activeIndex() === max() && !loop()"
+        (click)="next()"
+      >
+        Next
+      </button>
+    </div>
+    @if (showThumbnails()) {
+      <div
+        class="atr-image-gallery__thumbnails"
+        role="tablist"
+        [attr.aria-label]="'Choose ' + label()"
+      >
+        @for (image of images(); track image.id; let index = $index) {
+          <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="index === activeIndex()"
+            [attr.aria-label]="'View ' + image.alt"
+            (click)="onIndex(index)"
+          >
+            <img [src]="image.src" [alt]="" />
+          </button>
+        }
+      </div>
+    }
+  </section>
+  <atr-image-preview
+    [images]="previewImages()"
+    [(activeIndex)]="activeIndex"
+    [label]="label()"
+    [showTrigger]="false"
+  />
+} @else {
+  <atr-empty-state
+    title="No images available"
+    description="Add image data to show a gallery."
+    appearance="compact"
+  />
+}

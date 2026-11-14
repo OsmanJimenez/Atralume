@@ -98,6 +98,11 @@
       "sha256": "fa4532335ab2325aef83d4d56ab004b0011514154401e0eebeef06d121b9d5aa"
     },
     {
+      "entry": "./empty-state",
+      "types": "./types/osmanjimenez-atralume-empty-state.d.ts",
+      "sha256": "220fc0aa68a9bc2c26b0c3b030eaea3dcebf7c90ec342e3c8d3427e7c88016b6"
+    },
+    {
       "entry": "./fab",
       "types": "./types/osmanjimenez-atralume-fab.d.ts",
       "sha256": "faf5ec4fd0ce40a788cf8a1737d13c797f9d1fefbcc512858f1a272dc14b09e7"
@@ -106,6 +111,11 @@
       "entry": "./file-upload",
       "types": "./types/osmanjimenez-atralume-file-upload.d.ts",
       "sha256": "ae81584f5219004d00da2a2fd58e147a2f3677b3fe0c47b22401c010b239d011"
+    },
+    {
+      "entry": "./filter",
+      "types": "./types/osmanjimenez-atralume-filter.d.ts",
+      "sha256": "08c1cd45ded56bfe2aa89a38322336145649e35ae23c5eb08e3bff34d458f85d"
     },
     {
       "entry": "./form-field",
@@ -126,6 +136,21 @@
       "entry": "./icon-button",
       "types": "./types/osmanjimenez-atralume-icon-button.d.ts",
       "sha256": "fdc012aa7e6887435265bc18410888e1fd9d751a5c2fb03f751f6c797ce24954"
+    },
+    {
+      "entry": "./image",
+      "types": "./types/osmanjimenez-atralume-image.d.ts",
+      "sha256": "69b33badef38efb21b813c6307a4c52cf5903bdd0dee1debc9481d7271460eba"
+    },
+    {
+      "entry": "./image-gallery",
+      "types": "./types/osmanjimenez-atralume-image-gallery.d.ts",
+      "sha256": "af12a1dad2061a18b8262c895a3fda3d09fd8848bce4aa0b51654496f2383535"
+    },
+    {
+      "entry": "./image-preview",
+      "types": "./types/osmanjimenez-atralume-image-preview.d.ts",
+      "sha256": "0107108f2e84b5c667597128901f6139d4e5c1fa46c5bbc72ec85a7876c38720"
     },
     {
       "entry": "./input",
