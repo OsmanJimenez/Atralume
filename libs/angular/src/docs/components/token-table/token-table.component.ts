@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from "@angular/core";
-import manifest from "../../../styles/generated/token-manifest.json";
+import {
+  ATRALUME_TOKEN_MANIFEST,
+  type AtralumeDocToken,
+} from "../../../styles/generated/token-manifest";
 
 @Component({
   selector: "atr-doc-token-table",
@@ -10,9 +13,13 @@ import manifest from "../../../styles/generated/token-manifest.json";
 })
 export class TokenTableComponent {
   readonly prefix = input("atr.sys.");
-  protected readonly tokens = manifest.tokens;
+  protected readonly tokens: readonly AtralumeDocToken[] =
+    ATRALUME_TOKEN_MANIFEST.tokens;
 
-  protected visibleTokens() {
-    return this.tokens.filter((token) => token.path.startsWith(this.prefix()));
+  protected visibleTokens(): readonly AtralumeDocToken[] {
+    const prefix = this.prefix();
+    return this.tokens.filter((token: AtralumeDocToken) =>
+      token.path.startsWith(prefix),
+    );
   }
 }

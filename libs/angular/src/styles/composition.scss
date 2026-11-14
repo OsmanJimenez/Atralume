@@ -202,3 +202,12 @@ tui-accordion.atr-accordion
 .atr-grid-item[data-span="full"] {
   grid-column: 1 / -1;
 }
+
+/* Filter chips: allow multi-word labels to wrap inside Taiga's chip text. */
+atr-filter .t-item {
+  max-inline-size: none;
+}
+
+atr-filter .t-text {
+  white-space: normal;
+}

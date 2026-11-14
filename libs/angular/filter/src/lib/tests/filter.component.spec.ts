@@ -17,6 +17,8 @@ describe("AtralumeFilter", () => {
   it("emits selected values and keeps disabled options disabled", () => {
     const fixture = TestBed.createComponent(Host);
     fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain("Alpha");
+    expect(fixture.nativeElement.textContent).toContain("Beta");
     const inputs = fixture.nativeElement.querySelectorAll(
       "input",
     ) as NodeListOf<HTMLInputElement>;

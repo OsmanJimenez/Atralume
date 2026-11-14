@@ -6,10 +6,10 @@
     </div>
     <div class="exploration__masthead-actions">
       <button atrButton appearance="text" type="button" (click)="themeToggle.emit()">
-        Tema {{ theme() === "light" ? "oscuro" : "claro" }}
+        {{ theme() === "light" ? "Oscuro" : "Claro" }}
       </button>
       <button atrButton appearance="text" type="button" (click)="showEmpty()">
-        Ver estado vacío
+        Vacío
       </button>
     </div>
   </header>
@@ -40,11 +40,13 @@
 
     <section class="exploration__hero" aria-label="Destino destacado">
       <atr-image
+        class="exploration__hero-image"
         [src]="featured().src"
         [alt]="featured().alt"
         [width]="featured().width ?? null"
         [height]="featured().height ?? null"
-        aspectRatio="landscape"
+        aspectRatio="auto"
+        fit="cover"
         loading="eager"
       />
       <div class="exploration__hero-copy">

@@ -3,6 +3,33 @@
 All notable public changes to Atralume are documented here. Releases are
 generated from reviewed changesets and follow Semantic Versioning.
 
+## 0.2.1 — 2026-11-14
+
+Patch release: public docs SEO on `atralume.osmanjimenez.dev`, Storybook token
+manifest typing fix, and Playground media exploration polish. Catalogue remains
+**preview**.
+
+### Added
+
+- Storybook SEO for the canonical host: meta/OG/Twitter, JSON-LD, `robots.txt`,
+  `sitemap.xml`, `CNAME`, and `og-image.jpg` (no claims on `osmanjimenez.dev` or
+  `fusatour.osmanjimenez.dev`).
+- Typed generated module `token-manifest.ts` for Storybook token docs (avoids
+  fragile JSON default imports in the Angular Storybook compiler).
+
+### Fixed
+
+- Storybook build failure when resolving
+  `styles/generated/token-manifest.json` and the implicit `any` on token-table
+  filters.
+- Image preview requires a root `<tui-root>`; Playground wraps content accordingly.
+- Filter chip labels via Polymorpheus `$implicit` context.
+
+### Changed
+
+- Package homepage and docs links point to `https://atralume.osmanjimenez.dev/`.
+- Playground `index.html` uses `noindex` so demos do not compete with docs SEO.
+
 ## 0.2.0 — 2026-11-14
 
 Visual craft pass over the Storybook catalogue, a new layout entry, and brand

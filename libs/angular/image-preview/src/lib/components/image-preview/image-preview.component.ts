@@ -115,7 +115,11 @@ export class AtralumeImagePreview {
             rotatable: this.rotatable(),
             label: this.label(),
           },
+          // Accessible name on the modal; visual chrome lives in the panel.
           label: this.label(),
+          appearance: "atr-image-preview",
+          size: "l",
+          closable: false,
           origin,
           restoreFocus: true,
         },

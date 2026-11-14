@@ -1,16 +1,28 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
-  "exclude": ["../**/*.spec.ts"],
+  "exclude": [
+    "../**/*.spec.ts",
+    "../**/testing/**",
+    "../*/src/index.ts",
+    "../src/index.ts"
+  ],
   "include": [
     "../src/**/*.stories.ts",
     "../src/**/*.stories.js",
     "../src/**/*.stories.jsx",
     "../src/**/*.stories.tsx",
     "../src/**/*.stories.mdx",
-    "../*/src/**/*.stories.ts"
+    "../src/**/*.mdx",
+    "../src/docs/**/*.ts",
+    "../src/styles/generated/token-manifest.ts",
+    "../*/src/**/*.stories.ts",
+    "../*/src/lib/**/*.ts"
   ],
   "files": ["preview.ts"]
 }

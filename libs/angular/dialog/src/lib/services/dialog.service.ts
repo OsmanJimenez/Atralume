@@ -32,6 +32,12 @@ export interface AtralumeDialogConfig<D> {
   describedBy?: string;
   role?: "dialog" | "alertdialog";
   disableClose?: boolean;
+  /** When false, hides Taiga's header close control. Escape/backdrop still follow `disableClose`. */
+  closable?: boolean;
+  /** Taiga dialog size. `l` for wide surfaces; `null` sizes to content. */
+  size?: "s" | "m" | "l" | null;
+  /** Taiga `data-appearance`. Defaults to `atr-dialog`. */
+  appearance?: string;
   autoFocus?: "dialog" | "first-tabbable" | "first-heading";
   restoreFocus?: boolean;
   owner?: DestroyRef;
@@ -129,9 +135,10 @@ export class AtralumeDialog {
         // portaled tui-modal after mount (see applyAccessibilityAttrs).
         label: config.label ?? "",
         dismissible: !config.disableClose,
-        closable: !config.disableClose,
+        closable: config.closable ?? !config.disableClose,
+        size: config.size === undefined ? "m" : config.size,
         data: config.data as D,
-        appearance: "atr-dialog",
+        appearance: config.appearance ?? "atr-dialog",
       })
       .subscribe({
         next: (result) => finish(result),
@@ -164,8 +171,9 @@ export class AtralumeDialog {
       if (!modal) return false;
       seen = true;
       const panel =
-        modal.querySelector<HTMLElement>('tui-dialog[data-appearance="atr-dialog"]') ??
-        modal;
+        modal.querySelector<HTMLElement>(
+          `tui-dialog[data-appearance="${config.appearance ?? "atr-dialog"}"]`,
+        ) ?? modal;
       this.overlays.decorate(
         panel,
         config.origin,

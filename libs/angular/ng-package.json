@@ -15,6 +15,7 @@
     {
       "input": "src/styles",
       "glob": "**/*",
+      "ignore": ["**/*.ts"],
       "output": "styles"
     }
   ],

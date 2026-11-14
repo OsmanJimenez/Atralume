@@ -51,10 +51,13 @@ export class AtralumeFilter<T> implements ControlValueAccessor {
   readonly cleared = output<void>();
   protected readonly selected = signal<readonly AtralumeFilterOption<T>[]>([]);
   protected readonly disabled = signal(false);
-  protected readonly content = computed<PolymorpheusContent>(
+  protected readonly content = computed<PolymorpheusContent<{
+    $implicit: AtralumeFilterOption<T>;
+  }>>(
     () =>
       this.optionTemplate() ??
-      ((option: AtralumeFilterOption<T>) => option.label),
+      ((context: { $implicit: AtralumeFilterOption<T> }) =>
+        context.$implicit.label),
   );
   protected readonly badgeHandler = (option: AtralumeFilterOption<T>) =>
     option.badge ?? null;

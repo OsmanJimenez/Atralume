@@ -3,13 +3,13 @@
 [![npm version](https://img.shields.io/npm/v/@osmanjimenez/atralume.svg)](https://www.npmjs.com/package/@osmanjimenez/atralume)
 [![license](https://img.shields.io/npm/l/@osmanjimenez/atralume.svg)](https://github.com/OsmanJimenez/Atralume/blob/master/LICENSE)
 [![Node](https://img.shields.io/node/v/@osmanjimenez/atralume.svg)](https://www.npmjs.com/package/@osmanjimenez/atralume)
-[![docs](https://img.shields.io/badge/docs-Storybook-ff4785)](https://osmanjimenez.github.io/Atralume/)
+[![docs](https://img.shields.io/badge/docs-Storybook-ff4785)](https://atralume.osmanjimenez.dev/)
 
 **Atralume** is an accessible Angular design system: production-ready UI
 primitives, DTCG design tokens, and light / dark / glass themes. Taiga UI 5
 powers behavior under the hood; Atralume owns the public API, tokens, and brand.
 
-> **Maturity:** preview (`0.2.0`). APIs may receive documented adjustments before
+> **Maturity:** preview (`0.2.1`). APIs may receive documented adjustments before
 > a stable `1.0.0`. See [component maturity](https://github.com/OsmanJimenez/Atralume/blob/master/docs/component-maturity.md).
 
 ## Why Atralume
@@ -97,7 +97,7 @@ or other generated paths.
 | Composition | card, list, accordion, skeleton, **grid**     |
 | Data        | table, tree, carousel                         |
 
-Full inventory and stories: [Storybook](https://osmanjimenez.github.io/Atralume/).
+Full inventory and stories: [Storybook](https://atralume.osmanjimenez.dev/).
 
 ## Compatibility
 
@@ -109,7 +109,7 @@ Full inventory and stories: [Storybook](https://osmanjimenez.github.io/Atralume/
 
 ## Links
 
-- [Storybook / docs](https://osmanjimenez.github.io/Atralume/)
+- [Storybook / docs](https://atralume.osmanjimenez.dev/)
 - [Changelog](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md)
 - [Theming](https://github.com/OsmanJimenez/Atralume/blob/master/docs/theming.md)
 - [Issues](https://github.com/OsmanJimenez/Atralume/issues)

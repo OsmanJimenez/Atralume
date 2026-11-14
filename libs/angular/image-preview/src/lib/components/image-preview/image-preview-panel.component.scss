@@ -1,39 +1,79 @@
 :host {
+  color: var(--atr-comp-image-preview-label-color);
   display: block;
-  max-inline-size: min(92vw, 70rem);
+  inline-size: 100%;
 }
 
-section {
-  color: var(--atr-comp-image-preview-label-color);
+.atr-image-preview-panel__shell {
   display: grid;
   gap: var(--atr-comp-image-preview-gap);
+  padding: var(--atr-sys-spacing-md);
 }
 
-header,
-footer {
+.atr-image-preview-panel__header,
+.atr-image-preview-panel__footer {
   align-items: center;
   display: flex;
   gap: var(--atr-comp-image-preview-gap);
   justify-content: space-between;
 }
 
-h2,
-p {
+.atr-image-preview-panel__meta {
+  display: grid;
+  gap: 0.25rem;
+  min-inline-size: 0;
+}
+
+.atr-image-preview-panel__meta h2 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: var(--atr-ref-font-weight-bold, 700);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
   margin: 0;
 }
 
-p {
+.atr-image-preview-panel__meta p {
   color: var(--atr-sys-color-on-surface-variant);
+  font-size: var(--atr-ref-font-size-14, 0.875rem);
+  line-height: 1.4;
+  margin: 0;
 }
 
-tui-preview {
+.atr-image-preview-panel__close {
+  flex: 0 0 auto;
+}
+
+.atr-image-preview-panel__stage {
+  --atr-image-preview-stage-block-size: min(62vh, 36rem);
+
   background: var(--atr-comp-image-preview-scrim-color);
   border-radius: var(--atr-comp-image-preview-shape);
-  min-block-size: min(60vh, 42rem);
+  block-size: var(--atr-image-preview-stage-block-size);
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  position: relative;
 }
 
-tui-preview img {
-  block-size: 100%;
-  inline-size: 100%;
-  object-fit: contain;
+/* tui-preview / .t-wrapper containment lives in overlays.scss (global). */
+
+.atr-image-preview-panel__footer {
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: var(--atr-ref-font-size-14, 0.875rem);
+}
+
+@media (width <= 44rem) {
+  .atr-image-preview-panel__shell {
+    padding: var(--atr-sys-spacing-sm);
+  }
+
+  .atr-image-preview-panel__stage {
+    --atr-image-preview-stage-block-size: min(48vh, 24rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atr-image-preview-panel__stage tui-preview {
+    transition: none;
+  }
 }

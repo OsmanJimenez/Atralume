@@ -1,6 +1,6 @@
 {
   "name": "@osmanjimenez/atralume",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Accessible Angular design-system components, DTCG tokens, and themes. Brand API on top of Taiga UI 5.",
   "license": "MIT",
   "author": "Osman Jimenez",
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/OsmanJimenez/Atralume.git",
     "directory": "libs/angular"
   },
-  "homepage": "https://osmanjimenez.github.io/Atralume/",
+  "homepage": "https://atralume.osmanjimenez.dev/",
   "bugs": {
     "url": "https://github.com/OsmanJimenez/Atralume/issues"
   },

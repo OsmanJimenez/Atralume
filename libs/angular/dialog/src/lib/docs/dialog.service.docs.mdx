@@ -56,6 +56,9 @@ export interface AtralumeDialogConfig<D> {
   describedBy?: string;
   role?: "dialog" | "alertdialog";
   disableClose?: boolean;
+  closable?: boolean;
+  size?: "s" | "m" | "l" | null;
+  appearance?: string;
   autoFocus?: "dialog" | "first-tabbable" | "first-heading";
   restoreFocus?: boolean;
   owner?: DestroyRef;

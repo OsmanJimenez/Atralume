@@ -56,6 +56,82 @@ tui-dialog[data-appearance="atr-dialog"] {
   overflow: auto;
 }
 
+/* Image lightbox: wide surface, single chrome owned by atr-image-preview-panel. */
+tui-dialog[data-appearance="atr-image-preview"] {
+  background: var(--atr-comp-image-preview-container-color);
+  color: var(--atr-comp-image-preview-label-color);
+  border-radius: var(--atr-comp-image-preview-shape);
+  box-shadow: var(--atr-comp-dialog-elevation);
+  inline-size: min(56rem, calc(100vw - 2rem));
+  max-inline-size: min(56rem, calc(100vw - 2rem));
+  max-block-size: calc(100dvh - 2rem);
+  overflow: hidden;
+  padding: 0;
+}
+
+tui-dialog[data-appearance="atr-image-preview"] > header {
+  border: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Stage is the paint boundary for Taiga zoom/pan. */
+atr-image-preview-panel .atr-image-preview-panel__stage {
+  contain: paint;
+  overflow: hidden;
+}
+
+atr-image-preview-panel .atr-image-preview-panel__stage tui-preview {
+  block-size: 100%;
+  display: block;
+  inline-size: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Taiga's empty header is position:fixed; panel header is the visible chrome. */
+atr-image-preview-panel .atr-image-preview-panel__stage .t-header {
+  display: none;
+}
+
+/*
+  Fill the stage and center with flex so max-* on the image resolves against a
+  definite box. Grid + max-height:100% is cyclic and left the photo unconstrained.
+  Overflow stays visible here so pan/zoom can move; tui-preview clips.
+*/
+atr-image-preview-panel .atr-image-preview-panel__stage .t-wrapper {
+  align-items: center;
+  display: flex;
+  inline-size: 100%;
+  inset: 0;
+  justify-content: center;
+  overflow: visible;
+  position: absolute;
+  transform-origin: center center;
+}
+
+atr-image-preview-panel .atr-image-preview-panel__stage .t-wrapper img {
+  block-size: auto;
+  inline-size: auto;
+  /* Prefer the stage token over max-height:100% (cyclic in grid/flex shrink-wrap). */
+  max-block-size: var(--atr-image-preview-stage-block-size, min(62vh, 36rem));
+  max-inline-size: 100%;
+  object-fit: contain;
+}
+
+atr-image-preview-panel .atr-image-preview-panel__stage .t-footer {
+  inset-block-end: 0.5rem;
+  inset-inline: 0;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
 tui-dialog[data-appearance="atr-bottom-sheet"] {
   inline-size: min(var(--atr-comp-bottom-sheet-max-width), 100vw);
   background: var(--atr-comp-bottom-sheet-container-color);

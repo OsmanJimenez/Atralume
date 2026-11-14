@@ -1,7 +1,7 @@
-<section [attr.aria-label]="label">
+<section class="atr-image-preview-panel__shell" [attr.aria-label]="label">
   @if (image(); as current) {
-    <header>
-      <div>
+    <header class="atr-image-preview-panel__header">
+      <div class="atr-image-preview-panel__meta">
         @if (current.title) {
           <h2>{{ current.title }}</h2>
         }
@@ -9,30 +9,47 @@
           <p>{{ current.description }}</p>
         }
       </div>
-      <button atrButton type="button" appearance="text" (click)="close()">
+      <button
+        atrButton
+        type="button"
+        appearance="text"
+        class="atr-image-preview-panel__close"
+        (click)="close()"
+      >
         Close
       </button>
     </header>
-    <tui-preview [zoomable]="zoomable" [rotatable]="rotatable"
-      ><img
-        [src]="
-          failedSource() === current.src ? current.fallbackSrc : current.src
-        "
-        [alt]="current.alt"
-        (error)="failed()"
-    /></tui-preview>
+    <div class="atr-image-preview-panel__stage">
+      <tui-preview
+        [zoomable]="zoomable"
+        [rotatable]="rotatable"
+        [initialScale]="1"
+      >
+        <img
+          [src]="
+            failedSource() === current.src ? current.fallbackSrc : current.src
+          "
+          [alt]="current.alt"
+          (error)="failed()"
+        />
+      </tui-preview>
+    </div>
   }
-  <footer>
+  <footer class="atr-image-preview-panel__footer">
     @if (hasPrevious()) {
       <button atrButton type="button" appearance="text" (click)="previous()">
         Previous
       </button>
+    } @else {
+      <span></span>
     }
     <span>{{ activeIndex() + 1 }} / {{ data.images.length }}</span>
     @if (hasNext()) {
       <button atrButton type="button" appearance="text" (click)="next()">
         Next
       </button>
+    } @else {
+      <span></span>
     }
   </footer>
 </section>

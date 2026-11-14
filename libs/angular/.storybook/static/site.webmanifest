@@ -1,0 +1,18 @@
+{
+  "name": "Atralume",
+  "short_name": "Atralume",
+  "description": "Accessible Angular design system with tokens and themes on top of Taiga UI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfbff",
+  "theme_color": "#0066cc",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

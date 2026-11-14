@@ -1,0 +1,11 @@
+# Atralume public docs - canonical host only.
+# Do not claim osmanjimenez.dev or fusatour.osmanjimenez.dev here.
+
+User-agent: *
+Allow: /
+Disallow: /iframe.html
+Disallow: /sb-addons/
+Disallow: /sb-common-assets/
+Disallow: /*.map$
+
+Sitemap: https://atralume.osmanjimenez.dev/sitemap.xml

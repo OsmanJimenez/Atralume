@@ -3,6 +3,13 @@
 Canonical release notes live in the repository root
 [`CHANGELOG.md`](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md).
 
+## 0.2.1 — 2026-11-14
+
+- SEO for `https://atralume.osmanjimenez.dev/` (canonical, sitemap, robots, OG).
+- Typed `token-manifest.ts` for Storybook foundations docs; fixes JSON import
+  / implicit `any` build failures.
+- Homepage URL set to the custom docs domain.
+
 ## 0.2.0 — 2026-11-14
 
 - Added `@osmanjimenez/atralume/grid` (`atr-grid` / `atrGridItem`).

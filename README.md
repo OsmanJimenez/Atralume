@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@osmanjimenez/atralume.svg?logo=npm)](https://www.npmjs.com/package/@osmanjimenez/atralume)
 [![license](https://img.shields.io/github/license/OsmanJimenez/Atralume.svg)](LICENSE)
-[![Storybook](https://img.shields.io/badge/Storybook-docs-ff4785?logo=storybook)](https://osmanjimenez.github.io/Atralume/)
+[![Storybook](https://img.shields.io/badge/Storybook-docs-ff4785?logo=storybook)](https://atralume.osmanjimenez.dev/)
 [![Angular](https://img.shields.io/badge/Angular-22-dd0031?logo=angular)](https://angular.dev/)
 
 **Accessible Angular design system** — components, DTCG tokens, and themes with
@@ -10,8 +10,8 @@ a stable brand API on top of [Taiga UI](https://taiga-ui.dev/) 5.
 
 | | |
 | --- | --- |
-| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.0` (preview) |
-| **Docs** | [Storybook on GitHub Pages](https://osmanjimenez.github.io/Atralume/) |
+| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.1` (preview) |
+| **Docs** | [atralume.osmanjimenez.dev](https://atralume.osmanjimenez.dev/) |
 | **Repo** | Nx workspace · Angular 22 · Storybook 10 |
 
 Atralume owns selectors, tokens, theming (`data-atr-theme` / `data-atr-surface`),
@@ -80,7 +80,7 @@ Use the peer versions declared by the package; do not bypass conflicts with
 - **Composition & data** — card, list, accordion, skeleton, **grid**, table, tree
 - **Tokens** — DTCG source, generated CSS variables, light / dark / glass
 
-Explore every story: **[osmanjimenez.github.io/Atralume](https://osmanjimenez.github.io/Atralume/)**.
+Explore every story: **[atralume.osmanjimenez.dev](https://atralume.osmanjimenez.dev/)**.
 
 ## Develop in this repository
 
