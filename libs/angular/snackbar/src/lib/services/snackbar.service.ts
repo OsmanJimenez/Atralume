@@ -97,20 +97,20 @@ export class AtralumeSnackbar {
       parent: this.injector,
       providers: [{ provide: SNACKBAR_SESSION, useValue: session }],
     });
-    const usesPanel =
-      entry.config.action != null && entry.config.action !== "";
-    const content = usesPanel
-      ? new PolymorpheusComponent(AtralumeSnackbarPanel, contentInjector)
-      : entry.config.message;
+    // Always use atr-snackbar-panel so brand surface tokens own the chrome.
+    const content = new PolymorpheusComponent(
+      AtralumeSnackbarPanel,
+      contentInjector,
+    );
 
     entry.subscription = this.notifications
       .open(content, {
         appearance: TONE_APPEARANCE[tone],
         autoClose: entry.config.duration ?? 5000,
-        // Panel already renders dismiss; avoid Taiga's extra Close + info icon.
-        closable: !usesPanel,
+        // Panel owns dismiss + messaging; hide Taiga Close/icon chrome.
+        closable: false,
         label: "",
-        icon: usesPanel ? "" : undefined,
+        icon: "",
       })
       .subscribe({
         complete: () => {

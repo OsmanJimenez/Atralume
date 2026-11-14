@@ -207,7 +207,9 @@
 
 .atr-switch {
   appearance: none;
-  --t-icon-start: none;
+  /* Neutralize Taiga [tuiSwitch] icon + shadow-thumb chrome entirely. */
+  --t-icon-start: none !important;
+  --t-icon-end: none !important;
   inline-size: var(--atr-comp-form-field-switch-track-width, 3rem);
   block-size: var(--atr-comp-form-field-switch-track-height, 1.5rem);
   border: 2px solid
@@ -215,24 +217,47 @@
   border-radius: var(--atr-sys-shape-full, 9999px);
   background: var(--atr-comp-form-field-readonly-background, Canvas);
   position: relative;
+  overflow: hidden;
+  /* Avoid tuiLabel's translateY centering that lifts the track under the text. */
+  inset-block-start: auto !important;
+  transform: none !important;
+  margin-inline-end: 0 !important;
+}
+
+/* Kill Taiga's check-icon ::before and shadow-thumb ::after. */
+.atr-switch::after {
+  content: none !important;
+  display: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  background: none !important;
+  transform: none !important;
+  scale: none !important;
 }
 
 .atr-switch::before {
-  content: "";
+  content: "" !important;
+  display: block !important;
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: var(--atr-comp-form-field-switch-thumb-offset, 0.25rem);
   inset-block-end: auto;
   inset-inline-end: auto;
-  transform: translateY(-50%);
+  /* Beat Taiga [tuiSwitch]:checked::before { transform: none }. */
+  transform: translateY(-50%) !important;
   inline-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
   block-size: var(--atr-comp-form-field-switch-thumb-size, 1rem);
   border-radius: var(--atr-sys-shape-full, 9999px);
   background: var(--atr-comp-form-field-unselected-border-color, currentColor);
-  /* Kill any leftover Taiga icon mask on the thumb pseudo. */
-  mask-image: none;
-  -webkit-mask-image: none;
-  background-image: none;
+  background-image: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  font-size: 0 !important;
+  color: transparent !important;
   transition: inset-inline-start
     var(--atr-comp-form-field-motion-duration, 100ms);
 }
@@ -250,6 +275,7 @@
       )
   );
   background: var(--atr-comp-form-field-checkmark-color, HighlightText);
+  transform: translateY(-50%) !important;
 }
 
 .atr-input:focus-visible,
@@ -282,21 +308,35 @@ atr-form-field .atr-textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* Keep focus chrome on the field host, inset so it does not read as a dark
+ * top margin under the floating tuiLabel. */
 tui-textfield:has(.atr-textarea):focus-within,
 tui-textfield:has(.atr-input):focus-within {
   outline: var(--atr-comp-form-field-focus-ring-width, 2px) solid
-    var(--atr-comp-form-field-focus-ring-color, Highlight);
-  outline-offset: 2px;
+    var(--atr-comp-form-field-focus-ring-color, var(--atr-sys-color-focus));
+  outline-offset: -2px;
 }
 
 .atr-control-label {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: var(--atr-sys-spacing-sm, 0.5rem);
   min-block-size: var(--atr-comp-form-field-touch-target, 3rem);
   cursor: pointer;
   color: var(--atr-comp-form-field-label-color, CanvasText);
   font: inherit;
+  /* Keep control labels inline; never adopt textfield floating-label chrome. */
+  position: static;
+}
+
+.atr-control-label > span,
+.atr-control-label > .atr-control-label__text {
+  position: static;
+  transform: none;
+  background: transparent;
+  inset: auto;
+  padding: 0;
 }
 
 /* Taiga cleaner (Clear) ships at 24px; raise to Atralume touch target. */

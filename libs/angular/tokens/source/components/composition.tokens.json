@@ -171,6 +171,12 @@
           "$type": "dimension",
           "$value": "{atr.sys.shape.extra-small}"
         }
+      },
+      "grid": {
+        "gap": {
+          "$type": "dimension",
+          "$value": "{atr.sys.spacing.md}"
+        }
       }
     }
   }

@@ -307,6 +307,7 @@
     --atr-sys-color-surface-container-highest
   );
   --atr-comp-skeleton-shape: var(--atr-sys-shape-extra-small);
+  --atr-comp-grid-gap: var(--atr-sys-spacing-md);
 }
 
 [data-atr-theme="system"] {
@@ -349,8 +350,10 @@
   --atr-comp-bottom-sheet-font-family: var(--atr-ref-font-family-plain);
   --atr-comp-bottom-sheet-elevation: var(--atr-sys-elevation-level-3);
   --atr-comp-bottom-sheet-max-width: var(--atr-ref-overlay-width-bottom-sheet);
-  --atr-comp-snackbar-container-color: var(--atr-sys-color-inverse-surface);
-  --atr-comp-snackbar-label-color: var(--atr-sys-color-inverse-on-surface);
+  --atr-comp-snackbar-container-color: var(
+    --atr-sys-color-surface-container-high
+  );
+  --atr-comp-snackbar-label-color: var(--atr-sys-color-on-surface);
   --atr-comp-snackbar-border-color: var(--atr-sys-color-outline-variant);
   --atr-comp-snackbar-shape: var(--atr-sys-shape-medium);
   --atr-comp-snackbar-padding: var(--atr-sys-spacing-md);

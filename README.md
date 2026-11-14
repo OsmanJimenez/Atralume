@@ -4,11 +4,14 @@ Atralume is an Angular design system built with Nx, Storybook, DTCG design token
 
 ## Status
 
-The Angular library includes a token-driven component catalogue for actions,
-navigation, identity, status, activity, and native form controls. The Taiga UI
-migration is in progress component-by-component; its permanent decision and
-verified inventory are documented in the [ADR](docs/architecture/adr/ADR-001-use-taiga-ui-as-component-foundation.md)
-and [migration matrix](docs/architecture/taiga-ui-migration-matrix.md).
+Current package version: **`0.2.0`** (`@osmanjimenez/atralume`, preview). The
+Angular library includes a token-driven catalogue for actions, navigation,
+identity, status, activity, native form controls, overlays, data display, and
+layout (`atr-grid`). The Taiga UI migration is complete for the published
+families; its permanent decision and inventory are documented in the
+[ADR](docs/architecture/adr/ADR-001-use-taiga-ui-as-component-foundation.md)
+and [migration matrix](docs/architecture/taiga-ui-migration-matrix.md). See
+[CHANGELOG](CHANGELOG.md) for 0.2.0 visual polish and the grid entry.
 
 ## Requirements
 
@@ -58,17 +61,19 @@ or Taiga UI peer conflicts with `--force`.
 
 ```ts
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeCard } from "@osmanjimenez/atralume/card";
 import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
 import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { AtralumeGrid, AtralumeGridItem } from "@osmanjimenez/atralume/grid";
 import { AtralumeInput } from "@osmanjimenez/atralume/input";
 ```
 
 ```html
 <button atrButton type="button">Continue</button>
 
-<label>
+<label atrControlLabel>
   <input atrCheckbox type="checkbox" />
-  Accept the terms
+  <span>Accept the terms</span>
 </label>
 
 <atr-form-field>
@@ -77,6 +82,11 @@ import { AtralumeInput } from "@osmanjimenez/atralume/input";
     <input atrInput type="email" autocomplete="email" />
   </tui-textfield>
 </atr-form-field>
+
+<atr-grid columns="auto" gap="md" minTrack="14rem">
+  <atr-card appearance="elevated" atrGridItem>…</atr-card>
+  <atr-card appearance="outlined" atrGridItem [span]="2">…</atr-card>
+</atr-grid>
 ```
 
 Load the public Sass entry once for token and component styles, then select a theme independently from the surface treatment:

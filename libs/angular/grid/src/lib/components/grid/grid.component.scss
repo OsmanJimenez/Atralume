@@ -1,0 +1,15 @@
+:host {
+  display: grid;
+  gap: var(--atr-grid-gap, var(--atr-comp-grid-gap, var(--atr-sys-spacing-md)));
+  grid-template-columns: repeat(var(--atr-grid-columns, 3), minmax(0, 1fr));
+  align-items: stretch;
+  justify-items: stretch;
+  min-inline-size: 0;
+}
+
+:host([data-columns="auto"]) {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--atr-grid-min, 14rem)), 1fr)
+  );
+}

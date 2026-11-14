@@ -9,6 +9,11 @@ import {
 } from "@angular/core";
 import { TuiTable } from "@taiga-ui/addon-table";
 import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
+import {
+  AtralumeIcon,
+  chevronDownIcon,
+  provideAtralumeIcons,
+} from "@osmanjimenez/atralume/icon";
 
 export interface AtralumeTableColumn<T> {
   readonly id: string;
@@ -33,7 +38,8 @@ export interface AtralumeTableSelectionChange<T> {
 @Component({
   selector: "atr-table",
   standalone: true,
-  imports: [TuiTable, AtralumeCheckbox],
+  imports: [TuiTable, AtralumeCheckbox, AtralumeIcon],
+  providers: [provideAtralumeIcons([chevronDownIcon])],
   templateUrl: "./table.component.html",
   styleUrl: "./table.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

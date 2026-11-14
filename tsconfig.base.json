@@ -45,6 +45,7 @@
       "@osmanjimenez/atralume/list": ["./libs/angular/list/src/index.ts"],
       "@osmanjimenez/atralume/accordion": ["./libs/angular/accordion/src/index.ts"],
       "@osmanjimenez/atralume/skeleton": ["./libs/angular/skeleton/src/index.ts"],
+      "@osmanjimenez/atralume/grid": ["./libs/angular/grid/src/index.ts"],
       "@osmanjimenez/atralume/tooltip": ["./libs/angular/tooltip/src/index.ts"],
       "@osmanjimenez/atralume/menu": ["./libs/angular/menu/src/index.ts"],
       "@osmanjimenez/atralume/dialog": ["./libs/angular/dialog/src/index.ts"],

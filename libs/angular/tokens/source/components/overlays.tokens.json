@@ -153,11 +153,11 @@
       "snackbar": {
         "container-color": {
           "$type": "color",
-          "$value": "{atr.sys.color.inverse-surface}"
+          "$value": "{atr.sys.color.surface-container-high}"
         },
         "label-color": {
           "$type": "color",
-          "$value": "{atr.sys.color.inverse-on-surface}"
+          "$value": "{atr.sys.color.on-surface}"
         },
         "border-color": {
           "$type": "color",

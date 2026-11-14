@@ -25,12 +25,14 @@ entrypoint. Do not import from `src`, `fesm2022`, or another generated path.
 
 ```ts
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeGrid } from "@osmanjimenez/atralume/grid";
 ```
 
-The component catalogue, accessibility notes, and examples are published in
-the project documentation. Components are currently marked **Preview** while
-the public API stabilises; see `docs/component-maturity.md` in the repository
-for the support policy.
+Current version: **0.2.0**. The component catalogue, accessibility notes, and
+examples are published in Storybook and the repository docs. Components are
+marked **Preview** while the public API stabilises; see
+`docs/component-maturity.md` for the support policy and `CHANGELOG.md` for
+release notes (grid entry, snackbar brand surfaces, switch/table polish).
 
 Atralume keeps its own component API and design tokens while using Taiga UI's
 public components and primitives internally. Import Atralume components from

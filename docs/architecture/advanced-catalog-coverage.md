@@ -37,6 +37,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | HighlightText | Átomo | Nula | App-level / pipe | P2 | Omitir |
 | FileTypeIcon | Átomo | Nula | Icon registry + app mapping | P2 | Omitir |
 | AspectRatio | Átomo | Nula | CSS `aspect-ratio` | P1 | Documentar (utility CSS) |
+| Grid layout | Átomo / layout | Completa (0.2.0) | `AtralumeGrid` / `atr-grid` + `atrGridItem` | P0 | Reutilizar |
 | VisuallyHidden | Átomo | Nula | CSS sr-only pattern | P0 | Crear (directive + CSS) |
 
 ## B. Molecules

@@ -181,3 +181,24 @@ tui-accordion.atr-accordion
   outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
   outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
 }
+
+/* Grid item spans live outside atr-grid encapsulation (projected content). */
+.atr-grid-item {
+  min-inline-size: 0;
+}
+
+.atr-grid-item[data-span="2"] {
+  grid-column: span 2;
+}
+
+.atr-grid-item[data-span="3"] {
+  grid-column: span 3;
+}
+
+.atr-grid-item[data-span="4"] {
+  grid-column: span 4;
+}
+
+.atr-grid-item[data-span="full"] {
+  grid-column: 1 / -1;
+}

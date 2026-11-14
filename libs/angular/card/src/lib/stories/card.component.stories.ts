@@ -1,5 +1,6 @@
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import { AtralumeAvatar } from "@osmanjimenez/atralume/avatar";
+import { AtralumeGrid } from "@osmanjimenez/atralume/grid";
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import {
   AtralumeCard,
@@ -22,6 +23,7 @@ export default {
         AtralumeCardContent,
         AtralumeCardActions,
         AtralumeCardMedia,
+        AtralumeGrid,
       ],
     }),
   ],
@@ -71,12 +73,12 @@ export const WithMedia: Story = {
 export const Appearances: Story = {
   render: () => ({
     template: `
-      <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));max-inline-size:48rem">
+      <atr-grid columns="auto" gap="md" minTrack="14rem" style="max-inline-size:48rem">
         <atr-card appearance="filled"><header atrCardHeader><h2>Filled</h2></header><div atrCardContent>Flat surface container.</div></atr-card>
         <atr-card appearance="elevated"><header atrCardHeader><h2>Elevated</h2></header><div atrCardContent>Raised with shadow.</div></atr-card>
         <atr-card appearance="outlined"><header atrCardHeader><h2>Outlined</h2></header><div atrCardContent>Border emphasis.</div></atr-card>
         <atr-card appearance="glass"><header atrCardHeader><h2>Glass</h2></header><div atrCardContent>Translucent surface.</div></atr-card>
-      </div>
+      </atr-grid>
     `,
   }),
 };

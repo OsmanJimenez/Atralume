@@ -1,5 +1,5 @@
 ---
-"@atralume/angular": minor
+"@osmanjimenez/atralume": minor
 ---
 
 Replace the pre-release accordion wrapper components with direct Taiga host

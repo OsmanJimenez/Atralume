@@ -95,6 +95,7 @@
                 <button
                   type="button"
                   class="atr-table__expander"
+                  [class.atr-table__expander--open]="isExpanded(row, index)"
                   [attr.aria-label]="
                     (isExpanded(row, index) ? 'Collapse' : 'Expand') +
                     ' row ' +
@@ -103,7 +104,7 @@
                   [attr.aria-expanded]="isExpanded(row, index)"
                   (click)="toggleExpanded(row, index)"
                 >
-                  ⌄
+                  <atr-icon name="chevron-down" size="small" aria-hidden="true" />
                 </button>
               </td>
             }

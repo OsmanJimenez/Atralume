@@ -28,6 +28,7 @@
     "list/src/**/*.ts",
     "accordion/src/**/*.ts",
     "skeleton/src/**/*.ts",
+    "grid/src/**/*.ts",
     "tooltip/src/**/*.ts",
     "menu/src/**/*.ts",
     "dialog/src/**/*.ts",

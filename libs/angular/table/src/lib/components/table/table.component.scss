@@ -45,6 +45,27 @@ th button,
   cursor: pointer;
 }
 
+.atr-table__expander {
+  inline-size: var(--atr-sys-touch-target-minimum);
+  padding-inline: 0;
+}
+
+.atr-table__expander atr-icon {
+  transition: transform var(--atr-sys-motion-duration-short, 150ms)
+    var(--atr-sys-motion-easing-standard, ease);
+}
+
+.atr-table__expander--open atr-icon {
+  transform: rotate(180deg);
+}
+
+th:has(.atr-sr-only),
+td:has(.atr-table__expander) {
+  inline-size: calc(var(--atr-sys-touch-target-minimum) + 1rem);
+  max-inline-size: calc(var(--atr-sys-touch-target-minimum) + 1rem);
+  padding-inline: var(--atr-sys-spacing-xs);
+}
+
 th button:focus-visible,
 input:focus-visible,
 .atr-table__expander:focus-visible {

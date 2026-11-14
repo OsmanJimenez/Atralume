@@ -1,0 +1,39 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/grid.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Grid
+
+Lightweight CSS grid layout host. There is no Taiga grid primitive; Atralume keeps a thin tokenized container with fixed columns or auto-fill tracks.
+
+Use `atr-grid` to arrange cards, form sections and media tiles. Children may opt into `atrGridItem` with a `span` of `1`–`4` or `full`. Prefer `columns="auto"` with `minTrack` for responsive densification without breakpoints.
+
+## Import and minimum example
+
+```ts
+import { AtralumeGrid, AtralumeGridItem } from "@osmanjimenez/atralume/grid";
+```
+
+```html
+<atr-grid [columns]="3" gap="md">
+  <atr-card>...</atr-card>
+  <atr-card>...</atr-card>
+  <atr-card>...</atr-card>
+</atr-grid>
+```
+
+## Public API
+
+| Input      | Type                                   | Default  |
+| ---------- | -------------------------------------- | -------- |
+| `columns`  | `number \| "auto"`                     | `3`      |
+| `gap`      | `"none" \| "xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` |
+| `minTrack` | `string` (CSS length)                  | `"14rem"`|
+
+| Directive       | Input  | Type                         | Default |
+| --------------- | ------ | ---------------------------- | ------- |
+| `atrGridItem`   | `span` | `1 \| 2 \| 3 \| 4 \| "full"` | `1`     |
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
