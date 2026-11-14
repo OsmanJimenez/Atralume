@@ -2,7 +2,7 @@ import {
   AtralumeIcon,
   provideAtralumeIcons,
   userIcon,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import {
   ChangeDetectionStrategy,
   Component,

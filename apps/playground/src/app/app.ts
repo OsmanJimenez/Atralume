@@ -1,8 +1,8 @@
 import { AtomsDemo } from "./atoms-demo.component";
 import { DashboardDemo } from "./dashboard-demo.component";
 import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeCard } from "@atralume/angular/card";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeCard } from "@osmanjimenez/atralume/card";
 
 @Component({
   imports: [AtralumeButton, AtralumeCard, DashboardDemo, AtomsDemo],

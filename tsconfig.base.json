@@ -21,93 +21,93 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@atralume/angular": ["./libs/angular/src/index.ts"],
-      "@atralume/angular/button": ["./libs/angular/button/src/index.ts"],
-      "@atralume/angular/form-field": [
+      "@osmanjimenez/atralume": ["./libs/angular/src/index.ts"],
+      "@osmanjimenez/atralume/button": ["./libs/angular/button/src/index.ts"],
+      "@osmanjimenez/atralume/form-field": [
         "./libs/angular/form-field/src/index.ts"
       ],
-      "@atralume/angular/input": ["./libs/angular/input/src/index.ts"],
-      "@atralume/angular/textarea": ["./libs/angular/textarea/src/index.ts"],
-      "@atralume/angular/checkbox": ["./libs/angular/checkbox/src/index.ts"],
-      "@atralume/angular/radio": ["./libs/angular/radio/src/index.ts"],
-      "@atralume/angular/switch": ["./libs/angular/switch/src/index.ts"],
-      "@atralume/angular/icon": ["./libs/angular/icon/src/index.ts"],
-      "@atralume/angular/icon-button": [
+      "@osmanjimenez/atralume/input": ["./libs/angular/input/src/index.ts"],
+      "@osmanjimenez/atralume/textarea": ["./libs/angular/textarea/src/index.ts"],
+      "@osmanjimenez/atralume/checkbox": ["./libs/angular/checkbox/src/index.ts"],
+      "@osmanjimenez/atralume/radio": ["./libs/angular/radio/src/index.ts"],
+      "@osmanjimenez/atralume/switch": ["./libs/angular/switch/src/index.ts"],
+      "@osmanjimenez/atralume/icon": ["./libs/angular/icon/src/index.ts"],
+      "@osmanjimenez/atralume/icon-button": [
         "./libs/angular/icon-button/src/index.ts"
       ],
-      "@atralume/angular/link": ["./libs/angular/link/src/index.ts"],
-      "@atralume/angular/badge": ["./libs/angular/badge/src/index.ts"],
-      "@atralume/angular/avatar": ["./libs/angular/avatar/src/index.ts"],
-      "@atralume/angular/divider": ["./libs/angular/divider/src/index.ts"],
-      "@atralume/angular/progress": ["./libs/angular/progress/src/index.ts"],
-      "@atralume/angular/card": ["./libs/angular/card/src/index.ts"],
-      "@atralume/angular/chip": ["./libs/angular/chip/src/index.ts"],
-      "@atralume/angular/list": ["./libs/angular/list/src/index.ts"],
-      "@atralume/angular/accordion": ["./libs/angular/accordion/src/index.ts"],
-      "@atralume/angular/skeleton": ["./libs/angular/skeleton/src/index.ts"],
-      "@atralume/angular/tooltip": ["./libs/angular/tooltip/src/index.ts"],
-      "@atralume/angular/menu": ["./libs/angular/menu/src/index.ts"],
-      "@atralume/angular/dialog": ["./libs/angular/dialog/src/index.ts"],
-      "@atralume/angular/bottom-sheet": [
+      "@osmanjimenez/atralume/link": ["./libs/angular/link/src/index.ts"],
+      "@osmanjimenez/atralume/badge": ["./libs/angular/badge/src/index.ts"],
+      "@osmanjimenez/atralume/avatar": ["./libs/angular/avatar/src/index.ts"],
+      "@osmanjimenez/atralume/divider": ["./libs/angular/divider/src/index.ts"],
+      "@osmanjimenez/atralume/progress": ["./libs/angular/progress/src/index.ts"],
+      "@osmanjimenez/atralume/card": ["./libs/angular/card/src/index.ts"],
+      "@osmanjimenez/atralume/chip": ["./libs/angular/chip/src/index.ts"],
+      "@osmanjimenez/atralume/list": ["./libs/angular/list/src/index.ts"],
+      "@osmanjimenez/atralume/accordion": ["./libs/angular/accordion/src/index.ts"],
+      "@osmanjimenez/atralume/skeleton": ["./libs/angular/skeleton/src/index.ts"],
+      "@osmanjimenez/atralume/tooltip": ["./libs/angular/tooltip/src/index.ts"],
+      "@osmanjimenez/atralume/menu": ["./libs/angular/menu/src/index.ts"],
+      "@osmanjimenez/atralume/dialog": ["./libs/angular/dialog/src/index.ts"],
+      "@osmanjimenez/atralume/bottom-sheet": [
         "./libs/angular/bottom-sheet/src/index.ts"
       ],
-      "@atralume/angular/snackbar": ["./libs/angular/snackbar/src/index.ts"],
-      "@atralume/angular/tabs": ["./libs/angular/tabs/src/index.ts"],
-      "@atralume/angular/breadcrumbs": [
+      "@osmanjimenez/atralume/snackbar": ["./libs/angular/snackbar/src/index.ts"],
+      "@osmanjimenez/atralume/tabs": ["./libs/angular/tabs/src/index.ts"],
+      "@osmanjimenez/atralume/breadcrumbs": [
         "./libs/angular/breadcrumbs/src/index.ts"
       ],
-      "@atralume/angular/pagination": [
+      "@osmanjimenez/atralume/pagination": [
         "./libs/angular/pagination/src/index.ts"
       ],
-      "@atralume/angular/navigation-bar": [
+      "@osmanjimenez/atralume/navigation-bar": [
         "./libs/angular/navigation-bar/src/index.ts"
       ],
-      "@atralume/angular/side-navigation": [
+      "@osmanjimenez/atralume/side-navigation": [
         "./libs/angular/side-navigation/src/index.ts"
       ],
-      "@atralume/angular/fab": ["./libs/angular/fab/src/index.ts"],
-      "@atralume/angular/speed-dial": [
+      "@osmanjimenez/atralume/fab": ["./libs/angular/fab/src/index.ts"],
+      "@osmanjimenez/atralume/speed-dial": [
         "./libs/angular/speed-dial/src/index.ts"
       ],
-      "@atralume/angular/listbox": ["libs/angular/listbox/src/index.ts"],
-      "@atralume/angular/combobox": ["libs/angular/combobox/src/index.ts"],
-      "@atralume/angular/select": ["libs/angular/select/src/index.ts"],
-      "@atralume/angular/autocomplete": [
+      "@osmanjimenez/atralume/listbox": ["libs/angular/listbox/src/index.ts"],
+      "@osmanjimenez/atralume/combobox": ["libs/angular/combobox/src/index.ts"],
+      "@osmanjimenez/atralume/select": ["libs/angular/select/src/index.ts"],
+      "@osmanjimenez/atralume/autocomplete": [
         "libs/angular/autocomplete/src/index.ts"
       ],
-      "@atralume/angular/popover": ["libs/angular/popover/src/index.ts"],
-      "@atralume/angular/command-palette": [
+      "@osmanjimenez/atralume/popover": ["libs/angular/popover/src/index.ts"],
+      "@osmanjimenez/atralume/command-palette": [
         "libs/angular/command-palette/src/index.ts"
       ],
-      "@atralume/angular/calendar": ["libs/angular/calendar/src/index.ts"],
-      "@atralume/angular/date-picker": [
+      "@osmanjimenez/atralume/calendar": ["libs/angular/calendar/src/index.ts"],
+      "@osmanjimenez/atralume/date-picker": [
         "libs/angular/date-picker/src/index.ts"
       ],
-      "@atralume/angular/time-picker": [
+      "@osmanjimenez/atralume/time-picker": [
         "libs/angular/time-picker/src/index.ts"
       ],
-      "@atralume/angular/slider": ["libs/angular/slider/src/index.ts"],
-      "@atralume/angular/file-upload": [
+      "@osmanjimenez/atralume/slider": ["libs/angular/slider/src/index.ts"],
+      "@osmanjimenez/atralume/file-upload": [
         "libs/angular/file-upload/src/index.ts"
       ],
-      "@atralume/angular/stepper": ["libs/angular/stepper/src/index.ts"],
-      "@atralume/angular/table": ["libs/angular/table/src/index.ts"],
-      "@atralume/angular/tree": ["libs/angular/tree/src/index.ts"],
-      "@atralume/angular/carousel": ["libs/angular/carousel/src/index.ts"],
-      "@atralume/angular/visually-hidden": [
+      "@osmanjimenez/atralume/stepper": ["libs/angular/stepper/src/index.ts"],
+      "@osmanjimenez/atralume/table": ["libs/angular/table/src/index.ts"],
+      "@osmanjimenez/atralume/tree": ["libs/angular/tree/src/index.ts"],
+      "@osmanjimenez/atralume/carousel": ["libs/angular/carousel/src/index.ts"],
+      "@osmanjimenez/atralume/visually-hidden": [
         "libs/angular/visually-hidden/src/index.ts"
       ],
-      "@atralume/angular/kbd": ["libs/angular/kbd/src/index.ts"],
-      "@atralume/angular/status": ["libs/angular/status/src/index.ts"],
-      "@atralume/angular/copy-button": [
+      "@osmanjimenez/atralume/kbd": ["libs/angular/kbd/src/index.ts"],
+      "@osmanjimenez/atralume/status": ["libs/angular/status/src/index.ts"],
+      "@osmanjimenez/atralume/copy-button": [
         "libs/angular/copy-button/src/index.ts"
       ],
-      "@atralume/angular/truncated-text": [
+      "@osmanjimenez/atralume/truncated-text": [
         "libs/angular/truncated-text/src/index.ts"
       ],
-      "@atralume/angular/rating": ["libs/angular/rating/src/index.ts"],
-      "@atralume/angular/otp-input": ["libs/angular/otp-input/src/index.ts"],
-      "@atralume/angular/internal/forms": [
+      "@osmanjimenez/atralume/rating": ["libs/angular/rating/src/index.ts"],
+      "@osmanjimenez/atralume/otp-input": ["libs/angular/otp-input/src/index.ts"],
+      "@osmanjimenez/atralume/internal/forms": [
         "libs/angular/internal/forms/src/index.ts"
       ]
     }

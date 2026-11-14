@@ -13,7 +13,7 @@ import {
 } from "@angular/core";
 import { NgControl, type ControlValueAccessor } from "@angular/forms";
 import type { FormValueControl } from "@angular/forms/signals";
-import { ɵAtralumeControlIds as AtralumeControlIds } from "@atralume/angular";
+import { ɵAtralumeControlIds as AtralumeControlIds } from "@osmanjimenez/atralume";
 /** @internal Common value bridge. User commits and external writes have distinct paths. */
 @Directive({
   host: { "(focusin)": "focused.set(true)", "(focusout)": "blur($event)" },

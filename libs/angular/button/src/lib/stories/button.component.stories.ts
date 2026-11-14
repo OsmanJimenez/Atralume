@@ -6,7 +6,7 @@ import {
   provideAtralumeIcons,
   checkIcon,
   arrowRightIcon,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 export default {
   component: AtralumeButton,
   title: "Atoms/Button",

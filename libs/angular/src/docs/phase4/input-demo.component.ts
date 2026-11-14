@@ -13,30 +13,30 @@ import {
   AtralumeCalendar,
   AtralumeNativeDateAdapter,
   type AtralumeDateRange,
-} from "@atralume/angular/calendar";
-import { AtralumeDatePicker } from "@atralume/angular/date-picker";
+} from "@osmanjimenez/atralume/calendar";
+import { AtralumeDatePicker } from "@osmanjimenez/atralume/date-picker";
 import {
   AtralumeTimePicker,
   type AtralumeTimeValue,
-} from "@atralume/angular/time-picker";
+} from "@osmanjimenez/atralume/time-picker";
 import {
   AtralumeSlider,
   AtralumeRangeSlider,
   type AtralumeSliderRange,
-} from "@atralume/angular/slider";
+} from "@osmanjimenez/atralume/slider";
 import {
   AtralumeFileUpload,
   type AtralumeUploadFileState,
-} from "@atralume/angular/file-upload";
+} from "@osmanjimenez/atralume/file-upload";
 import {
   AtralumeStepper,
   AtralumeStep,
   AtralumeStepperNext,
   AtralumeStepperPrevious,
-} from "@atralume/angular/stepper";
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
+} from "@osmanjimenez/atralume/stepper";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
+import { AtralumeFormField, TuiTextfield } from "@osmanjimenez/atralume/form-field";
 @Component({
   selector: "atr-advanced-input-demo",
   standalone: true,

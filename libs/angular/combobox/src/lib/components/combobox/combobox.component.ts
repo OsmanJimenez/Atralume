@@ -19,9 +19,9 @@ import {
 import { TuiFilterByInputPipe } from "@taiga-ui/core";
 import { TuiComboBox, TuiDataListWrapper } from "@taiga-ui/kit";
 import { TuiChevron } from "@taiga-ui/kit/directives/chevron";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import type { AtralumeOptionData } from "@atralume/angular/listbox";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
+import type { AtralumeOptionData } from "@osmanjimenez/atralume/listbox";
 import { AtralumeComboBoxDirective } from "../../directives/combo-box.directive";
 
 export type AutocompleteStrategy = "manual" | "automatic";

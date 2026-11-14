@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { TuiIcon } from "@taiga-ui/core";
 import { TuiPassword } from "@taiga-ui/kit";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 import { AtralumeFormField, TuiLabel, TuiTextfield } from "../../index";
 
 const meta = {

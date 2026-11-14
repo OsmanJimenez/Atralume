@@ -6,7 +6,7 @@ import {
   effect,
   untracked,
 } from "@angular/core";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
 export interface AtralumeSliderRange {
   readonly start: number;
   readonly end: number;

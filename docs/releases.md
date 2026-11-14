@@ -12,7 +12,7 @@ review; it is not an automatic milestone.
 
 ## Changesets
 
-Run `npm exec changeset` for a public change to `@atralume/angular`. Internal
+Run `npm exec changeset` for a public change to `@osmanjimenez/atralume`. Internal
 tooling, private documentation, tests, playground-only work and CI do not need
 a changeset. Reviewers must verify the SemVer level and release note.
 
@@ -28,8 +28,8 @@ Do not unpublish a bad version as a normal rollback. Publish a corrective patch,
 deprecate the affected version, and change a dist-tag only after approval:
 
 ```bash
-npm deprecate @atralume/angular@<bad-version> "Use <fixed-version> instead"
-npm dist-tag add @atralume/angular@<fixed-version> latest
+npm deprecate @osmanjimenez/atralume@<bad-version> "Use <fixed-version> instead"
+npm dist-tag add @osmanjimenez/atralume@<fixed-version> latest
 ```
 
 Record the impact and migration in the changelog.

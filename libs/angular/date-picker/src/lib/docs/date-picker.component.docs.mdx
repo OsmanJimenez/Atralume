@@ -13,11 +13,11 @@ and popover/dialog presentation and is retained as an exception.
 
 ## Import, composition and values
 
-Import from `@atralume/angular/date-picker`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
+Import from `@osmanjimenez/atralume/date-picker`. Examples reuse existing controls and services; no backend, storage client or alternate overlay engine is included. Value, active state and business decisions remain externally controllable. The executable Default and Keyboard examples show complete composition.
 
 ## Adapter and civil dates
 
-Import AtralumeDateAdapter, AtralumeNativeDateAdapter and provideAtralumeNativeDateAdapter from `@atralume/angular/calendar`. Supply a matching adapter when D is not Date. The adapter owns create, parse, format, compare, addDays, addMonths, addYears, year/month/day, weekday, daysInMonth, firstDayOfWeek, validity, weekday labels, serialization, today and locale.
+Import AtralumeDateAdapter, AtralumeNativeDateAdapter and provideAtralumeNativeDateAdapter from `@osmanjimenez/atralume/calendar`. Supply a matching adapter when D is not Date. The adapter owns create, parse, format, compare, addDays, addMonths, addYears, year/month/day, weekday, daysInMonth, firstDayOfWeek, validity, weekday labels, serialization, today and locale.
 
 The native adapter treats Date as a local civil day, normalized to noon for arithmetic. Months are zero-based. It strictly parses ISO YYYY-MM-DD or locale-ordered numeric dates; serialize returns a civil YYYY-MM-DD string. Do not serialize a civil day with Date.toISOString and then parse it as an instant in another timezone. Configure locale and firstDayOfWeek explicitly with provideAtralumeNativeDateAdapter. The default week starts Sunday; locale does not silently choose a different week start. No Moment, Luxon or date-fns is required.
 
@@ -37,7 +37,7 @@ The consumer owns remote data, upload transport, progress and business validatio
 
 ## Themes, glass and tokens
 
-Import `@atralume/angular/styles/theme.css` once. Customize `--atr-comp-date-picker-*` tokens and existing atoms through public CSS tokens. Overlays inherit the trigger theme, surface, density, direction and overrides. Light, Dark, Glass, NestedTheme, RTL, ConsumerOverride and Responsive preserve the same API. Forced colors keeps boundaries and native control semantics; no nonessential animation is required.
+Import `@osmanjimenez/atralume/styles/theme.css` once. Customize `--atr-comp-date-picker-*` tokens and existing atoms through public CSS tokens. Overlays inherit the trigger theme, surface, density, direction and overrides. Light, Dark, Glass, NestedTheme, RTL, ConsumerOverride and Responsive preserve the same API. Forced colors keeps boundaries and native control semantics; no nonessential animation is required.
 
 ## SSR, responsive and limitations
 

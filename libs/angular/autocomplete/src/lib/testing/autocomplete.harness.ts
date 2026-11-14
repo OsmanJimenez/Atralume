@@ -1,4 +1,4 @@
-import { AtralumeComboboxHarness } from "@atralume/angular/combobox";
+import { AtralumeComboboxHarness } from "@osmanjimenez/atralume/combobox";
 export class AtralumeAutocompleteHarness extends AtralumeComboboxHarness {
   static override hostSelector = "atr-autocomplete";
 }

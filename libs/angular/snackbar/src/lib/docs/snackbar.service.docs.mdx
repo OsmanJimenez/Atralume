@@ -13,7 +13,7 @@ Taiga UI reference: [Notification](https://taiga-ui.dev/components/notification)
 
 ## Import and API
 
-Import public components, directives, services and types from `@atralume/angular/snackbar`. See the exported TypeScript interfaces for all configuration options. No CDK type is required in consuming templates or service calls. The executable demo source shows component/template composition and typed results.
+Import public components, directives, services and types from `@osmanjimenez/atralume/snackbar`. See the exported TypeScript interfaces for all configuration options. No CDK type is required in consuming templates or service calls. The executable demo source shows component/template composition and typed results.
 
 ## Accessibility, keyboard and focus
 
@@ -25,7 +25,7 @@ Escape dismisses the top overlay before lower overlays. Focus must return to a c
 
 The shared infrastructure captures the nearest theme, surface and density attributes, direction and only `--atr-sys-*`, `--atr-comp-*`, `--atr-ref-*` custom properties. It does not copy all computed styles. Explicit contextClasses support consumer theme classes. System color preference refreshes modal contexts. Open a new panel or refresh consumer composition after changing arbitrary runtime brand overrides.
 
-Import `@atralume/angular/styles/theme.css`; it includes CDK structural overlay CSS. Component tokens use `--atr-comp-snackbar-*`. Consumers control brand through tokens, functional choices through typed configuration. Glass belongs to the originating context and has an opaque fallback. Z-index roles and stack offsets are shared system tokens.
+Import `@osmanjimenez/atralume/styles/theme.css`; it includes CDK structural overlay CSS. Component tokens use `--atr-comp-snackbar-*`. Consumers control brand through tokens, functional choices through typed configuration. Glass belongs to the originating context and has an opaque fallback. Z-index roles and stack offsets are shared system tokens.
 
 ```css
 .custom {

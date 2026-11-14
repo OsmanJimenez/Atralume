@@ -4,7 +4,7 @@ import { TuiWithAppearance } from "@taiga-ui/core/directives/appearance";
 import {
   ɵAtralumeNativeTextControl,
   ɵATR_FORM_FIELD_CONTROL,
-} from "@atralume/angular";
+} from "@osmanjimenez/atralume";
 
 /**
  * Native file input styled for Taiga `tuiInputFiles`.

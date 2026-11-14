@@ -60,12 +60,12 @@ composed **2**, removed **1**; pending/in-progress/exception **0**.
 ## Bootstrap
 
 ```ts
-import { provideAtralume } from "@atralume/angular";
+import { provideAtralume } from "@osmanjimenez/atralume";
 // providers: [provideAtralume()]
 ```
 
 ```bash
-npm install @atralume/angular \
+npm install @osmanjimenez/atralume \
   @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit @taiga-ui/layout \
   @taiga-ui/addon-table @taiga-ui/polymorpheus
 ```

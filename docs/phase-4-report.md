@@ -35,8 +35,8 @@ Pendiente: Calendar y adapter, Date Picker, Time Picker, Slider/Range Slider, Fi
 
 ## Checkpoint 4C
 
-Se añadieron los entry points `@atralume/angular/table`,
-`@atralume/angular/tree` y `@atralume/angular/carousel`, cada uno con un
+Se añadieron los entry points `@osmanjimenez/atralume/table`,
+`@osmanjimenez/atralume/tree` y `@osmanjimenez/atralume/carousel`, cada uno con un
 componente standalone, tokens compartidos existentes, documentación MDX,
 historias, pruebas unitarias y harness.
 

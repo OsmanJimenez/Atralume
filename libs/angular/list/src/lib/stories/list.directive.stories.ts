@@ -32,7 +32,23 @@ export const Playground: Story = {
   },
   render: (args) => ({
     props: args,
-    template:
-      '<ul atrList [density]="density"><li><a atrListItem href="#account"><span><span atrListHeadline>Account</span><span atrListSupporting>Manage profile</span></span><span atrListTrailing>\u2192</span></a></li><li atrListItem>Static information</li></ul>',
+    template: `
+      <ul atrList [density]="density">
+        <li>
+          <a atrListItem href="#account">
+            <span>
+              <span atrListHeadline>Account</span>
+              <span atrListSupporting>Manage profile</span>
+            </span>
+            <span atrListTrailing aria-hidden="true">\u2192</span>
+          </a>
+        </li>
+        <li>
+          <div atrListItem>
+            <span atrListHeadline>Static information</span>
+          </div>
+        </li>
+      </ul>
+    `,
   }),
 };

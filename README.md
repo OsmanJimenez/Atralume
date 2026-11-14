@@ -30,13 +30,13 @@ Storybook runs with `npm run storybook` on port 6006. The public deployment targ
 Consumers install Atralume and its Taiga UI peer package:
 
 ```bash
-npm install @atralume/angular @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
+npm install @osmanjimenez/atralume @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
 ```
 
 Register Atralume providers and mount the Taiga root once in the application shell:
 
 ```ts
-import { provideAtralume } from "@atralume/angular";
+import { provideAtralume } from "@osmanjimenez/atralume";
 
 bootstrapApplication(App, {
   providers: [provideAtralume()],
@@ -53,14 +53,14 @@ import { TuiRoot } from "@taiga-ui/core";
 export class App {}
 ```
 
-Use the peer versions published by `@atralume/angular`; do not bypass Angular
+Use the peer versions published by `@osmanjimenez/atralume`; do not bypass Angular
 or Taiga UI peer conflicts with `--force`.
 
 ```ts
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeCheckbox } from "@atralume/angular/checkbox";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 ```
 
 ```html
@@ -82,7 +82,7 @@ import { AtralumeInput } from "@atralume/angular/input";
 Load the public Sass entry once for token and component styles, then select a theme independently from the surface treatment:
 
 ```scss
-@use "@atralume/angular/styles";
+@use "@osmanjimenez/atralume/styles";
 ```
 
 ```html
@@ -91,7 +91,7 @@ Load the public Sass entry once for token and component styles, then select a th
 </html>
 ```
 
-Use `data-atr-theme="system"` to follow the operating-system preference without JavaScript. Generated token metadata is available through `@atralume/angular/styles/tokens.json`.
+Use `data-atr-theme="system"` to follow the operating-system preference without JavaScript. Generated token metadata is available through `@osmanjimenez/atralume/styles/tokens.json`.
 
 ## Commands
 
@@ -99,7 +99,7 @@ Use `data-atr-theme="system"` to follow the operating-system preference without 
 | ---------------------------- | --------------------------------------------------- |
 | `npm start`                  | Serve the playground                                |
 | `npm run storybook`          | Serve Storybook on port 6006                        |
-| `npm run build`              | Package `@atralume/angular`                         |
+| `npm run build`              | Package `@osmanjimenez/atralume`                         |
 | `npm run build:playground`   | Production playground build                         |
 | `npm run build:storybook`    | Static Storybook build                              |
 | `npm run lint`               | Lint every project                                  |

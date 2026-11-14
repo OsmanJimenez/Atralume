@@ -11,7 +11,7 @@ and generated with the workspace token build. Consumers load the public
 stylesheet once:
 
 ```css
-@import "@atralume/angular/styles/theme.css";
+@import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
 The `less` package is a pinned development-only compiler dependency used to

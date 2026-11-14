@@ -1,7 +1,7 @@
 import { Component, signal } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 import { TuiTextfield } from "@taiga-ui/core";
 
 @Component({

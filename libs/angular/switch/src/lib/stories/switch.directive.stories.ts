@@ -1,6 +1,6 @@
 import { FormsModule } from "@angular/forms";
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
-import { AtralumeControlLabel } from "@atralume/angular/form-field";
+import { AtralumeControlLabel } from "@osmanjimenez/atralume/form-field";
 import { AtralumeSwitch } from "../../index";
 
 export default {

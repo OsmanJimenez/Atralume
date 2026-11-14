@@ -20,9 +20,9 @@ import {
 } from "@angular/forms";
 import { TuiDay, TuiDayRange } from "@taiga-ui/cdk/date-time";
 import { TuiInputDate, TuiInputDateRange } from "@taiga-ui/kit";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import type { AtralumeDateRange } from "@atralume/angular/calendar";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
+import type { AtralumeDateRange } from "@osmanjimenez/atralume/calendar";
 
 export type AtralumeDatePickerValue<D = Date> = D | AtralumeDateRange<D>;
 

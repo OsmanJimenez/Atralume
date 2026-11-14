@@ -8,7 +8,7 @@ import {
   output,
 } from "@angular/core";
 import { TuiCarousel } from "@taiga-ui/core";
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 
 export interface AtralumeCarouselSlide {
   readonly id: string;

@@ -7,7 +7,7 @@ import { AtralumeCopyButton } from "../../index";
 @Component({
   imports: [AtralumeCopyButton],
   template:
-    '<button atrCopyButton type="button" text="npm i @atralume/angular">Copy</button>',
+    '<button atrCopyButton type="button" text="npm i @osmanjimenez/atralume">Copy</button>',
 })
 class Host {}
 
@@ -24,11 +24,11 @@ describe("AtralumeCopyButton", () => {
       "button.atr-copy-button",
     ) as HTMLButtonElement;
     expect(button.getAttribute("tuiButtonCopy")).toBe(
-      "npm i @atralume/angular",
+      "npm i @osmanjimenez/atralume",
     );
     button.click();
     f.detectChanges();
-    expect(copy).toHaveBeenCalledWith("npm i @atralume/angular");
+    expect(copy).toHaveBeenCalledWith("npm i @osmanjimenez/atralume");
     expect(button.getAttribute("data-copied")).toBe("true");
   });
 });

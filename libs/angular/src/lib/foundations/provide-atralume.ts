@@ -8,7 +8,7 @@ import { provideEventPlugins } from "@taiga-ui/event-plugins";
 /**
  * Application bootstrap for Atralume as a brand layer over Taiga UI.
  *
- * Registers Taiga runtime providers. Load `@atralume/angular/styles/theme.css`
+ * Registers Taiga runtime providers. Load `@osmanjimenez/atralume/styles/theme.css`
  * once and set brand modes on a scope:
  * - `data-atr-theme="light|dark|system"`
  * - `data-atr-surface="standard|elevated|glass|transparent"`

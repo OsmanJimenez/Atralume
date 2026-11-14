@@ -7,8 +7,8 @@ import {
   NgControl,
   RadioControlValueAccessor,
 } from "@angular/forms";
-import { AtralumeRadio } from "@atralume/angular/radio";
-import { AtralumeControlLabel } from "@atralume/angular/form-field";
+import { AtralumeRadio } from "@osmanjimenez/atralume/radio";
+import { AtralumeControlLabel } from "@osmanjimenez/atralume/form-field";
 @Component({
   imports: [AtralumeRadio, AtralumeControlLabel, ReactiveFormsModule],
   template:

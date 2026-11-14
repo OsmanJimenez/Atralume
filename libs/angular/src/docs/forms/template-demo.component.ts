@@ -4,13 +4,13 @@ import { FormsModule } from "@angular/forms";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
-} from "@atralume/angular/form-field";
+} from "@osmanjimenez/atralume/form-field";
 import { TuiTextfield } from "@taiga-ui/core";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 
-import { AtralumeCheckbox } from "@atralume/angular/checkbox";
-import { AtralumeRadio } from "@atralume/angular/radio";
-import { AtralumeSwitch } from "@atralume/angular/switch";
+import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
+import { AtralumeRadio } from "@osmanjimenez/atralume/radio";
+import { AtralumeSwitch } from "@osmanjimenez/atralume/switch";
 
 @Component({
   selector: "atr-template-demo",

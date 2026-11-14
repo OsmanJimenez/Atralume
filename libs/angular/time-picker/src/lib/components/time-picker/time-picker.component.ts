@@ -21,8 +21,8 @@ import {
 import { TuiTime } from "@taiga-ui/cdk/date-time";
 import { TuiInputTime } from "@taiga-ui/kit";
 import type { MaskitoTimeMode } from "@maskito/kit";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
 
 export interface AtralumeTimeValue {
   readonly hours: number;

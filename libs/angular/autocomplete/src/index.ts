@@ -2,6 +2,6 @@ export { AtralumeAutocomplete } from "./lib/components/autocomplete/autocomplete
 export type {
   AtralumeOptionData,
   AtralumeOptionTemplateContext,
-} from "@atralume/angular/listbox";
+} from "@osmanjimenez/atralume/listbox";
 
 export * from "./lib/testing/autocomplete.harness";

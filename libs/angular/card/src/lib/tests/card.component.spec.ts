@@ -1,5 +1,5 @@
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeAvatar } from "@atralume/angular/avatar";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeAvatar } from "@osmanjimenez/atralume/avatar";
 import { Component } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import {

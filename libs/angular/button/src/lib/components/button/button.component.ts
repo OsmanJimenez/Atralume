@@ -1,4 +1,4 @@
-import { AtralumeProgressSpinner } from "@atralume/angular/progress";
+import { AtralumeProgressSpinner } from "@osmanjimenez/atralume/progress";
 import {
   booleanAttribute,
   ChangeDetectionStrategy,

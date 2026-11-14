@@ -14,7 +14,7 @@ import { NgTemplateOutlet } from "@angular/common";
 import { Observable, Subject, Subscription } from "rxjs";
 import { TuiDialogService } from "@taiga-ui/core";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { ɵAtralumeOverlayInfrastructure } from "@osmanjimenez/atralume";
 
 export const ATR_DIALOG_DATA = new InjectionToken<unknown>(
   "AtralumeDialog data",

@@ -4,12 +4,12 @@ import {
   AtralumeFormField,
   AtralumeControlLabel,
   TuiTextfield,
-} from "@atralume/angular/form-field";
-import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeTextarea } from "@atralume/angular/textarea";
-import { AtralumeCheckbox } from "@atralume/angular/checkbox";
-import { AtralumeRadio } from "@atralume/angular/radio";
-import { AtralumeSwitch } from "@atralume/angular/switch";
+} from "@osmanjimenez/atralume/form-field";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
+import { AtralumeTextarea } from "@osmanjimenez/atralume/textarea";
+import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
+import { AtralumeRadio } from "@osmanjimenez/atralume/radio";
+import { AtralumeSwitch } from "@osmanjimenez/atralume/switch";
 import { FormsDemo } from "./forms-demo.component";
 import { SignalDemo } from "./signal-demo.component";
 import { TemplateDemo } from "./template-demo.component";

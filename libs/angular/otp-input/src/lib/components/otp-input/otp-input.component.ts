@@ -18,8 +18,8 @@ import {
   type Validator,
 } from "@angular/forms";
 import { TuiInputPin } from "@taiga-ui/kit";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
 
 function toInner(value: string | null): string {
   return value ?? "";

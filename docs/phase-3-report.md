@@ -4,7 +4,7 @@ Fecha: 31 de octubre de 2026. Implementación local sobre el trabajo existente, 
 
 ## Alcance
 
-Se incorporaron 17 entradas públicas al paquete `@atralume/angular`:
+Se incorporaron 17 entradas públicas al paquete `@osmanjimenez/atralume`:
 
 - 3A: Card, Chip/ChipSet, List, Accordion y Skeleton.
 - 3B: Tooltip, Menu, Dialog, BottomSheet y Snackbar.

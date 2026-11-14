@@ -578,11 +578,11 @@ Atralume must remain one publishable npm package with secondary entrypoints.
 Example:
 
 ```text
-@atralume/angular/button
-@atralume/angular/icon
-@atralume/angular/forms
-@atralume/angular/dialog
-@atralume/angular/table
+@osmanjimenez/atralume/button
+@osmanjimenez/atralume/icon
+@osmanjimenez/atralume/forms
+@osmanjimenez/atralume/dialog
+@osmanjimenez/atralume/table
 ```
 
 Do not create one npm package per component.
@@ -590,7 +590,7 @@ Do not create one npm package per component.
 Do not import internal paths:
 
 ```ts
-@atralume/angular/src/lib/...
+@osmanjimenez/atralume/src/lib/...
 ```
 
 Use public entrypoints.

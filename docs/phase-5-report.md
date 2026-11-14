@@ -4,7 +4,7 @@ Date: 2026-11-02
 
 ## Scope delivered
 
-- Prepared `@atralume/angular` as a public `0.1.0` package with explicit
+- Prepared `@osmanjimenez/atralume` as a public `0.1.0` package with explicit
   Angular/RxJS peer dependencies, Node/npm requirements, provenance metadata,
   an allow-list of published files, package README, MIT license and changelog.
 - Added Changesets configuration, a SemVer/release/rollback policy, migration
@@ -57,7 +57,7 @@ deployment was performed for this phase.
 4. No visual-regression baseline/review workflow is installed yet. Perform and
    record the required multi-viewport, light/dark/system and reduced-motion
    review before stable publication.
-5. `@atralume/angular/internal/forms` and root `ɵ` bridge exports remain
+5. `@osmanjimenez/atralume/internal/forms` and root `ɵ` bridge exports remain
    generated/public surfaces. Define an explicit compatibility policy or remove
    them before claiming a stable public API.
 6. The complete development dependency tree reported 56 audit findings (5 low,

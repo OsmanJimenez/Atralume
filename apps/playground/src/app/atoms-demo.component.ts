@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import {
   AtralumeIcon,
   provideAtralumeIcons,
   checkIcon,
   closeIcon,
   arrowRightIcon,
-} from "@atralume/angular/icon";
-import { AtralumeIconButton } from "@atralume/angular/icon-button";
-import { AtralumeLink } from "@atralume/angular/link";
-import { AtralumeBadge } from "@atralume/angular/badge";
-import { AtralumeAvatar } from "@atralume/angular/avatar";
-import { AtralumeDivider } from "@atralume/angular/divider";
+} from "@osmanjimenez/atralume/icon";
+import { AtralumeIconButton } from "@osmanjimenez/atralume/icon-button";
+import { AtralumeLink } from "@osmanjimenez/atralume/link";
+import { AtralumeBadge } from "@osmanjimenez/atralume/badge";
+import { AtralumeAvatar } from "@osmanjimenez/atralume/avatar";
+import { AtralumeDivider } from "@osmanjimenez/atralume/divider";
 import {
   AtralumeProgressSpinner,
   AtralumeProgressBar,
-} from "@atralume/angular/progress";
+} from "@osmanjimenez/atralume/progress";
 @Component({
   selector: "atr-atoms-demo",
   imports: [

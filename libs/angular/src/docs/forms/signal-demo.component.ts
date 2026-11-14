@@ -3,13 +3,13 @@ import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
 import {
   AtralumeFormField,
   AtralumeControlLabel,
-} from "@atralume/angular/form-field";
+} from "@osmanjimenez/atralume/form-field";
 import { TuiTextfield } from "@taiga-ui/core";
-import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeTextarea } from "@atralume/angular/textarea";
-import { AtralumeCheckbox } from "@atralume/angular/checkbox";
-import { AtralumeRadio } from "@atralume/angular/radio";
-import { AtralumeSwitch } from "@atralume/angular/switch";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
+import { AtralumeTextarea } from "@osmanjimenez/atralume/textarea";
+import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
+import { AtralumeRadio } from "@osmanjimenez/atralume/radio";
+import { AtralumeSwitch } from "@osmanjimenez/atralume/switch";
 import { form, FormField } from "@angular/forms/signals";
 @Component({
   selector: "atr-signal-demo",

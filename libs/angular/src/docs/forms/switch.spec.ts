@@ -7,8 +7,8 @@ import {
   NgControl,
   CheckboxControlValueAccessor,
 } from "@angular/forms";
-import { AtralumeSwitch } from "@atralume/angular/switch";
-import { AtralumeControlLabel } from "@atralume/angular/form-field";
+import { AtralumeSwitch } from "@osmanjimenez/atralume/switch";
+import { AtralumeControlLabel } from "@osmanjimenez/atralume/form-field";
 @Component({
   imports: [AtralumeSwitch, AtralumeControlLabel, ReactiveFormsModule],
   template:

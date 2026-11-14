@@ -1,4 +1,4 @@
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,7 +10,7 @@ import {
   input,
 } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { AtralumeTooltip } from "@atralume/angular/tooltip";
+import { AtralumeTooltip } from "@osmanjimenez/atralume/tooltip";
 import {
   AtralumeMenu,
   AtralumeMenuTrigger,
@@ -19,22 +19,22 @@ import {
   AtralumeMenuRadioItem,
   AtralumeMenuGroup,
   AtralumeMenuSeparator,
-} from "@atralume/angular/menu";
+} from "@osmanjimenez/atralume/menu";
 import {
   AtralumeDialog,
   AtralumeDialogTitle,
   AtralumeDialogContent,
   AtralumeDialogActions,
   AtralumeDialogClose,
-} from "@atralume/angular/dialog";
+} from "@osmanjimenez/atralume/dialog";
 import {
   AtralumeBottomSheet,
   AtralumeBottomSheetTitle,
   AtralumeBottomSheetContent,
   AtralumeBottomSheetActions,
   AtralumeBottomSheetClose,
-} from "@atralume/angular/bottom-sheet";
-import { AtralumeSnackbar } from "@atralume/angular/snackbar";
+} from "@osmanjimenez/atralume/bottom-sheet";
+import { AtralumeSnackbar } from "@osmanjimenez/atralume/snackbar";
 @Component({
   selector: "atr-overlay-demo",
   imports: [

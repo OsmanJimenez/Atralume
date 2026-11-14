@@ -7,11 +7,11 @@ import * as Stories from "../stories/table.component.stories";
 
 Composed over `@taiga-ui/addon-table` (`table[tuiTable]`, `th[tuiTh]`, `td[tuiTd]`, `tbody[tuiTbody]`). Atralume keeps a high-level `rows` / `columns` / selection / sort / expand contract; cells render through `column.cell()`.
 
-Declare peer `@taiga-ui/addon-table` (optional peer; required when importing `@atralume/angular/table`). Bootstrap with `provideAtralume()`.
+Declare peer `@taiga-ui/addon-table` (optional peer; required when importing `@osmanjimenez/atralume/table`). Bootstrap with `provideAtralume()`.
 
 `AtralumeTable` preserves native table semantics for readable structured data. It exposes sort, visible-row selection and expansion as controlled state; it never fetches, paginates or mutates consumer rows.
 
-Import from `@atralume/angular/table`. Use stable `trackBy` identities for object rows. Virtualization is intentionally not enabled for this semantic table.
+Import from `@osmanjimenez/atralume/table`. Use stable `trackBy` identities for object rows. Virtualization is intentionally not enabled for this semantic table.
 
 Taiga UI reference: [Table](https://taiga-ui.dev/components/table).
 

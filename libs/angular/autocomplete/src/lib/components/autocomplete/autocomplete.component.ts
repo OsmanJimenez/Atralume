@@ -7,9 +7,9 @@ import {
   model,
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import { AtralumeCombobox } from "@atralume/angular/combobox";
-import type { AtralumeOptionData } from "@atralume/angular/listbox";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
+import { AtralumeCombobox } from "@osmanjimenez/atralume/combobox";
+import type { AtralumeOptionData } from "@osmanjimenez/atralume/listbox";
 
 /**
  * Thin Autocomplete over `atr-combobox` / Taiga `tuiComboBox` (filter on).

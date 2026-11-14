@@ -21,10 +21,10 @@ import {
 import {
   AtralumeDialog,
   type AtralumeDialogRef,
-} from "@atralume/angular/dialog";
-import { AtralumeCombobox } from "@atralume/angular/combobox";
-import { AtralumeButton } from "@atralume/angular/button";
-import { provideAtralumeIcons, arrowRightIcon } from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/dialog";
+import { AtralumeCombobox } from "@osmanjimenez/atralume/combobox";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { provideAtralumeIcons, arrowRightIcon } from "@osmanjimenez/atralume/icon";
 export interface AtralumeCommand<T> {
   readonly id: string;
   readonly label: string;

@@ -17,7 +17,7 @@ import {
   type Validator,
 } from "@angular/forms";
 import { TuiRating } from "@taiga-ui/kit";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
 
 /** Maps Atralume null (unset) to Taiga rating fallback `0`. */
 function toInner(value: number | null): number {

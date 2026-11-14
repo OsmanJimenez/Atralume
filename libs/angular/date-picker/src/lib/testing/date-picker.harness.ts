@@ -1,5 +1,5 @@
 import { ComponentHarness, TestKey } from "@angular/cdk/testing";
-import { AtralumeCalendarHarness } from "@atralume/angular/calendar";
+import { AtralumeCalendarHarness } from "@osmanjimenez/atralume/calendar";
 export class AtralumeDatePickerHarness extends ComponentHarness {
   static hostSelector = "atr-date-picker";
   private readonly input = this.locatorFor('input[type="text"]');

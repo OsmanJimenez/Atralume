@@ -1,5 +1,5 @@
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeAvatar } from "@atralume/angular/avatar";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeAvatar } from "@osmanjimenez/atralume/avatar";
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import {
   AtralumeCard,

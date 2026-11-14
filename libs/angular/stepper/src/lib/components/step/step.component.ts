@@ -7,7 +7,7 @@ import {
   input,
   viewChild,
 } from "@angular/core";
-import { ɵAtralumeControlIds } from "@atralume/angular";
+import { ɵAtralumeControlIds } from "@osmanjimenez/atralume";
 import { STEPPER_CONTEXT } from "../../internal/stepper-context";
 
 /**

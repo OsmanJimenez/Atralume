@@ -8,10 +8,10 @@ Style Dictionary 5.6.0 transforms the source. `npm run tokens:check` validates s
 
 ## Public contract
 
-- `@atralume/angular/styles` — Sass entry.
-- `@atralume/angular/styles/theme.css` — generated theme tokens without component styles or reset.
-- `@atralume/angular/styles/tokens.json` — generated documentation/design-tool manifest.
-- `@atralume/angular/styles/reset.scss` — optional minimal reset.
+- `@osmanjimenez/atralume/styles` — Sass entry.
+- `@osmanjimenez/atralume/styles/theme.css` — generated theme tokens without component styles or reset.
+- `@osmanjimenez/atralume/styles/tokens.json` — generated documentation/design-tool manifest.
+- `@osmanjimenez/atralume/styles/reset.scss` — optional minimal reset.
 
 `light`, `dark`, and `system` work on the root or a nested scope. Without an attribute, light is deterministic. System follows `prefers-color-scheme` without JavaScript. Glass is selected independently through `data-atr-surface="glass"` and inherits the nearest theme.
 

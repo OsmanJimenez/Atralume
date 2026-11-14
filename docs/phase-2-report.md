@@ -33,7 +33,7 @@ La landing existente incorpora enlaces y composiciones light/dark/glass. El play
 
 ## API pública
 
-Todos los entrypoints usan el prefijo `@atralume/angular/`:
+Todos los entrypoints usan el prefijo `@osmanjimenez/atralume/`:
 
 | Entrypoint    | Exportaciones principales                                                                                         | Harness                                                        |
 | ------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -48,7 +48,7 @@ Todos los entrypoints usan el prefijo `@atralume/angular/`:
 
 Icon exporta individualmente `checkIcon`, `closeIcon`, `arrowRightIcon`, `chevronDownIcon`, `infoIcon`, `warningIcon`, `userIcon` y `menuIcon`. El consumidor registra únicamente los que necesita.
 
-Estilos públicos conservados: `@atralume/angular/styles/theme.css` y el entrypoint Sass `@atralume/angular/styles`. El stylesheet incluye las directivas. El manifiesto está disponible en `@atralume/angular/styles/tokens.json`.
+Estilos públicos conservados: `@osmanjimenez/atralume/styles/theme.css` y el entrypoint Sass `@osmanjimenez/atralume/styles`. El stylesheet incluye las directivas. El manifiesto está disponible en `@osmanjimenez/atralume/styles/tokens.json`.
 
 ## Storybook
 

@@ -1,6 +1,6 @@
 # Architecture
 
-Atralume ships one publishable Angular library, `@atralume/angular`. Components do not become separate Nx projects or packages: stable consumer APIs are exposed as ng-packagr secondary entry points such as `@atralume/angular/button`. Consumers must never import `src`, `lib`, or an Atomic Design folder.
+Atralume ships one publishable Angular library, `@osmanjimenez/atralume`. Components do not become separate Nx projects or packages: stable consumer APIs are exposed as ng-packagr secondary entry points such as `@osmanjimenez/atralume/button`. Consumers must never import `src`, `lib`, or an Atomic Design folder.
 
 Taiga UI 5 is the **only** component and interaction runtime. Atralume is the **brand layer** on top: design tokens, theme bridge (`--atr-*` → `--tui-*`), and scope modes (`data-atr-theme`, `data-atr-surface`, `data-atr-shape`, `data-atr-brand`) that restyle every Taiga-backed control together. Thin `atr*` adapters may wrap public Taiga APIs; Atralume must not keep parallel UI engines. Never depend on Taiga private APIs, internal DOM, or undocumented CSS variables. See [ADR-001](architecture/adr/ADR-001-use-taiga-ui-as-component-foundation.md), [matrix](architecture/taiga-ui-migration-matrix.md), [checklist](architecture/taiga-ui-migration-checklist.md), and [status report](architecture/taiga-ui-migration-final-report.md).
 

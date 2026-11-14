@@ -9,65 +9,65 @@ import {
 } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import {
   AtralumeIcon,
   provideAtralumeIcons,
   checkIcon,
   menuIcon,
   userIcon,
-} from "@atralume/angular/icon";
-import { AtralumeIconButton } from "@atralume/angular/icon-button";
-import { AtralumeAvatar } from "@atralume/angular/avatar";
-import { AtralumeBadge } from "@atralume/angular/badge";
+} from "@osmanjimenez/atralume/icon";
+import { AtralumeIconButton } from "@osmanjimenez/atralume/icon-button";
+import { AtralumeAvatar } from "@osmanjimenez/atralume/avatar";
+import { AtralumeBadge } from "@osmanjimenez/atralume/badge";
 import {
   AtralumeCard,
   AtralumeCardHeader,
   AtralumeCardContent,
   AtralumeCardActions,
-} from "@atralume/angular/card";
-import { AtralumeChip, AtralumeChipSet } from "@atralume/angular/chip";
+} from "@osmanjimenez/atralume/card";
+import { AtralumeChip, AtralumeChipSet } from "@osmanjimenez/atralume/chip";
 import {
   AtralumeList,
   AtralumeListItem,
   AtralumeListHeadline,
   AtralumeListSupporting,
-} from "@atralume/angular/list";
+} from "@osmanjimenez/atralume/list";
 import { TuiAccordion } from "@taiga-ui/kit";
-import { AtralumeSkeleton } from "@atralume/angular/skeleton";
-import { AtralumeTooltip } from "@atralume/angular/tooltip";
+import { AtralumeSkeleton } from "@osmanjimenez/atralume/skeleton";
+import { AtralumeTooltip } from "@osmanjimenez/atralume/tooltip";
 import {
   AtralumeMenu,
   AtralumeMenuTrigger,
   AtralumeMenuItem,
-} from "@atralume/angular/menu";
+} from "@osmanjimenez/atralume/menu";
 import {
   AtralumeDialog,
   AtralumeDialogTitle,
   AtralumeDialogContent,
   AtralumeDialogActions,
   AtralumeDialogClose,
-} from "@atralume/angular/dialog";
-import { AtralumeSnackbar } from "@atralume/angular/snackbar";
+} from "@osmanjimenez/atralume/dialog";
+import { AtralumeSnackbar } from "@osmanjimenez/atralume/snackbar";
 import {
   AtralumeTabs,
   AtralumeTabList,
   AtralumeTab,
   AtralumeTabPanel,
-} from "@atralume/angular/tabs";
-import { AtralumePagination } from "@atralume/angular/pagination";
+} from "@osmanjimenez/atralume/tabs";
+import { AtralumePagination } from "@osmanjimenez/atralume/pagination";
 import {
   AtralumeNavigationBar,
   AtralumeNavigationItem,
-} from "@atralume/angular/navigation-bar";
-import { AtralumeFab } from "@atralume/angular/fab";
+} from "@osmanjimenez/atralume/navigation-bar";
+import { AtralumeFab } from "@osmanjimenez/atralume/fab";
 import {
   AtralumeSpeedDial,
   AtralumeSpeedDialAction,
-} from "@atralume/angular/speed-dial";
-import { AtralumeFormField } from "@atralume/angular/form-field";
+} from "@osmanjimenez/atralume/speed-dial";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
 import { TuiTextfield } from "@taiga-ui/core";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 import { FormsDemo } from "./forms-demo.component";
 @Component({
   selector: "atr-dashboard-demo",

@@ -18,7 +18,7 @@ const files = (entry, folder, suffix) => {
     : 0;
 };
 const report = entries.map((entry) => ({
-  entrypoint: `@atralume/angular/${entry}`,
+  entrypoint: `@osmanjimenez/atralume/${entry}`,
   entry,
   stories: files(entry, "stories", ".stories.ts"),
   docs: files(entry, "docs", ".mdx"),

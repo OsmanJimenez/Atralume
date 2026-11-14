@@ -7,7 +7,7 @@ import {
   NgControl,
   DefaultValueAccessor,
 } from "@angular/forms";
-import { AtralumeTextarea } from "@atralume/angular/textarea";
+import { AtralumeTextarea } from "@osmanjimenez/atralume/textarea";
 import { TuiTextfield } from "@taiga-ui/core";
 
 @Component({

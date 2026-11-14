@@ -8,7 +8,7 @@ import {
 import { TestBed } from "@angular/core/testing";
 import { firstValueFrom } from "rxjs";
 import { TuiRoot } from "@taiga-ui/core";
-import { provideAtralume } from "@atralume/angular";
+import { provideAtralume } from "@osmanjimenez/atralume";
 import {
   AtralumeDialog,
   AtralumeDialogRef,

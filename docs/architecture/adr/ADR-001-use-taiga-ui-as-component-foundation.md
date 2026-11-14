@@ -6,7 +6,7 @@
 
 ## Context
 
-Atralume publishes `@atralume/angular` with tokens, themes, and (historically)
+Atralume publishes `@osmanjimenez/atralume` with tokens, themes, and (historically)
 its own component implementations. Maintaining a second full UI kit beside
 Taiga UI increases cost and fights the product goal: **one behavior foundation
 (Taiga) and one brand layer (Atralume)**.

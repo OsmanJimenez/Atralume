@@ -14,7 +14,7 @@ import { NgTemplateOutlet } from "@angular/common";
 import { Observable, Subject, Subscription } from "rxjs";
 import { TuiDialogService } from "@taiga-ui/core";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { ɵAtralumeOverlayInfrastructure } from "@osmanjimenez/atralume";
 
 /**
  * Bottom sheet over Taiga `TuiDialogService` with `appearance: atr-bottom-sheet`.

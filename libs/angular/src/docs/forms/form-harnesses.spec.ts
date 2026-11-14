@@ -1,12 +1,12 @@
 import { provideZonelessChangeDetection } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
-import { AtralumeFormFieldHarness } from "@atralume/angular/form-field";
-import { AtralumeInputHarness } from "@atralume/angular/input";
-import { AtralumeTextareaHarness } from "@atralume/angular/textarea";
-import { AtralumeCheckboxHarness } from "@atralume/angular/checkbox";
-import { AtralumeRadioHarness } from "@atralume/angular/radio";
-import { AtralumeSwitchHarness } from "@atralume/angular/switch";
+import { AtralumeFormFieldHarness } from "@osmanjimenez/atralume/form-field";
+import { AtralumeInputHarness } from "@osmanjimenez/atralume/input";
+import { AtralumeTextareaHarness } from "@osmanjimenez/atralume/textarea";
+import { AtralumeCheckboxHarness } from "@osmanjimenez/atralume/checkbox";
+import { AtralumeRadioHarness } from "@osmanjimenez/atralume/radio";
+import { AtralumeSwitchHarness } from "@osmanjimenez/atralume/switch";
 import { FormsDemo } from "./forms-demo.component";
 
 describe("Public form harnesses in zoneless mode", () => {

@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { AtralumeDatePicker } from "../../index";
-import { AtralumeNativeDateAdapter } from "@atralume/angular/calendar";
+import { AtralumeNativeDateAdapter } from "@osmanjimenez/atralume/calendar";
 describe("Date Picker parsing and range values", () => {
   it("reports invalid manual dates and commits typed ranges through Calendar", async () => {
     const f = TestBed.createComponent(AtralumeDatePicker);

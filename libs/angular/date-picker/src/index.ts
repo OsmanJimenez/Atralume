@@ -3,7 +3,7 @@ export type { AtralumeDatePickerValue } from "./lib/components/date-picker/date-
 export {
   provideAtralumeNativeDateAdapter,
   AtralumeDateAdapter,
-} from "@atralume/angular/calendar";
-export type { AtralumeDateRange } from "@atralume/angular/calendar";
+} from "@osmanjimenez/atralume/calendar";
+export type { AtralumeDateRange } from "@osmanjimenez/atralume/calendar";
 
 export * from "./lib/testing/date-picker.harness";

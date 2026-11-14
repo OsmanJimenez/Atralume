@@ -17,9 +17,9 @@ import {
 } from "@angular/forms";
 import { TuiDataListWrapper, TuiSelect } from "@taiga-ui/kit";
 import { TuiChevron } from "@taiga-ui/kit/directives/chevron";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import type { AtralumeOptionData } from "@atralume/angular/listbox";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
+import type { AtralumeOptionData } from "@osmanjimenez/atralume/listbox";
 import { AtralumeSelectDirective } from "../../directives/select.directive";
 
 /**

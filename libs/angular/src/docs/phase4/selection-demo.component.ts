@@ -8,18 +8,18 @@ import {
   signal,
 } from "@angular/core";
 import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
-import { AtralumeListbox } from "@atralume/angular/listbox";
-import { AtralumeCombobox } from "@atralume/angular/combobox";
-import { AtralumeSelect } from "@atralume/angular/select";
-import { AtralumeAutocomplete } from "@atralume/angular/autocomplete";
-import { AtralumePopover } from "@atralume/angular/popover";
+import { AtralumeListbox } from "@osmanjimenez/atralume/listbox";
+import { AtralumeCombobox } from "@osmanjimenez/atralume/combobox";
+import { AtralumeSelect } from "@osmanjimenez/atralume/select";
+import { AtralumeAutocomplete } from "@osmanjimenez/atralume/autocomplete";
+import { AtralumePopover } from "@osmanjimenez/atralume/popover";
 import {
   AtralumeCommandPalette,
   type AtralumeCommand,
-} from "@atralume/angular/command-palette";
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeInput } from "@atralume/angular/input";
-import { AtralumeFormField, TuiTextfield } from "@atralume/angular/form-field";
+} from "@osmanjimenez/atralume/command-palette";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
+import { AtralumeFormField, TuiTextfield } from "@osmanjimenez/atralume/form-field";
 @Component({
   selector: "atr-selection-demo",
   standalone: true,

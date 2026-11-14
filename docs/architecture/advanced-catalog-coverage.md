@@ -117,14 +117,14 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 
 | Item | Entrypoint / location | Status |
 | --- | --- | --- |
-| AvatarGroup | `@atralume/angular/avatar` (`atr-avatar-group`) | Implemented |
-| Status | `@atralume/angular/status` | Implemented |
-| Rating | `@atralume/angular/rating` | Implemented |
-| CopyButton | `@atralume/angular/copy-button` | Implemented (CDK Clipboard + `TuiButton`; `TuiButtonCopy` cannot hostDirectives) |
-| TruncatedText | `@atralume/angular/truncated-text` | Implemented |
-| OtpInput | `@atralume/angular/otp-input` | Implemented |
-| Kbd | `@atralume/angular/kbd` | Implemented |
-| VisuallyHidden | `@atralume/angular/visually-hidden` | Implemented |
+| AvatarGroup | `@osmanjimenez/atralume/avatar` (`atr-avatar-group`) | Implemented |
+| Status | `@osmanjimenez/atralume/status` | Implemented |
+| Rating | `@osmanjimenez/atralume/rating` | Implemented |
+| CopyButton | `@osmanjimenez/atralume/copy-button` | Implemented (CDK Clipboard + `TuiButton`; `TuiButtonCopy` cannot hostDirectives) |
+| TruncatedText | `@osmanjimenez/atralume/truncated-text` | Implemented |
+| OtpInput | `@osmanjimenez/atralume/otp-input` | Implemented |
+| Kbd | `@osmanjimenez/atralume/kbd` | Implemented |
+| VisuallyHidden | `@osmanjimenez/atralume/visually-hidden` | Implemented |
 | PasswordField | Forms/Password Field recipe | Documented (no package) |
 
 Deferred P1/P2 remain listed above for later waves.

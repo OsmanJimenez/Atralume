@@ -3,7 +3,7 @@ import {
   AtralumeIcon,
   checkIcon,
   provideAtralumeIcons,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import { AtralumeBadge } from "../../index";
 export default {
   component: AtralumeBadge,

@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
 import { expect, within } from "storybook/test";
 import { AtralumeFormField, TuiLabel, TuiTextfield } from "../../index";
-import { AtralumeInput } from "@atralume/angular/input";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 
 const meta = {
   title: "Forms/Form Field",

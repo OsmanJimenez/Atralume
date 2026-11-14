@@ -21,8 +21,8 @@ import {
   AtralumeCardHeader,
   AtralumeCardContent,
   AtralumeCardActions,
-} from "@atralume/angular/card";
-import { AtralumeButton } from "@atralume/angular/button";
+} from "@osmanjimenez/atralume/card";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 ```
 
 Incluye estas clases en `imports` del componente consumidor:

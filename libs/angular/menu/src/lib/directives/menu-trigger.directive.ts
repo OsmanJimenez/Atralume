@@ -1,7 +1,7 @@
 import { MENU_ORIGIN } from "../internal/menu-origin";
 import { Directive, inject, ElementRef, DestroyRef } from "@angular/core";
 import { CdkMenuTrigger } from "@angular/cdk/menu";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { ɵAtralumeOverlayInfrastructure } from "@osmanjimenez/atralume";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 @Directive({
   selector: "[atrMenuTriggerFor]",

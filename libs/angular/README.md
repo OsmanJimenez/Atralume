@@ -1,4 +1,4 @@
-# @atralume/angular
+# @osmanjimenez/atralume
 
 Accessible Angular UI primitives and composable components for applications
 that use standalone APIs, Angular SSR, or zoneless change detection.
@@ -6,7 +6,7 @@ that use standalone APIs, Angular SSR, or zoneless change detection.
 ## Install
 
 ```bash
-npm install @atralume/angular \
+npm install @osmanjimenez/atralume \
   @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit @taiga-ui/layout \
   @taiga-ui/addon-table @taiga-ui/polymorpheus
 ```
@@ -15,7 +15,7 @@ The package declares Angular 22, RxJS 7, Angular CDK, and Taiga UI 5 as peer
 dependencies. Required Taiga peers include `cdk`, `core`, `kit`, `layout`,
 `addon-table`, and `polymorpheus`. Call `provideAtralume()` once in the app
 config, mount `<tui-root>` once around the application shell, and load
-`@atralume/angular/styles/theme.css`. Use Angular versions already used by
+`@osmanjimenez/atralume/styles/theme.css`. Use Angular versions already used by
 your application.
 
 ## Use a component
@@ -24,7 +24,7 @@ Import public symbols from the root package or the documented secondary
 entrypoint. Do not import from `src`, `fesm2022`, or another generated path.
 
 ```ts
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 ```
 
 The component catalogue, accessibility notes, and examples are published in
@@ -43,7 +43,7 @@ Load the generated public stylesheet once. It contains Atralume tokens, the
 theme bridge, and Taiga styles used by migrated components:
 
 ```css
-@import "@atralume/angular/styles/theme.css";
+@import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
 Taiga UI remains a peer dependency. The Less compiler is used only while

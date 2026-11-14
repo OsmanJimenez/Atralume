@@ -12,18 +12,18 @@ modes. Thin `atr*` adapters may exist; they must not reimplement Taiga.
 ## Installation
 
 ```bash
-npm install @atralume/angular \
+npm install @osmanjimenez/atralume \
   @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit @taiga-ui/layout \
   @taiga-ui/addon-table @taiga-ui/polymorpheus
 ```
 
-Use peer versions from `@atralume/angular/package.json`. All listed Taiga
+Use peer versions from `@osmanjimenez/atralume/package.json`. All listed Taiga
 packages are **required** peers (including `@taiga-ui/addon-table` for Table).
 Call `provideAtralume()` once (registers Taiga providers) and wrap the app
 shell with `<tui-root>` so dropdowns, dialogs, and hints have a portal host.
 
 ```ts
-import { provideAtralume } from "@atralume/angular";
+import { provideAtralume } from "@osmanjimenez/atralume";
 
 export const appConfig: ApplicationConfig = {
   providers: [provideAtralume()],
@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
 ```
 
 ```css
-@import "@atralume/angular/styles/theme.css";
+@import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
 ## Brand modes
@@ -60,7 +60,7 @@ follow the brand without per-component CSS.
 Import thin adapters from secondary entrypoints when documented:
 
 ```ts
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 ```
 
 Prefer aligning new work to Taiga hosts. Do not stack undocumented Taiga
@@ -75,7 +75,7 @@ directives on the same host. Do not import Taiga internals.
   `textarea[atrTextarea]` inside it.
 - `atrInput` / `atrTextarea` require a `tui-textfield` ancestor in the same
   consumer template tree (`TuiTextfield` is re-exported from
-  `@atralume/angular/form-field`).
+  `@osmanjimenez/atralume/form-field`).
 - `atrCheckbox` / `atrRadio` / `atrSwitch` stay native-first: `TuiAppearance` +
   `[tuiCheckbox|tuiRadio|tuiSwitch]` attrs.
 

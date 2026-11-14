@@ -22,22 +22,22 @@ import {
   type Validator,
   type ValidationErrors,
 } from "@angular/forms";
-import { ɵAtralumeValueControl } from "@atralume/angular/internal/forms";
-import { AtralumeFormField } from "@atralume/angular/form-field";
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeIconButton } from "@atralume/angular/icon-button";
+import { ɵAtralumeValueControl } from "@osmanjimenez/atralume/internal/forms";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeIconButton } from "@osmanjimenez/atralume/icon-button";
 import {
   AtralumeIcon,
   provideAtralumeIcons,
   closeIcon,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import {
   AtralumeList,
   AtralumeListItem,
   AtralumeListHeadline,
   AtralumeListSupporting,
-} from "@atralume/angular/list";
-import { AtralumeProgressBar } from "@atralume/angular/progress";
+} from "@osmanjimenez/atralume/list";
+import { AtralumeProgressBar } from "@osmanjimenez/atralume/progress";
 import { TuiInputFiles } from "@taiga-ui/kit";
 import { AtralumeFileInput } from "../../directives/file-input.directive";
 import type {

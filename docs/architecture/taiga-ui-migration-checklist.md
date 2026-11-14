@@ -17,10 +17,10 @@ Atralume **no** es un segundo kit de componentes. Es la capa de marca:
 Bootstrap:
 
 ```ts
-import { provideAtralume } from "@atralume/angular";
+import { provideAtralume } from "@osmanjimenez/atralume";
 // providers: [provideAtralume()]
 // + wrap app shell with <tui-root> (dropdown/dialog portal host)
-// + @import "@atralume/angular/styles/theme.css";
+// + @import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
 ## Ola 0 (plataforma) — done
@@ -98,7 +98,7 @@ import { provideAtralume } from "@atralume/angular";
 | Item                                    | Status  | Notes                                                                            |
 | --------------------------------------- | ------- | -------------------------------------------------------------------------------- |
 | Overlay open/connected engines          | removed | Slim `ɵAtralumeOverlayInfrastructure` keeps decorate/dismissal for CDK Menu only |
-| Legacy combobox popup/input/trigger     | removed | Dead directives deleted from `@atralume/angular/combobox`                        |
+| Legacy combobox popup/input/trigger     | removed | Dead directives deleted from `@osmanjimenez/atralume/combobox`                        |
 | Tooltip panel                           | removed | Unused `atr-tooltip-panel` deleted                                               |
 | Legacy `atr-option` + `LISTBOX_CONTEXT` | removed | Prefer `button[atrOption]` → `TuiOption`                                         |
 | Peers required                          | done    | `@taiga-ui/cdk                                                                   | core | kit | layout | addon-table | polymorpheus`required;`@angular/forms` optional |

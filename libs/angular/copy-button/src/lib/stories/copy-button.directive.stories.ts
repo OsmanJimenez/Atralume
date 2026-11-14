@@ -17,7 +17,7 @@ type Story = StoryObj;
 
 export const Playground: Story = {
   args: {
-    text: "npm i @atralume/angular",
+    text: "npm i @osmanjimenez/atralume",
   },
   argTypes: {
     text: { control: "text" },

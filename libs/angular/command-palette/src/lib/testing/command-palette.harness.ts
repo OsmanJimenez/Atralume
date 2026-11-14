@@ -1,5 +1,5 @@
 import { ComponentHarness, TestKey } from "@angular/cdk/testing";
-import { AtralumeComboboxHarness } from "@atralume/angular/combobox";
+import { AtralumeComboboxHarness } from "@osmanjimenez/atralume/combobox";
 export class AtralumeCommandPaletteHarness extends ComponentHarness {
   static hostSelector = ".atr-command-palette-content";
   readonly combobox = this.locatorFor(AtralumeComboboxHarness);

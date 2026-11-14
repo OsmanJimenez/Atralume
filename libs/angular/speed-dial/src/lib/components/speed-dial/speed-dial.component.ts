@@ -18,7 +18,7 @@ import {
   DestroyRef,
 } from "@angular/core";
 import { DOCUMENT, isPlatformBrowser } from "@angular/common";
-import { AtralumeFab } from "@atralume/angular/fab";
+import { AtralumeFab } from "@osmanjimenez/atralume/fab";
 import { AtralumeSpeedDialAction } from "../../directives/speed-dial-action.directive";
 
 /**

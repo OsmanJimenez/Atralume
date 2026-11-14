@@ -5,7 +5,7 @@ import {
   checkIcon,
   closeIcon,
   provideAtralumeIcons,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import { AtralumeIconButton } from "../../index";
 export default {
   component: AtralumeIconButton,

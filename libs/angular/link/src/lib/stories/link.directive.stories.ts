@@ -5,7 +5,7 @@ import {
   arrowRightIcon,
   infoIcon,
   provideAtralumeIcons,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import { AtralumeLink } from "../../index";
 export default {
   component: AtralumeLink,

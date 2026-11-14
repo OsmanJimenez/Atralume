@@ -1,3 +1,23 @@
+/* Neutralize TuiCardLarge host padding/gap so Atralume slots own spacing. */
+[tuicardlarge].atr-card {
+  --t-padding: 0;
+  --tui-padding-inline: 0;
+  --t-space: 0;
+  --t-comp: 0;
+  --t-dim: 0;
+  padding: 0;
+  gap: 0;
+  border-radius: var(--atr-comp-card-shape);
+}
+
+[tuicardlarge].atr-card > :last-child:not([tuicell]) {
+  margin-block-start: 0;
+}
+
+[tuicardlarge].atr-card > footer {
+  margin-block-end: 0;
+}
+
 .atr-card-header,
 .atr-card-content,
 .atr-card-actions {
@@ -8,6 +28,14 @@
   display: flex;
   align-items: center;
   gap: var(--atr-comp-card-gap);
+}
+
+.atr-card-header :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font-family: var(--atr-sys-typography-title-medium-font-family, inherit);
+  font-size: var(--atr-sys-typography-title-medium-font-size);
+  font-weight: var(--atr-sys-typography-title-medium-font-weight, var(--atr-ref-font-weight-medium));
+  line-height: var(--atr-sys-typography-title-medium-line-height, 1.3);
 }
 
 .atr-card-actions {
@@ -25,12 +53,20 @@
 
 .atr-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  padding: var(--atr-comp-list-gap);
+  padding: var(--atr-sys-spacing-xs);
   background: var(--atr-comp-list-container-color);
   color: var(--atr-comp-list-label-color);
   font-family: var(--atr-comp-list-font-family);
   border-radius: var(--atr-comp-list-shape);
+}
+
+.atr-list > li {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .atr-list-item {
@@ -63,6 +99,18 @@
   padding-block: var(--atr-sys-spacing-xs);
 }
 
+.atr-list-leading {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.atr-list-item > :not(.atr-list-leading, .atr-list-trailing) {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
 .atr-list-headline {
   display: block;
   font-weight: var(--atr-ref-font-weight-medium);
@@ -76,6 +124,9 @@
 }
 
 .atr-list-trailing {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
   margin-inline-start: auto;
 }
 

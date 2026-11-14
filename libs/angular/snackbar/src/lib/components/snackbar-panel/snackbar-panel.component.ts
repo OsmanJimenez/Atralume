@@ -1,10 +1,10 @@
-import { AtralumeButton } from "@atralume/angular/button";
-import { AtralumeIconButton } from "@atralume/angular/icon-button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeIconButton } from "@osmanjimenez/atralume/icon-button";
 import {
   AtralumeIcon,
   provideAtralumeIcons,
   closeIcon,
-} from "@atralume/angular/icon";
+} from "@osmanjimenez/atralume/icon";
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { SNACKBAR_SESSION } from "../../models/snackbar.types";
 

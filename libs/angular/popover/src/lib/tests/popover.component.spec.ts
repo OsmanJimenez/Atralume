@@ -1,7 +1,7 @@
 import { Component, signal } from "@angular/core";
 import { TestBed } from "@angular/core/testing";
 import { AtralumePopover } from "../../index";
-import { AtralumeButton } from "@atralume/angular/button";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
 @Component({
   imports: [AtralumePopover, AtralumeButton],
   template:

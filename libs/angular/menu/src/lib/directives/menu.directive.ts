@@ -1,6 +1,6 @@
 import { Directive, inject, ElementRef, DestroyRef } from "@angular/core";
 import { CdkMenu, FocusNext } from "@angular/cdk/menu";
-import { ɵAtralumeOverlayInfrastructure } from "@atralume/angular";
+import { ɵAtralumeOverlayInfrastructure } from "@osmanjimenez/atralume";
 import { MENU_ORIGIN } from "../internal/menu-origin";
 
 /**
