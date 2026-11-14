@@ -1,4 +1,5 @@
 export { AtralumeFormField } from "./lib/components/form-field/form-field.component";
+export { AtralumeSearchField } from "./lib/components/search-field/search-field.component";
 export type {
   AtralumeFormFieldAppearance,
   AtralumeFormFieldDensity,

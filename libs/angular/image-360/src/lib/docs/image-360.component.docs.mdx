@@ -1,0 +1,16 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/image-360.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Image 360
+
+`AtralumeImage360` is the lightweight, accessible viewer for an equirectangular 2:1 panorama. It deliberately avoids a rendering-engine dependency: visitors can drag the scene, use the arrow keys, change zoom with the wheel, reset, or open the experience in full screen.
+
+```ts
+import { AtralumeImage360 } from "@osmanjimenez/atralume/image-360";
+```
+
+Pass a real 2:1 panorama through `src`, a truthful description through `alt`, and a concise landmark name through `label`. Do not feed ordinary photographs to this component: use `AtralumeImage` or `AtralumeImageGallery` instead. The controls remain discoverable on touch, keyboard, and reduced-motion settings.
+
+<Canvas of={Stories.Default} />
