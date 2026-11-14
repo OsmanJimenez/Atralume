@@ -1,64 +1,120 @@
 # @osmanjimenez/atralume
 
-Accessible Angular UI primitives and composable components for applications
-that use standalone APIs, Angular SSR, or zoneless change detection.
+[![npm version](https://img.shields.io/npm/v/@osmanjimenez/atralume.svg)](https://www.npmjs.com/package/@osmanjimenez/atralume)
+[![license](https://img.shields.io/npm/l/@osmanjimenez/atralume.svg)](https://github.com/OsmanJimenez/Atralume/blob/master/LICENSE)
+[![Node](https://img.shields.io/node/v/@osmanjimenez/atralume.svg)](https://www.npmjs.com/package/@osmanjimenez/atralume)
+[![docs](https://img.shields.io/badge/docs-Storybook-ff4785)](https://osmanjimenez.github.io/Atralume/)
+
+**Atralume** is an accessible Angular design system: production-ready UI
+primitives, DTCG design tokens, and light / dark / glass themes. Taiga UI 5
+powers behavior under the hood; Atralume owns the public API, tokens, and brand.
+
+> **Maturity:** preview (`0.2.0`). APIs may receive documented adjustments before
+> a stable `1.0.0`. See [component maturity](https://github.com/OsmanJimenez/Atralume/blob/master/docs/component-maturity.md).
+
+## Why Atralume
+
+- **Brand-first API** — import `@osmanjimenez/atralume/button`, not Taiga internals
+- **Token-driven theming** — DTCG source → CSS variables; `data-atr-theme` / `data-atr-surface`
+- **Native-friendly forms** — checkbox, radio, switch, input, and textarea keep browser semantics
+- **Living docs** — every family ships Storybook stories on GitHub Pages
 
 ## Install
 
 ```bash
 npm install @osmanjimenez/atralume \
   @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit @taiga-ui/layout \
-  @taiga-ui/addon-table @taiga-ui/polymorpheus
+  @taiga-ui/addon-table @taiga-ui/polymorpheus @taiga-ui/event-plugins
 ```
 
-The package declares Angular 22, RxJS 7, Angular CDK, and Taiga UI 5 as peer
-dependencies. Required Taiga peers include `cdk`, `core`, `kit`, `layout`,
-`addon-table`, and `polymorpheus`. Call `provideAtralume()` once in the app
-config, mount `<tui-root>` once around the application shell, and load
-`@osmanjimenez/atralume/styles/theme.css`. Use Angular versions already used by
-your application.
+Peer ranges match the package: Angular `^22.2.0`, Taiga UI `^5.31.0`, RxJS `^7.8.0`.
+Do not resolve peer conflicts with `--force`.
 
-## Use a component
+## Quick start
 
-Import public symbols from the root package or the documented secondary
-entrypoint. Do not import from `src`, `fesm2022`, or another generated path.
+```ts
+import { bootstrapApplication } from "@angular/platform-browser";
+import { provideAtralume } from "@osmanjimenez/atralume";
+import { TuiRoot } from "@taiga-ui/core";
+import { App } from "./app";
+
+bootstrapApplication(App, {
+  providers: [provideAtralume()],
+});
+```
+
+```ts
+@Component({
+  imports: [TuiRoot],
+  template: `<tui-root><router-outlet /></tui-root>`,
+})
+export class App {}
+```
 
 ```ts
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import { AtralumeGrid } from "@osmanjimenez/atralume/grid";
 ```
 
-Current version: **0.2.0**. The component catalogue, accessibility notes, and
-examples are published in Storybook and the repository docs. Components are
-marked **Preview** while the public API stabilises; see
-`docs/component-maturity.md` for the support policy and `CHANGELOG.md` for
-release notes (grid entry, snackbar brand surfaces, switch/table polish).
+```html
+<button atrButton type="button">Continue</button>
 
-Atralume keeps its own component API and design tokens while using Taiga UI's
-public components and primitives internally. Import Atralume components from
-their documented secondary entrypoints; do not rely on Taiga UI implementation
-details or import from Atralume's internal paths.
+<atr-grid columns="auto" gap="md" minTrack="14rem">
+  <!-- cards, form sections, media tiles -->
+</atr-grid>
+```
 
-## Styles and themes
-
-Load the generated public stylesheet once. It contains Atralume tokens, the
-theme bridge, and Taiga styles used by migrated components:
+Load styles once (CSS or Sass):
 
 ```css
 @import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
-Taiga UI remains a peer dependency. The Less compiler is used only while
-building the workspace stylesheet and is not required by consuming
-applications. The distributed `styles/` directory is part of the package
-contract; generated maps, tests, Storybook stories, and source files are not.
+```scss
+@use "@osmanjimenez/atralume/styles";
+```
+
+```html
+<html data-atr-theme="system">
+  <div data-atr-surface="glass">…</div>
+</html>
+```
+
+Token metadata: `@osmanjimenez/atralume/styles/tokens.json`.
+
+## Catalogue (secondary entries)
+
+Import from the documented entrypoint (for example `/button`, `/form-field`,
+`/dialog`, `/snackbar`, `/table`, `/grid`). Do not import from `src`, `fesm2022`,
+or other generated paths.
+
+| Area        | Examples                                      |
+| ----------- | --------------------------------------------- |
+| Actions     | button, icon-button, fab, speed-dial, link    |
+| Forms       | form-field, input, textarea, checkbox, switch |
+| Overlays    | dialog, menu, snackbar, tooltip, popover      |
+| Navigation  | tabs, breadcrumbs, side-navigation, nav-bar   |
+| Composition | card, list, accordion, skeleton, **grid**     |
+| Data        | table, tree, carousel                         |
+
+Full inventory and stories: [Storybook](https://osmanjimenez.github.io/Atralume/).
 
 ## Compatibility
 
-- Angular: `^22.2.0`
-- Node.js: `>=24.19.0`
-- npm: `>=11.9.0`
+| Runtime   | Range        |
+| --------- | ------------ |
+| Angular   | `^22.2.0`    |
+| Node.js   | `>=24.19.0`  |
+| npm       | `>=11.9.0`   |
 
-For migrations, security reporting, release notes, and contribution guidance,
-see the repository's `docs/migrations`, `SECURITY.md`, `CHANGELOG.md`, and
-`CONTRIBUTING.md`.
+## Links
+
+- [Storybook / docs](https://osmanjimenez.github.io/Atralume/)
+- [Changelog](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md)
+- [Theming](https://github.com/OsmanJimenez/Atralume/blob/master/docs/theming.md)
+- [Issues](https://github.com/OsmanJimenez/Atralume/issues)
+- [npm package](https://www.npmjs.com/package/@osmanjimenez/atralume)
+
+## License
+
+MIT © Osman Jimenez

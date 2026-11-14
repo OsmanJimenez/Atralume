@@ -5,25 +5,48 @@ import * as ButtonStories from "../../button/src/lib/stories/button.component.st
 
 # Atralume
 
-Atralume is a customizable Angular design system inspired by Material Design 3, built with accessible primitives and an optional glass surface language.
+Accessible Angular design system — components, DTCG tokens, and themes with a
+brand API on top of Taiga UI 5.
 
-> Pre-stable API: public tokens and components may evolve before 1.0.
+**npm:** [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume)
+· **version:** `0.2.0` (preview)
+· **source:** [GitHub](https://github.com/OsmanJimenez/Atralume)
+
+> Public APIs may evolve before `1.0.0`. See component maturity in the repository docs.
 
 ## Principles
 
-- Accessible by default
-- Composable and token driven
-- Themeable with native CSS
-- Native semantics
-- Documented through executable examples
+- Accessible by default, with native semantics where it matters
+- Composable and token-driven (DTCG → CSS variables)
+- Themeable with `data-atr-theme` and `data-atr-surface` (including glass)
+- Documented through executable Storybook examples
 
-Light, dark, system, nested themes and glass all use the same generated token contract. Start with **Getting Started**, then explore **Theming** and **Foundations**. Source: [GitHub](https://github.com/OsmanJimenez/Atralume).
+Light, dark, system, nested themes, and glass share the same generated token
+contract. Start with **Getting Started**, then **Theming** and **Foundations**.
 
 <Canvas of={ButtonStories.Playground} />
 
+## Install
+
+```bash
+npm install @osmanjimenez/atralume @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
+```
+
+Call `provideAtralume()` once, mount `<tui-root>`, and import
+`@osmanjimenez/atralume/styles/theme.css` (or the Sass entry).
+
 ## Forms
 
-Native form controls use shared tokens, preserve browser and Angular forms behavior, and compose with accessible labels, hints and errors. Explore [Form Field](?path=/docs/forms-form-field--docs), [Input](?path=/docs/forms-input--docs), [Textarea](?path=/docs/forms-textarea--docs), [Checkbox](?path=/docs/forms-checkbox--docs), [Radio](?path=/docs/forms-radio--docs) and [Switch](?path=/docs/forms-switch--docs). See [Accessibility](?path=/docs/atralume-accessibility--docs).
+Native form controls use shared tokens, preserve browser and Angular forms
+behavior, and compose with accessible labels, hints, and errors.
+
+[Form Field](?path=/docs/forms-form-field--docs) ·
+[Input](?path=/docs/forms-input--docs) ·
+[Textarea](?path=/docs/forms-textarea--docs) ·
+[Checkbox](?path=/docs/forms-checkbox--docs) ·
+[Radio](?path=/docs/forms-radio--docs) ·
+[Switch](?path=/docs/forms-switch--docs) ·
+[Accessibility](?path=/docs/atralume-accessibility--docs)
 
 import * as FormsStories from "./forms/form-field.stories";
 
@@ -32,7 +55,8 @@ import * as FormsStories from "./forms/form-field.stories";
 
 ## Atoms
 
-The fundamental catalog covers actions, navigation, identity, status, activity and native form controls. Customize visual details through component tokens; use inputs for stable functional variants.
+Actions, identity, status, activity, and native form controls. Visual details
+flow through component tokens; inputs cover stable functional variants.
 
 - [Button](?path=/docs/atoms-button--docs)
 - [Icon](?path=/docs/atoms-icon--docs)
@@ -52,41 +76,39 @@ The fundamental catalog covers actions, navigation, identity, status, activity a
 import * as AtomsStories from "./atoms-catalog.stories";
 
 <Canvas of={AtomsStories.Overview} />
+
 ## Composition
 
-Build related content, selection, disclosure and loading states from a shared token contract.
+Related content, selection, disclosure, loading, and layout from a shared token contract.
 
 - [Card](?path=/docs/composition-card--docs)
 - [Chip](?path=/docs/composition-chip--docs)
 - [List](?path=/docs/composition-list--docs)
 - [Accordion](?path=/docs/composition-accordion--docs)
 - [Skeleton](?path=/docs/composition-skeleton--docs)
+- [Grid](?path=/docs/composition-grid--docs)
 
-## Overlays
+## Overlays & feedback
 
 - [Tooltip](?path=/docs/overlays-tooltip--docs)
 - [Menu](?path=/docs/overlays-menu--docs)
 - [Dialog](?path=/docs/overlays-dialog--docs)
 - [Bottom Sheet](?path=/docs/overlays-bottom-sheet--docs)
-
-## Feedback
-
 - [Snackbar](?path=/docs/feedback-snackbar--docs)
 
-## Navigation
+## Navigation & actions
 
 - [Tabs](?path=/docs/navigation-tabs--docs)
 - [Breadcrumbs](?path=/docs/navigation-breadcrumbs--docs)
 - [Pagination](?path=/docs/navigation-pagination--docs)
 - [Navigation Bar](?path=/docs/navigation-navigation-bar--docs)
 - [Side Navigation](?path=/docs/navigation-side-navigation--docs)
-
-## Actions
-
 - [Floating Action Button](?path=/docs/actions-floating-action-button--docs)
 - [Speed Dial](?path=/docs/actions-speed-dial--docs)
 
-The catalog combines the existing Foundations, Atoms and Forms with seventeen application families. Variants describe behavior; component tokens and consumer classes customize brand, surfaces and nested themes.
+## Application example
+
+The same foundations across light, dark, and glass.
 
 import * as ApplicationStories from "./phase3/dashboard.stories";
 

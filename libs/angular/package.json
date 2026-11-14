@@ -1,11 +1,13 @@
 {
   "name": "@osmanjimenez/atralume",
   "version": "0.2.0",
-  "description": "Accessible Angular 22 design-system components and design tokens.",
+  "description": "Accessible Angular design-system components, DTCG tokens, and themes. Brand API on top of Taiga UI 5.",
   "license": "MIT",
+  "author": "Osman Jimenez",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OsmanJimenez/Atralume.git"
+    "url": "git+https://github.com/OsmanJimenez/Atralume.git",
+    "directory": "libs/angular"
   },
   "homepage": "https://osmanjimenez.github.io/Atralume/",
   "bugs": {
@@ -15,7 +17,15 @@
     "angular",
     "design-system",
     "accessibility",
-    "wcag"
+    "wcag",
+    "a11y",
+    "design-tokens",
+    "dtcg",
+    "storybook",
+    "taiga-ui",
+    "components",
+    "theming",
+    "ui-kit"
   ],
   "engines": {
     "node": ">=24.19.0",

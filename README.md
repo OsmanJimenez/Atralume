@@ -1,147 +1,122 @@
 # Atralume
 
-Atralume is an Angular design system built with Nx, Storybook, DTCG design tokens, CSS custom properties, and an internal Atomic Design architecture. Taiga UI 5 is the technical foundation for component behavior and primitives; Atralume owns its consumer API, tokens, themes, and visual identity.
+[![npm](https://img.shields.io/npm/v/@osmanjimenez/atralume.svg?logo=npm)](https://www.npmjs.com/package/@osmanjimenez/atralume)
+[![license](https://img.shields.io/github/license/OsmanJimenez/Atralume.svg)](LICENSE)
+[![Storybook](https://img.shields.io/badge/Storybook-docs-ff4785?logo=storybook)](https://osmanjimenez.github.io/Atralume/)
+[![Angular](https://img.shields.io/badge/Angular-22-dd0031?logo=angular)](https://angular.dev/)
 
-## Status
+**Accessible Angular design system** — components, DTCG tokens, and themes with
+a stable brand API on top of [Taiga UI](https://taiga-ui.dev/) 5.
 
-Current package version: **`0.2.0`** (`@osmanjimenez/atralume`, preview). The
-Angular library includes a token-driven catalogue for actions, navigation,
-identity, status, activity, native form controls, overlays, data display, and
-layout (`atr-grid`). The Taiga UI migration is complete for the published
-families; its permanent decision and inventory are documented in the
-[ADR](docs/architecture/adr/ADR-001-use-taiga-ui-as-component-foundation.md)
-and [migration matrix](docs/architecture/taiga-ui-migration-matrix.md). See
-[CHANGELOG](CHANGELOG.md) for 0.2.0 visual polish and the grid entry.
+| | |
+| --- | --- |
+| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.0` (preview) |
+| **Docs** | [Storybook on GitHub Pages](https://osmanjimenez.github.io/Atralume/) |
+| **Repo** | Nx workspace · Angular 22 · Storybook 10 |
 
-## Requirements
+Atralume owns selectors, tokens, theming (`data-atr-theme` / `data-atr-surface`),
+and documentation. Taiga provides primitives and interaction patterns under the
+adapters — consumers import Atralume entrypoints only.
 
-- Node.js 24.19.0 (`nvm use`)
-- npm 11.9.0 (`packageManager` is pinned)
-
-## Install and run
-
-```bash
-nvm use
-npm ci
-npm start
-```
-
-Storybook runs with `npm run storybook` on port 6006. The public deployment target is <https://osmanjimenez.github.io/Atralume/>; availability depends on the repository Pages environment described in [deployment](docs/deployment.md).
-
-## Use the atoms
-
-Consumers install Atralume and its Taiga UI peer package:
+## Quick start (consumers)
 
 ```bash
-npm install @osmanjimenez/atralume @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit
+npm install @osmanjimenez/atralume \
+  @taiga-ui/core @taiga-ui/cdk @taiga-ui/kit @taiga-ui/layout \
+  @taiga-ui/addon-table @taiga-ui/polymorpheus @taiga-ui/event-plugins
 ```
-
-Register Atralume providers and mount the Taiga root once in the application shell:
 
 ```ts
 import { provideAtralume } from "@osmanjimenez/atralume";
+import { TuiRoot } from "@taiga-ui/core";
+import { AtralumeButton } from "@osmanjimenez/atralume/button";
+import { AtralumeCard } from "@osmanjimenez/atralume/card";
+import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
+import { AtralumeGrid, AtralumeGridItem } from "@osmanjimenez/atralume/grid";
+import { AtralumeInput } from "@osmanjimenez/atralume/input";
 
 bootstrapApplication(App, {
   providers: [provideAtralume()],
 });
 ```
 
-```ts
-import { TuiRoot } from "@taiga-ui/core";
+```html
+<tui-root>
+  <button atrButton type="button">Continue</button>
 
-@Component({
-  imports: [TuiRoot],
-  template: `<tui-root><router-outlet /></tui-root>`,
-})
-export class App {}
+  <atr-form-field>
+    <tui-textfield tuiTextfieldSize="m">
+      <label tuiLabel>Email</label>
+      <input atrInput type="email" autocomplete="email" />
+    </tui-textfield>
+  </atr-form-field>
+
+  <atr-grid columns="auto" gap="md" minTrack="14rem">
+    <atr-card appearance="elevated" atrGridItem>…</atr-card>
+    <atr-card appearance="outlined" atrGridItem [span]="2">…</atr-card>
+  </atr-grid>
+</tui-root>
 ```
 
-Use the peer versions published by `@osmanjimenez/atralume`; do not bypass Angular
-or Taiga UI peer conflicts with `--force`.
-
-```ts
-import { AtralumeButton } from "@osmanjimenez/atralume/button";
-import { AtralumeCard } from "@osmanjimenez/atralume/card";
-import { AtralumeCheckbox } from "@osmanjimenez/atralume/checkbox";
-import { AtralumeFormField } from "@osmanjimenez/atralume/form-field";
-import { AtralumeGrid, AtralumeGridItem } from "@osmanjimenez/atralume/grid";
-import { AtralumeInput } from "@osmanjimenez/atralume/input";
+```css
+@import "@osmanjimenez/atralume/styles/theme.css";
 ```
 
 ```html
-<button atrButton type="button">Continue</button>
-
-<label atrControlLabel>
-  <input atrCheckbox type="checkbox" />
-  <span>Accept the terms</span>
-</label>
-
-<atr-form-field>
-  <tui-textfield tuiTextfieldSize="m">
-    <label tuiLabel>Email</label>
-    <input atrInput type="email" autocomplete="email" />
-  </tui-textfield>
-</atr-form-field>
-
-<atr-grid columns="auto" gap="md" minTrack="14rem">
-  <atr-card appearance="elevated" atrGridItem>…</atr-card>
-  <atr-card appearance="outlined" atrGridItem [span]="2">…</atr-card>
-</atr-grid>
-```
-
-Load the public Sass entry once for token and component styles, then select a theme independently from the surface treatment:
-
-```scss
-@use "@osmanjimenez/atralume/styles";
-```
-
-```html
-<html data-atr-theme="dark">
-  <div data-atr-surface="glass">...</div>
+<html data-atr-theme="system">
+  <div data-atr-surface="glass">…</div>
 </html>
 ```
 
-Use `data-atr-theme="system"` to follow the operating-system preference without JavaScript. Generated token metadata is available through `@osmanjimenez/atralume/styles/tokens.json`.
+Use the peer versions declared by the package; do not bypass conflicts with
+`--force`.
 
-## Commands
+## What you get
 
-| Command                      | Purpose                                             |
-| ---------------------------- | --------------------------------------------------- |
-| `npm start`                  | Serve the playground                                |
-| `npm run storybook`          | Serve Storybook on port 6006                        |
-| `npm run build`              | Package `@osmanjimenez/atralume`                         |
-| `npm run build:playground`   | Production playground build                         |
-| `npm run build:storybook`    | Static Storybook build                              |
-| `npm run lint`               | Lint every project                                  |
-| `npm run format:check`       | Check formatting                                    |
-| `npm run check:architecture` | Enforce internal atomic boundaries and cycles       |
-| `npm run test:unit`          | Run unit tests once                                 |
-| `npm run check:package`      | Install the tarball in an isolated Angular consumer |
-| `npm run catalog:audit`      | Report catalogue coverage gaps                      |
-| `npm run api:check`          | Enforce the public declaration baseline             |
-| `npm run bundle:check`       | Enforce compressed ESM size budgets                 |
-| `npm run sbom`               | Generate an SPDX SBOM for the built package         |
-| `npm run release:dry-run`    | Build, audit, pack, checksum; never publishes       |
-| `npm run check:storybook`    | Browser smoke test at `/Atralume/`                  |
-| `npm run tokens:build`       | Generate CSS variables and token manifest           |
-| `npm run tokens:check`       | Validate DTCG, parity, contrast, and determinism    |
-| `npm run tokens:inspect`     | Print token counts and resolution status            |
-| `npm run lint:styles`        | Lint styles and reject public visual literals       |
-| `npm run test:themes`        | Check computed themes in a real browser             |
-| `npm run verify`             | Run the complete local/CI gate                      |
+- **Actions & identity** — button, icon-button, fab, link, avatar, badge, icon
+- **Forms** — form-field, input, textarea, checkbox, radio, switch, select, …
+- **Overlays** — dialog, bottom-sheet, menu, snackbar, tooltip, popover, command palette
+- **Navigation** — tabs, breadcrumbs, pagination, side-navigation, navigation-bar
+- **Composition & data** — card, list, accordion, skeleton, **grid**, table, tree
+- **Tokens** — DTCG source, generated CSS variables, light / dark / glass
 
-## Structure
+Explore every story: **[osmanjimenez.github.io/Atralume](https://osmanjimenez.github.io/Atralume/)**.
 
-```text
-apps/playground        Real consumer application
-libs/angular           Publishable package
-  <component>/         Secondary entry points and component source
-    src/lib/            components, directives, docs, stories, tests, harnesses
-  tokens/source        Authoritative DTCG token source
-  src/styles           Public themes and generated artifacts
-  .storybook           Living documentation
-tools                  Architecture, package, PR, and browser checks
-docs                   Technical and delivery documentation
+## Develop in this repository
+
+```bash
+nvm use          # Node 24.19.0
+npm ci
+npm start        # playground
+npm run storybook  # http://127.0.0.1:6006
 ```
 
-See [architecture](docs/architecture.md), [theming](docs/theming.md), [branching](docs/branching.md), [deployment](docs/deployment.md), [release policy](docs/releases.md), [migration guides](docs/migrations/README.md), [Taiga UI migration](docs/migrations/taiga-ui.md), [third-party licenses](THIRD_PARTY_LICENSES.md), and [roadmap](docs/roadmap.md). The current component maturity is documented in [component maturity](docs/component-maturity.md).
+| Command | Purpose |
+| --- | --- |
+| `npm run build` | Package `@osmanjimenez/atralume` |
+| `npm run build:storybook` | Static Storybook for Pages |
+| `npm run tokens:build` | Generate CSS variables and token manifest |
+| `npm run verify` | Full local / CI gate |
+| `npm run release:dry-run` | Build, audit, pack; never publishes |
+
+```text
+apps/playground        Consumer application
+libs/angular           Publishable package (@osmanjimenez/atralume)
+  <component>/         Secondary entry points
+  tokens/source        Authoritative DTCG tokens
+  src/styles           Themes and generated artifacts
+  .storybook           Living documentation
+tools                  Architecture, package, and browser checks
+docs                   Architecture, theming, releases, migrations
+```
+
+## Documentation
+
+- [Architecture](docs/architecture.md) · [Theming](docs/theming.md) · [Releases](docs/releases.md)
+- [Component maturity](docs/component-maturity.md) · [Changelog](CHANGELOG.md)
+- [Taiga UI migration](docs/migrations/taiga-ui.md) · [Migration matrix](docs/architecture/taiga-ui-migration-matrix.md)
+- [Deployment](docs/deployment.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+
+## License
+
+[MIT](LICENSE) · third-party notices in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
