@@ -63,6 +63,8 @@
     "truncated-text/src/**/*.ts",
     "rating/src/**/*.ts",
     "otp-input/src/**/*.ts",
+    "image-gallery/src/**/*.ts",
+    "image-360/src/**/*.ts",
     "internal/forms/src/**/*.ts"
   ],
   "exclude": [

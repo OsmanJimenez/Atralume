@@ -119,6 +119,9 @@
       "@osmanjimenez/atralume/image-gallery": [
         "libs/angular/image-gallery/src/index.ts"
       ],
+      "@osmanjimenez/atralume/image-360": [
+        "libs/angular/image-360/src/index.ts"
+      ],
       "@osmanjimenez/atralume/internal/forms": [
         "libs/angular/internal/forms/src/index.ts"
       ]

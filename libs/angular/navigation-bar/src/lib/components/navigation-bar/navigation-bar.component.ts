@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, input } from "@angular/core";
 import { TuiNavComponent } from "@taiga-ui/layout";
 
 /**
@@ -11,6 +11,7 @@ import { TuiNavComponent } from "@taiga-ui/layout";
   imports: [TuiNavComponent],
   templateUrl: "./navigation-bar.component.html",
   styleUrl: "./navigation-bar.component.scss",
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: "atr-navigation-bar" },
 })

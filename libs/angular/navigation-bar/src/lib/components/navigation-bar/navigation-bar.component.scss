@@ -1,3 +1,54 @@
-:host {
-  display: contents;
+.atr-navigation-bar {
+  display: block;
+}
+
+.atr-navigation-bar > nav[tuiNavigationNav] {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  gap: 0.125rem;
+  margin: 0;
+  min-block-size: auto;
+  padding: 0;
+}
+
+.atr-navigation-bar .atr-navigation-item {
+  align-items: center;
+  border-radius: var(--atr-sys-shape-full);
+  color: var(--atr-sys-color-on-surface-variant);
+  display: inline-flex;
+  font: var(--atr-sys-typescale-label-large-font, inherit);
+  justify-content: center;
+  min-block-size: 2.5rem;
+  padding-inline: 0.875rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.atr-navigation-bar .atr-navigation-item:hover {
+  background: var(--atr-sys-color-secondary-container);
+  color: var(--atr-sys-color-on-secondary-container);
+}
+
+.atr-navigation-bar .atr-navigation-item[aria-current="page"] {
+  background: var(--atr-sys-color-primary-container);
+  color: var(--atr-sys-color-on-primary-container);
+  font-weight: 700;
+}
+
+.atr-navigation-bar .atr-navigation-item:focus-visible {
+  outline: 2px solid var(--atr-sys-color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 48rem) {
+  .atr-navigation-bar > nav[tuiNavigationNav] {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .atr-navigation-bar > nav[tuiNavigationNav]::-webkit-scrollbar { display: none; }
 }

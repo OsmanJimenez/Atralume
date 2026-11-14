@@ -1,0 +1,15 @@
+:host { display: block; }
+
+.atr-image-360__frame { margin: 0; overflow: hidden; border-radius: var(--atr-sys-shape-corner-large, 1rem); background: var(--atr-sys-color-surface-variant); }
+.atr-image-360__scene { aspect-ratio: 16 / 9; background-repeat: repeat-x; cursor: grab; touch-action: none; outline: none; }
+.atr-image-360__scene:active { cursor: grabbing; }
+.atr-image-360__scene:focus-visible { outline: 3px solid var(--atr-sys-color-primary); outline-offset: -3px; }
+.atr-image-360__caption { align-items: center; color: var(--atr-sys-color-on-surface-variant); display: flex; flex-wrap: wrap; font-size: .875rem; gap: .75rem 1rem; justify-content: space-between; padding: .75rem 1rem; }
+.atr-image-360__actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.atr-image-360__actions button { background: transparent; border: 0; border-radius: var(--atr-sys-shape-full); color: inherit; cursor: pointer; font: inherit; min-block-size: 2.5rem; padding-inline: .7rem; }
+.atr-image-360__actions button:hover { background: var(--atr-sys-color-secondary-container); color: var(--atr-sys-color-on-secondary-container); }
+.atr-image-360__actions button:focus-visible { outline: 2px solid var(--atr-sys-color-primary); outline-offset: 2px; }
+
+@media (max-width: 40rem) { .atr-image-360__caption { align-items: flex-start; flex-direction: column; } .atr-image-360__actions { inline-size: 100%; } .atr-image-360__actions button { flex: 1 1 auto; } }
+
+@media (prefers-reduced-motion: reduce) { .atr-image-360__scene { scroll-behavior: auto; } }

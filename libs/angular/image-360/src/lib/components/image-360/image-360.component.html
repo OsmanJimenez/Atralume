@@ -1,0 +1,24 @@
+<figure class="atr-image-360__frame">
+  <div
+    class="atr-image-360__scene"
+    [ngStyle]="sceneStyle()"
+    role="application"
+    tabindex="0"
+    [attr.aria-label]="label() + '. ' + alt() + '. Arrastra o usa las flechas para mirar alrededor.'"
+    (pointerdown)="startDrag($event)"
+    (pointermove)="drag($event)"
+    (pointerup)="endDrag()"
+    (pointercancel)="endDrag()"
+    (keydown)="onKey($event)"
+    (wheel)="onWheel($event)"
+  ></div>
+  <figcaption class="atr-image-360__caption">
+    <span>Arrastra para explorar · Flechas para girar</span>
+    <span class="atr-image-360__actions">
+      <button atrButton appearance="text" type="button" (click)="rotate(yaw() - 12)" aria-label="Girar a la izquierda">Izquierda</button>
+      <button atrButton appearance="text" type="button" (click)="reset()">Restablecer</button>
+      <button atrButton appearance="text" type="button" (click)="rotate(yaw() + 12)" aria-label="Girar a la derecha">Derecha</button>
+      <button atrButton appearance="text" type="button" (click)="fullscreen($event)">Pantalla completa</button>
+    </span>
+  </figcaption>
+</figure>
