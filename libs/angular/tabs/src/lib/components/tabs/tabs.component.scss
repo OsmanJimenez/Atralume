@@ -1,5 +1,8 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-comp-tabs-gap);
+  min-inline-size: 0;
   font-family: var(--atr-comp-tabs-font-family);
   color: var(--atr-comp-tabs-label-color);
 }

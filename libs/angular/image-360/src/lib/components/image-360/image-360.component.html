@@ -1,24 +1,184 @@
 <figure class="atr-image-360__frame">
   <div
-    class="atr-image-360__scene"
-    [ngStyle]="sceneStyle()"
+    class="atr-image-360__stage"
     role="application"
     tabindex="0"
-    [attr.aria-label]="label() + '. ' + alt() + '. Arrastra o usa las flechas para mirar alrededor.'"
-    (pointerdown)="startDrag($event)"
-    (pointermove)="drag($event)"
-    (pointerup)="endDrag()"
-    (pointercancel)="endDrag()"
+    [attr.aria-label]="ariaDescription()"
+    (pointerdown)="startPointer($event)"
+    (pointermove)="movePointer($event)"
+    (pointerup)="endPointer($event)"
+    (pointercancel)="endPointer($event)"
     (keydown)="onKey($event)"
     (wheel)="onWheel($event)"
-  ></div>
-  <figcaption class="atr-image-360__caption">
-    <span>Arrastra para explorar · Flechas para girar</span>
-    <span class="atr-image-360__actions">
-      <button atrButton appearance="text" type="button" (click)="rotate(yaw() - 12)" aria-label="Girar a la izquierda">Izquierda</button>
-      <button atrButton appearance="text" type="button" (click)="reset()">Restablecer</button>
-      <button atrButton appearance="text" type="button" (click)="rotate(yaw() + 12)" aria-label="Girar a la derecha">Derecha</button>
-      <button atrButton appearance="text" type="button" (click)="fullscreen($event)">Pantalla completa</button>
-    </span>
-  </figcaption>
+    (focus)="onSceneActivate()"
+  >
+    @if (vr()) {
+      <div class="atr-image-360__stereo" aria-hidden="true">
+        <div class="atr-image-360__scene" [ngStyle]="sceneStyle()"></div>
+        <div
+          class="atr-image-360__scene atr-image-360__scene--right"
+          [ngStyle]="sceneStyleRight()"
+        ></div>
+      </div>
+    } @else {
+      <div
+        class="atr-image-360__scene"
+        [ngStyle]="sceneStyle()"
+        aria-hidden="true"
+      ></div>
+    }
+
+    <div class="atr-image-360__veil" aria-hidden="true"></div>
+
+    @if (status() === "loading") {
+      <div class="atr-image-360__state atr-image-360__state--loading" role="status">
+        Cargando panorama…
+      </div>
+    }
+
+    @if (status() === "error") {
+      <div class="atr-image-360__state atr-image-360__state--error" role="alert">
+        <p>No se pudo cargar la imagen 360.</p>
+        <button atrButton appearance="tonal" type="button" (click)="retryLoad()">
+          Reintentar
+        </button>
+      </div>
+    }
+
+    @if (hintVisible() && status() === "ready") {
+      <p class="atr-image-360__hint" aria-live="polite">
+        Arrastra para explorar
+        @if (enableGyro() && gyroSupported()) {
+          <span>· Inclina el teléfono</span>
+        }
+        <span>· Pellizca para zoom</span>
+      </p>
+    }
+
+    <div class="atr-image-360__compass" aria-hidden="true">
+      <span class="atr-image-360__compass-ring">
+        <span
+          class="atr-image-360__compass-needle"
+          [style.transform]="'rotate(' + yaw() + 'deg)'"
+        ></span>
+      </span>
+      <span class="atr-image-360__compass-label">{{ yawLabel() }}</span>
+    </div>
+
+    <div class="atr-image-360__chrome" [attr.data-visible]="chromeVisible() || status() !== 'ready'">
+      <div class="atr-image-360__meta">
+        <strong class="atr-image-360__title">{{ label() }}</strong>
+        @if (gyroActive()) {
+          <span class="atr-image-360__badge">Giroscopio</span>
+        }
+        @if (vr()) {
+          <span class="atr-image-360__badge">VR</span>
+        }
+        @if (gyroDenied()) {
+          <span class="atr-image-360__badge atr-image-360__badge--warn">Permiso denegado</span>
+        }
+      </div>
+
+      <div class="atr-image-360__actions" role="toolbar" [attr.aria-label]="'Controles de ' + label()">
+        @if (enableGyro() && gyroSupported()) {
+          <button
+            atrButton
+            appearance="text"
+            type="button"
+            class="atr-image-360__tool"
+            [attr.aria-pressed]="gyroActive()"
+            [attr.aria-label]="gyroActive() ? 'Desactivar giroscopio' : 'Activar giroscopio'"
+            (click)="toggleGyro()"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M12 2a3 3 0 0 1 3 3v1.1a7 7 0 0 1 4.9 4.9H21a1 1 0 1 1 0 2h-1.1A7 7 0 0 1 15 17.9V19a3 3 0 1 1-6 0v-1.1A7 7 0 0 1 4.1 13H3a1 1 0 1 1 0-2h1.1A7 7 0 0 1 9 6.1V5a3 3 0 0 1 3-3Zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+              />
+            </svg>
+            <span class="atr-image-360__tool-label">Giro</span>
+          </button>
+        }
+
+        @if (enableVr()) {
+          <button
+            atrButton
+            appearance="text"
+            type="button"
+            class="atr-image-360__tool"
+            [attr.aria-pressed]="vr()"
+            [attr.aria-label]="vr() ? 'Salir de VR' : 'Entrar en VR estereoscópico'"
+            (click)="toggleVr()"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v6A3.5 3.5 0 0 1 16.5 17h-1.2a2 2 0 0 1-1.7-.9l-.7-1a1 1 0 0 0-.8-.4h-1.2a1 1 0 0 0-.8.4l-.7 1a2 2 0 0 1-1.7.9H7.5A3.5 3.5 0 0 1 4 13.5v-6ZM8.5 12a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Zm7 0a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
+              />
+            </svg>
+            <span class="atr-image-360__tool-label">VR</span>
+          </button>
+        }
+
+        <button
+          atrButton
+          appearance="text"
+          type="button"
+          class="atr-image-360__tool"
+          aria-label="Alejar"
+          (click)="changeZoom(-0.15)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M5 11h14v2H5z" />
+          </svg>
+        </button>
+
+        <button
+          atrButton
+          appearance="text"
+          type="button"
+          class="atr-image-360__tool"
+          aria-label="Acercar"
+          (click)="changeZoom(0.15)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z" />
+          </svg>
+        </button>
+
+        <button
+          atrButton
+          appearance="text"
+          type="button"
+          class="atr-image-360__tool"
+          aria-label="Restablecer vista"
+          (click)="reset()"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M12 5V2L8 6l4 4V7a5 5 0 1 1-4.9 6.1l-1.96.4A7 7 0 1 0 12 5Z"
+            />
+          </svg>
+          <span class="atr-image-360__tool-label">Inicio</span>
+        </button>
+
+        <button
+          atrButton
+          appearance="text"
+          type="button"
+          class="atr-image-360__tool"
+          aria-label="Pantalla completa"
+          (click)="fullscreen()"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M4 4h6v2H6v4H4V4Zm10 0h6v6h-2V6h-4V4ZM4 14h2v4h4v2H4v-6Zm14 0h2v6h-6v-2h4v-4Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </figure>

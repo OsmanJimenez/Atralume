@@ -5,7 +5,7 @@ import * as Stories from "../stories/file-upload.component.stories";
 
 # File Upload
 
-File Upload selects and presents File[] values; it never uploads HTTP data. Native file input remains available through the keyboard-accessible Button and drop is optional. accept is a browser hint and a client validation rule, not a security boundary: repeat definitive validation on the server. Size, count, duplicate and custom validation produce rejected events. states controls progress, success, error and cancellation externally; cancelRequested is an intent. Object URLs are created only for enabled raster previews and revoked on removal or destruction. SVG previews are excluded.
+File Upload selects and presents `File[]` values; it never uploads HTTP data. The drop zone is a large, labeled target with a primary choose action and an optional drag-and-drop hint. Selected rows show human-readable sizes (B / KB / MB), status copy, optional image previews, and remove controls. `accept` is a browser hint and a client validation rule, not a security boundary: repeat definitive validation on the server. Size, count, duplicate and custom validation produce rejected events with clear per-file messages. `states` controls progress, success, error and cancellation externally; `cancelRequested` is an intent. Object URLs are created only for enabled raster previews and revoked on removal or destruction. SVG previews are excluded.
 
 Taiga UI foundation: the hidden native input uses CDK `TuiNativeValidator` (same
 primitive as `TuiInputFilesDirective`). Full `TuiInputFiles` /

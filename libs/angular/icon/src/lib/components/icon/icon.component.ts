@@ -6,23 +6,21 @@ import {
   inject,
   input,
 } from "@angular/core";
-import { TuiIcon } from "@taiga-ui/core";
 import { AtralumeIconRegistry } from "../../services/icon-registry";
 import type { IconSize } from "../../models/icon.types";
 
 export type AtralumeIconEngine = "registry" | "tui" | "auto";
 
 /**
- * Dual icon host: keeps `atr-icon` + SVG registry, with an optional bridge to Taiga `TuiIcon`.
+ * Dual icon host: keeps `atr-icon` + SVG registry, with an optional bridge to Taiga Lucide assets.
  * - `engine="registry"` (default): structured SVG paths via `provideAtralumeIcons`.
- * - `engine="tui"`: render `<tui-icon [icon]="name">` (CSS-mask / Taiga icon names).
+ * - `engine="tui"`: CSS-mask glyph from `/assets/taiga-ui/icons/{name}.svg`.
  * - `engine="auto"`: registry hit → SVG; otherwise treat `name` as a Taiga icon key.
  * Full registry cutover is deferred (high blast radius across badge/button/avatar/playground).
  */
 @Component({
   selector: "atr-icon",
   standalone: true,
-  imports: [TuiIcon],
   templateUrl: "./icon.component.html",
   styleUrl: "./icon.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -59,14 +57,26 @@ export class AtralumeIcon {
     if (mode === "registry") return "registry";
     return this.definition() ? "registry" : "tui";
   });
-  /** Resolved Taiga mask name when the tui engine is active. */
+  /** Public Taiga token (`@tui.heart`) for docs / snippets. */
   protected readonly tuiIconName = computed(() => {
     const raw = this.name();
+    if (raw.startsWith("@tui.")) return raw;
     if (raw.startsWith("@") || raw.includes("/") || raw.startsWith("http")) {
       return raw;
     }
     return `@tui.${raw.replace(/^@tui\./, "")}`;
   });
+
+  /** CSS `mask-image` url for Lucide assets under Storybook / app static dirs. */
+  protected readonly tuiMaskUrl = computed(() => {
+    const token = this.tuiIconName();
+    if (token.startsWith("http") || token.includes("/")) {
+      return `url("${token}")`;
+    }
+    const file = token.replace(/^@tui\./, "");
+    return `url("/assets/taiga-ui/icons/${file}.svg")`;
+  });
+
   protected readonly pixelSize = computed(() => {
     const value = this.size();
     return typeof value === "number" && Number.isFinite(value) && value > 0

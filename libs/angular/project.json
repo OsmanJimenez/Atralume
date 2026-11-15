@@ -29,6 +29,20 @@
         "{workspaceRoot}/package-lock.json"
       ]
     },
+    "icons-normalize": {
+      "executor": "nx:run-commands",
+      "outputs": [
+        "{workspaceRoot}/libs/angular/.storybook/static/assets/taiga-ui/icons"
+      ],
+      "options": {
+        "command": "node tools/normalize-taiga-icons.mjs"
+      },
+      "inputs": [
+        "{workspaceRoot}/node_modules/@taiga-ui/icons/src/**/*.svg",
+        "{workspaceRoot}/tools/normalize-taiga-icons.mjs",
+        "{workspaceRoot}/package-lock.json"
+      ]
+    },
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
@@ -62,7 +76,7 @@
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
-      "dependsOn": ["tokens-build"],
+      "dependsOn": ["tokens-build", "icons-normalize"],
       "options": {
         "port": 4400,
         "configDir": "libs/angular/.storybook",
@@ -82,7 +96,7 @@
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
-      "dependsOn": ["tokens-build"],
+      "dependsOn": ["tokens-build", "icons-normalize"],
       "options": {
         "outputDir": "dist/storybook/angular",
         "configDir": "libs/angular/.storybook",

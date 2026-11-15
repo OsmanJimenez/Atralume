@@ -1,16 +1,44 @@
-import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
 import * as Stories from "../stories/image-360.component.stories";
 
 <Meta of={Stories} name="Docs" />
 
 # Image 360
 
-`AtralumeImage360` is the lightweight, accessible viewer for an equirectangular 2:1 panorama. It deliberately avoids a rendering-engine dependency: visitors can drag the scene, use the arrow keys, change zoom with the wheel, reset, or open the experience in full screen.
+`AtralumeImage360` is an immersive equirectangular (2:1) panorama viewer for product and space inspection. It stays free of a WebGL engine while using the phone you already hold: drag with inertia, pinch zoom, DeviceOrientation gyro (with permission), and a light stereo VR split for cardboard-style viewing.
 
 ```ts
 import { AtralumeImage360 } from "@osmanjimenez/atralume/image-360";
 ```
 
-Pass a real 2:1 panorama through `src`, a truthful description through `alt`, and a concise landmark name through `label`. Do not feed ordinary photographs to this component: use `AtralumeImage` or `AtralumeImageGallery` instead. The controls remain discoverable on touch, keyboard, and reduced-motion settings.
+```html
+<atr-image-360
+  [src]="panoramaUrl"
+  alt="Living room looking toward the terrace"
+  label="Apartamento 4B"
+/>
+```
+
+## Inputs
+
+| Input | Role |
+| --- | --- |
+| `src` | Equirectangular 2:1 image URL |
+| `alt` | Honest description of the scene |
+| `label` | Short landmark / product name |
+| `enableGyro` | Show gyro control when the device supports orientation (default `true`) |
+| `enableVr` | Show stereo VR control (default `true`) |
+| `initialYaw` / `initialPitch` | Starting look direction |
+
+Pass real panoramas only. Ordinary photos belong on `AtralumeImage` or `AtralumeImageGallery`.
+
+## Interaction
+
+- **Drag** with momentum (honors `prefers-reduced-motion`)
+- **Pinch** or wheel / `+` `-` for zoom
+- **Arrow keys** for yaw and pitch; `G` gyro; `V` VR; `Home` reset
+- **Gyro** asks for permission on iOS before listening to `deviceorientation`
+- **VR** opens a side-by-side stereo view and fullscreen; Escape exits VR
 
 <Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />

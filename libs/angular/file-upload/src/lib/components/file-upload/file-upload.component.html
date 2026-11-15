@@ -3,6 +3,7 @@
   role="group"
   [attr.aria-label]="label() + ' file selection'"
   [class.drop-zone--enabled]="dropZone()"
+  [class.drop-zone--has-files]="files().length > 0"
   (dragenter)="dragEnter($event)"
   (dragleave)="dragLeave($event)"
   (dragover)="dragOver($event)"
@@ -29,73 +30,96 @@
         (change)="changed($event)"
       />
       <ng-template let-dragged>
-        @if (dragged) {
-          Drop files here
-        } @else {
-          {{ multiple() ? "Choose files" : "Choose file" }}
-          @if (dropZone()) {
-            <span class="atr-file-upload__hint">Or drop files here.</span>
+        <span class="atr-file-upload__prompt">
+          @if (dragged) {
+            <span class="atr-file-upload__cta">Drop files to add them</span>
+            <span class="atr-file-upload__hint"
+              >Release to attach them to this field.</span
+            >
+          } @else {
+            <span class="atr-file-upload__cta">{{
+              multiple() ? "Choose files" : "Choose file"
+            }}</span>
+            @if (dropZone()) {
+              <span class="atr-file-upload__hint"
+                >or drag and drop them into this area</span
+              >
+            }
           }
-        }
+        </span>
       </ng-template>
     </label>
   </atr-form-field>
 </div>
-<p role="status">
-  {{ files().length }} {{ files().length === 1 ? "file" : "files" }} selected
+<p class="atr-file-upload__status" role="status">
+  @if (files().length === 0) {
+    No files selected yet
+  } @else if (files().length === 1) {
+    1 file ready
+  } @else {
+    {{ files().length }} files ready
+  }
 </p>
 @if (rejections().length) {
   <ul class="errors" aria-label="File validation errors">
     @for (rejection of rejections(); track $index) {
-      <li>{{ rejection.file.name }}: {{ rejection.errors.join(". ") }}</li>
+      <li>
+        <span class="errors__name">{{ rejection.file.name }}</span>
+        <span class="errors__detail">{{ rejection.errors.join(". ") }}</span>
+      </li>
     }
   </ul>
 }
-<ul atrList>
-  @for (file of files(); track fileKey(file)) {
-    <li atrListItem>
-      @if (previews().get(file); as preview) {
-        <img
-          [src]="preview"
-          [alt]="file.name + ' preview'"
-          (error)="$event.target.hidden = true"
-        />
-      }
-      <div class="file-details">
-        <span atrListHeadline>{{ file.name }}</span
-        ><span atrListSupporting
-          >{{ file.size }} bytes · {{ status(file).status }}</span
-        >
-        @if (status(file).status === "uploading") {
-          <atr-progress-bar
-            [label]="'Upload ' + file.name"
-            [value]="status(file).progress ?? null"
+@if (files().length) {
+  <ul atrList class="atr-file-upload__list">
+    @for (file of files(); track fileKey(file)) {
+      <li atrListItem class="atr-file-upload__item">
+        @if (previews().get(file); as preview) {
+          <img
+            class="atr-file-upload__preview"
+            [src]="preview"
+            [alt]="file.name + ' preview'"
+            (error)="$event.target.hidden = true"
           />
         }
-        @if (status(file).error) {
-          <p>{{ status(file).error }}</p>
+        <div class="file-details">
+          <span atrListHeadline>{{ file.name }}</span>
+          <span atrListSupporting>
+            {{ formatSize(file.size) }} · {{ statusLabel(status(file).status) }}
+          </span>
+          @if (status(file).status === "uploading") {
+            <atr-progress-bar
+              [label]="'Upload ' + file.name"
+              [value]="status(file).progress ?? null"
+            />
+          }
+          @if (status(file).error) {
+            <p class="atr-file-upload__file-error">
+              {{ status(file).error }}
+            </p>
+          }
+        </div>
+        @if (status(file).cancellable) {
+          <button
+            atrButton
+            appearance="text"
+            type="button"
+            [disabled]="blocked() || readonly()"
+            (click)="cancelRequested.emit(file)"
+          >
+            Cancel {{ file.name }}
+          </button>
         }
-      </div>
-      @if (status(file).cancellable) {
         <button
-          atrButton
-          appearance="text"
+          atrIconButton
           type="button"
+          [attr.aria-label]="'Remove ' + file.name"
           [disabled]="blocked() || readonly()"
-          (click)="cancelRequested.emit(file)"
+          (click)="remove(file)"
         >
-          Cancel {{ file.name }}
+          <atr-icon name="close" />
         </button>
-      }
-      <button
-        atrIconButton
-        type="button"
-        [attr.aria-label]="'Remove ' + file.name"
-        [disabled]="blocked() || readonly()"
-        (click)="remove(file)"
-      >
-        <atr-icon name="close" />
-      </button>
-    </li>
-  }
-</ul>
+      </li>
+    }
+  </ul>
+}

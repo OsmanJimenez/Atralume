@@ -1,8 +1,18 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-comp-stepper-gap);
   min-inline-size: 0;
   color: var(--atr-comp-stepper-label-color);
   font-family: var(--atr-ref-font-family-plain);
+}
+
+.atr-stepper-progress {
+  margin: 0;
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 nav {
@@ -13,17 +23,70 @@ nav {
 :host ::ng-deep [tuiStep],
 :host ::ng-deep tui-stepper button {
   min-block-size: var(--atr-sys-touch-target-minimum);
+  border-radius: var(--atr-sys-shape-small);
+  transition:
+    background-color var(--atr-sys-motion-duration-short)
+      var(--atr-sys-motion-easing-standard),
+    color var(--atr-sys-motion-duration-short)
+      var(--atr-sys-motion-easing-standard);
+}
+
+:host ::ng-deep [tuiStep][aria-current="step"] {
+  background: var(--atr-comp-stepper-selected-container-color);
+  color: var(--atr-comp-stepper-selected-label-color);
+  font-weight: 600;
+}
+
+:host ::ng-deep [tuiStep]:focus-visible {
+  outline: var(--atr-sys-focus-ring-width) solid
+    var(--atr-comp-stepper-focus-color);
+  outline-offset: var(--atr-sys-focus-ring-offset);
 }
 
 .atr-step-content {
-  padding: var(--atr-comp-stepper-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-sys-spacing-md);
+  min-inline-size: 0;
+  padding: var(--atr-sys-spacing-lg);
   border: 1px solid var(--atr-comp-stepper-border-color);
   border-radius: var(--atr-comp-stepper-shape);
   background: var(--atr-comp-stepper-container-color);
-  margin-block-start: var(--atr-comp-stepper-gap);
 }
 
 .atr-step-content:focus-visible {
   outline: var(--atr-sys-focus-ring-width) solid
     var(--atr-comp-stepper-focus-color);
+  outline-offset: var(--atr-sys-focus-ring-offset);
+}
+
+:host([data-orientation="vertical"]) {
+  display: grid;
+  grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: var(--atr-sys-spacing-lg);
+  row-gap: var(--atr-comp-stepper-gap);
+  align-items: start;
+}
+
+:host([data-orientation="vertical"]) .atr-stepper-progress {
+  grid-column: 1 / -1;
+}
+
+:host([data-orientation="vertical"]) nav {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+:host([data-orientation="vertical"]) .atr-step-content {
+  grid-column: 2;
+  grid-row: 2;
+  min-block-size: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host ::ng-deep [tuiStep],
+  :host ::ng-deep tui-stepper button {
+    transition: none;
+  }
 }

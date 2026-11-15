@@ -22,13 +22,17 @@
 }
 
 svg,
-:host(.atr-icon--tui) tui-icon {
+.atr-icon__tui-glyph {
   inline-size: 100%;
   block-size: 100%;
 }
 
-:host(.atr-icon--tui) {
-  font-size: var(--atr-icon-custom-size, var(--atr-comp-icon-size-medium));
+.atr-icon__tui-glyph {
+  display: block;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--atr-tui-mask) center / contain no-repeat;
+  mask: var(--atr-tui-mask) center / contain no-repeat;
 }
 
 :host(.atr-icon--rtl:dir(rtl)) svg {

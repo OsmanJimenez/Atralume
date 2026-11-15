@@ -23,7 +23,7 @@ import {
 } from "@osmanjimenez/atralume/icon/catalog";
 import { AtralumeKbd } from "@osmanjimenez/atralume/kbd";
 
-const PAGE_SIZE = 96;
+const PAGE_SIZE = 120;
 
 type PreviewTone =
   | "inherit"
@@ -133,6 +133,11 @@ export class IconExplorerComponent {
 
   protected loadMore(): void {
     this.page.update((value) => value + 1);
+  }
+
+  protected loadAll(): void {
+    const total = this.filtered().length;
+    this.page.set(Math.max(1, Math.ceil(total / PAGE_SIZE)));
   }
 
   protected iconEngine(entry: AtralumeIconCatalogEntry): "registry" | "tui" {

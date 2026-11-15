@@ -3,6 +3,12 @@
 Canonical release notes live in the repository root
 [`CHANGELOG.md`](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md).
 
+## 0.2.4 — 2026-11-15
+
+- Full Icon Explorer rendering (~2,191) with normalized Taiga masks and copyable `@tui.*` codes.
+- Image 360: gyro, inertia, pinch zoom, light stereo VR; immersive chrome.
+- Stepper progress caption; Tabs/Card/File Upload chrome and playground UX polish.
+
 ## 0.2.3 — 2026-11-15
 
 - Icon catalog manifest + Icon Explorer; registry `tryGet` / aliases / search API.

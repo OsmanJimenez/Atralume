@@ -6,7 +6,7 @@ brand-layer doctrine ([ADR-001](./adr/ADR-001-use-taiga-ui-as-component-foundati
 **reuse / compose / document / omit** — do not wrap every Taiga primitive.
 
 Audited with Taiga MCP (`get_list_components`) against Taiga UI **5.x** docs and
-the shipped `@osmanjimenez/atralume@0.2.3` secondary entries.
+the shipped `@osmanjimenez/atralume@0.2.4` secondary entries.
 
 ## Legend
 
@@ -169,12 +169,13 @@ brand API or a11y. Everything else stays Taiga + docs.
 
 ---
 
-## Icon packaging note (0.2.3+)
+## Icon packaging note (0.2.3+ / 0.2.4 paint path)
 
 - Default `@osmanjimenez/atralume/icon` stays light (registry + `atr-icon`).
 - Full ~2191-entry metadata lives in `@osmanjimenez/atralume/icon/catalog`.
 - Storybook Icon stories import local modules (not the catalog barrel).
 - Generator: `npm run icons:manifest` → `libs/angular/icon/catalog/src/lib/icon-manifest.generated.ts`.
+- Storybook serves normalized Lucide SVGs (`npm run icons:normalize`, stroke-width fixed for CSS masks); `engine="tui"` uses `.atr-icon__tui-glyph`, not `<tui-icon>`.
 
 ---
 

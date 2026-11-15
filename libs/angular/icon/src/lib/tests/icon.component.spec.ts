@@ -110,7 +110,7 @@ describe("AtralumeIcon", () => {
     await f.whenStable();
     const e = f.nativeElement as HTMLElement;
     expect(e.getAttribute("data-engine")).toBe("tui");
-    expect(e.querySelector("tui-icon")).toBeTruthy();
+    expect(e.querySelector(".atr-icon__tui-glyph")).toBeTruthy();
   });
 });
 

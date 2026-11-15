@@ -23,13 +23,18 @@ import {
 ```
 
 ```html
-<atr-tabs label="Profile sections"
-  ><tui-tabs atrTabList>
+<atr-tabs label="Profile sections">
+  <tui-tabs atrTabList>
     <button atrTab id="overview-tab" panel="overview-panel" type="button">
-      Overview</button
-    ><button atrTab id="activity-tab" panel="activity-panel" type="button">
-      Activity</button
-    ><button
+      Overview
+    </button>
+    <button atrTab id="activity-tab" panel="activity-panel" type="button">
+      Activity
+    </button>
+    <button atrTab id="billing-tab" panel="billing-panel" type="button">
+      Billing
+    </button>
+    <button
       atrTab
       id="disabled-tab"
       panel="disabled-panel"
@@ -40,18 +45,21 @@ import {
     </button>
   </tui-tabs>
   <section atrTabPanel id="overview-panel" labelledBy="overview-tab">
-    Profile overview
+    <!-- Profile overview surface -->
   </section>
   <section atrTabPanel id="activity-panel" labelledBy="activity-tab">
-    Recent activity
+    <!-- Recent activity -->
+  </section>
+  <section atrTabPanel id="billing-panel" labelledBy="billing-tab">
+    <!-- Billing & plan -->
   </section>
   <section atrTabPanel id="disabled-panel" labelledBy="disabled-tab">
-    Unavailable panel
-  </section></atr-tabs
->
+    <!-- Locked section -->
+  </section>
+</atr-tabs>
 ```
 
-The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client. See the sibling stories for states and variants.
+The Playground uses a profile-settings surface (overview, activity, billing, plus a disabled tab). The exported TypeScript signal inputs and unions are the API contract. Models support two-way binding; projected native controls retain native events. IDs must be unique across the document and identical between server and client.
 
 ## Accessibility, keyboard and focus
 

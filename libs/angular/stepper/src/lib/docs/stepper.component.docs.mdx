@@ -5,9 +5,9 @@ import * as Stories from "../stories/stepper.component.stories";
 
 # Stepper
 
-Thin recipe over Taiga [`TuiStepper`](https://taiga-ui.dev/navigation/stepper): `atr-stepper` hosts `tui-stepper`, headers are `button[tuiStep]`, and `atr-step` projects the active content panel.
+Thin recipe over Taiga [`TuiStepper`](https://taiga-ui.dev/navigation/stepper): `atr-stepper` hosts `tui-stepper`, headers are `button[tuiStep]`, and `atr-step` projects the active content panel. The host shows a live “Step X of Y” progress caption and focuses the active content region after each change.
 
-Atralume does **not** ship a linear/`AbstractControl` focus engine. Gate Next yourself (for example with form validity). `atrStepperNext` / `atrStepperPrevious` remain thin click helpers. Use `selected`, `next()`, `previous()`, and `reset()` to drive the index.
+Atralume does **not** ship a linear/`AbstractControl` focus engine. Gate Next yourself (for example with form validity). `atrStepperNext` / `atrStepperPrevious` remain thin click helpers. Use `selected`, `next()`, `previous()`, and `reset()` to drive the index. The Playground models a storefront account-setup flow (profile → review → finish).
 
 ## Import, composition and values
 

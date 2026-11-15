@@ -3,6 +3,43 @@
 All notable public changes to Atralume are documented here. Releases are
 generated from reviewed changesets and follow Semantic Versioning.
 
+## 0.2.4 — 2026-11-15
+
+Media and workflow UX polish on top of the 0.2.3 catalogue. Icon Explorer now
+renders the full Taiga/Lucide set; Image 360 and several playground surfaces
+gain comfortable, sensor-aware interaction. Catalogue remains **preview**.
+
+### Added
+
+- **Image 360 sensors** — `enableGyro` / `enableVr` on `atr-image-360`: drag with
+  inertia and pitch, pinch/wheel zoom, DeviceOrientation (with iOS permission),
+  and a light stereo VR split (cardboard-style) without a WebGL dependency.
+- **Stepper progress** — live `Step X of Y` caption on `atr-stepper`.
+- Storybook **normalized Taiga icon assets** (`npm run icons:normalize`) so CSS
+  masks paint Lucide strokes correctly under Chromium.
+
+### Changed
+
+- **Icon Explorer / `atr-icon` `engine="tui"`** — paints via `.atr-icon__tui-glyph`
+  CSS masks over normalized SVGs; explorer paginates (~120 tiles) with copyable
+  `@tui.*` codes across the full ~2,191 catalog (8 registry + ~2,183 Taiga).
+- **`AtralumeImage360`** — immersive overlay chrome (compass, hint, loading /
+  error), keyboard shortcuts (`G` / `V` / arrows), and fullscreen when the host
+  allows it.
+- **`AtralumeStepper` / demo** — account-setup playground with review summary and
+  clearer step panels (horizontal and vertical).
+- **`AtralumeTabs`** — selected chrome owned by Atralume (Taiga sliding underline
+  off by default); profile-settings playground (Overview / Activity / Billing).
+- **`AtralumeCard`** — slot rhythm and elevated hover; account / media playgrounds
+  with dual actions.
+- **`AtralumeFileUpload`** — larger drop target, primary CTA + drop hint, human
+  readable sizes, clearer empty/selected/rejection copy.
+
+### Docs
+
+- Root and package README, releases, and maturity notes target `0.2.4`.
+- Icon catalog manifest version bumped to `0.2.4`.
+
 ## 0.2.3 — 2026-11-15
 
 Catalogue expansion: iconography system, Icon Explorer, and justified P1

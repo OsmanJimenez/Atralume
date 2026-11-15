@@ -162,6 +162,19 @@
   word-break: break-word;
 }
 
+.atr-doc-icon-explorer__tile-code {
+  display: block;
+  max-inline-size: 100%;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  background: var(--atr-sys-color-surface-container-highest, transparent);
+  color: var(--atr-sys-color-on-surface-variant, inherit);
+  font-size: 0.62rem;
+  line-height: 1.25;
+  text-align: center;
+  word-break: break-all;
+}
+
 .atr-doc-icon-explorer__empty {
   display: grid;
   gap: var(--atr-sys-spacing-2, 0.5rem);
@@ -173,7 +186,9 @@
 
 .atr-doc-icon-explorer__more {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: var(--atr-sys-spacing-2, 0.5rem);
   margin-block-start: var(--atr-sys-spacing-4, 1rem);
 }
 

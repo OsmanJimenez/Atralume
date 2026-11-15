@@ -1,6 +1,9 @@
 <div hidden>
   <ng-content />
 </div>
+<p class="atr-stepper-progress" aria-live="polite">
+  Step {{ activeIndex() + 1 }} of {{ steps().length }}
+</p>
 <nav [attr.aria-label]="label() + ' steps'">
   <tui-stepper
     [orientation]="orientation()"

@@ -1,11 +1,80 @@
 :host {
   display: block;
-  max-inline-size: 40rem;
+  max-inline-size: 44rem;
   min-inline-size: 0;
 }
 
+.atr-stepper-demo-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-sys-spacing-sm);
+  min-inline-size: 0;
+}
+
+.atr-stepper-demo-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--atr-sys-color-on-surface);
+}
+
+.atr-stepper-demo-lede {
+  margin: 0;
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.atr-stepper-demo-summary {
+  display: grid;
+  gap: var(--atr-sys-spacing-sm);
+  margin: var(--atr-sys-spacing-sm) 0 0;
+  padding: var(--atr-sys-spacing-md);
+  border: 1px solid var(--atr-sys-color-outline-variant);
+  border-radius: var(--atr-sys-shape-medium);
+  background: var(--atr-sys-color-surface);
+}
+
+.atr-stepper-demo-summary > div {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.atr-stepper-demo-summary dt {
+  margin: 0;
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.atr-stepper-demo-summary dd {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--atr-sys-color-on-surface);
+}
+
+.atr-stepper-demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--atr-sys-spacing-sm);
+  margin-block-start: var(--atr-sys-spacing-sm);
+  padding-block-start: var(--atr-sys-spacing-md);
+  border-block-start: 1px solid var(--atr-sys-color-outline-variant);
+}
+
+.atr-demo-result,
 output {
   display: block;
   margin-block-start: var(--atr-sys-spacing-md);
   overflow-wrap: anywhere;
+  color: var(--atr-sys-color-on-surface-variant);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  opacity: 0.8;
 }

@@ -10,7 +10,7 @@ a stable brand API on top of [Taiga UI](https://taiga-ui.dev/) 5.
 
 | | |
 | --- | --- |
-| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.3` (preview) |
+| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.4` (preview) |
 | **Docs** | [atralume.osmanjimenez.dev](https://atralume.osmanjimenez.dev/) |
 | **Repo** | Nx workspace · Angular 22 · Storybook 10 |
 
@@ -74,13 +74,21 @@ Use the peer versions declared by the package; do not bypass conflicts with
 ## What you get
 
 - **Actions & identity** — button, icon-button, fab, link, avatar, badge, icon
-- **Forms** — form-field, input, textarea, checkbox, radio, switch, select, …
+- **Forms** — form-field, input, textarea, checkbox, radio, switch, select, file-upload, …
 - **Overlays** — dialog, bottom-sheet, menu, snackbar, tooltip, popover, command palette
-- **Navigation** — tabs, breadcrumbs, pagination, side-navigation, navigation-bar
-- **Composition & data** — card, list, accordion, skeleton, **grid**, table, tree
+- **Navigation** — tabs, breadcrumbs, pagination, side-navigation, navigation-bar, stepper
+- **Composition & data** — card, list, accordion, skeleton, **grid**, table, tree, timeline
+- **Media** — image, gallery, preview, **image-360** (drag, gyro, light stereo VR)
+- **Icons** — structured registry + **`icon/catalog`** (~2,191 Taiga/Lucide names)
 - **Tokens** — DTCG source, generated CSS variables, light / dark / glass
 
 Explore every story: **[atralume.osmanjimenez.dev](https://atralume.osmanjimenez.dev/)**.
+
+### Highlights in `0.2.4`
+
+- Icon Explorer renders the full catalog with copyable `@tui.*` codes
+- Image 360 supports phone gyro and cardboard-style VR without WebGL
+- Stepper, Tabs, Card, and File Upload playgrounds match comfortable product UX
 
 ## Develop in this repository
 
@@ -96,6 +104,8 @@ npm run storybook  # http://127.0.0.1:6006
 | `npm run build` | Package `@osmanjimenez/atralume` |
 | `npm run build:storybook` | Static Storybook for Pages |
 | `npm run tokens:build` | Generate CSS variables and token manifest |
+| `npm run icons:manifest` | Regenerate icon catalog metadata |
+| `npm run icons:normalize` | Normalize Taiga SVG strokes for Storybook masks |
 | `npm run verify` | Full local / CI gate |
 | `npm run release:dry-run` | Build, audit, pack; never publishes |
 

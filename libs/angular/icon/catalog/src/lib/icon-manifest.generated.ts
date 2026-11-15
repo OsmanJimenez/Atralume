@@ -7,7 +7,7 @@ import type {
   AtralumeIconCategory,
 } from "@osmanjimenez/atralume/icon";
 
-export const ATRALUME_ICON_CATALOG_VERSION = "0.2.3";
+export const ATRALUME_ICON_CATALOG_VERSION = "0.2.4";
 
 export const ATRALUME_ICON_CATEGORIES: readonly AtralumeIconCategory[] = ["accessibility","actions","arrows","calendar-time","commerce","communication","custom","development","devices","editing","files","finance","layout","maps-location","media","navigation","notifications","security","social","status-feedback","users"];
 

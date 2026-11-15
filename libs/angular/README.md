@@ -9,7 +9,7 @@
 primitives, DTCG design tokens, and light / dark / glass themes. Taiga UI 5
 powers behavior under the hood; Atralume owns the public API, tokens, and brand.
 
-> **Maturity:** preview (`0.2.3`). APIs may receive documented adjustments before
+> **Maturity:** preview (`0.2.4`). APIs may receive documented adjustments before
 > a stable `1.0.0`. See [component maturity](https://github.com/OsmanJimenez/Atralume/blob/master/docs/component-maturity.md).
 
 ## Why Atralume
@@ -17,6 +17,7 @@ powers behavior under the hood; Atralume owns the public API, tokens, and brand.
 - **Brand-first API** — import `@osmanjimenez/atralume/button`, not Taiga internals
 - **Token-driven theming** — DTCG source → CSS variables; `data-atr-theme` / `data-atr-surface`
 - **Native-friendly forms** — checkbox, radio, switch, input, and textarea keep browser semantics
+- **Icon catalog** — search ~2,191 names via `@osmanjimenez/atralume/icon/catalog`; render with `atr-icon` (`registry` / `tui` / `auto`)
 - **Living docs** — every family ships Storybook stories on GitHub Pages
 
 ## Install
@@ -92,17 +93,33 @@ Import from the documented entrypoint (for example `/button`, `/form-field`,
 `/dialog`, `/snackbar`, `/table`, `/grid`). Do not import from `src`, `fesm2022`,
 or other generated paths.
 
-| Area        | Examples                                              |
-| ----------- | ----------------------------------------------------- |
-| Actions     | button, icon-button, fab, speed-dial, link            |
-| Forms       | form-field, input, textarea, checkbox, switch         |
-| Overlays    | dialog, menu, snackbar, tooltip, popover              |
-| Navigation  | tabs, breadcrumbs, side-navigation, nav-bar           |
-| Composition | card, list, accordion, skeleton, **grid**             |
-| Data        | table, tree, carousel                                 |
-| Icons       | icon (registry/`atr-icon`), **icon/catalog** (search) |
+| Area        | Examples                                                          |
+| ----------- | ----------------------------------------------------------------- |
+| Actions     | button, icon-button, fab, speed-dial, link                        |
+| Forms       | form-field, input, textarea, checkbox, switch, **file-upload**    |
+| Overlays    | dialog, menu, snackbar, tooltip, popover                          |
+| Navigation  | **tabs**, breadcrumbs, side-navigation, nav-bar, **stepper**      |
+| Composition | **card**, list, accordion, skeleton, **grid**                     |
+| Media       | image, image-gallery, **image-360** (gyro / VR light)             |
+| Data        | table, tree, carousel, timeline                                   |
+| Icons       | icon (`atr-icon`), **icon/catalog** (~2,191 searchable names)     |
 
 Full inventory and stories: [Storybook](https://atralume.osmanjimenez.dev/).
+
+### Notable 0.2.4 surfaces
+
+```ts
+import { AtralumeImage360 } from "@osmanjimenez/atralume/image-360";
+import { AtralumeFileUpload } from "@osmanjimenez/atralume/file-upload";
+import { AtralumeStepper, AtralumeStep } from "@osmanjimenez/atralume/stepper";
+```
+
+```html
+<atr-image-360 [src]="panoramaUrl" alt="Suite looking toward the terrace" label="Suite 12" />
+<atr-file-upload label="Attachments" multiple accept="image/*,.pdf" />
+```
+
+Browse **Foundations / Icon Explorer** for copyable `@tui.*` snippets.
 
 ## Compatibility
 

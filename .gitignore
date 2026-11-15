@@ -47,6 +47,9 @@ blob-report/
 /libs/angular/src/styles/generated/
 /libs/angular/src/styles/theme.css
 
+# Normalized Taiga icon assets for Storybook CSS masks (npm run icons:normalize)
+/libs/angular/.storybook/static/assets/taiga-ui/icons/
+
 # Editors and operating systems
 .DS_Store
 Thumbs.db

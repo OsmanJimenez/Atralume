@@ -1,15 +1,343 @@
-:host { display: block; }
+:host {
+  display: block;
+  color: var(--atr-sys-color-on-surface);
+}
 
-.atr-image-360__frame { margin: 0; overflow: hidden; border-radius: var(--atr-sys-shape-corner-large, 1rem); background: var(--atr-sys-color-surface-variant); }
-.atr-image-360__scene { aspect-ratio: 16 / 9; background-repeat: repeat-x; cursor: grab; touch-action: none; outline: none; }
-.atr-image-360__scene:active { cursor: grabbing; }
-.atr-image-360__scene:focus-visible { outline: 3px solid var(--atr-sys-color-primary); outline-offset: -3px; }
-.atr-image-360__caption { align-items: center; color: var(--atr-sys-color-on-surface-variant); display: flex; flex-wrap: wrap; font-size: .875rem; gap: .75rem 1rem; justify-content: space-between; padding: .75rem 1rem; }
-.atr-image-360__actions { display: flex; flex-wrap: wrap; gap: .5rem; }
-.atr-image-360__actions button { background: transparent; border: 0; border-radius: var(--atr-sys-shape-full); color: inherit; cursor: pointer; font: inherit; min-block-size: 2.5rem; padding-inline: .7rem; }
-.atr-image-360__actions button:hover { background: var(--atr-sys-color-secondary-container); color: var(--atr-sys-color-on-secondary-container); }
-.atr-image-360__actions button:focus-visible { outline: 2px solid var(--atr-sys-color-primary); outline-offset: 2px; }
+.atr-image-360__frame {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--atr-sys-shape-corner-large, 1.25rem);
+  background: color-mix(in srgb, var(--atr-sys-color-surface-container-highest) 88%, #000 12%);
+  box-shadow:
+    0 0.5rem 1.5rem color-mix(in srgb, #000 18%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--atr-sys-color-outline-variant) 55%, transparent);
+}
 
-@media (max-width: 40rem) { .atr-image-360__caption { align-items: flex-start; flex-direction: column; } .atr-image-360__actions { inline-size: 100%; } .atr-image-360__actions button { flex: 1 1 auto; } }
+.atr-image-360__stage {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 16 / 9;
+  min-block-size: 16rem;
+  outline: none;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  background: #0b1218;
+}
 
-@media (prefers-reduced-motion: reduce) { .atr-image-360__scene { scroll-behavior: auto; } }
+.atr-image-360__stage:active {
+  cursor: grabbing;
+}
+
+.atr-image-360__stage:focus-visible {
+  outline: 3px solid var(--atr-sys-color-primary);
+  outline-offset: 2px;
+}
+
+.atr-image-360__scene {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-position: 50% 50%;
+  background-size: 220% auto;
+  will-change: background-position, background-size;
+}
+
+.atr-image-360__stereo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.125rem;
+  background: #000;
+}
+
+.atr-image-360__stereo .atr-image-360__scene {
+  position: relative;
+  inset: auto;
+  block-size: 100%;
+}
+
+.atr-image-360__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      color-mix(in srgb, #000 52%, transparent) 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, #000 28%, transparent) 0%,
+      transparent 28%
+    );
+  opacity: 0.9;
+}
+
+.atr-image-360__hint {
+  position: absolute;
+  inset-inline: 1rem;
+  inset-block-end: 5.5rem;
+  margin: 0 auto;
+  max-inline-size: 28rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--atr-sys-shape-full, 999px);
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: #f4f7fb;
+  background: color-mix(in srgb, #0b1218 72%, transparent);
+  border: 1px solid color-mix(in srgb, #fff 18%, transparent);
+  pointer-events: none;
+  animation: atr-image-360-hint-in 420ms ease-out both;
+}
+
+.atr-image-360__compass {
+  position: absolute;
+  inset-block-start: 0.85rem;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+:host(.atr-image-360--chrome-visible) .atr-image-360__compass,
+:host(.atr-image-360--gyro) .atr-image-360__compass,
+:host(.atr-image-360--vr) .atr-image-360__compass {
+  opacity: 1;
+}
+
+.atr-image-360__compass-ring {
+  display: grid;
+  place-items: center;
+  inline-size: 2.35rem;
+  block-size: 2.35rem;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, #fff 35%, transparent);
+  background: color-mix(in srgb, #0b1218 55%, transparent);
+}
+
+.atr-image-360__compass-needle {
+  display: block;
+  inline-size: 0.14rem;
+  block-size: 0.85rem;
+  border-radius: 999px;
+  background: var(--atr-sys-color-primary, #8ab4ff);
+  transform-origin: 50% 100%;
+  translate: 0 -0.15rem;
+}
+
+.atr-image-360__compass-label {
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, #fff 82%, transparent);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 45%);
+}
+
+.atr-image-360__chrome {
+  position: absolute;
+  inset-inline: 0.75rem;
+  inset-block-end: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  opacity: 0.42;
+  translate: 0 0.2rem;
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    translate 200ms ease;
+}
+
+.atr-image-360__chrome[data-visible="true"] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.atr-image-360__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  min-inline-size: 0;
+  max-inline-size: min(100%, 18rem);
+}
+
+.atr-image-360__title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f7fafc;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.atr-image-360__badge {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 1.35rem;
+  padding-inline: 0.45rem;
+  border-radius: var(--atr-sys-shape-full, 999px);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #061018;
+  background: color-mix(in srgb, var(--atr-sys-color-primary, #8ab4ff) 88%, #fff);
+}
+
+.atr-image-360__badge--warn {
+  color: #1a1000;
+  background: color-mix(in srgb, var(--atr-sys-color-error, #ffb4ab) 80%, #fff);
+}
+
+.atr-image-360__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: var(--atr-sys-shape-corner-large, 1rem);
+  background: color-mix(in srgb, #0b1218 72%, transparent);
+  border: 1px solid color-mix(in srgb, #fff 14%, transparent);
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.atr-image-360__tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-inline-size: 2.5rem;
+  min-block-size: 2.5rem;
+  padding-inline: 0.55rem;
+  border: 0;
+  border-radius: var(--atr-sys-shape-full, 999px);
+  color: #f4f7fb;
+  background: transparent;
+  cursor: pointer;
+}
+
+.atr-image-360__tool svg {
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+}
+
+.atr-image-360__tool:hover {
+  background: color-mix(in srgb, #fff 14%, transparent);
+}
+
+.atr-image-360__tool:focus-visible {
+  outline: 2px solid var(--atr-sys-color-primary);
+  outline-offset: 2px;
+}
+
+.atr-image-360__tool[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--atr-sys-color-primary, #8ab4ff) 34%, transparent);
+  color: #fff;
+}
+
+.atr-image-360__tool-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.atr-image-360__state {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: #eef3f8;
+  background: color-mix(in srgb, #0b1218 72%, transparent);
+}
+
+.atr-image-360__state p {
+  margin: 0;
+}
+
+.atr-image-360__state--loading {
+  font-size: 0.875rem;
+}
+
+:host(.atr-image-360--vr) .atr-image-360__stage {
+  aspect-ratio: 2 / 1;
+}
+
+:host(.atr-image-360--vr) .atr-image-360__hint {
+  display: none;
+}
+
+:host(:fullscreen) {
+  background: #000;
+}
+
+:host(:fullscreen) .atr-image-360__frame {
+  border-radius: 0;
+  block-size: 100%;
+  box-shadow: none;
+}
+
+:host(:fullscreen) .atr-image-360__stage {
+  aspect-ratio: auto;
+  block-size: 100dvh;
+}
+
+@media (max-width: 40rem) {
+  .atr-image-360__stage {
+    aspect-ratio: 4 / 5;
+    min-block-size: 20rem;
+  }
+
+  .atr-image-360__chrome {
+    inset-inline: 0.55rem;
+    inset-block-end: 0.55rem;
+  }
+
+  .atr-image-360__tool-label {
+    display: none;
+  }
+
+  .atr-image-360__hint {
+    inset-block-end: 4.75rem;
+    font-size: 0.75rem;
+  }
+
+  :host(.atr-image-360--vr) .atr-image-360__stage {
+    aspect-ratio: auto;
+    block-size: min(70dvh, 28rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atr-image-360__hint,
+  .atr-image-360__chrome,
+  .atr-image-360__compass {
+    animation: none;
+    transition: none;
+  }
+}
+
+@keyframes atr-image-360-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

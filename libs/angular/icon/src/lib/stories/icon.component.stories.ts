@@ -72,10 +72,36 @@ export const Playground: Story = {
   }),
 };
 
+/** Built-in registry sample only (8). Full Taiga catalogue: Foundations → Icon Explorer. */
 export const Gallery: Story = {
   render: () => ({
-    template:
-      '<atr-icon name="check" [decorative]="false" label="check" /> <atr-icon name="close" [decorative]="false" label="close" /> <atr-icon name="arrow-right" [decorative]="false" label="arrow-right" /> <atr-icon name="chevron-down" [decorative]="false" label="chevron-down" /> <atr-icon name="info" [decorative]="false" label="info" /> <atr-icon name="warning" [decorative]="false" label="warning" /> <atr-icon name="user" [decorative]="false" label="user" /> <atr-icon name="menu" [decorative]="false" label="menu" /> ',
+    template: `
+      <p style="margin:0 0 1rem;max-inline-size:40rem">
+        Structured registry built-ins (8). Browse all ~2,183 Taiga / Lucide names with
+        copyable <code>@tui.*</code> codes in <strong>Foundations / Icon Explorer</strong>.
+      </p>
+      <ul style="display:grid;grid-template-columns:repeat(auto-fill,minmax(7rem,1fr));gap:0.75rem;list-style:none;margin:0;padding:0">
+        @for (item of items; track item.name) {
+          <li style="display:grid;gap:0.35rem;justify-items:center;padding:0.75rem;border:1px solid var(--atr-sys-color-outline-variant);border-radius:0.75rem">
+            <atr-icon [name]="item.name" [decorative]="false" [label]="item.name" size="large" />
+            <strong style="font-size:0.75rem">{{ item.name }}</strong>
+            <code style="font-size:0.65rem;word-break:break-all">{{ item.code }}</code>
+          </li>
+        }
+      </ul>
+    `,
+    props: {
+      items: [
+        { name: "check", code: "name=\"check\"" },
+        { name: "close", code: "name=\"close\"" },
+        { name: "arrow-right", code: "name=\"arrow-right\"" },
+        { name: "chevron-down", code: "name=\"chevron-down\"" },
+        { name: "info", code: "name=\"info\"" },
+        { name: "warning", code: "name=\"warning\"" },
+        { name: "user", code: "name=\"user\"" },
+        { name: "menu", code: "name=\"menu\"" },
+      ],
+    },
   }),
 };
 

@@ -1,5 +1,14 @@
 @if (resolvedEngine() === "tui") {
-  <tui-icon [icon]="tuiIconName()" />
+  <!--
+    Paint Lucide assets with a plain CSS mask. Taiga <tui-icon> masks fail to
+    show stroke SVGs reliably under Chromium when served as static files; the
+    same URLs paint correctly with mask + background:currentColor.
+  -->
+  <span
+    class="atr-icon__tui-glyph"
+    [style.--atr-tui-mask]="tuiMaskUrl()"
+    aria-hidden="true"
+  ></span>
 } @else if (definition(); as icon) {
   <svg
     [attr.viewBox]="icon.viewBox || '0 0 24 24'"

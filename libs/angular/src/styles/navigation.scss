@@ -1,3 +1,17 @@
+.atr-tabs:has(.atr-tab-list[aria-orientation="vertical"]) {
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--atr-sys-spacing-lg);
+}
+
+.atr-tabs:has(.atr-tab-list[aria-orientation="vertical"]) .atr-tab-list {
+  flex: 0 0 auto;
+}
+
+.atr-tabs:has(.atr-tab-list[aria-orientation="vertical"]) .atr-tab-panel {
+  flex: 1 1 auto;
+}
+
 .atr-tab-list {
   display: flex;
   align-items: center;
@@ -7,30 +21,70 @@
   overflow: auto;
 }
 
+/* Atralume paints selected chrome; hide Taiga's sliding underline / bars. */
+tui-tabs.atr-tab-list._underline {
+  --t-color: transparent;
+}
+
+tui-tabs.atr-tab-list .t-bar,
+tui-tabs.atr-tab-list .t-underline {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .atr-tab-list[aria-orientation="vertical"] {
   flex-direction: column;
   align-items: stretch;
+  min-inline-size: 11rem;
+  border-block-end: 0;
+  border-inline-end: var(--atr-ref-border-width-thin) solid
+    var(--atr-comp-tabs-border-color);
+  padding-inline-end: var(--atr-comp-tabs-gap);
 }
 
 .atr-tab {
   min-block-size: var(--atr-sys-touch-target-minimum);
+  padding-block: var(--atr-sys-spacing-sm);
   padding-inline: var(--atr-comp-tabs-padding);
   border: 0;
   border-block-end: var(--atr-sys-focus-ring-width) solid transparent;
+  border-radius: var(--atr-sys-shape-small) var(--atr-sys-shape-small) 0 0;
   background: transparent;
-  color: inherit;
+  color: var(--atr-sys-color-on-surface-variant);
   font: inherit;
+  font-weight: 500;
   cursor: pointer;
 }
 
+.atr-tab-list[aria-orientation="vertical"] .atr-tab {
+  border-block-end: 0;
+  border-inline-end: var(--atr-sys-focus-ring-width) solid transparent;
+  border-radius: var(--atr-sys-shape-small) 0 0 var(--atr-sys-shape-small);
+  text-align: start;
+}
+
 .atr-tab[aria-selected="true"] {
-  border-color: var(--atr-sys-color-primary);
+  border-block-end: 3px solid var(--atr-sys-color-primary) !important;
   background: var(--atr-sys-color-primary-container);
   color: var(--atr-sys-color-on-primary-container);
+  font-weight: 600;
+}
+
+.atr-tab-list[aria-orientation="vertical"] .atr-tab[aria-selected="true"] {
+  border-inline-end-color: var(--atr-sys-color-primary);
 }
 
 .atr-tab-panel {
-  padding: var(--atr-comp-tabs-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--atr-sys-spacing-md);
+  min-inline-size: 0;
+  padding: var(--atr-sys-spacing-lg);
+  border: 1px solid var(--atr-comp-tabs-border-color);
+  border-radius: var(--atr-comp-tabs-shape);
+  background: var(--atr-comp-tabs-container-color);
+  color: var(--atr-comp-tabs-label-color);
 }
 
 .atr-tab-panel[hidden] {
@@ -45,7 +99,7 @@
 .atr-tab:focus-visible,
 .atr-tab-panel:focus-visible {
   outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
-  outline-offset: calc(-1 * var(--atr-sys-focus-ring-width));
+  outline-offset: var(--atr-sys-focus-ring-offset);
 }
 
 .atr-breadcrumbs {

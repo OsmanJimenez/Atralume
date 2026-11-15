@@ -9,9 +9,9 @@ The adapter applies Taiga UI's public `TuiCardLarge` directive from `@taiga-ui/l
 
 Taiga UI reference: [Card](https://taiga-ui.dev/layout/card-large).
 
-Use for related content. Use native anchors and buttons inside the card for actions; do not nest interactive controls inside a clickable card. Header, media, content and actions are explicit directive slots. Glass is a surface appearance, not an action variant.
+Use for related content such as account summaries, session previews, and product tiles. Use native anchors and buttons inside the card for actions; do not nest interactive controls inside a clickable card. Header, media, content and actions are explicit directive slots. Glass is a surface appearance, not an action variant.
 
-Card projects its action area. Import Button and Avatar for the composed examples; action styling and behavior come from those public atoms.
+Card projects its action area. Import Button and Avatar for the composed examples; action styling and behavior come from those public atoms. Prefer a clear title, supporting copy, and dual actions when the card represents a real product surface. Media sits flush to the card edges; elevated appearance adds a light hover depth.
 
 ## Import and composition
 
@@ -27,13 +27,22 @@ import {
 ```
 
 ```html
-<atr-card appearance="elevated"
-  ><header atrCardHeader><h2>Account</h2></header>
-  <div atrCardContent>Manage your profile.</div>
+<atr-card appearance="elevated">
+  <header atrCardHeader>
+    <atr-avatar name="Alex Morgan" alt="Alex Morgan" />
+    <div>
+      <h2>Alex Morgan</h2>
+      <p>Product design · Workspace owner</p>
+    </div>
+  </header>
+  <div atrCardContent>
+    Keep your profile current so teammates can find the right channels.
+  </div>
   <footer atrCardActions>
-    <button atrButton type="button">Continue</button>
-  </footer></atr-card
->
+    <button atrButton appearance="tonal" type="button">Edit profile</button>
+    <button atrButton type="button">Manage account</button>
+  </footer>
+</atr-card>
 ```
 
 ## API, variants and states

@@ -111,7 +111,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | Capacidad | Cobertura | Solución | Prioridad | Acción |
 | --- | --- | --- | --- | --- |
 | Design tokens / themes / glass | Completa | Style Dictionary + bridge | P0 | Reutilizar |
-| Iconography catalog / Explorer | Completa (0.2.3) | Manifest + `searchAtralumeIcons` + Foundations/Icon Explorer | P0 | Reutilizar |
+| Iconography catalog / Explorer | Completa (0.2.3 manifest; **0.2.4** full paint) | Manifest + `searchAtralumeIcons` + Foundations/Icon Explorer + normalized Taiga masks | P0 | Reutilizar |
 | WCAG 2.2 AA tooling | Completa | Storybook a11y addon | P0 | Reutilizar |
 | i18n / RTL | Parcial | Taiga i18n tokens; logical CSS | P1 | Documentar |
 | Visual regression | Parcial | Playwright scripts present | P2 | Reutilizar (no new vendor) |
@@ -152,5 +152,13 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | QuantitySelector | `Patterns/Quantity Selector` | Documented (composition) |
 | ShortcutHint | `Patterns/Shortcut Hint` | Documented (composition) |
 | Destructive confirm | `Patterns/Destructive Confirm` | Documented (composition) |
+
+## UX polish wave (0.2.4)
+
+| Item | Entrypoint / location | Status |
+| --- | --- | --- |
+| Icon Explorer paint path | `atr-icon` `engine="tui"` + `icons:normalize` | Implemented (CSS mask glyphs; copyable `@tui.*`) |
+| Image 360 sensors | `@osmanjimenez/atralume/image-360` | Implemented (gyro, inertia, pinch, light stereo VR) |
+| Stepper / Tabs / Card / File Upload | matching secondary entries + Storybook playgrounds | Implemented (component chrome + demos) |
 
 Deferred remaining P1/P2 stay listed above for later waves.

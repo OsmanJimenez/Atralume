@@ -285,7 +285,7 @@ import type {
   AtralumeIconCategory,
 } from "@osmanjimenez/atralume/icon";
 
-export const ATRALUME_ICON_CATALOG_VERSION = "0.2.3";
+export const ATRALUME_ICON_CATALOG_VERSION = "0.2.4";
 
 export const ATRALUME_ICON_CATEGORIES: readonly AtralumeIconCategory[] = ${JSON.stringify(categories)};
 

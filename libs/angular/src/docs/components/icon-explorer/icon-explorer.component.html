@@ -94,6 +94,9 @@
               <span class="atr-doc-icon-explorer__tile-name">{{
                 entry.name
               }}</span>
+              <code class="atr-doc-icon-explorer__tile-code">{{
+                iconName(entry)
+              }}</code>
             </button>
           </li>
         }
@@ -103,6 +106,9 @@
         <div class="atr-doc-icon-explorer__more">
           <button type="button" atrButton appearance="outlined" (click)="loadMore()">
             Show more ({{ visible().length }} / {{ filtered().length }})
+          </button>
+          <button type="button" atrButton appearance="text" (click)="loadAll()">
+            Show all matching
           </button>
         </div>
       }

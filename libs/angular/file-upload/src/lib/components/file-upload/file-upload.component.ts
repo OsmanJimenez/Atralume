@@ -167,6 +167,28 @@ export class AtralumeFileUpload
       }
     );
   }
+  formatSize(bytes: number): string {
+    if (!Number.isFinite(bytes) || bytes < 0) return "0 B";
+    if (bytes < 1024) return `${bytes} B`;
+    const kb = bytes / 1024;
+    if (kb < 1024) return `${kb < 10 ? kb.toFixed(1) : Math.round(kb)} KB`;
+    const mb = kb / 1024;
+    return `${mb < 10 ? mb.toFixed(1) : Math.round(mb)} MB`;
+  }
+  statusLabel(status: AtralumeUploadFileState["status"]): string {
+    switch (status) {
+      case "uploading":
+        return "Uploading";
+      case "success":
+        return "Uploaded";
+      case "error":
+        return "Failed";
+      case "cancelled":
+        return "Cancelled";
+      default:
+        return "Ready";
+    }
+  }
   private errorsFor(file: File): string[] {
     const errors: string[] = [];
     if (file.size > this.maxSize()) errors.push("File is too large");

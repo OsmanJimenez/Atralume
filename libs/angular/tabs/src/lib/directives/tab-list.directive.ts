@@ -34,7 +34,8 @@ import { TAB_CONTEXT } from "../models/tabs.types";
   },
 })
 export class AtralumeTabList {
-  readonly underline = input(true, { transform: booleanAttribute });
+  /** Defaults off: Atralume selected chrome replaces Taiga's sliding underline. */
+  readonly underline = input(false, { transform: booleanAttribute });
   protected readonly owner = inject(TAB_CONTEXT);
   private readonly tabs = inject(TuiTabsDirective, {
     self: true,

@@ -40,15 +40,10 @@ const config: StorybookConfig = {
   ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
   framework: { name: "@storybook/angular", options: {} },
-  // Taiga compiled styles reference assets/taiga-ui/icons/*.svg
-  // `./static` ships SEO assets (robots, sitemap, CNAME, og-image) for Pages.
-  staticDirs: [
-    { from: "./static", to: "/" },
-    {
-      from: "../../../node_modules/@taiga-ui/icons/src",
-      to: "/assets/taiga-ui/icons",
-    },
-  ],
+  // Taiga styles resolve `/assets/taiga-ui/icons/*.svg`. Serve normalized
+  // Lucide SVGs (fixed stroke-width) from `./static` — generate via
+  // `npm run icons:normalize` (also hooked into Storybook build).
+  staticDirs: [{ from: "./static", to: "/" }],
   async webpackFinal(config) {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {

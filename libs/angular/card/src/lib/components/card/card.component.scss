@@ -15,6 +15,16 @@
 :host([data-appearance="elevated"]) {
   background: var(--atr-sys-color-surface-container-high);
   box-shadow: var(--atr-comp-card-elevation);
+  transition:
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+:host([data-appearance="elevated"]:hover) {
+  box-shadow:
+    0 0.375rem 0.875rem color-mix(in srgb, #07152f 18%, transparent),
+    0 0.125rem 0.25rem color-mix(in srgb, #07152f 10%, transparent);
+  transform: translateY(-1px);
 }
 
 :host([data-appearance="glass"]) {
@@ -30,10 +40,25 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :host([data-appearance="elevated"]) {
+    transition: none;
+  }
+
+  :host([data-appearance="elevated"]:hover) {
+    transform: none;
+  }
+}
+
 @media (forced-colors: active) {
   :host {
     border-color: CanvasText;
     box-shadow: none;
     backdrop-filter: none;
+  }
+
+  :host([data-appearance="elevated"]:hover) {
+    box-shadow: none;
+    transform: none;
   }
 }

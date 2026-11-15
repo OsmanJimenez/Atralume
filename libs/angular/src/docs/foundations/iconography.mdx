@@ -13,16 +13,22 @@ Taiga UI’s Lucide-based asset set for the broad catalogue.
 | Source | Count (manifest) | How to use |
 | --- | --- | --- |
 | Structured registry | 8 built-ins (+ consumer registrations) | `<atr-icon name="check" />` with `provideAtralumeIcons` |
-| Taiga UI / Lucide | ~2,183 outline names | `<atr-icon engine="tui" name="@tui.heart" />` or `engine="auto"` |
+| Taiga UI / Lucide | ~2,183 outline names (catalog metadata) | `<atr-icon engine="tui" name="@tui.heart" />` or `engine="auto"` |
 
-Regenerate metadata after upgrading `@taiga-ui/icons`:
+`Atoms/Icon/Gallery` shows only the 8 registry built-ins. The full searchable
+catalogue with copyable `@tui.*` snippets lives in **Foundations / Icon Explorer**.
+
+Regenerate metadata / Storybook icon assets after upgrading `@taiga-ui/icons`:
 
 ```bash
 npm run icons:manifest
+npm run icons:normalize
 ```
 
 The generator reads verified SVG filenames under `node_modules/@taiga-ui/icons/src`.
 It never invents icon names and never embeds SVG markup in the package bundle.
+`icons:normalize` rewrites upstream stroke calc values so Storybook CSS masks
+paint every glyph (manifest version tracks the package, currently `0.2.4`).
 
 ## Public helpers
 

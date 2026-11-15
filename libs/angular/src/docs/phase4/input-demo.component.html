@@ -63,11 +63,12 @@
   @case ("file-upload") {
     <atr-file-upload
       label="Attachments"
+      hint="Add supporting documents or images. Files stay local until your app uploads them."
       [formControl]="fileControl"
       multiple
       [disabled]="disabled()"
       [readonly]="readOnly()"
-      [accept]="error() ? '.txt' : ''"
+      [accept]="error() ? '.txt' : 'image/*,.pdf,.txt,.doc,.docx'"
       [states]="fileStates()"
       [imagePreviews]="previews()"
       (cancelRequested)="result.set('Cancellation requested')"
@@ -86,49 +87,87 @@
       [orientation]="vertical() ? 'vertical' : 'horizontal'"
       (stepChange)="result.set('step ' + ($event.current + 1))"
     >
-      <atr-step label="Profile"
-        ><atr-form-field
-          ><tui-textfield tuiTextfieldSize="m"
-            ><label tuiLabel for="profile-name">Profile name *</label
-            ><input
-              atrInput
-              id="profile-name"
-              [formControl]="profile" /></tui-textfield></atr-form-field
-        ><button
-          atrButton
-          atrStepperNext
-          type="button"
-          [disabled]="profile.invalid || !stepper.canNext()"
-        >
-          Next
-        </button></atr-step
-      >
-      <atr-step label="Review" stepState="pass"
-        ><p>Review your details.</p>
-        <button
-          atrButton
-          atrStepperPrevious
-          appearance="text"
-          type="button"
-          [disabled]="!stepper.canPrevious()"
-        >
-          Previous</button
-        ><button
-          atrButton
-          atrStepperNext
-          type="button"
-          [disabled]="!stepper.canNext()"
-        >
-          Next
-        </button></atr-step
-      >
-      <atr-step label="Finish" stepState="pass"
-        ><p>Setup complete.</p>
-        <button atrButton type="button" (click)="stepper.reset()">
-          Reset workflow
-        </button></atr-step
-      >
+      <atr-step label="Profile">
+        <div class="atr-stepper-demo-body">
+          <h3 class="atr-stepper-demo-title">Create your storefront profile</h3>
+          <p class="atr-stepper-demo-lede">
+            This name appears on booking confirmations and the customer account
+            menu.
+          </p>
+          <atr-form-field hint="Use the name guests already recognize.">
+            <tui-textfield tuiTextfieldSize="m">
+              <label tuiLabel for="profile-name">Profile name *</label>
+              <input atrInput id="profile-name" [formControl]="profile" />
+            </tui-textfield>
+          </atr-form-field>
+        </div>
+        <div class="atr-stepper-demo-actions">
+          <button
+            atrButton
+            atrStepperNext
+            type="button"
+            [disabled]="profile.invalid || !stepper.canNext()"
+          >
+            Next
+          </button>
+        </div>
+      </atr-step>
+      <atr-step label="Review" stepState="pass">
+        <div class="atr-stepper-demo-body">
+          <h3 class="atr-stepper-demo-title">Review before you continue</h3>
+          <p class="atr-stepper-demo-lede">
+            Confirm the details that will be saved to this account.
+          </p>
+          <dl class="atr-stepper-demo-summary">
+            <div>
+              <dt>Profile name</dt>
+              <dd>{{ profile.value.trim() || "Not set yet" }}</dd>
+            </div>
+            <div>
+              <dt>Workspace</dt>
+              <dd>Guest bookings · storefront</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="atr-stepper-demo-actions">
+          <button
+            atrButton
+            atrStepperPrevious
+            appearance="text"
+            type="button"
+            [disabled]="!stepper.canPrevious()"
+          >
+            Previous
+          </button>
+          <button
+            atrButton
+            atrStepperNext
+            type="button"
+            [disabled]="!stepper.canNext()"
+          >
+            Next
+          </button>
+        </div>
+      </atr-step>
+      <atr-step label="Finish" stepState="pass">
+        <div class="atr-stepper-demo-body">
+          <h3 class="atr-stepper-demo-title">Account ready</h3>
+          <p class="atr-stepper-demo-lede">
+            {{
+              profile.value.trim()
+                ? profile.value.trim() + " can start managing bookings."
+                : "Your account can start managing bookings."
+            }}
+            You can revisit these steps any time from settings.
+          </p>
+        </div>
+        <div class="atr-stepper-demo-actions">
+          <button atrButton type="button" appearance="outlined" (click)="stepper.reset()">
+            Reset workflow
+          </button>
+        </div>
+      </atr-step>
     </atr-stepper>
   }
 }
-<output>Value: {{ result() }}</output>
+<output class="atr-demo-result">Value: {{ result() }}</output>

@@ -19,10 +19,16 @@ const meta = {
     dialog: false,
     previews: false,
   },
+  parameters: {
+    layout: "padded",
+  },
 } satisfies Meta<AdvancedInputDemo>;
 export default meta;
 type Story = StoryObj<AdvancedInputDemo>;
 export const Playground: Story = {
+  args: {
+    previews: true,
+  },
   argTypes: {
     family: { control: false },
     disabled: { control: "boolean" },
