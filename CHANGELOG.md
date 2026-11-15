@@ -3,6 +3,17 @@
 All notable public changes to Atralume are documented here. Releases are
 generated from reviewed changesets and follow Semantic Versioning.
 
+## 0.2.5 — 2026-11-15
+
+### Fixed
+
+- **Icon assets for consumers** — normalized Taiga masks now ship with the
+  package, so `atr-icon engine="tui"` renders consistently in production
+  Angular applications instead of relying on Storybook-only static files.
+- **Image 360 SSR** — `atr-image-360` now guards browser-only APIs during
+  prerendering, including image preloading, timers, fullscreen, and motion
+  controls.
+
 ## 0.2.4 — 2026-11-15
 
 Media and workflow UX polish on top of the 0.2.3 catalogue. Icon Explorer now

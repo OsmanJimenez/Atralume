@@ -40,10 +40,9 @@ const config: StorybookConfig = {
   ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
   framework: { name: "@storybook/angular", options: {} },
-  // Taiga styles resolve `/assets/taiga-ui/icons/*.svg`. Serve normalized
-  // Lucide SVGs (fixed stroke-width) from `./static` — generate via
-  // `npm run icons:normalize` (also hooked into Storybook build).
-  staticDirs: [{ from: "./static", to: "/" }],
+  // Taiga styles resolve `/assets/taiga-ui/icons/*.svg`. Serve the same
+  // normalized assets that ship with the Atralume npm package.
+  staticDirs: [{ from: "../src/assets", to: "/assets" }],
   async webpackFinal(config) {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {

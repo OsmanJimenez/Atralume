@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  PLATFORM_ID,
   booleanAttribute,
   computed,
   effect,
@@ -10,7 +11,7 @@ import {
   input,
   signal,
 } from "@angular/core";
-import { NgStyle } from "@angular/common";
+import { isPlatformBrowser, NgStyle } from "@angular/common";
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
 
 type DragSample = { t: number; x: number; y: number };
@@ -87,6 +88,7 @@ export class AtralumeImage360 {
 
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly pointers = new Map<number, PointerPose>();
   private dragOrigin: {
     x: number;
@@ -107,7 +109,7 @@ export class AtralumeImage360 {
   private imageProbe: HTMLImageElement | null = null;
 
   constructor() {
-    if (typeof window !== "undefined") {
+    if (this.browser) {
       this.reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
@@ -120,24 +122,27 @@ export class AtralumeImage360 {
     this.destroyRef.onDestroy(() => {
       this.stopInertia();
       this.detachGyro();
-      window.clearTimeout(this.chromeTimer);
-      window.clearTimeout(this.hintTimer);
+      if (this.browser) {
+        window.clearTimeout(this.chromeTimer);
+        window.clearTimeout(this.hintTimer);
+      }
       this.imageProbe = null;
-      if (document.fullscreenElement === this.host.nativeElement) {
+      if (this.browser && document.fullscreenElement === this.host.nativeElement) {
         void document.exitFullscreen?.();
       }
     });
 
     effect(() => {
       const src = this.src();
-      this.preload(src);
+      if (this.browser) this.preload(src);
+      else this.status.set("ready");
     });
 
     // Defer initial orientation until first CD cycle so inputs are readable.
     queueMicrotask(() => {
       this.yaw.set(this.normalizeYaw(this.initialYaw()));
       this.pitch.set(this.clampPitch(this.initialPitch()));
-      if (!this.reducedMotion) {
+      if (this.browser && !this.reducedMotion) {
         this.hintTimer = window.setTimeout(
           () => this.hintVisible.set(false),
           5200,
@@ -293,7 +298,7 @@ export class AtralumeImage360 {
   }
 
   protected async toggleGyro(): Promise<void> {
-    if (!this.enableGyro() || !this.gyroSupported()) return;
+    if (!this.browser || !this.enableGyro() || !this.gyroSupported()) return;
     if (this.gyroActive()) {
       this.detachGyro();
       this.gyroActive.set(false);
@@ -353,6 +358,7 @@ export class AtralumeImage360 {
   }
 
   private async enterFullscreen(): Promise<void> {
+    if (!this.browser) return;
     const el = this.host.nativeElement;
     try {
       if (document.fullscreenElement === el) {
@@ -366,6 +372,10 @@ export class AtralumeImage360 {
   }
 
   private preload(src: string): void {
+    if (!this.browser) {
+      this.status.set("ready");
+      return;
+    }
     this.status.set("loading");
     const img = new Image();
     this.imageProbe = img;
@@ -403,7 +413,7 @@ export class AtralumeImage360 {
   }
 
   private launchInertia(): void {
-    if (this.reducedMotion || this.samples.length < 2) return;
+    if (!this.browser || this.reducedMotion || this.samples.length < 2) return;
     const first = this.samples[0];
     const last = this.samples[this.samples.length - 1];
     const dt = Math.max(16, last.t - first.t);
@@ -433,7 +443,7 @@ export class AtralumeImage360 {
   }
 
   private stopInertia(): void {
-    if (this.inertiaFrame) {
+    if (this.browser && this.inertiaFrame) {
       cancelAnimationFrame(this.inertiaFrame);
       this.inertiaFrame = 0;
     }
@@ -441,7 +451,7 @@ export class AtralumeImage360 {
   }
 
   private detachGyro(): void {
-    if (this.orientationHandler) {
+    if (this.browser && this.orientationHandler) {
       window.removeEventListener(
         "deviceorientation",
         this.orientationHandler,
@@ -458,6 +468,7 @@ export class AtralumeImage360 {
   }
 
   private scheduleChromeHide(): void {
+    if (!this.browser) return;
     window.clearTimeout(this.chromeTimer);
     this.chromeTimer = window.setTimeout(() => {
       if (!this.gyroActive() && !this.vr() && this.pointers.size === 0) {

@@ -17,6 +17,11 @@
       "glob": "**/*",
       "ignore": ["**/*.ts"],
       "output": "styles"
+    },
+    {
+      "input": "src/assets",
+      "glob": "**/*",
+      "output": "assets"
     }
   ],
   "lib": {

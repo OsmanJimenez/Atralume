@@ -13,7 +13,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const srcDir = path.join(root, "node_modules", "@taiga-ui", "icons", "src");
 const outDir = path.join(
   root,
-  "libs/angular/.storybook/static/assets/taiga-ui/icons",
+  "libs/angular/src/assets/taiga-ui/icons",
 );
 
 if (!fs.existsSync(srcDir)) {

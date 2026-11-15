@@ -32,7 +32,7 @@
     "icons-normalize": {
       "executor": "nx:run-commands",
       "outputs": [
-        "{workspaceRoot}/libs/angular/.storybook/static/assets/taiga-ui/icons"
+        "{workspaceRoot}/libs/angular/src/assets/taiga-ui/icons"
       ],
       "options": {
         "command": "node tools/normalize-taiga-icons.mjs"
@@ -47,7 +47,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "defaultConfiguration": "production",
-      "dependsOn": ["tokens-build"],
+      "dependsOn": ["tokens-build", "icons-normalize"],
       "options": {
         "project": "libs/angular/ng-package.json",
         "tsConfig": "libs/angular/tsconfig.lib.json"

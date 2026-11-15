@@ -3,6 +3,11 @@
 Canonical release notes live in the repository root
 [`CHANGELOG.md`](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md).
 
+## 0.2.5 — 2026-11-15
+
+- Normalized Taiga icon masks now ship with the package for production apps.
+- `atr-image-360` is safe during Angular SSR and static prerendering.
+
 ## 0.2.4 — 2026-11-15
 
 - Full Icon Explorer rendering (~2,191) with normalized Taiga masks and copyable `@tui.*` codes.
