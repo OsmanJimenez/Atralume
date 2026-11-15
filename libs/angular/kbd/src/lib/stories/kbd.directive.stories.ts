@@ -17,13 +17,21 @@ type Story = StoryObj;
 export const Playground: Story = {
   args: {
     size: "medium",
+    label: "Ctrl",
   },
   argTypes: {
     size: { control: "select", options: ["small", "medium"] },
+    label: { control: "text" },
   },
   render: (args) => ({
     props: args,
-    template: '<kbd atrKbd [size]="size">Ctrl</kbd>',
+    template: `
+      <p style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
+        Press
+        <kbd atrKbd [size]="size">{{ label }}</kbd>
+        to trigger the shortcut.
+      </p>
+    `,
   }),
 };
 

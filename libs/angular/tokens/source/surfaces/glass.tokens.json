@@ -3,7 +3,7 @@
   "atr": {
     "sys": {
       "glass": {
-        "background": { "$type": "color", "$value": "#fbfbffe0" },
+        "background": { "$type": "color", "$value": "#fbfbffb8" },
         "fallback-background": {
           "$type": "color",
           "$value": "{atr.sys.color.surface-container}"

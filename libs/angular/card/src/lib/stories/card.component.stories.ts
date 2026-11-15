@@ -73,12 +73,24 @@ export const WithMedia: Story = {
 export const Appearances: Story = {
   render: () => ({
     template: `
-      <atr-grid columns="auto" gap="md" minTrack="14rem" style="max-inline-size:48rem">
-        <atr-card appearance="filled"><header atrCardHeader><h2>Filled</h2></header><div atrCardContent>Flat surface container.</div></atr-card>
-        <atr-card appearance="elevated"><header atrCardHeader><h2>Elevated</h2></header><div atrCardContent>Raised with shadow.</div></atr-card>
-        <atr-card appearance="outlined"><header atrCardHeader><h2>Outlined</h2></header><div atrCardContent>Border emphasis.</div></atr-card>
-        <atr-card appearance="glass"><header atrCardHeader><h2>Glass</h2></header><div atrCardContent>Translucent surface.</div></atr-card>
-      </atr-grid>
+      <div
+        style="
+          padding: 1.5rem;
+          border-radius: 1rem;
+          max-inline-size: 48rem;
+          background:
+            radial-gradient(120% 80% at 10% 15%, color-mix(in srgb, var(--atr-sys-color-primary) 32%, transparent), transparent 55%),
+            radial-gradient(90% 70% at 95% 85%, color-mix(in srgb, var(--atr-sys-color-tertiary) 36%, transparent), transparent 50%),
+            linear-gradient(135deg, var(--atr-sys-color-primary-container), var(--atr-sys-color-surface-container-high), var(--atr-sys-color-tertiary-container));
+        "
+      >
+        <atr-grid columns="auto" gap="md" minTrack="14rem">
+          <atr-card appearance="filled"><header atrCardHeader><h2>Filled</h2></header><div atrCardContent>Flat surface container.</div></atr-card>
+          <atr-card appearance="elevated"><header atrCardHeader><h2>Elevated</h2></header><div atrCardContent>Raised with shadow.</div></atr-card>
+          <atr-card appearance="outlined"><header atrCardHeader><h2>Outlined</h2></header><div atrCardContent>Border emphasis.</div></atr-card>
+          <atr-card appearance="glass"><header atrCardHeader><h2>Glass</h2></header><div atrCardContent>Translucent surface over depth.</div></atr-card>
+        </atr-grid>
+      </div>
     `,
   }),
 };

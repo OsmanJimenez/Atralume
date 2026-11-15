@@ -39,19 +39,19 @@ function layerOf(file) {
     return "atoms";
   if (/\/(chip|skeleton|fab)\/src\//.test(normalized)) return "atoms";
   if (
-    /\/(listbox|combobox|popover|calendar|slider|rating)\/src\//.test(
+    /\/(listbox|combobox|popover|calendar|slider|rating|content-switcher)\/src\//.test(
       normalized,
     )
   )
     return "molecules";
   if (
-    /\/(select|autocomplete|command-palette|date-picker|time-picker|file-upload|stepper|table|tree|carousel|otp-input)\/src\//.test(
+    /\/(select|autocomplete|command-palette|date-picker|time-picker|file-upload|stepper|table|tree|carousel|otp-input|timeline|action-bar)\/src\//.test(
       normalized,
     )
   )
     return "organisms";
   if (
-    /\/(card|list|accordion|tooltip|menu|snackbar|tabs|breadcrumbs|pagination)\/src\//.test(
+    /\/(card|list|accordion|tooltip|menu|snackbar|tabs|breadcrumbs|pagination|empty-state)\/src\//.test(
       normalized,
     )
   )

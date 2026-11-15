@@ -7,6 +7,11 @@ import {
   checkIcon,
   arrowRightIcon,
 } from "../../index";
+import {
+  ATRALUME_ICON_CATALOG,
+  searchAtralumeIcons,
+  toTuiIconName,
+} from "@osmanjimenez/atralume/icon/catalog";
 describe("AtralumeIcon", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
@@ -78,5 +83,52 @@ describe("AtralumeIcon", () => {
     } finally {
       child.destroy();
     }
+  });
+  it("supports tryGet, has, and runtime registration", () => {
+    const registry = TestBed.inject(AtralumeIconRegistry);
+    expect(registry.has("check")).toBe(true);
+    expect(registry.tryGet("missing")).toBeNull();
+    registry.register([
+      {
+        name: "plus",
+        paths: ["M12 5v14M5 12h14"],
+        category: "actions",
+        keywords: ["add"],
+      },
+    ]);
+    expect(registry.has("plus")).toBe(true);
+    registry.registerAlias("add", "plus");
+    expect(registry.tryGet("add")?.name).toBe("plus");
+  });
+  it("falls back to the Taiga engine for unknown auto names", async () => {
+    const f = TestBed.createComponent(AtralumeIcon);
+    f.componentRef.setInput("engine", "auto");
+    f.componentRef.setInput("name", "heart");
+    f.componentRef.setInput("decorative", false);
+    f.componentRef.setInput("label", "Heart");
+    f.detectChanges();
+    await f.whenStable();
+    const e = f.nativeElement as HTMLElement;
+    expect(e.getAttribute("data-engine")).toBe("tui");
+    expect(e.querySelector("tui-icon")).toBeTruthy();
+  });
+});
+
+describe("Atralume icon catalog", () => {
+  it("exposes a verified non-empty Taiga-backed catalog", () => {
+    expect(ATRALUME_ICON_CATALOG.length).toBeGreaterThan(2000);
+    expect(toTuiIconName("heart")).toBe("@tui.heart");
+    expect(toTuiIconName("@tui.check")).toBe("@tui.check");
+  });
+  it("searches by name, alias, category, and keyword without case sensitivity", () => {
+    const byName = searchAtralumeIcons({ query: "HEART", limit: 50 });
+    expect(byName.some((entry) => entry.name === "heart")).toBe(true);
+    const byCategory = searchAtralumeIcons({
+      category: "users",
+      query: "user",
+      limit: 20,
+    });
+    expect(byCategory.length).toBeGreaterThan(0);
+    expect(byCategory.every((entry) => entry.category === "users")).toBe(true);
   });
 });

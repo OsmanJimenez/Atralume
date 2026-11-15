@@ -1,5 +1,5 @@
 @if (resolvedEngine() === "tui") {
-  <tui-icon [icon]="name()" />
+  <tui-icon [icon]="tuiIconName()" />
 } @else if (definition(); as icon) {
   <svg
     [attr.viewBox]="icon.viewBox || '0 0 24 24'"

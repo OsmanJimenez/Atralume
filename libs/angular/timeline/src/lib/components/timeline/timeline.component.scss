@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  transform: translateZ(0);
+  color: var(
+    --atr-comp-timeline-label-color,
+    var(--atr-sys-color-on-surface)
+  );
+  background: var(
+    --atr-comp-timeline-track-color,
+    var(--atr-sys-color-surface-container)
+  );
+  border-radius: var(
+    --atr-comp-timeline-shape,
+    var(--atr-sys-shape-small)
+  );
+  min-block-size: var(
+    --atr-comp-timeline-track-size,
+    var(--atr-sys-spacing-xl)
+  );
+}
+
+:host([data-orientation="vertical"]) {
+  writing-mode: vertical-lr;
+  min-inline-size: var(
+    --atr-comp-timeline-track-size,
+    var(--atr-sys-spacing-xl)
+  );
+  min-block-size: var(
+    --atr-comp-timeline-vertical-length,
+    calc(var(--atr-sys-spacing-xl) * 8)
+  );
+}
+
+.atr-timeline__gap {
+  position: absolute;
+  block-size: 100%;
+}

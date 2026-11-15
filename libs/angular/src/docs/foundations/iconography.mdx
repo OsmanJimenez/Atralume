@@ -1,0 +1,72 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Explorer from "./icon-explorer.stories";
+
+<Meta title="Foundations/Iconography" />
+
+# Iconography
+
+Atralume exposes a single public icon contract through `atr-icon` while reusing
+Taiga UI’s Lucide-based asset set for the broad catalogue.
+
+## Sources
+
+| Source | Count (manifest) | How to use |
+| --- | --- | --- |
+| Structured registry | 8 built-ins (+ consumer registrations) | `<atr-icon name="check" />` with `provideAtralumeIcons` |
+| Taiga UI / Lucide | ~2,183 outline names | `<atr-icon engine="tui" name="@tui.heart" />` or `engine="auto"` |
+
+Regenerate metadata after upgrading `@taiga-ui/icons`:
+
+```bash
+npm run icons:manifest
+```
+
+The generator reads verified SVG filenames under `node_modules/@taiga-ui/icons/src`.
+It never invents icon names and never embeds SVG markup in the package bundle.
+
+## Public helpers
+
+```ts
+import {
+  AtralumeIcon,
+  provideAtralumeIcons,
+} from "@osmanjimenez/atralume/icon";
+import {
+  searchAtralumeIcons,
+  toTuiIconName,
+  ATRALUME_ICON_CATALOG,
+} from "@osmanjimenez/atralume/icon/catalog";
+```
+
+- `searchAtralumeIcons({ query, category })` — catalog discovery (secondary entry)
+- `toTuiIconName("heart")` → `"@tui.heart"`
+- `AtralumeIconRegistry.register` / `registerAlias` — SSR-safe custom path icons
+- Only structured `paths` + numeric `viewBox` are accepted (no remote SVG, no HTML)
+- Import the catalog entry only when you need search/metadata; keep `atr-icon` imports light
+
+## Explorer
+
+Use the interactive gallery to search, preview semantic colors/surfaces, and copy
+snippets.
+
+<Canvas of={Explorer.Gallery} />
+
+## Custom registration
+
+```ts
+import { provideAtralumeIcons, type AtralumeIconDefinition } from "@osmanjimenez/atralume/icon";
+
+const brandMark = {
+  name: "brand-mark",
+  paths: ["M4 12h16"],
+  category: "custom",
+  keywords: ["brand", "logo"],
+} as const satisfies AtralumeIconDefinition;
+
+bootstrapApplication(App, {
+  providers: [provideAtralumeIcons([brandMark])],
+});
+```
+
+Do not pass end-user SVG strings into the registry. Treat definitions as
+developer-owned assets reviewed like any other source file.

@@ -5,6 +5,10 @@ basic Taiga migration inventory. Strategy follows ADR-001: **reuse Taiga UI /
 CDK first**, compose when needed, create thin `atr*` adapters only when they add
 brand tokens, stable public API, or accessibility value.
 
+For the full Taiga documentation inventory (Accordion → Utils / charts) mapped to
+**Reutilizar / Componer / Documentar / Omitir**, see
+[taiga-ui-inventory-classification.md](./taiga-ui-inventory-classification.md).
+
 Versions audited: Angular 22.2.4 · Taiga UI 5.31.0 · Storybook 10.6.5 · Nx 23.2.1.
 
 ## Legend
@@ -26,7 +30,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | Componente o capacidad | Categoría | Cobertura actual | Solución existente | Prioridad | Acción |
 | --- | --- | --- | --- | --- | --- |
 | Typography | Átomo / Foundations | Parcial | Foundations tokens + `typography.mdx` | P0 | Omitir (tokens/docs) |
-| Icon | Átomo | Completa | `AtralumeIcon` / optional `TuiIcon` | P0 | Reutilizar |
+| Icon | Átomo | Completa | `AtralumeIcon` / optional `TuiIcon` + catalog manifest / Icon Explorer | P0 | Reutilizar |
 | Avatar | Átomo | Completa | `AtralumeAvatar` → `TuiAvatar` | P0 | Reutilizar |
 | AvatarGroup | Átomo | Nula | Taiga `TuiAvatarStack` | P0 | Crear (en entrypoint `avatar`) |
 | StatusIndicator | Átomo | Parcial | Badge tones; Taiga `TuiStatus` | P0 | Crear (`status`) |
@@ -73,14 +77,14 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | DataGrid | Organismo | Completa | `AtralumeTable` → `TuiTable` | P0 | Reutilizar |
 | CommandPalette | Organismo | Completa | `AtralumeCommandPalette` | P0 | Reutilizar |
 | Stepper | Organismo | Completa | `AtralumeStepper` → `TuiStepper` | P0 | Reutilizar |
-| Timeline | Organismo | Nula | Taiga `TuiTimeline` | P1 | Crear (later) |
+| Timeline | Organismo | Completa | `AtralumeTimeline` → `TuiTimeline` | P1 | Reutilizar |
 | ActivityFeed | Organismo | Nula | List + Avatar + time | P2 | Componer |
 | NotificationCenter | Organismo | Parcial | Snackbar / Taiga Push / Toast | P2 | Documentar |
 | AdvancedFileExplorer | Organismo | Nula | Tree + FileUpload + List | P2 | Omitir |
-| MultiSelectToolbar | Organismo | Nula | Taiga `TuiActionBar` | P1 | Crear (later) |
+| MultiSelectToolbar | Organismo | Completa | `AtralumeActionBar` → `TuiActionBar` | P1 | Reutilizar |
 | MasterDetailLayout | Organismo | Nula | Side nav + content | P1 | Documentar |
 | DashboardLayout | Organismo | Parcial | Phase3 dashboard demo | P1 | Documentar |
-| ContentSwitcher | Organismo | Parcial | Tabs; Taiga `TuiSegmented` | P1 | Crear (later) |
+| ContentSwitcher | Organismo / molécula | Completa | `AtralumeContentSwitcher` → `TuiSegmented` | P1 | Reutilizar |
 
 ## D. Patterns (prefer docs / composition)
 
@@ -92,7 +96,9 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | Destination exploration (hero + filters + mosaic + preview + empty) | Playground exploration demo + media APIs | P0 | Documentar |
 | Multi-select + bulk actions | Table + ActionBar | P1 | Documentar |
 | Long forms + validation | Form field recipes | P0 | Reutilizar / Documentar |
-| Destructive confirmations | Dialog / Confirm | P0 | Documentar (Taiga `TuiConfirm`) |
+| Destructive confirmations | Dialog / Confirm | P0 | Documentar (`Patterns/Destructive Confirm` + `AtralumeDialog`) |
+| Quantity selector | Number input + icon buttons | P1 | Documentar (`Patterns/Quantity Selector`) |
+| Shortcut hint | Kbd + Tooltip | P1 | Documentar (`Patterns/Shortcut Hint`) |
 | Keyboard navigation | Component contracts | P0 | Reutilizar |
 | Drag and drop | Angular CDK DnD | P2 | Documentar |
 | Hierarchical navigation | Tree + breadcrumbs | P0 | Reutilizar |
@@ -105,6 +111,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | Capacidad | Cobertura | Solución | Prioridad | Acción |
 | --- | --- | --- | --- | --- |
 | Design tokens / themes / glass | Completa | Style Dictionary + bridge | P0 | Reutilizar |
+| Iconography catalog / Explorer | Completa (0.2.3) | Manifest + `searchAtralumeIcons` + Foundations/Icon Explorer | P0 | Reutilizar |
 | WCAG 2.2 AA tooling | Completa | Storybook a11y addon | P0 | Reutilizar |
 | i18n / RTL | Parcial | Taiga i18n tokens; logical CSS | P1 | Documentar |
 | Visual regression | Parcial | Playwright scripts present | P2 | Reutilizar (no new vendor) |
@@ -116,7 +123,7 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | --- | --- | --- |
 | Angular CDK | Already peer | Keep (overlay, a11y, clipboard via Taiga) |
 | Storybook a11y / docs | Installed | Keep |
-| New icon packs | No | Use existing registry + Taiga icons |
+| New icon packs | No | Use existing registry + `@taiga-ui/icons` catalog (manifest via `npm run icons:manifest`) |
 | New i18n library | No | Defer; Taiga texts + consumer i18n |
 | Chromatic | No | Do not install |
 
@@ -134,4 +141,16 @@ Priorities: **P0** fundamentals · **P1** productivity · **P2** advanced.
 | VisuallyHidden | `@osmanjimenez/atralume/visually-hidden` | Implemented |
 | PasswordField | Forms/Password Field recipe | Documented (no package) |
 
-Deferred P1/P2 remain listed above for later waves.
+## P1 wave (0.2.3)
+
+| Item | Entrypoint / location | Status |
+| --- | --- | --- |
+| Icon catalog + Explorer | `@osmanjimenez/atralume/icon` + Foundations/Icon Explorer | Implemented (manifest ~2191 entries from `@taiga-ui/icons` + built-ins) |
+| Timeline | `@osmanjimenez/atralume/timeline` | Implemented |
+| ContentSwitcher | `@osmanjimenez/atralume/content-switcher` | Implemented |
+| MultiSelectToolbar / ActionBar | `@osmanjimenez/atralume/action-bar` | Implemented |
+| QuantitySelector | `Patterns/Quantity Selector` | Documented (composition) |
+| ShortcutHint | `Patterns/Shortcut Hint` | Documented (composition) |
+| Destructive confirm | `Patterns/Destructive Confirm` | Documented (composition) |
+
+Deferred remaining P1/P2 stay listed above for later waves.

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  color: var(
+    --atr-comp-action-bar-label-color,
+    var(--atr-sys-color-on-surface)
+  );
+}
+
+tui-action-bar {
+  background: var(
+    --atr-comp-action-bar-container-color,
+    var(--atr-sys-color-surface-container-high)
+  );
+  border-radius: var(
+    --atr-comp-action-bar-shape,
+    var(--atr-sys-shape-medium)
+  );
+  box-shadow: var(
+    --atr-comp-action-bar-elevation,
+    var(--atr-sys-elevation-2)
+  );
+}

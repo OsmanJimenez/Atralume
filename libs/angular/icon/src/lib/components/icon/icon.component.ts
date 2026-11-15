@@ -47,14 +47,25 @@ export class AtralumeIcon {
   /** Optional bridge toward Taiga `TuiIcon` without breaking registry consumers. */
   readonly engine = input<AtralumeIconEngine>("registry");
   private readonly registry = inject(AtralumeIconRegistry);
-  protected readonly definition = computed(() =>
-    this.engine() === "tui" ? undefined : this.registry.get(this.name()),
-  );
+  protected readonly definition = computed(() => {
+    if (this.engine() === "tui") return undefined;
+    // tryGet avoids DevMode throws so engine="auto" can fall back to TuiIcon.
+    if (this.engine() === "auto") return this.registry.tryGet(this.name());
+    return this.registry.get(this.name());
+  });
   protected readonly resolvedEngine = computed<"registry" | "tui">(() => {
     const mode = this.engine();
     if (mode === "tui") return "tui";
     if (mode === "registry") return "registry";
     return this.definition() ? "registry" : "tui";
+  });
+  /** Resolved Taiga mask name when the tui engine is active. */
+  protected readonly tuiIconName = computed(() => {
+    const raw = this.name();
+    if (raw.startsWith("@") || raw.includes("/") || raw.startsWith("http")) {
+      return raw;
+    }
+    return `@tui.${raw.replace(/^@tui\./, "")}`;
   });
   protected readonly pixelSize = computed(() => {
     const value = this.size();

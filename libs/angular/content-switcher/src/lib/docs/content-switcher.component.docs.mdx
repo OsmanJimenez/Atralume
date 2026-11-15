@@ -1,0 +1,69 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/content-switcher.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Content Switcher
+
+Use Content Switcher for mutually exclusive view modes (list / board / calendar)
+or compact in-page navigation. Prefer Tabs when each option owns a large panel
+with its own heading and keyboard tablist semantics.
+
+Composition over Taiga UI
+[`TuiSegmented`](https://taiga-ui.dev/components/segmented).
+
+## Import
+
+```ts
+import { AtralumeContentSwitcher } from "@osmanjimenez/atralume/content-switcher";
+```
+
+```html
+<atr-content-switcher [(activeItemIndex)]="view" size="m">
+  <button type="button">List</button>
+  <button type="button">Board</button>
+  <button type="button">Calendar</button>
+</atr-content-switcher>
+```
+
+## Options
+
+Project native `button` or `a` elements. Keep accessible names on each option.
+`activeItemIndex` is two-way (`model`) and mirrors Taiga’s segmented index.
+
+## Accessibility
+
+Disabled blocks pointer interaction on the host. Do not rely on opacity alone for
+state—`data-disabled` is set for assistive styling hooks. Prefer a visible label
+or legend near the control when the options are icon-only.
+
+## Tokens
+
+```css
+.custom {
+  --atr-comp-content-switcher-container-color: var(
+    --atr-sys-color-surface-container-high
+  );
+  --atr-comp-content-switcher-shape: var(--atr-sys-shape-full);
+}
+```
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Disabled} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner                     | Member            | Kind    | Type                | Default |
+| ------------------------- | ----------------- | ------- | ------------------- | ------- |
+| `AtralumeContentSwitcher` | `size`            | `Input` | `"s" \| "m" \| "l"` | `"m"`   |
+| `AtralumeContentSwitcher` | `activeItemIndex` | `Model` | `number`            | `0`     |
+| `AtralumeContentSwitcher` | `disabled`        | `Input` | `boolean`           | `false` |
+
+```ts
+type AtralumeContentSwitcherSize = "s" | "m" | "l";
+```
+
+{/* public-api:end */}

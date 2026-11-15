@@ -20,6 +20,11 @@ import {
   type AtralumePreviewImage,
 } from "@osmanjimenez/atralume/image-preview";
 
+type CarouselApi = {
+  next: () => void;
+  prev: () => void;
+};
+
 export type AtralumeImageGalleryLayout = "carousel" | "mosaic";
 
 export interface AtralumeGalleryImage extends AtralumePreviewImage {
@@ -62,6 +67,7 @@ export class AtralumeImageGallery {
   readonly previewable = input(true, { transform: booleanAttribute });
   readonly activeChange = output<number>();
   protected readonly preview = viewChild(AtralumeImagePreview);
+  protected readonly carousel = viewChild<CarouselApi>("carousel");
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   protected readonly max = computed(() =>
     Math.max(0, this.images().length - 1),
@@ -76,28 +82,48 @@ export class AtralumeImageGallery {
 
   protected onIndex(index: number): void {
     const next = Math.min(Math.max(0, index), this.max());
+    if (next === this.activeIndex()) return;
     this.activeIndex.set(next);
     this.activeChange.emit(next);
   }
 
+  /**
+   * Prefer Taiga carousel scroll API in the browser so intersection observers
+   * stay in sync. Fall back to index mutation when scrollTo is unavailable
+   * (unit tests / jsdom).
+   */
   protected previous(): void {
-    this.onIndex(
-      this.activeIndex() <= 0
-        ? this.loop()
-          ? this.max()
-          : 0
-        : this.activeIndex() - 1,
-    );
+    if (this.activeIndex() <= 0) {
+      if (this.loop()) this.onIndex(this.max());
+      return;
+    }
+    const api = this.carousel();
+    if (!api) {
+      this.onIndex(this.activeIndex() - 1);
+      return;
+    }
+    try {
+      api.prev();
+    } catch {
+      this.onIndex(this.activeIndex() - 1);
+    }
   }
 
   protected next(): void {
-    this.onIndex(
-      this.activeIndex() >= this.max()
-        ? this.loop()
-          ? 0
-          : this.max()
-        : this.activeIndex() + 1,
-    );
+    if (this.activeIndex() >= this.max()) {
+      if (this.loop()) this.onIndex(0);
+      return;
+    }
+    const api = this.carousel();
+    if (!api) {
+      this.onIndex(this.activeIndex() + 1);
+      return;
+    }
+    try {
+      api.next();
+    } catch {
+      this.onIndex(this.activeIndex() + 1);
+    }
   }
 
   protected openPreview(index: number, origin: MouseEvent): void {

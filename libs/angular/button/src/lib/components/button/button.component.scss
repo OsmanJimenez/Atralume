@@ -101,6 +101,14 @@
   inline-size: 100%;
 }
 
+/* Loading must stay fully opaque so the spinner reads; disablement is
+   conveyed by aria-busy / blocked clicks, not by the disabled fade. */
+[tuiButton].atr-button.atr-button--loading,
+[tuiButton].atr-button.atr-button--loading:disabled,
+[tuiButton].atr-button.atr-button--loading[aria-disabled="true"] {
+  opacity: 1;
+}
+
 [tuiButton].atr-button.atr-button--loading .atr-button__content {
   opacity: 0;
 }

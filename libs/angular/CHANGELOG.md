@@ -3,6 +3,13 @@
 Canonical release notes live in the repository root
 [`CHANGELOG.md`](https://github.com/OsmanJimenez/Atralume/blob/master/CHANGELOG.md).
 
+## 0.2.3 — 2026-11-15
+
+- Icon catalog manifest + Icon Explorer; registry `tryGet` / aliases / search API.
+- Catalog ships as secondary entry `@osmanjimenez/atralume/icon/catalog` so the default `icon` entry and Storybook stories stay light.
+- New entrypoints: `timeline`, `content-switcher`, `action-bar`.
+- Pattern recipes: quantity selector, shortcut hint, destructive confirm.
+
 ## 0.2.1 — 2026-11-14
 
 - SEO for `https://atralume.osmanjimenez.dev/` (canonical, sitemap, robots, OG).

@@ -30,5 +30,14 @@ export const Playground: Story = {
 };
 
 export const Semantic: Story = {
-  render: () => ({ template: "<hr atrDivider />" }),
+  name: "Semantic hr",
+  render: () => ({
+    template: `
+      <section style="display:grid;gap:1rem;max-inline-size:28rem">
+        <p>Account settings</p>
+        <hr atrDivider />
+        <p>Billing and invoices</p>
+      </section>
+    `,
+  }),
 };

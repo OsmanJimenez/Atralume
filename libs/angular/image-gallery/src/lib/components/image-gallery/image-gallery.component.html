@@ -47,13 +47,16 @@
       </ul>
     } @else {
       <tui-carousel
-        [index]="activeIndex()"
-        (indexChange)="onIndex($event)"
+        #carousel
+        [(index)]="activeIndex"
+        (indexChange)="activeChange.emit($event)"
         [min]="0"
         [max]="max()"
       >
-        @for (image of images(); track image.id; let index = $index) {
-          <div *tuiItem class="atr-image-gallery__slide">
+        <!-- Taiga carousel projects one *tuiItem template with the slide index. -->
+        <div *tuiItem="let index" class="atr-image-gallery__slide">
+          @let image = images()[index];
+          @if (image) {
             <atr-image
               [src]="image.src"
               [fallbackSrc]="image.fallbackSrc ?? null"
@@ -80,8 +83,8 @@
                 }
               </div>
             }
-          </div>
-        }
+          }
+        </div>
       </tui-carousel>
       <div class="atr-image-gallery__controls">
         <button

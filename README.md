@@ -10,7 +10,7 @@ a stable brand API on top of [Taiga UI](https://taiga-ui.dev/) 5.
 
 | | |
 | --- | --- |
-| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.1` (preview) |
+| **npm** | [`@osmanjimenez/atralume`](https://www.npmjs.com/package/@osmanjimenez/atralume) `0.2.3` (preview) |
 | **Docs** | [atralume.osmanjimenez.dev](https://atralume.osmanjimenez.dev/) |
 | **Repo** | Nx workspace · Angular 22 · Storybook 10 |
 

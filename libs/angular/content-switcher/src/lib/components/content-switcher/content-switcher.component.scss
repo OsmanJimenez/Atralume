@@ -1,0 +1,24 @@
+:host {
+  display: inline-block;
+  max-inline-size: 100%;
+  color: var(
+    --atr-comp-content-switcher-label-color,
+    var(--atr-sys-color-on-surface)
+  );
+}
+
+tui-segmented {
+  background: var(
+    --atr-comp-content-switcher-container-color,
+    var(--atr-sys-color-surface-container)
+  );
+  border-radius: var(
+    --atr-comp-content-switcher-shape,
+    var(--atr-sys-shape-medium)
+  );
+}
+
+:host([data-disabled]) {
+  opacity: var(--atr-sys-state-disabled-opacity, 0.38);
+  pointer-events: none;
+}

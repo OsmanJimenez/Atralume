@@ -1,0 +1,66 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/action-bar.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Action Bar
+
+Use Action Bar for bulk actions after multi-select (tables, galleries, filters).
+It is the MultiSelectToolbar capability: selection summary plus primary actions.
+
+Composition over Taiga UI
+[`TuiActionBar`](https://taiga-ui.dev/components/action-bar).
+
+## Import
+
+```ts
+import { AtralumeActionBar } from "@osmanjimenez/atralume/action-bar";
+```
+
+```html
+<atr-action-bar [expanded]="isMobileOverflow" size="m">
+  <strong>Selected: {{ count }}</strong>
+  <button atrButton type="button">Archive</button>
+  <button atrButton type="button">Delete</button>
+</atr-action-bar>
+```
+
+## Floating placement
+
+Taiga demos often mount the bar with `*tuiPopup`. Keep that portal host in the
+consuming layout when the bar should float above content; `atr-action-bar` only
+adapts the bar surface and inputs.
+
+## Accessibility
+
+Projected actions must be native `button` / `a` with accessible names. Announce
+selection count changes in surrounding live regions when the count is dynamic.
+`expanded` toggles overflow chrome for dense / mobile layouts.
+
+## Tokens
+
+```css
+.custom {
+  --atr-comp-action-bar-container-color: var(--atr-sys-color-inverse-surface);
+  --atr-comp-action-bar-label-color: var(--atr-sys-color-inverse-on-surface);
+}
+```
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Expanded} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner              | Member     | Kind    | Type          | Default |
+| ------------------ | ---------- | ------- | ------------- | ------- |
+| `AtralumeActionBar`| `expanded` | `Input` | `boolean`     | `false` |
+| `AtralumeActionBar`| `size`     | `Input` | `"s" \| "m"`  | `"m"`   |
+
+```ts
+type AtralumeActionBarSize = "s" | "m";
+```
+
+{/* public-api:end */}

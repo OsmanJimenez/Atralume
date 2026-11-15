@@ -9,7 +9,7 @@
 primitives, DTCG design tokens, and light / dark / glass themes. Taiga UI 5
 powers behavior under the hood; Atralume owns the public API, tokens, and brand.
 
-> **Maturity:** preview (`0.2.1`). APIs may receive documented adjustments before
+> **Maturity:** preview (`0.2.3`). APIs may receive documented adjustments before
 > a stable `1.0.0`. See [component maturity](https://github.com/OsmanJimenez/Atralume/blob/master/docs/component-maturity.md).
 
 ## Why Atralume
@@ -54,10 +54,14 @@ export class App {}
 ```ts
 import { AtralumeButton } from "@osmanjimenez/atralume/button";
 import { AtralumeGrid } from "@osmanjimenez/atralume/grid";
+import { AtralumeIcon, provideAtralumeIcons } from "@osmanjimenez/atralume/icon";
+import { searchAtralumeIcons } from "@osmanjimenez/atralume/icon/catalog";
 ```
 
 ```html
 <button atrButton type="button">Continue</button>
+
+<atr-icon engine="tui" name="@tui.heart" [decorative]="false" label="Favorite" />
 
 <atr-grid columns="auto" gap="md" minTrack="14rem">
   <!-- cards, form sections, media tiles -->
@@ -88,14 +92,15 @@ Import from the documented entrypoint (for example `/button`, `/form-field`,
 `/dialog`, `/snackbar`, `/table`, `/grid`). Do not import from `src`, `fesm2022`,
 or other generated paths.
 
-| Area        | Examples                                      |
-| ----------- | --------------------------------------------- |
-| Actions     | button, icon-button, fab, speed-dial, link    |
-| Forms       | form-field, input, textarea, checkbox, switch |
-| Overlays    | dialog, menu, snackbar, tooltip, popover      |
-| Navigation  | tabs, breadcrumbs, side-navigation, nav-bar   |
-| Composition | card, list, accordion, skeleton, **grid**     |
-| Data        | table, tree, carousel                         |
+| Area        | Examples                                              |
+| ----------- | ----------------------------------------------------- |
+| Actions     | button, icon-button, fab, speed-dial, link            |
+| Forms       | form-field, input, textarea, checkbox, switch         |
+| Overlays    | dialog, menu, snackbar, tooltip, popover              |
+| Navigation  | tabs, breadcrumbs, side-navigation, nav-bar           |
+| Composition | card, list, accordion, skeleton, **grid**             |
+| Data        | table, tree, carousel                                 |
+| Icons       | icon (registry/`atr-icon`), **icon/catalog** (search) |
 
 Full inventory and stories: [Storybook](https://atralume.osmanjimenez.dev/).
 

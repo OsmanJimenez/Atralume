@@ -5,11 +5,11 @@ import * as Stories from "../stories/icon.component.stories";
 
 # Icon
 
-Composed dual path: default SVG registry via `provideAtralumeIcons`; optional `engine="tui"` / `engine="auto"` bridges to Taiga `TuiIcon` without cutting over every consumer.
+Composed dual path: default SVG registry via `provideAtralumeIcons`; optional `engine="tui"` / `engine="auto"` bridges to Taiga `TuiIcon` without cutting over every consumer. The Icon Explorer under Foundations browses the generated catalog (`npm run icons:manifest`).
 
 Taiga UI reference: [Icon](https://taiga-ui.dev/components/icon).
 
-Use registered icons for familiar visual cues. Decorative icons are hidden from accessibility APIs; informative icons require decorative=false and a non-empty label. Icons use currentColor. Register only the icons you use with provideAtralumeIcons([checkIcon]). Combine arrays in one provider call per injector. Child injectors can extend a parent registry. Unknown icons throw in development and render empty in production. Only structured path data and numeric viewBox values are accepted, never remote URLs or HTML. Treat definitions as developer-owned assets. No sanitizer bypass or network resolver is used. Only icons marked mirrorInRtl reflect in RTL.
+Use registered icons for familiar visual cues. Decorative icons are hidden from accessibility APIs; informative icons require decorative=false and a non-empty label. Icons use currentColor. Register only the icons you use with provideAtralumeIcons([checkIcon]). Combine arrays in one provider call per injector. Child injectors can extend a parent registry. Unknown registry icons throw in development and render empty in production; `engine="auto"` falls back to Taiga names without throwing. Only structured path data and numeric viewBox values are accepted, never remote URLs or HTML. Treat definitions as developer-owned assets. No sanitizer bypass or network resolver is used. Only icons marked mirrorInRtl reflect in RTL.
 
 ## Import and minimum example
 
@@ -34,12 +34,13 @@ Signal inputs use the exported TypeScript unions. Native attributes and native e
 
 {/* public-api:start */}
 
-| Input        | Type             | Default    |
-| ------------ | ---------------- | ---------- |
-| `name`       | `string`         | `Required` |
-| `size`       | `IconSize`       | `"medium"` |
-| `decorative` | `boolean`        | `true`     |
-| `label`      | `string \| null` | `null`     |
+| Input        | Type                               | Default      |
+| ------------ | ---------------------------------- | ------------ |
+| `name`       | `string`                           | `Required`   |
+| `size`       | `IconSize`                         | `"medium"`   |
+| `decorative` | `boolean`                          | `true`       |
+| `label`      | `string \| null`                   | `null`       |
+| `engine`     | `"registry" \| "tui" \| "auto"`    | `"registry"` |
 
 {/* public-api:end */}
 

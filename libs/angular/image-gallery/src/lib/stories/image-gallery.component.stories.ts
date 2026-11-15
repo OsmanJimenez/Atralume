@@ -48,7 +48,12 @@ type Story = StoryObj<AtralumeImageGallery>;
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole("button", { name: "Next" }));
+    // Prefer thumbnail selection: Taiga carousel intersection can leave a non-zero index on load.
+    await userEvent.click(
+      canvas.getByRole("tab", {
+        name: "View Sunlight entering a dense green forest",
+      }),
+    );
     await expect(canvas.getByText("2 / 3")).toBeVisible();
   },
 };

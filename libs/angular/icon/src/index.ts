@@ -7,3 +7,5 @@ export * from "./lib/models/icon.types";
 export * from "./lib/icons/icons";
 export * from "./lib/services/icon-registry";
 export * from "./lib/providers/provide-icons";
+// Catalog helpers live in `@osmanjimenez/atralume/icon/catalog` so the
+// default icon entry stays tree-shakeable and Storybook stories stay light.

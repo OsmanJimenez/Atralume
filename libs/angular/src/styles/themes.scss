@@ -1,8 +1,9 @@
 :root,
 [data-atr-theme="light"] {
+  /* ~72% surface: translucent enough for backdrop blur to read, still legible. */
   --atr-sys-glass-background: color-mix(
     in srgb,
-    var(--atr-sys-color-surface) 88%,
+    var(--atr-sys-color-surface) 72%,
     transparent
   );
 
@@ -12,7 +13,7 @@
 [data-atr-theme="dark"] {
   --atr-sys-glass-background: color-mix(
     in srgb,
-    var(--atr-sys-color-surface) 88%,
+    var(--atr-sys-color-surface) 68%,
     transparent
   );
 
@@ -55,7 +56,7 @@
   --atr-sys-color-focus: var(--atr-ref-color-primary-40);
   --atr-sys-glass-background: color-mix(
     in srgb,
-    var(--atr-sys-color-surface) 88%,
+    var(--atr-sys-color-surface) 72%,
     transparent
   );
   --atr-comp-button-container-color: var(--atr-sys-color-primary);

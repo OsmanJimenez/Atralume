@@ -123,74 +123,83 @@
 }
 
 .focus-row,
-.state-demo {
+.state-demo,
+.motion-demo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--atr-sys-spacing-sm);
+}
+
+.focus-row,
+.state-demo {
+  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .focus-row {
   gap: var(--atr-sys-spacing-md);
 }
 
-.focus-row input,
-.focus-row button,
-.motion-demo button,
-.state-demo button {
-  min-block-size: var(--atr-sys-touch-target-minimum);
-  padding-inline: var(--atr-sys-spacing-md);
-  border: var(--atr-ref-border-width-thin) solid var(--atr-sys-color-outline);
-  border-radius: var(--atr-sys-shape-small);
-  background: var(--atr-sys-color-surface-container-lowest);
-  color: var(--atr-sys-color-on-surface);
-  font: inherit;
-}
-
-.focus-row button,
-.motion-demo button,
-.state-demo button[aria-pressed="true"] {
-  border-color: var(--atr-sys-color-primary);
-  background: var(--atr-sys-color-primary);
-  color: var(--atr-sys-color-on-primary);
-  cursor: pointer;
-}
-
-.focus-row :focus-visible,
-.motion-demo button:focus-visible,
-.state-demo button:focus-visible {
-  outline: var(--atr-sys-focus-ring-width) solid var(--atr-sys-color-focus);
-  outline-offset: var(--atr-sys-focus-ring-offset);
-}
+/* atrButton owns chrome; do not restyle hosts with ad-hoc borders. */
 
 .glass-scene {
   position: relative;
   display: grid;
   place-items: center;
-  min-block-size: 12rem;
+  min-block-size: 14rem;
   overflow: hidden;
-  background: var(--atr-sys-color-surface-container-highest);
+  /* Rich depth so translucency is obvious; flat surfaces hide glass. */
+  background:
+    radial-gradient(
+      120% 80% at 10% 20%,
+      color-mix(in srgb, var(--atr-sys-color-primary) 35%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      100% 70% at 90% 80%,
+      color-mix(in srgb, var(--atr-sys-color-tertiary) 40%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--atr-sys-color-primary-container),
+      var(--atr-sys-color-surface-container-high),
+      var(--atr-sys-color-tertiary-container)
+    );
   border-radius: var(--atr-sys-shape-large);
 }
 
 .orb {
   position: absolute;
-  inline-size: 10rem;
-  block-size: 10rem;
+  inline-size: 12rem;
+  block-size: 12rem;
   border-radius: var(--atr-sys-shape-full);
+  filter: blur(0.5rem);
 }
 
 .orb-one {
-  inset: -3rem auto auto 12%;
-  background: var(--atr-sys-color-primary-container);
+  inset: -2rem auto auto 8%;
+  background: color-mix(
+    in srgb,
+    var(--atr-sys-color-primary) 70%,
+    var(--atr-sys-color-primary-container)
+  );
 }
 
 .orb-two {
-  inset: auto 8% -4rem auto;
-  background: var(--atr-sys-color-tertiary-container);
+  inset: auto 4% -3rem auto;
+  background: color-mix(
+    in srgb,
+    var(--atr-sys-color-tertiary) 65%,
+    var(--atr-sys-color-tertiary-container)
+  );
 }
 
 .glass-panel {
   z-index: 1;
+  max-inline-size: 18rem;
   padding: var(--atr-sys-spacing-lg);
   border: var(--atr-sys-glass-border-width) solid
     var(--atr-sys-glass-border-color);

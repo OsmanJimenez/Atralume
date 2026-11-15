@@ -19,6 +19,7 @@
     "tokens:clean": "node tools/tokens.mjs clean",
     "tokens:check": "node tools/tokens.mjs check",
     "tokens:inspect": "node tools/tokens.mjs inspect",
+    "icons:manifest": "node tools/generate-icon-manifest.mjs",
     "lint:styles": "stylelint \"{apps,libs}/**/*.{css,scss}\"",
     "test:themes": "node tools/check-themes.mjs",
     "verify": "npm run format:check && npm run lint && npm run lint:styles && npm run check:architecture && npm run check:atom-docs && npm run check:component-docs && npm run tokens:check && npm run tokens:build && npm run test:unit && npm run build && npm run build:playground && npm run build:storybook && npm run test:themes && npm run check:package && npm run check:storybook && npm run test:atoms && npm run test:forms && npm run test:phase3 && npm run test:phase4",

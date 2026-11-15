@@ -1,0 +1,249 @@
+<header class="atr-doc-icon-explorer__header">
+  <div>
+    <h1>Icon Explorer</h1>
+    <p>
+      Browse the Atralume icon catalog built from verified
+      <code>@taiga-ui/icons</code> assets and the structured registry.
+      Render with <code>atr-icon</code>; regenerate with
+      <code>npm run icons:manifest</code>.
+    </p>
+  </div>
+  <dl class="atr-doc-icon-explorer__stats">
+    <div>
+      <dt>Available</dt>
+      <dd>{{ totalIcons }}</dd>
+    </div>
+    <div>
+      <dt>Matching</dt>
+      <dd>{{ filtered().length }}</dd>
+    </div>
+    <div>
+      <dt>Manifest</dt>
+      <dd>v{{ catalogVersion }}</dd>
+    </div>
+  </dl>
+</header>
+
+<div class="atr-doc-icon-explorer__toolbar">
+  <label class="atr-doc-icon-explorer__search">
+    <span class="atr-doc-icon-explorer__label">Search</span>
+    <input
+      type="search"
+      [ngModel]="query()"
+      (ngModelChange)="onQueryInput($event)"
+      placeholder="Name, alias, category, or keyword"
+      autocomplete="off"
+    />
+  </label>
+
+  <div
+    class="atr-doc-icon-explorer__categories"
+    role="listbox"
+    aria-label="Icon categories"
+  >
+    @for (item of categories; track item) {
+      <button
+        type="button"
+        class="atr-doc-icon-explorer__chip"
+        role="option"
+        [attr.aria-selected]="category() === item"
+        [class.is-active]="category() === item"
+        (click)="selectCategory(item)"
+      >
+        {{ item }}
+      </button>
+    }
+  </div>
+</div>
+
+<div class="atr-doc-icon-explorer__layout">
+  <section class="atr-doc-icon-explorer__grid-panel" aria-label="Icon grid">
+    @if (filtered().length === 0) {
+      <div class="atr-doc-icon-explorer__empty" role="status">
+        <atr-icon
+          engine="tui"
+          name="@tui.search-x"
+          size="large"
+          [decorative]="true"
+        />
+        <p>No icons match <strong>{{ query() || "your filters" }}</strong>.</p>
+        <p>Try another name, alias, or category.</p>
+      </div>
+    } @else {
+      <ul class="atr-doc-icon-explorer__grid">
+        @for (entry of visible(); track entry.name + entry.source) {
+          <li>
+            <button
+              type="button"
+              class="atr-doc-icon-explorer__tile"
+              [class.is-selected]="selectedName() === entry.name"
+              [attr.aria-pressed]="selectedName() === entry.name"
+              (click)="selectIcon(entry)"
+            >
+              <span
+                class="atr-doc-icon-explorer__glyph"
+                [attr.data-source]="entry.source"
+              >
+                <atr-icon
+                  [engine]="iconEngine(entry)"
+                  [name]="iconName(entry)"
+                  size="medium"
+                  [decorative]="true"
+                />
+              </span>
+              <span class="atr-doc-icon-explorer__tile-name">{{
+                entry.name
+              }}</span>
+            </button>
+          </li>
+        }
+      </ul>
+
+      @if (hasMore()) {
+        <div class="atr-doc-icon-explorer__more">
+          <button type="button" atrButton appearance="outlined" (click)="loadMore()">
+            Show more ({{ visible().length }} / {{ filtered().length }})
+          </button>
+        </div>
+      }
+    }
+  </section>
+
+  <aside class="atr-doc-icon-explorer__detail" aria-live="polite">
+    @if (selected(); as entry) {
+      <div
+        class="atr-doc-icon-explorer__preview"
+        [attr.data-atr-surface]="previewSurface()"
+        [style.color]="previewColor()"
+      >
+        <atr-icon
+          [engine]="iconEngine(entry)"
+          [name]="iconName(entry)"
+          [size]="previewSize()"
+          [decorative]="false"
+          [label]="entry.name"
+        />
+      </div>
+
+      <h2>{{ entry.name }}</h2>
+      <p class="atr-doc-icon-explorer__meta">
+        <span>{{ entry.category }}</span>
+        <span>{{ entry.source }}</span>
+        @if (entry.filled) {
+          <span>filled sibling</span>
+        }
+      </p>
+
+      <dl class="atr-doc-icon-explorer__fields">
+        <div>
+          <dt>Reference</dt>
+          <dd><code>{{ iconName(entry) }}</code></dd>
+        </div>
+        <div>
+          <dt>Taiga token</dt>
+          <dd><code>{{ entry.tuiName }}</code></dd>
+        </div>
+        @if (entry.aliases?.length) {
+          <div>
+            <dt>Aliases</dt>
+            <dd>{{ entry.aliases?.join(", ") }}</dd>
+          </div>
+        }
+        <div>
+          <dt>Keywords</dt>
+          <dd>{{ entry.keywords.join(", ") }}</dd>
+        </div>
+      </dl>
+
+      <div class="atr-doc-icon-explorer__controls">
+        <label>
+          Size
+          <select
+            [ngModel]="previewSize()"
+            (ngModelChange)="previewSize.set($event)"
+          >
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+            <option [ngValue]="48">48px</option>
+          </select>
+        </label>
+        <label>
+          Color
+          <select
+            [ngModel]="previewTone()"
+            (ngModelChange)="previewTone.set($event)"
+          >
+            <option value="inherit">inherit</option>
+            <option value="primary">primary</option>
+            <option value="on-surface">on-surface</option>
+            <option value="success">success</option>
+            <option value="warning">warning</option>
+            <option value="error">error</option>
+          </select>
+        </label>
+        <label>
+          Surface
+          <select
+            [ngModel]="previewSurface()"
+            (ngModelChange)="previewSurface.set($event)"
+          >
+            <option value="standard">standard</option>
+            <option value="elevated">elevated</option>
+            <option value="glass">glass</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="atr-doc-icon-explorer__context">
+        <p class="atr-doc-icon-explorer__label">In a button</p>
+        <button type="button" atrButton appearance="tonal">
+          <atr-icon
+            [engine]="iconEngine(entry)"
+            [name]="iconName(entry)"
+            size="small"
+            [decorative]="true"
+          />
+          Continue
+        </button>
+        <button
+          type="button"
+          atrIconButton
+          appearance="outlined"
+          aria-label="Icon button preview"
+        >
+          <atr-icon
+            [engine]="iconEngine(entry)"
+            [name]="iconName(entry)"
+            size="medium"
+            [decorative]="true"
+          />
+        </button>
+      </div>
+
+      <div class="atr-doc-icon-explorer__snippet">
+        <div class="atr-doc-icon-explorer__snippet-head">
+          <span>Angular snippet</span>
+          <button type="button" atrButton appearance="outlined" (click)="copySnippet()">
+            Copy snippet
+          </button>
+        </div>
+        <pre><code>{{ snippet() }}</code></pre>
+        <button type="button" atrButton appearance="standard" (click)="copyName(entry)">
+          Copy name
+        </button>
+      </div>
+
+      @if (copyMessage(); as message) {
+        <p class="atr-doc-icon-explorer__toast" role="status">{{ message }}</p>
+      }
+
+      <p class="atr-doc-icon-explorer__hint">
+        Tip: press <kbd atrKbd>Tab</kbd> through the grid, then copy the public
+        <code>atr-icon</code> contract shown above.
+      </p>
+    } @else {
+      <p>Select an icon to inspect sizes, colors, and snippets.</p>
+    }
+  </aside>
+</div>

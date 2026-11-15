@@ -3,6 +3,38 @@
 All notable public changes to Atralume are documented here. Releases are
 generated from reviewed changesets and follow Semantic Versioning.
 
+## 0.2.3 — 2026-11-15
+
+Catalogue expansion: iconography system, Icon Explorer, and justified P1
+adapters. Catalogue remains **preview**.
+
+### Added
+
+- **Icon catalog** on `@osmanjimenez/atralume/icon` — metadata manifest derived
+  from verified `@taiga-ui/icons` SVG filenames (~2,183 outline names) plus
+  built-in structured registry icons; `searchAtralumeIcons`, `toTuiIconName`,
+  categories, aliases, and `npm run icons:manifest` regeneration.
+- **Foundations/Icon Explorer** — searchable Storybook gallery with category
+  filters, detail panel, semantic color/surface playground, and copyable
+  `atr-icon` snippets.
+- **`AtralumeIconRegistry`** enhancements — `tryGet`, `has`, `names`, runtime
+  `register` / `registerAlias` with duplicate and path validation; `engine="auto"`
+  falls back to Taiga without DevMode throws.
+- **`@osmanjimenez/atralume/timeline`** — `atr-timeline` brand host over Taiga
+  `TuiTimeline` (extends host so projected items resolve DI).
+- **`@osmanjimenez/atralume/content-switcher`** — `atr-content-switcher` over
+  `TuiSegmented`.
+- **`@osmanjimenez/atralume/action-bar`** — `atr-action-bar` over `TuiActionBar`
+  for multi-select / bulk toolbars.
+- **Pattern recipes** — Quantity Selector, Shortcut Hint, Destructive Confirm
+  under Storybook Patterns.
+
+### Changed
+
+- Icon docs and Storybook Foundations navigation highlight Iconography /
+  Icon Explorer.
+- Advanced catalog coverage matrix updated for the 0.2.3 P1 wave.
+
 ## 0.2.2 — 2026-11-14
 
 Patch release: export the catalogue search field from the form-field entry.

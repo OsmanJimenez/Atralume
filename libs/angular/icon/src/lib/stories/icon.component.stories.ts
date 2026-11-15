@@ -1,7 +1,7 @@
 import { moduleMetadata, type Meta, type StoryObj } from "@storybook/angular";
+import { AtralumeIcon } from "../components/icon/icon.component";
+import { provideAtralumeIcons } from "../providers/provide-icons";
 import {
-  AtralumeIcon,
-  provideAtralumeIcons,
   checkIcon,
   closeIcon,
   arrowRightIcon,
@@ -10,7 +10,8 @@ import {
   warningIcon,
   userIcon,
   menuIcon,
-} from "../../index";
+} from "../icons/icons";
+
 export default {
   component: AtralumeIcon,
   title: "Atoms/Icon",
@@ -33,7 +34,9 @@ export default {
   ],
   tags: ["!autodocs"],
 } satisfies Meta;
+
 type Story = StoryObj;
+
 export const Playground: Story = {
   args: {
     name: "check",
@@ -80,6 +83,6 @@ export const TaigaBridge: Story = {
   name: "Taiga bridge",
   render: () => ({
     template:
-      '<atr-icon engine="tui" name="@tui.check" [decorative]="false" label="Taiga check" /> <atr-icon engine="tui" name="@tui.heart" [decorative]="false" label="Taiga heart" />',
+      '<atr-icon engine="tui" name="@tui.check" [decorative]="false" label="Taiga check" /> <atr-icon engine="tui" name="@tui.heart" [decorative]="false" label="Taiga heart" /> <atr-icon engine="auto" name="sparkles" [decorative]="false" label="Auto sparkles" />',
   }),
 };

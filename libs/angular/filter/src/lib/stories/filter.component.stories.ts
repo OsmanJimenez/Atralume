@@ -17,7 +17,12 @@ type Story = StoryObj<AtralumeFilter<string>>;
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByLabelText("Recent"));
+    // Taiga chip checkboxes use pointer-events:none on the input; click the label host.
+    const recent = canvasElement.querySelector(
+      "label.t-item",
+    ) as HTMLLabelElement | null;
+    await expect(recent).toBeTruthy();
+    await userEvent.click(recent!);
     await expect(canvas.getByRole("button", { name: "Clear" })).toBeEnabled();
   },
 };

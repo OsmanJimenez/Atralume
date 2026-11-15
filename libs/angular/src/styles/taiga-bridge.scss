@@ -144,7 +144,9 @@
   --tui-curve-expressive-entrance: var(--atr-sys-motion-easing-decelerate);
   --tui-curve-expressive-exit: var(--atr-sys-motion-easing-accelerate);
   --tui-curve-productive-standard: var(--atr-sys-motion-easing-standard);
-  --tui-disabled-opacity: var(--atr-sys-state-disabled-opacity);
+  /* Taiga applies this to the whole control; use content opacity (0.38),
+     not state-layer opacity (0.12), so disabled/loading stay legible. */
+  --tui-disabled-opacity: var(--atr-sys-state-disabled-content-opacity);
   --tui-radius-xs: var(--atr-sys-shape-extra-small);
   --tui-radius-s: var(--atr-sys-shape-small);
   --tui-radius-m: var(--atr-sys-shape-medium);

@@ -32,6 +32,9 @@
       "@osmanjimenez/atralume/radio": ["./libs/angular/radio/src/index.ts"],
       "@osmanjimenez/atralume/switch": ["./libs/angular/switch/src/index.ts"],
       "@osmanjimenez/atralume/icon": ["./libs/angular/icon/src/index.ts"],
+      "@osmanjimenez/atralume/icon/catalog": [
+        "./libs/angular/icon/catalog/src/index.ts"
+      ],
       "@osmanjimenez/atralume/icon-button": [
         "./libs/angular/icon-button/src/index.ts"
       ],
@@ -108,6 +111,13 @@
       ],
       "@osmanjimenez/atralume/rating": ["libs/angular/rating/src/index.ts"],
       "@osmanjimenez/atralume/otp-input": ["libs/angular/otp-input/src/index.ts"],
+      "@osmanjimenez/atralume/timeline": ["libs/angular/timeline/src/index.ts"],
+      "@osmanjimenez/atralume/content-switcher": [
+        "libs/angular/content-switcher/src/index.ts"
+      ],
+      "@osmanjimenez/atralume/action-bar": [
+        "libs/angular/action-bar/src/index.ts"
+      ],
       "@osmanjimenez/atralume/image": ["libs/angular/image/src/index.ts"],
       "@osmanjimenez/atralume/image-preview": [
         "libs/angular/image-preview/src/index.ts"

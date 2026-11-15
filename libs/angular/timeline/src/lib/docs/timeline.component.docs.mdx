@@ -1,0 +1,75 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as Stories from "../stories/timeline.component.stories";
+
+<Meta of={Stories} name="Docs" />
+
+# Timeline
+
+Use Timeline for arranging events on a linear axis (schedules, ranges, phases).
+It is an interactive track, not a vertical activity feed of text posts.
+
+Extends Taiga UI
+[`TuiTimeline`](https://taiga-ui.dev/components/timeline) (brand host with
+`providers: useExisting`) so projected items keep working with Taiga’s
+`inject(TuiTimelineComponent)` contract.
+
+## Import
+
+```ts
+import {
+  AtralumeTimeline,
+  AtralumeTimelineItem,
+} from "@osmanjimenez/atralume/timeline";
+```
+
+```html
+<atr-timeline orientation="horizontal" [max]="50">
+  <label tuiTimelineItem [draggable]="false" [(value)]="kickoff">Kickoff</label>
+  <label tuiTimelineItem [draggable]="false" [(value)]="delivery">Delivery</label>
+</atr-timeline>
+```
+
+## Items
+
+Timeline items are Taiga’s attribute component `label[tuiTimelineItem]`. That
+host owns a template (drag/resize range inputs), so it cannot be applied through
+`hostDirectives`. Import `AtralumeTimelineItem` (re-export of `TuiTimelineItem`)
+and project labels into `atr-timeline`.
+
+Item `value` is a `[start, end]` tuple on the shared `0…max` axis.
+
+## Accessibility
+
+Keep visible labels inside each item. Prefer `draggable` / `resizable` only when
+keyboard-equivalent editing is available nearby. Color alone must not be the only
+cue for an item’s meaning—pair with text.
+
+## Tokens
+
+Override track and item paint with `--atr-comp-timeline-*` (falls back to system
+surface / primary tokens).
+
+```css
+.custom {
+  --atr-comp-timeline-track-color: var(--atr-sys-color-surface-container-high);
+  --atr-comp-timeline-item-color: var(--atr-sys-color-tertiary);
+}
+```
+
+<Canvas of={Stories.Playground} />
+<Controls of={Stories.Playground} />
+<Canvas of={Stories.Vertical} />
+
+{/* public-api:start */}
+
+## Public TypeScript contract
+
+| Owner              | Member        | Kind    | Type                              | Default        |
+| ------------------ | ------------- | ------- | --------------------------------- | -------------- |
+| `AtralumeTimeline` | `orientation` | `Input` | `"horizontal" \| "vertical"`      | `"horizontal"` |
+| `AtralumeTimeline` | `max`         | `Input` | `number`                          | `100`          |
+| `AtralumeTimelineItem` (`label[tuiTimelineItem]`) | `draggable` | `Input` | `boolean` | `true` |
+| `AtralumeTimelineItem` | `resizable` | `Input` | `boolean` | `true` |
+| `AtralumeTimelineItem` | `value` | `Model` | `readonly [number, number]` | `[0, 0]` |
+
+{/* public-api:end */}

@@ -5,7 +5,7 @@ selector, input, output, public token, peer dependency or documented accessible
 behavior is a major change. Additive public capability is minor; compatible
 fixes, documentation, styling and performance work are patch changes.
 
-Published `latest` previews include `0.1.0`, `0.1.1`, `0.2.0`, `0.2.1`, and **`0.2.2`**. Families
+Published `latest` previews include `0.1.0`, `0.1.1`, `0.2.0`, `0.2.1`, `0.2.2`, and **`0.2.3`**. Families
 remain **preview** until their tarball consumer, accessibility and compatibility
 checks are all recorded as passing. A release to `1.0.0` requires an explicit
 API-stability review; it is not an automatic milestone.
